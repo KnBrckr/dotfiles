@@ -2,19 +2,21 @@
 
 # bash_paths
 
+# ========
+# = PATH =
+# ========
+
 # Directories to be prepended to PATH
 declare -a dirs_to_prepend=(
     "/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
+	"/opt/local/bin" # Same for this one
+	"/opt/local/sbin" # And this one
 )
 
 # Directories to be appended to PATH
 declare -a dirs_to_append=(
-    "/usr/bin"
     "$HOME/bin"
     "$HOME/.dotfiles/bin"
-    "$HOME/.rvm/bin"
-    "$(brew --prefix coreutils)/libexec/gnubin" # Add brew-installed GNU core utilities bin
-    "$(brew --prefix)/share/npm/bin" # Add npm-installed package bin
 )
 
 # Prepend directories to PATH
@@ -38,3 +40,51 @@ done
 unset dirs_to_prepend dirs_to_append
 
 export PATH
+
+
+# ===========
+# = MANPATH =
+# ===========
+
+# Directories to be appended to MANPATH
+declare -a dirs_to_append=(
+	"/opt/local/man"
+	"/usr/local/man"
+	"/usr/local/share/man"
+)
+
+# Append directories to MANPATH
+for index in ${!dirs_to_append[*]}
+do
+    if [ -d ${dirs_to_append[$index]} ]; then
+        # If these bins exist, then append them to existing MANPATH
+        MANPATH="$MANPATH:${dirs_to_append[$index]}"
+    fi
+done
+
+unset dirs_to_append
+
+export MANPATH
+
+# ============
+# = PERL5LIB =
+# ============
+
+# Perl5 Library locations
+declare -a dirs_to_append=(
+	"$HOME/Library/Perl"
+	"/opt/local/lib/perl5"
+)
+
+# Append directories to PERL5LIB
+for index in ${!dirs_to_append[*]}
+do
+    if [ -d ${dirs_to_append[$index]} ]; then
+        # If these bins exist, then append them to existing MANPATH
+        PERL5LIB="$PERL5LIB:${dirs_to_append[$index]}"
+    fi
+done
+
+unset dirs_to_append
+
+export PERL5LIB
