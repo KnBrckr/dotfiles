@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO Update installed SW list
+
 run_list() {
 
 cat <<EOT
@@ -11,25 +13,25 @@ Additional software to install
 Browsers:
     Firefox
     Google Chrome
-    Opera
 
 Development:
-    Filezilla
-    iTerm 2
-    ImageAlpha
-    ImageOptim
-    VirtualBox
-    XAMPP
+	?Filezilla
+	?iTerm 2
+	?ImageAlpha
+	?ImageOptim
+	?VirtualBox
+	?XAMPP
+	Text Mate
 
 Other:
-    Alfred
-    Divvy
+	1Password
+    ?Divvy
     Dropbox
-    Flux
-    KeePassX
-    LimeChat
-    Network Connect
-    Skype
+	exiftool
+    ?Flux
+	?LimeChat
+    ?Network Connect
+    ?Skype
     uTorrent
     VLC
 EOT

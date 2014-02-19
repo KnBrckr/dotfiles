@@ -61,3 +61,12 @@ formula_exists() {
     e_warning "Missing formula: $1"
     return 1
 }
+
+# Test whether a MacPorts port is already installed
+# $1 - port name
+port_exists() {
+	if [[ `port installed $1` =~ None\ of\ the\ specified\ ports\ are\ installed ]]; then
+		return 1
+	fi
+	return 0
+}

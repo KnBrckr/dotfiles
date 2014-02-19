@@ -1,8 +1,8 @@
 #!/bin/bash
 
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
-DOTFILES_TARBALL_PATH="https://github.com/necolas/dotfiles/tarball/master"
-DOTFILES_GIT_REMOTE="git@github.com:necolas/dotfiles.git"
+DOTFILES_TARBALL_PATH="https://github.com/seiryu9/dotfiles/tarball/master"
+DOTFILES_GIT_REMOTE="git@github.com:seiryu9/dotfiles.git"
 
 # If missing, download and extract the dotfiles repository
 if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
@@ -21,8 +21,9 @@ cd ${DOTFILES_DIRECTORY}
 source ./lib/help
 source ./lib/list
 source ./lib/utils
-source ./lib/brew
 source ./lib/npm
+source ./lib/macports
+#source ./lib/brew
 
 # Help text
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
@@ -46,7 +47,7 @@ do
     esac
 done
 
-# Before relying on Homebrew, check that packages can be compiled
+# Before relying on MacPorts, check that packages can be compiled
 if ! type_exists 'gcc'; then
     e_error "The XCode Command Line Tools must be installed first."
     printf "  Download them from: https://developer.apple.com/downloads\n"
@@ -54,18 +55,24 @@ if ! type_exists 'gcc'; then
     exit 1
 fi
 
-# Check for Homebrew
-if ! type_exists 'brew'; then
-    e_header "Installing Homebrew..."
-    ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+# Check for MacPorts
+if ! type_exists 'port'; then
+	e_error "MacPorts must be installed!"
+	exit 1
 fi
+
+# Check for Homebrew
+# if ! type_exists 'brew'; then
+#     e_header "Installing Homebrew..."
+#     ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+# fi
 
 # Check for git
 if ! type_exists 'git'; then
-    e_header "Updating Homebrew..."
-    brew update
+    e_header "Updating MacPorts..."
+    sudo port selfupdate
     e_header "Installing Git..."
-    brew install git
+	sudo port install git
 fi
 
 # Initialize the git repository if it's missing
@@ -97,8 +104,10 @@ if [[ $no_packages ]]; then
     printf "Skipped package installations.\n"
 else
     printf "Updating packages...\n"
-    # Install Homebrew formulae
-    run_brew
+	# Install MacPorts
+	run_macports
+    # # Install Homebrew formulae
+    # run_brew
     # Install Node packages
     run_npm
 fi
@@ -127,7 +136,9 @@ mirrorfiles() {
     link "shell/curlrc"       ".curlrc"
     link "shell/inputrc"      ".inputrc"
     link "git/gitattributes"  ".gitattributes"
-    link "git/gitignore"      ".gitignore"
+    link "git/gitignore"      ".gitignore_global"
+	# TODO add mercurial files
+	# TODO add subversion files
     link "vim"                ".vim"
     link "vim/gvimrc"         ".gvimrc"
     link "vim/vimrc"          ".vimrc"

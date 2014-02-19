@@ -2,6 +2,38 @@
 
 # bash_paths
 
+# ARG1 = variable name
+# ARG2 = items to add to colon separated list
+prepend_list() {
+	local var_name=$1
+	declare -a prepend_array=("${!2}")
+	
+	for index in ${!prepend_array[*]}
+	do
+	    if [ -d ${prepend_array[$index]} ]; then
+	        # If these directories exist, then prepend them to existing
+	        eval $var_name="${prepend_array[$index]}:${!var_name}"
+	    fi
+	done
+}
+
+# ARG1 = variable name
+# ARG2 = items to add to colon separated list
+append_list() {
+	local var_name=$1
+	declare -a append_array=("${!2}")
+	
+	for index in ${!append_array[*]}
+	do
+		echo ${append_array[$index]}
+	    if [ -d ${append_array[$index]} ]; then
+	        # If these directories exist, then append them to existing
+	        eval $var_name="${!var_name}:${append_array[$index]}"
+	    fi
+	done
+}
+
+
 # ========
 # = PATH =
 # ========
@@ -13,34 +45,19 @@ declare -a dirs_to_prepend=(
 	"/opt/local/sbin" # And this one
 )
 
+prepend_list PATH dirs_to_prepend[@]
+
 # Directories to be appended to PATH
 declare -a dirs_to_append=(
     "$HOME/bin"
     "$HOME/.dotfiles/bin"
 )
 
-# Prepend directories to PATH
-for index in ${!dirs_to_prepend[*]}
-do
-    if [ -d ${dirs_to_prepend[$index]} ]; then
-        # If these directories exist, then prepend them to existing PATH
-        PATH="${dirs_to_prepend[$index]}:$PATH"
-    fi
-done
-
-# Append directories to PATH
-for index in ${!dirs_to_append[*]}
-do
-    if [ -d ${dirs_to_append[$index]} ]; then
-        # If these bins exist, then append them to existing PATH
-        PATH="$PATH:${dirs_to_append[$index]}"
-    fi
-done
-
+append_list PATH dirs_to_append[@]
+ 
 unset dirs_to_prepend dirs_to_append
 
 export PATH
-
 
 # ===========
 # = MANPATH =
@@ -53,14 +70,7 @@ declare -a dirs_to_append=(
 	"/usr/local/share/man"
 )
 
-# Append directories to MANPATH
-for index in ${!dirs_to_append[*]}
-do
-    if [ -d ${dirs_to_append[$index]} ]; then
-        # If these bins exist, then append them to existing MANPATH
-        MANPATH="$MANPATH:${dirs_to_append[$index]}"
-    fi
-done
+append_list MANPATH dirs_to_append[@]
 
 unset dirs_to_append
 
@@ -76,15 +86,13 @@ declare -a dirs_to_append=(
 	"/opt/local/lib/perl5"
 )
 
-# Append directories to PERL5LIB
-for index in ${!dirs_to_append[*]}
-do
-    if [ -d ${dirs_to_append[$index]} ]; then
-        # If these bins exist, then append them to existing MANPATH
-        PERL5LIB="$PERL5LIB:${dirs_to_append[$index]}"
-    fi
-done
+append_list PERL5LIB dirs_to_append[@]
 
 unset dirs_to_append
 
 export PERL5LIB
+
+# Cleanup
+
+unset prepend_list
+unset append_list
