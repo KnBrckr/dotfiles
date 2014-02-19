@@ -1,0 +1,7 @@
+\.DS_Store
+^\._*
+\.svn
+.*\.esproj
+\.git
+cscope.out
+tm_cscope.files

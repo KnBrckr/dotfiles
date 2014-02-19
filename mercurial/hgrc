@@ -1,0 +1,23 @@
+[ui]
+
+username = Ken Brucker <ken@pumastudios.com>
+ignore = ~/.hgignore.defaults
+
+ssh = ssh -C
+
+[extensions]
+hgext.extdiff =
+hgext.mq =
+rebase =
+graphlog =
+
+[extdiff]
+cmd.fmdiff =  fmdiff
+cmd.opendiff = opendiff-w
+
+[merge-tools]
+filemerge.executable = opendiff-w
+filemerge.args = $local $other -ancestor $base -merge $output
+
+[paths]
+
