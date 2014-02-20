@@ -65,7 +65,6 @@ declare -a dirs_to_append=(
 )
 
 append_list PATH dirs_to_append[@]
-echo $PATH
 unset dirs_to_prepend dirs_to_append
 
 export PATH
