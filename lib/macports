@@ -1,4 +1,43 @@
 #!/bin/bash
+# Installed MacPorts:
+# 	apache2 +preforkmpm
+# 	autoconf                    
+# 	automake                    
+# 	exif                        
+# 	glib2                       
+# 	help2man                    
+# 	libedit                     
+# 	libtool                     
+# 	m4                          
+# 	mercurial                   
+# 	mysql5-server               
+# 	p5-image-exiftool           
+# 	p5-json                     
+# 	p5.12-image-exiftool        
+# 	p5.12-locale-gettext        
+# 	perl5                       
+# 	perl5.12                    
+# 	php54                       
+# 	php54-apache2handler        
+# 	php54-calendar              
+# 	php54-curl                  
+# 	php54-exif                  
+# 	php54-mysql                 
+# 	php54-odbc                  
+# 	php54-openssl               
+# 	php54-posix                 
+# 	php54-sqlite                
+# 	php54-wddx                  
+# 	php54-xmlrpc                
+# 	php54-xsl                   
+# 	phpmyadmin                  
+# 	py27-cheetah                
+# 	py27-feedparser             
+# 	py27-openssl                
+# 	qt4-mac                     
+# 	unzip                       
+# 	wget                        
+
 
 run_macports() {
 
@@ -11,13 +50,16 @@ run_macports() {
 
         e_header "Updating any existing MacPorts..."
         # Upgrade any already-installed ports
-#        sudo port upgrade
+		# TODO Turn on port upgrade
+		# sudo port upgrade
         [[ $? ]] && e_success "Done"
 
-        e_header "Checking status of desired Homebrew formulae..."
+        e_header "Checking status of desired Macports..."
         local list_ports
         local -a missing_ports
         local -a desired_ports=(
+			coreutils
+			rsync
         )
 
         for index in ${!desired_ports[*]}
@@ -40,7 +82,10 @@ run_macports() {
         fi
 
         # Remove outdated versions
+		e_header "Cleaning up inactive versions..."
 		sudo port uninstall inactive
+        [[ $? ]] && e_success "Done"
+		
     else
         printf "\n"
         e_error "Error: MacPorts not found."

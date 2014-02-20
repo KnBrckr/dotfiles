@@ -3,6 +3,9 @@
 # Disc backup script
 # Requires rsync 3
 
+echo "DST volume needs to be set"
+exit
+
 # Ask for the administrator password upfront
 sudo -v
 

@@ -2,22 +2,22 @@
 
 # Header logging
 e_header() {
-    printf "\n$(tput setaf 7)%s$(tput sgr0)\n" "$@"
+    printf "\n${c_bold}%s${c_reset}\n" "$@"
 }
 
 # Success logging
 e_success() {
-    printf "$(tput setaf 64)✓ %s$(tput sgr0)\n" "$@"
+    printf "${c_green}${c_bold}✓ %s${c_reset}\n" "$@"
 }
 
 # Error logging
 e_error() {
-    printf "$(tput setaf 1)x %s$(tput sgr0)\n" "$@"
+    printf "${c_red}${c_bold}X %s${c_reset}\n" "$@"
 }
 
 # Warning logging
 e_warning() {
-    printf "$(tput setaf 136)! %s$(tput sgr0)\n" "$@"
+    printf "${c_yellow}${c_bold}! %s${c_reset}\n" "$@"
 }
 
 # Ask for confirmation before proceeding

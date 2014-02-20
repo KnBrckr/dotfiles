@@ -15,23 +15,14 @@ Browsers:
     Google Chrome
 
 Development:
-	?Filezilla
-	?iTerm 2
-	?ImageAlpha
-	?ImageOptim
-	?VirtualBox
-	?XAMPP
 	Text Mate
-
+	
 Other:
 	1Password
-    ?Divvy
     Dropbox
 	exiftool
     ?Flux
-	?LimeChat
     ?Network Connect
-    ?Skype
     uTorrent
     VLC
 EOT

@@ -5,7 +5,7 @@
 # ARG1 = ':' separated list of data
 # ARG2 = item to filter from ':' separated list
 filter_list() {
-	text=$1
+	local text=$1
     text=${text//":$2:"/:} #delete all instances in the middle
     text=${text/%":$2"/} #delete any instance at the end
     text=${text/#"$2:"/} #delete any instance at the beginning	
@@ -106,3 +106,4 @@ export PERL5LIB
 
 unset prepend_list
 unset append_list
+unset filter_list
