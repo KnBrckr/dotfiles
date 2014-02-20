@@ -28,10 +28,10 @@ if has("syntax")
     syntax enable
     " Set 256 color terminal support
     set t_Co=256
-    " Set dark background
-    set background=dark
+    " Set light background
+    set background=light
     " Set colorscheme
-    silent! colorscheme solarized
+    silent! colorscheme desert
 endif
 
 if has("cmdline_info")
