@@ -2,6 +2,16 @@
 
 # bash_paths
 
+# ARG1 = ':' separated list of data
+# ARG2 = item to filter from ':' separated list
+filter_list() {
+	text=$1
+    text=${text//":$2:"/:} #delete all instances in the middle
+    text=${text/%":$2"/} #delete any instance at the end
+    text=${text/#"$2:"/} #delete any instance at the beginning	
+	echo "$text" # Return result
+}
+
 # ARG1 = variable name
 # ARG2 = items to add to colon separated list
 prepend_list() {
@@ -12,7 +22,8 @@ prepend_list() {
 	do
 	    if [ -d ${prepend_array[$index]} ]; then
 	        # If these directories exist, then prepend them to existing
-	        eval $var_name="${prepend_array[$index]}:${!var_name}"
+			eval $var_name=$(filter_list "${!var_name}" ${prepend_array[$index]}) # Filter out directory if already in list
+	        eval $var_name="${prepend_array[$index]}${!var_name:+":${!var_name}"}"
 	    fi
 	done
 }
@@ -25,10 +36,10 @@ append_list() {
 	
 	for index in ${!append_array[*]}
 	do
-		echo ${append_array[$index]}
 	    if [ -d ${append_array[$index]} ]; then
 	        # If these directories exist, then append them to existing
-	        eval $var_name="${!var_name}:${append_array[$index]}"
+			eval $var_name=$(filter_list "${!var_name}" ${append_array[$index]}) # Filter out directory if already in list
+	        eval $var_name="${!var_name:+"${!var_name}:"}${append_array[$index]}"
 	    fi
 	done
 }
@@ -54,7 +65,7 @@ declare -a dirs_to_append=(
 )
 
 append_list PATH dirs_to_append[@]
- 
+echo $PATH
 unset dirs_to_prepend dirs_to_append
 
 export PATH
