@@ -1,14 +1,17 @@
 #!/bin/bash
 
+# TODO This doesn't work with proxy based access
+
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 DOTFILES_TARBALL_PATH="https://github.com/seiryu9/dotfiles/tarball/master"
 DOTFILES_GIT_REMOTE="git@github.com:seiryu9/dotfiles.git"
+
 
 # If missing, download and extract the dotfiles repository
 if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
     printf "$(tput setaf 7)Downloading dotfiles...\033[m\n"
     mkdir ${DOTFILES_DIRECTORY}
-    # Get the tarball
+    # Get the tarball (TODO add -x for proxy support)
     curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOTFILES_TARBALL_PATH}
     # Extract to the dotfiles directory
     tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIRECTORY}
@@ -122,6 +125,8 @@ mirrorfiles() {
     # Any global git commands in `~/.bash_profile.local` will be written to
     # `.gitconfig`. This prevents them being committed to the repository.
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig  ${HOME}/.gitconfig
+	
+	# TODO Can Mercurial config also be done like git above?
 
     # Force remove the vim directory if it's already there.
     if [ -e "${HOME}/.vim" ]; then

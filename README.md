@@ -1,7 +1,6 @@
-# Dotfiles (Nicolas Gallagher)
+# Dotfiles (Ken Brucker)
 
 My OS X dotfiles.
-
 
 ## How to install
 
@@ -10,7 +9,7 @@ Tools](https://developer.apple.com/downloads) and may overwrite existing
 dotfiles in your HOME and `.vim` directories.
 
 ```bash
-$ bash -c "$(curl -fsSL raw.github.com/necolas/dotfiles/master/bin/dotfiles)"
+$ bash -c "$(curl -fsSL raw.github.com/seiryu9/dotfiles/master/bin/dotfiles)"
 ```
 
 N.B. If you wish to fork this project and maintain your own dotfiles, you must
@@ -58,32 +57,6 @@ Options:
 
 ### Automatic software installation
 
-Homebrew formulae:
-
-* GNU core utilities
-* [git](http://git-scm.com/)
-* [ack](http://betterthangrep.com/)
-* bash (latest version)
-* [bash-completion](http://bash-completion.alioth.debian.org/)
-* [ffmpeg](http://ffmpeg.org/)
-* [graphicsmagick](http://www.graphicsmagick.org/)
-* [jpeg](https://en.wikipedia.org/wiki/Libjpeg)
-* [macvim](http://code.google.com/p/macvim/)
-* [node](http://nodejs.org/)
-* [optipng](http://optipng.sourceforge.net/)
-* [phantomjs](http://phantomjs.org/)
-* [rsync](https://rsync.samba.org/) (latest version, rather than the out-dated OS X installation)
-* [tree](http://mama.indstate.edu/users/ice/tree/)
-* [wget](http://www.gnu.org/software/wget/)
-
-Node packages:
-
-* [bower](http://bower.io/)
-* [gify](https://github.com/visionmedia/node-gify)
-* [grunt-cli](http://gruntjs.com/)
-* [jshint](http://www.jshint.com/)
-* [karma](http://karma-runner.github.io/)
-* [yo](http://yeoman.io/)
 
 Vim plugins:
 
@@ -197,16 +170,6 @@ N.B. Because the `git/gitconfig` file is copied to `~/.gitconfig`, any private
 git configuration specified in `~/.bash_profile.local` will not be committed to
 your dotfiles repository.
 
-### Custom location for Homebrew installation
-
-If your Homebrew installation is not in `/usr/local` then you must prepend your
-custom installation's `bin` to the PATH in a file called `~/.dotfilesrc`:
-
-```bash
-# Add `brew` command's custom location to PATH
-PATH="/opt/acme/bin:$PATH"
-```
-
 
 ## Adding new git submodules
 
@@ -255,6 +218,9 @@ changes made to those submodules.
 ## Acknowledgements
 
 Inspiration and code was taken from many sources, including:
+
+* [@](https://github.com/necolas) (Nicolas Gallagher)
+  [https://github.com/necolas/dotfiles]()
 
 * [@mathiasbynens](https://github.com/mathiasbynens) (Mathias Bynens)
   [https://github.com/mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
