@@ -3,7 +3,7 @@
 # bash_config
 
 # Use dotfile script as the default editor - Points at textmate
-export EDITOR="~/.dotfiles/bin/editor"
+export EDITOR="$HOME/.dotfiles/bin/editor"
 
 # Ignore duplicate commands in the history
 export HISTCONTROL=ignoredups

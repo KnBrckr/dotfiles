@@ -43,3 +43,13 @@ load_dotfiles() {
 
 load_dotfiles
 unset load_dotfiles
+
+# Localize git configuration
+
+# Setup git based on locally defined environment
+if [ $(type -P git) ]; then
+	# Setup proxy if defined
+	[ "$http_proxy" ] && git config --global http.proxy $http_proxy
+	
+	git config --global user.name "Ken Brucker"
+fi
