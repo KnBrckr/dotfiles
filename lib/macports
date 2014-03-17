@@ -50,9 +50,11 @@ run_macports() {
 
         e_header "Updating any existing MacPorts..."
         # Upgrade any already-installed ports
-		# TODO Turn on port upgrade
-		# sudo port upgrade
+		sudo port upgrade outdated
         [[ $? ]] && e_success "Done"
+		
+		# TODO If python is upgraded, need to resign the binary
+		# codesign -f -s - /opt/local/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app
 
         e_header "Checking status of desired Macports..."
         local list_ports

@@ -73,9 +73,14 @@ export PATH
 # = MANPATH =
 # ===========
 
+# If MANPATH is blank, start it with defaults
+if test -z "$MANPATH"; then
+	MANPATH=$(man -w)
+fi
+
 # Directories to be appended to MANPATH
 declare -a dirs_to_append=(
-	"/opt/local/man"
+	"/opt/local/share/man"
 	"/usr/local/man"
 	"/usr/local/share/man"
 )
