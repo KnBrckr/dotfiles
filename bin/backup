@@ -3,16 +3,17 @@
 # Disc backup script
 # Requires rsync 3
 
-echo "DST volume needs to be set"
-exit
-
-# Ask for the administrator password upfront
-sudo -v
+# Must be run as root
+#  rsync takes long enough that the sudo permission times out by the time bless command is reached
+if [[ $EUID -ne 0 ]]; then
+	echo "This script must be run as root"
+	exit
+fi
 
 # IMPORTANT: Make sure you update the `DST` variable to match the name of the
 # destination backup drive
 
-DST="/Volumes/Macintosh HD/"
+DST=/Volumes/Recovery
 SRC="/"
 EXCLUDE="$HOME/.dotfiles/bin/.backupignore"
 
@@ -29,6 +30,11 @@ PROG=$0
 # --verbose                increase verbosity
 # --xattrs                 update the remote extended attributes to be the same as the local ones
 
+if test -z "$DST"; then
+	logger -t $PROG "DST volume needs to be set - Cannot start the sync process"
+	exit
+fi
+
 if [ ! -r "$SRC" ]; then
     logger -t $PROG "Source $SRC not readable - Cannot start the sync process"
     exit;
@@ -39,24 +45,23 @@ if [ ! -w "$DST" ]; then
     exit;
 fi
 
+# Ask for the administrator password upfront
 logger -t $PROG "Start rsync"
 
-sudo rsync --acls \
+rsync --acls \
            --archive \
            --delete \
-           --delete-excluded \
            --exclude-from=$EXCLUDE \
            --hard-links \
            --one-file-system \
            --sparse \
-           --verbose \
            --xattrs \
            "$SRC" "$DST"
 
 logger -t $PROG "End rsync"
 
 # Make the backup bootable
-sudo bless -folder "$DST"/System/Library/CoreServices
+bless -folder "$DST"/System/Library/CoreServices
 
 # Update the backup's cache
 # sudo update_dyld_shared_cache -force -root "$DST"

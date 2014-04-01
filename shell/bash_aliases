@@ -2,9 +2,6 @@
 
 # bash_aliases
 
-# CLI to send notifications
-alias terminal-notifier=~/Applications/terminal-notifier-1.5.0/terminal-notifier.app/Contents/MacOS/terminal-notifier
-
 # Allow aliases to be with sudo
 alias sudo="sudo "
 

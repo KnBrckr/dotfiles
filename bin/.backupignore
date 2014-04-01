@@ -12,4 +12,27 @@
 /Previous Systems.localized
 /tmp/*
 /Volumes/*
-*/.Trash
+.metadata_never_index
+/.com.apple.timemachine.donotpresent
+.VolumeIcon.icns
+/TheVolumeSettingsFolder
+Saved Application State
+.DocumentRevisions-V100
+/.fseventsd
+/.hotfiles.btree
+/private/var/db/dyld/dyld_*
+/System/Library/Caches/com.apple.bootstamps/*
+/System/Library/Caches/com.apple.corestorage/*
+/System/Library/Caches/com.apple.kext.caches/*
+/.vol/*
+/net
+/private/var/folders/*
+.Trash
+/Backups.backupdb
+/.MobileBackups
+/PGPWDE01
+/PGPWDE02
+/.bzvol
+/Library/Application Support/Comodo/AntiVirus/Quarantine
+.keep-spinning
+.metadata_never_index

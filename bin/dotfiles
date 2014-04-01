@@ -106,7 +106,7 @@ fi
 if [[ $no_packages ]]; then
     printf "Skipped package installations.\n"
 else
-    printf "Updating packages...\n"
+    e_header "Updating packages..."
 	# Install MacPorts
 	run_macports
     # # Install Homebrew formulae
