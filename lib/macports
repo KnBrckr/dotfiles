@@ -1,4 +1,16 @@
 #!/bin/bash
+#
+# For SABnzbd: py-cheetah, py-openssl  (also need http://sabnzbd.sourceforge.net/yenc-0.3.tar.gz)
+#
+# Setup of apache, php, mysql based on: https://trac.macports.org/wiki/howto/MAMP
+#  apache2
+#  mysql55-server
+#  php56 +apache2
+#  php56-mysql
+#  php56-apache2handler
+#  phpmyadmin
+#  
+#
 # Additional Requested MacPorts:
 #  autoconf @2.69_2 (active)
 #  automake @1.14.1_1 (active)
@@ -13,12 +25,9 @@
 #  p5.12-locale-gettext @1.50.0_7 (active)
 #  perl5 @5.12.4_0+perl5_12 (active)
 #  perl5.12 @5.12.4_3 (active)
-#  php54 @5.4.26_0+libedit (active)
-#  php54-apache2handler @5.4.26_0 (active)
 #  php54-calendar @5.4.26_0 (active)
 #  php54-curl @5.4.26_0 (active)
 #  php54-exif @5.4.26_0 (active)
-#  php54-mysql @5.4.26_0+mysqlnd (active)
 #  php54-odbc @5.4.26_0+unixodbc (active)
 #  php54-openssl @5.4.26_0 (active)
 #  php54-posix @5.4.26_0 (active)
@@ -26,10 +35,7 @@
 #  php54-wddx @5.4.26_0 (active)
 #  php54-xmlrpc @5.4.26_0 (active)
 #  php54-xsl @5.4.26_0 (active)
-#  phpmyadmin @4.1.9_0+php54 (active)
-#  py27-cheetah @2.4.4_1 (active)
 #  py27-feedparser @5.1.3_0 (active)
-#  py27-openssl @0.13_0 (active)
 #  qt4-mac @4.8.5_1 (active)
 
 run_macports() {
@@ -59,6 +65,8 @@ run_macports() {
 			p5-image-exiftool
 			proctools
 			pstree
+			py-cheetah
+			py-openssl
 			rsync
 			terminal-notifier
 			unzip
