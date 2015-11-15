@@ -78,4 +78,5 @@ for FILE ; do
 
 	convert -comment "Copyright (c) $create_year $watermark_text" "$FILE" \
 		    -resize 1024x1024 "$stamp" -gravity south -geometry +0+10 -composite "$newimage" 
+	# exiftool -gpslatitude= -gpslongitude= -gpsposition= -gpsaltitude= -gps:all= -overwrite_original "$newfile"
 done
