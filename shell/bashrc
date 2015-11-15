@@ -2,4 +2,8 @@
 
 # bashrc
 
+# For interactive shells, source profile
 [ -n "$PS1" ] && source ~/.bash_profile
+
+# For non-interactive shells, setup paths
+[ -z "$PS1" ] && source ~/.dotfiles/shell/bash_paths
