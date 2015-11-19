@@ -21,10 +21,8 @@
 #  libtool @2.4.2_3 (active)
 #  m4 @1.4.16_0 (active)
 #  mysql5-server @5.1.72_0 (active)
-#  p5-json @2.530.0_2 (active)
 #  p5.12-locale-gettext @1.50.0_7 (active)
 #  perl5 @5.12.4_0+perl5_12 (active)
-#  perl5.12 @5.12.4_3 (active)
 #  php54-calendar @5.4.26_0 (active)
 #  php54-curl @5.4.26_0 (active)
 #  php54-exif @5.4.26_0 (active)
@@ -63,6 +61,7 @@ run_macports() {
 			mercurial
 			multimarkdown
 			p5-image-exiftool
+			p5-json
 			proctools
 			pstree
 			py-cheetah
