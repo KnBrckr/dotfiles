@@ -1,0 +1,82 @@
+#! /bin/bash
+
+if [ $# -lt 2 ]; then
+	cmd=`basename $0`
+	echo "usage: $cmd 'extra text' file ..."
+	exit 1
+fi
+
+watermark_text=$1
+
+STAMPDIR=${HOME}/Library/Caches/com.pumastudios/watermark-images
+if [ ! -d $STAMPDIR ]; then
+	mkdir -p $STAMPDIR
+	if [ $? -ne 0 ]; then
+		echo "Unable to create cache directory for watermarks, exiting"
+		exit 1
+	fi
+fi
+
+# shift args to get only the file names
+shift
+
+for FILE ; do
+	if [ ! -r "$FILE" ]; then
+		echo "$FILE is not readable"
+		exit 1
+	fi
+
+	dirname=$(dirname "$FILE")
+	filename=$(basename "$FILE")
+	extension="${filename##*.}"
+	filename="${filename%.*}"
+	newimage=${dirname}/${filename}-watermarked.${extension}
+
+	create_year=$(exiftool -d %Y -createdate -s3 "$FILE")
+	stamp=${STAMPDIR}/stamp-${create_year}-${watermark_text// /_}.png
+
+	### Create copyright stamp file if one doesn't already exist
+
+	if [ ! -r "$stamp" ]; then
+		fgnd=$(mktemp -t stamp_fgnd)
+		convert -size 400x50 xc:grey30 -font Arial -pointsize 20 -gravity center \
+		         -draw "fill grey70  text 0,0  'Copyright © $create_year $watermark_text'" \
+		         png:$fgnd
+		if [ $? -ne 0 ]; then
+			echo "Error creating stamp foreground, cleaning up"
+			rm -f $fgnd
+			exit 1
+		fi
+		mask=$(mktemp -t stamp_mask)
+		convert -size 400x50 xc:black -font Arial -pointsize 20 -gravity center \
+		         -draw "fill white  text  1,1  'Copyright © $create_year $watermark_text'  \
+		                            text  0,0  'Copyright © $create_year $watermark_text'  \
+		                fill black  text -1,-1 'Copyright © $create_year $watermark_text'" \
+		         +matte png:$mask
+		if [ $? -ne 0 ]; then
+			echo "Error creating stamp mask, cleaning up"
+			rm -f $fgnd
+			exit 1
+		fi
+		composite -compose CopyOpacity  $mask  $fgnd "$stamp"
+		if [ $? -ne 0 ]; then
+			echo "Error creating composite stamp"
+			rm -f $fgnd $mask
+			exit 1
+		fi
+		mogrify -trim +repage "$stamp"
+		if [ $? -ne 0 ]; then
+			echo "Error creating stamp mask"
+			rm -f $fgnd $mask
+			exit 1
+		fi	
+	
+		rm -f $fgnd $mask
+	fi
+
+	## Resize and Apply the watermark
+
+	convert -comment "Copyright (c) $create_year $watermark_text" "$FILE" \
+		    -resize 1024x1024 "$stamp" -gravity south -geometry +0+10 -composite "$newimage" 
+	# exiftool -gpslatitude= -gpslongitude= -gpsposition= -gpsaltitude= -gps:all= -overwrite_original "$newfile"
+done

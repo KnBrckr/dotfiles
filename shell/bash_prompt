@@ -60,6 +60,10 @@ set_prompts() {
 
     local hostStyle=""
     local userStyle=""
+	
+	# Undo system default
+	unset update_terminal_cwd
+	unset PROMPT_COMMAND
 
     # build the prompt
 

@@ -50,6 +50,5 @@ unset load_dotfiles
 if [ $(type -P git) ]; then
 	# Setup proxy if defined
 	[ "$http_proxy" ] && git config --global http.proxy $http_proxy
-	
-	git config --global user.name "Ken Brucker"
 fi
+
