@@ -1,15 +1,32 @@
 #!/bin/bash
 #
-# For SABnzbd: py-cheetah, py-openssl  (also need http://sabnzbd.sourceforge.net/yenc-0.3.tar.gz)
-#
 # Setup of apache, php, mysql based on: https://trac.macports.org/wiki/howto/MAMP
 #  apache2
-#  mysql55-server
+#  mysql56-server
 #  php56 +apache2
 #  php56-mysql
 #  php56-apache2handler
+#  php56-curl
+#  php56-gd                       @5.6.20         lang/php
+#  php56-mbstring                 @5.6.20         lang/php
+#  php56-mcrypt                   @5.6.20         lang/php
+#  php56-mysql                    @5.6.20         lang/php
+#  php56-openssl                  @5.6.20         lang/php
+#  php56-tidy                     @5.6.20         lang/php
+#  php56-xdebug                   @2.4.0          php/php-xdebug
+#  php56-zip                      @5.6.20         lang/php
 #  phpmyadmin
-#  
+#  mod_security2
+
+# Following Needed?
+#  php56-calendar @5.4.26_0 (active)
+#  php56-exif @5.4.26_0 (active)
+#  php56-odbc @5.4.26_0+unixodbc (active)
+#  php56-posix @5.4.26_0 (active)
+#  php56-sqlite @5.4.26_0 (active)
+#  php56-wddx @5.4.26_0 (active)
+#  php56-xmlrpc @5.4.26_0 (active)
+#  php56-xsl @5.4.26_0 (active)
 #
 # Additional Requested MacPorts:
 #  autoconf @2.69_2 (active)
@@ -23,16 +40,6 @@
 #  mysql5-server @5.1.72_0 (active)
 #  p5.12-locale-gettext @1.50.0_7 (active)
 #  perl5 @5.12.4_0+perl5_12 (active)
-#  php54-calendar @5.4.26_0 (active)
-#  php54-curl @5.4.26_0 (active)
-#  php54-exif @5.4.26_0 (active)
-#  php54-odbc @5.4.26_0+unixodbc (active)
-#  php54-openssl @5.4.26_0 (active)
-#  php54-posix @5.4.26_0 (active)
-#  php54-sqlite @5.4.26_0 (active)
-#  php54-wddx @5.4.26_0 (active)
-#  php54-xmlrpc @5.4.26_0 (active)
-#  php54-xsl @5.4.26_0 (active)
 #  py27-feedparser @5.1.3_0 (active)
 #  qt4-mac @4.8.5_1 (active)
 
@@ -42,13 +49,11 @@ run_macports() {
     if type_exists 'port'; then
         e_header "Updating MacPorts..."
         # Use the latest version of MacPorts
-        sudo port selfupdate
-        [[ $? ]] && e_success "Done"
+        sudo port selfupdate && e_success "Done"
 
         e_header "Updating any existing MacPorts..."
         # Upgrade any already-installed ports
-		sudo port upgrade outdated
-        [[ $? ]] && e_success "Done"
+		sudo port upgrade outdated && e_success "Done"
 		
 		# TODO If python is upgraded, need to resign the binary
 		# codesign -f -s - /opt/local/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app
@@ -58,14 +63,14 @@ run_macports() {
         local -a missing_ports
         local -a desired_ports=(
 			coreutils
+			graphviz
+			logrotate
 			mercurial
 			multimarkdown
 			p5-image-exiftool
 			p5-json
 			proctools
 			pstree
-			py-cheetah
-			py-openssl
 			rsync
 			terminal-notifier
 			unzip
@@ -83,19 +88,17 @@ run_macports() {
         if [[ "$missing_ports" ]]; then
             # Convert the array of missing ports into a list of space-separate strings
             list_ports=$( printf "%s " "${missing_ports[@]}" )
+			
+			printf $list_ports
 
             e_header "Installing missing MacPorts..."
             # Install all missing ports
-			sudo port install $list_ports
-
-            [[ $? ]] && e_success "Done"
+			sudo port install $list_ports && e_success "Done"
         fi
 
         # Remove outdated versions
 		e_header "Cleaning up inactive versions..."
-		sudo port uninstall inactive
-        [[ $? ]] && e_success "Done"
-		
+		sudo port uninstall inactive && e_success "Done"
     else
         printf "\n"
         e_error "Error: MacPorts not found."
