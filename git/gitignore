@@ -1,7 +1,7 @@
 # OS or Editor files
 ._*
 .DS_Store
-Thumbs.db
+#Thumbs.db
 
 # Other revision control systems
 .hg
@@ -13,6 +13,8 @@ Thumbs.db
 # Files that might appear on external disks
 .Spotlight-V100
 .Trashes
+.fseventsd
+.DocumentRevisions-V100
 
 # Always-ignore extensions
 *~

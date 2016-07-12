@@ -1,0 +1,45 @@
+#!/usr/bin/env osascript -l JavaScript
+
+// usage: 
+
+ObjC.import('stdlib');
+
+Reminders = Application("Reminders");
+
+function run(argv) {
+	if (argv.length < 1) {
+		console.log('error: no text provided on input');
+		$.exit(1);
+	}
+	
+	taskName = argv.join(" ");
+	taskList = '';
+	if ((i = taskName.indexOf('@')) > 0) {
+		// Remainder of string is the list name - Don't include the '@'
+		taskList = taskName.slice(i + 1).trim();
+		
+		// Get first part of string up to the '@'
+		taskName = taskName.slice(0, i - 1).trim(); 
+	}
+	
+	newReminder = Reminders.Reminder({name:taskName});
+	if (taskList.length > 0) {
+		// Find List by Name and add task to that List
+		for (var i = 0; i < Reminders.lists.length; i++) {
+			// Match the first list that starts with taskList string provided
+			if (Reminders.lists[i].name().toLowerCase().startsWith(taskList.toLowerCase())) {
+				// Push reminder to matched list
+				Reminders.lists[i].reminders.push(newReminder);
+				$.exit(0);
+			}
+		}
+		
+		// Hmmmm... getting here means no matched lists!
+		console.log("No Reminder List matched '" + taskList + "'");
+		$.exit(1);
+	} else {
+		// Add to the default list
+		Reminders.defaultList.reminders.push(newReminder);
+		$.exit(0);
+	}
+}

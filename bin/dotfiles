@@ -124,9 +124,17 @@ mirrorfiles() {
     # Copy `.gitconfig`.
     # Any global git commands in `~/.bash_profile.local` will be written to
     # `.gitconfig`. This prevents them being committed to the repository.
+	: "${VCS_AUTHOR_NAME:?must be set}"
+	: "${VCS_AUTHOR_EMAIL:?must be set}"
     rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig  ${HOME}/.gitconfig
+	git config --global user.name "$VCS_AUTHOR_NAME"
+	git config --global user.email "$VCS_AUTHOR_EMAIL"
 	
 	# TODO Can Mercurial config also be done like git above?
+	
+    rsync -avz --quiet ${DOTFILES_DIRECTORY}/mercurial/hgrc  ${HOME}/.hgrc
+	e_warning "You must set username field in ~/.hgrc"
+	
 
     # Force remove the vim directory if it's already there.
     if [ -e "${HOME}/.vim" ]; then
@@ -143,7 +151,6 @@ mirrorfiles() {
     link "git/gitattributes"           ".gitattributes"
     link "git/gitignore"               ".gitignore_global"
 	link "mercurial/hgignore.defaults" ".hgignore.defaults"
-	link "mercurial/hgrc"              ".hgrc"
     link "vim"                         ".vim"
     link "vim/gvimrc"                  ".gvimrc"
     link "vim/vimrc"                   ".vimrc"
@@ -153,7 +160,7 @@ mirrorfiles() {
 }
 
 # Ask before potentially overwriting files
-printf "Mirroring dotfiles\n"
+e_header "Mirroring dotfiles..."
 seek_confirmation "Warning: This step may overwrite your existing dotfiles."
 
 if is_confirmed; then
@@ -165,7 +172,7 @@ else
 fi
 
 # Ask before potentially overwriting OS X defaults
-printf "Setting OSX Defaults\n"
+e_header "Setting OSX Defaults..."
 seek_confirmation "Warning: This step may modify your OS X system defaults."
 
 if is_confirmed; then

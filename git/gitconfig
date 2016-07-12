@@ -1,9 +1,13 @@
 [user]
-	name = Ken Brucker
-	email = ken@pumastudios.com
+	name = 
+	email = 
 
 [alias]
     # https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
+
+	# Common aliases
+	ci = commit
+	co = checkout
 
     # `git remote prune origin`: remove remote-tracking branches that were deleted from the remote repo
     # `git gc`: cleanup unnecessary files and optimize the local repository
@@ -80,3 +84,8 @@
 
 [push]
     default = simple
+	
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
