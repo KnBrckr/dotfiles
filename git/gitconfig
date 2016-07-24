@@ -62,8 +62,11 @@
 [credential]
     helper = osxkeychain
 
-# [diff]
-#     tool = mvimdiff
+[diff]
+     tool = opendiff
+	 
+[merge]
+	 tool = opendiff
 
 [difftool]
     prompt = false
