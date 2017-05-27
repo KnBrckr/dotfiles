@@ -51,9 +51,9 @@ append_list() {
 
 # Directories to be prepended to PATH
 declare -a dirs_to_prepend=(
-    "/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
+    "/opt/local/sbin" # And this one
 	"/opt/local/bin" # Same for this one
-	"/opt/local/sbin" # And this one
+    "/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
 )
 
 prepend_list PATH dirs_to_prepend[@]
