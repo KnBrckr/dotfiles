@@ -15,7 +15,6 @@
 #  php56-tidy                     @5.6.20         lang/php
 #  php56-xdebug                   @2.4.0          php/php-xdebug
 #  php56-zip                      @5.6.20         lang/php
-#  phpmyadmin
 #  mod_security2
 
 # Following Needed?
@@ -63,9 +62,7 @@ run_macports() {
         local -a missing_ports
         local -a desired_ports=(
 			coreutils
-			graphviz
 			logrotate
-			mercurial
 			multimarkdown
 			p5-image-exiftool
 			p5-json
@@ -74,7 +71,6 @@ run_macports() {
 			rsync
 			terminal-notifier
 			unzip
-			wget
         )
 
         for index in ${!desired_ports[*]}
