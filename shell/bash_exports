@@ -2,6 +2,9 @@
 
 # bash_config
 
+# Shortcut for dotfile bin directory
+export DOTBIN="$HOME/.dotfiles/bin"
+
 # Use dotfile script as the default editor - Points at textmate
 export EDITOR="$HOME/.dotfiles/bin/editor"
 
