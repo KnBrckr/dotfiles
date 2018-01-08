@@ -8,6 +8,11 @@
 	# Common aliases
 	ci = commit
 	co = checkout
+	st = status
+	br = branch
+
+	type = cat-file -t
+	dump = cat-file -p
 
     # `git remote prune origin`: remove remote-tracking branches that were deleted from the remote repo
     # `git gc`: cleanup unnecessary files and optimize the local repository
@@ -34,7 +39,7 @@
     grapha = log --pretty=nice --date-order --graph --all
 
     # Custom pretty log
-    logp = log --pretty=nice --date-order
+    logp = log --pretty=nice --graph --date=short
 
     # Diffstat log
     logst = log --stat
@@ -58,15 +63,16 @@
     # Use custom `.gitignore` and `.gitattributes`
     excludesfile = ~/.gitignore_global
     attributesfile = ~/.gitattributes
+	autocrlf = input
 
 [credential]
     helper = osxkeychain
 
 [diff]
-     tool = opendiff
+    tool = opendiff
 	 
 [merge]
-	 tool = opendiff
+	tool = opendiff
 
 [difftool]
     prompt = false
@@ -83,7 +89,10 @@
     # tut: http://gitimmersion.com/lab_10.html
     # ref: http://linux.die.net/man/1/git-log
     # Result: <short-sha> <commit-message> (<pointer-names>) -- <commit-author-name>; <relative-time>
-    nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
+    # nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
+	#
+    # Result: <short-sha> <author-date> | <commit msg> (<pointer-names>)
+    nice = "%C(yellow)%h%C(reset) %ad | %s%d"
 
 [push]
     default = simple
@@ -92,3 +101,6 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 	required = true
+
+[commit]
+	template = ~/.stCommitMsg
