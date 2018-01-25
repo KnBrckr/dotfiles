@@ -6,7 +6,6 @@ DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 DOTFILES_TARBALL_PATH="https://github.com/seiryu9/dotfiles/tarball/master"
 DOTFILES_GIT_REMOTE="git@github.com:seiryu9/dotfiles.git"
 
-
 # If missing, download and extract the dotfiles repository
 if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
     printf "$(tput setaf 7)Downloading dotfiles...\033[m\n"
@@ -121,14 +120,7 @@ link() {
 }
 
 mirrorfiles() {
-    # Copy `.gitconfig`.
-    # Any global git commands in `~/.bash_profile.local` will be written to
-    # `.gitconfig`. This prevents them being committed to the repository.
-	: "${VCS_AUTHOR_NAME:?must be set}"
-	: "${VCS_AUTHOR_EMAIL:?must be set}"
-    rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig  ${HOME}/.gitconfig
-	git config --global user.name "$VCS_AUTHOR_NAME"
-	git config --global user.email "$VCS_AUTHOR_EMAIL"
+    ${DOTFILES_DIRECTORY}/bin/mirror-git
 	
 	# TODO Can Mercurial config also be done like git above?
 	
