@@ -3,6 +3,9 @@
 # Set custom OS X defaults
 # See: github.com/mathiasbynens/dotfiles
 
+echo "${c_red}Not performing any updates to OSX defaults!${c_reset}"
+exit
+
 # Ask for the administrator password upfront
 sudo -v
 
