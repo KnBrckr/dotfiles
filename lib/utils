@@ -70,3 +70,8 @@ port_exists() {
 	fi
 	return 0
 }
+
+# Test if running on a mac
+is_mac() {
+	return [[ `uname -s` == "Darwin" ]]
+}
