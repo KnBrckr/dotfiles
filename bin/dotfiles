@@ -48,6 +48,21 @@ do
 	esac
 done
 
+# Initialize the git repository if it's missing
+if ! is_git_repo; then
+	e_header "Initializing git repository..."
+	set -e  # Exit if any of these commands fail
+	git init
+	git remote add origin ${DOTFILES_GIT_REMOTE}
+	git fetch origin master
+	# Reset the index and working tree to the fetched HEAD
+	# (submodules are cloned in the subsequent sync step)
+	git reset --hard FETCH_HEAD
+	# Remove any untracked files
+	git clean -fd
+	set +e # Reset exit on error
+fi
+
 if is_mac; then
 	# Before relying on Brew, check that packages can be compiled
 	if ! type_exists 'gcc'; then
@@ -71,21 +86,6 @@ if is_mac; then
 		e_header "Installing Homebrew..."
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
-fi
-
-# Initialize the git repository if it's missing
-if ! is_git_repo; then
-	e_header "Initializing git repository..."
-	set -e  # Exit if any of these commands fail
-	git init
-	git remote add origin ${DOTFILES_GIT_REMOTE}
-	git fetch origin master
-	# Reset the index and working tree to the fetched HEAD
-	# (submodules are cloned in the subsequent sync step)
-	git reset --hard FETCH_HEAD
-	# Remove any untracked files
-	git clean -fd
-	set +e # Reset exit on error
 fi
 
 # Conditionally sync with the remote repository
