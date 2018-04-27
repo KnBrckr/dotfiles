@@ -113,7 +113,7 @@ fi
 link() {
 	# Force create/replace the symlink.
 	if [ -f ${HOME}/${2} ]; then
-		if ! -d ${DOTFILES_BACKUPS}; then
+		if [ ! -d ${DOTFILES_BACKUPS} ]; then
 			mkdir ${DOTFILES_BACKUPS}
 		fi
 		cp -p ${HOME}/${2} ${DOTFILES_BACKUPS}/${2}
