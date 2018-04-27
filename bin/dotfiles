@@ -61,7 +61,7 @@ if is_mac; then
 		xcode-select --install
 	fi
 	
-	if gcc --version > /dev/null 2>&1 ; then
+	if ! gcc --version > /dev/null 2>&1 ; then
 		e_header "Can't use gcc, trying sudo xcodebuild -license"
 		sudo xcodebuild -license
 	fi
@@ -76,6 +76,7 @@ fi
 # Initialize the git repository if it's missing
 if ! is_git_repo; then
 	e_header "Initializing git repository..."
+	set -e  # Exit if any of these commands fail
 	git init
 	git remote add origin ${DOTFILES_GIT_REMOTE}
 	git fetch origin master
@@ -84,6 +85,7 @@ if ! is_git_repo; then
 	git reset --hard FETCH_HEAD
 	# Remove any untracked files
 	git clean -fd
+	set +e # Reset exit on error
 fi
 
 # Conditionally sync with the remote repository
@@ -91,10 +93,12 @@ if [[ $no_sync ]]; then
 	printf "Skipped dotfiles sync.\n"
 else
 	e_header "Syncing dotfiles..."
+	set -e # Exit if commands fail
 	# Pull down the latest changes
 	git pull --rebase origin master
 	# Update submodules
 	git submodule update --recursive --init --quiet
+	set +e # Reset exit on error
 fi
 
 # Install and update packages
@@ -109,7 +113,11 @@ fi
 link() {
 	# Force create/replace the symlink.
 	if [ -f ${HOME}/${2} ]; then
+		if ! -d ${DOTFILES_BACKUPS}; then
+			mkdir ${DOTFILES_BACKUPS}
+		fi
 		cp -p ${HOME}/${2} ${DOTFILES_BACKUPS}/${2}
+	fi
 	ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
 }
 
