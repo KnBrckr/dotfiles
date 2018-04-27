@@ -73,5 +73,8 @@ port_exists() {
 
 # Test if running on a mac
 is_mac() {
-	return [[ `uname -s` == "Darwin" ]]
+	if [[ `uname -s` == "Darwin" ]]; then
+		return 0
+	fi
+	return 1
 }
