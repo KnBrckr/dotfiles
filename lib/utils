@@ -78,3 +78,21 @@ is_mac() {
 	fi
 	return 1
 }
+
+# Save backup of given file, skip if target is a link
+backup_file() {
+	local src=${1}
+	local dest=${DOTFILES_BACKUPS}/`basename ${1}`
+	if [ -f $src ] && [ ! -h $src ]; then
+		# Make a backup of real file before trashing it
+		if [ ! -d ${DOTFILES_BACKUPS} ]; then
+			mkdir ${DOTFILES_BACKUPS}
+		fi
+		if cp -p ${1} ${dest} ; then
+			e_success "Saved copy of ${src} to ${dest}"
+		else
+			e_error "Unable to backup ${src} to ${dest}; bailing out."
+			exit 1
+		fi
+	fi
+}

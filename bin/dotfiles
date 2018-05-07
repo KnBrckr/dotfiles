@@ -111,18 +111,27 @@ else
 fi
 
 link() {
+	# Make a backup of real file before trashing it
+	backup_file ${HOME}/${2}
+
 	# Force create/replace the symlink.
-	if [ -f ${HOME}/${2} ]; then
-		if [ ! -d ${DOTFILES_BACKUPS} ]; then
-			mkdir ${DOTFILES_BACKUPS}
-		fi
-		cp -p ${HOME}/${2} ${DOTFILES_BACKUPS}/${2}
-	fi
 	ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
 }
 
+mirror_git() {
+	# Copy `.gitconfig`.
+	# Any global git commands in `~/.bash_profile.local` will be written to
+	# `.gitconfig`. This prevents them being committed to the repository.
+	: "${VCS_AUTHOR_NAME:?must be set}"
+	: "${VCS_AUTHOR_EMAIL:?must be set}"
+	backup_file ${HOME}/.gitconfig
+	rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig  ${HOME}/.gitconfig
+	git config --global user.name "$VCS_AUTHOR_NAME"
+	git config --global user.email "$VCS_AUTHOR_EMAIL"
+}
+
 mirrorfiles() {
-	${DOTFILES_DIRECTORY}/bin/mirror-git
+	mirror_git
 
 	# Force remove the vim directory if it's already there.
 	if [ -d "${HOME}/.vim" ]; then
