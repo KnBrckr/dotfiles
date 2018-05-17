@@ -52,3 +52,6 @@ if [ $(type -P git) ]; then
 	# Setup proxy if defined
 	[ "$http_proxy" ] && git config --global http.proxy $http_proxy
 fi
+
+# Enable git command completion
+[ -r /usr/local/etc/bash_completion.d/git-completion.bash ] && source /usr/local/etc/bash_completion.d/git-completion.bash
