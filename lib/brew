@@ -20,9 +20,13 @@ run_brew() {
 		local -a desired_formulae=(
 			'coreutils' # GNU core utilities (those that come with OS X are outdated)
 			'git'
+			'mercurial'
 			'wget'
 			'exiftool'
 			'composer'
+			'wp-cli'
+			'exiftool'
+			'telnet'
 		)
 
 		for index in ${!desired_formulae[*]}
