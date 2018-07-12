@@ -4,8 +4,10 @@
 # By default, want group able to see files
 umask 0002
 
-# add private identifies to the ssh key-agent -- Enables port forwarding of ssh credentials
-ssh-add -K >> /dev/null 2>&1
+# add private identities to the ssh key-agent for port forwarding of ssh credentials
+ssh-add >> /dev/null 2>&1
+[ -f $HOME/.ssh/aws-codecommit ] && ssh-add $HOME/.ssh/aws-codecommit >> /dev/null 2>&1
+[ -f $HOME/.ssh/vagrant ] && ssh-add $HOME/.ssh/vagrant >> /dev/null 2>&1
 
 # set 256 color profile where possible
 if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
