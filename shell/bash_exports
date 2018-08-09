@@ -45,3 +45,7 @@ export WP_CORE_DIR=${HOME}/tmp/wordpress
 if [ "$SSH_CLIENT" != "" ]; then
 	export HOMEIP=`echo $SSH_CLIENT | awk '{ print $1 }'`
 fi
+
+# Enable logging of aqbanking commands to /tmp/ofx.log
+# WARNING - Can expose passwords!!!
+# export AQOFX_LOG_COMM=1
