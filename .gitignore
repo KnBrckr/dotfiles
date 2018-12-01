@@ -1,3 +1,4 @@
-backup
-vim/.netrwhist
-vim/.viminfo
+/.idea
+/backup
+/vim/.netrwhist
+/vim/.viminfo
