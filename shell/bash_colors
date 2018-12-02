@@ -16,7 +16,7 @@ c_reset=""
 c_white=""
 c_yellow=""
 
-if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+if [ -x /usr/bin/tput ] && tput setaf 1 >& /dev/null; then
     tput sgr0 # reset colors
 
     c_bold=$(tput bold)

@@ -1,0 +1,22 @@
+#! /bin/bash
+
+# bash command completions
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# git command completion
+[ -r /usr/local/etc/bash_completion.d/git-completion.bash ] && source /usr/local/etc/bash_completion.d/git-completion.bash
+
+# Docker command completion as provided by Docker for Mac application
+[ -r /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ] && source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
+[ -r /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion ] && source /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion
+[ -r /Applications/Docker.app//Contents/Resources/etc/docker-compose.bash-completion ] && source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion

@@ -34,6 +34,7 @@ load_dotfiles() {
 		$HOME/.dotfiles/shell/functions/* # Functions
 		$HOME/.dotfiles/shell/bash_prompt # Custom bash prompt
 		$HOME/.dotfiles/shell/bash_paths # Path modifications
+		$HOME/.dotfiles/shell/bash_completion # Enable bash command completions
 		$HOME/.bash_profile.local # Local and private settings not under version control (e.g. git credentials)
 	)
 
@@ -55,19 +56,5 @@ if [ $(type -P git) ]; then
 	[ "$http_proxy" ] && git config --global http.proxy $http_proxy
 fi
 
-# Enable git command completion
-[ -r /usr/local/etc/bash_completion.d/git-completion.bash ] && source /usr/local/etc/bash_completion.d/git-completion.bash
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
