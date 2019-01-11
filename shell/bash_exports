@@ -2,11 +2,14 @@
 
 # bash_config
 
+# Shortcut for dotfiles directory
+export DOTFILES="$HOME/.dotfiles"
+
 # Shortcut for dotfile bin directory
-export DOTBIN="$HOME/.dotfiles/bin"
+export DOTBIN="$DOTFILES/bin"
 
 # Use dotfile script as the default editor - Points at textmate
-export EDITOR="$HOME/.dotfiles/bin/editor"
+export EDITOR="$DOTFILES/bin/editor"
 
 # Ignore duplicate commands or lines starting with space in the history
 export HISTCONTROL=ignoreboth

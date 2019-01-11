@@ -20,3 +20,9 @@ fi
 [ -r /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion ] && source /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
 [ -r /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion ] && source /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion
 [ -r /Applications/Docker.app//Contents/Resources/etc/docker-compose.bash-completion ] && source /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
+
+# Run locally defined scripts
+
+for bcfile in $DOTFILES/shell/bash_completion.d/* ; do
+	[ -f "$bcfile" ] && source $bcfile
+done
