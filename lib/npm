@@ -11,8 +11,12 @@ run_npm() {
         # local packages="bower gify grunt-cli jshint karma yo"
 		local packages=""
 
-        # Install packages globally and quietly
-        npm install $packages --global --quiet
+		if [[ "" != $packages ]]; then
+			# Install packages globally and quietly
+			npm install $packages --global --quiet
+		else
+			echo "- Nothing to install"
+		fi
 
         [[ $? ]] && e_success "Done"
     else
