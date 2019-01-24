@@ -27,6 +27,10 @@ run_brew() {
 			'wp-cli'
 			'exiftool'
 			'telnet'
+			'sass/sass/sass'
+			'mariadb'
+			'php@7.1'
+			'wp-cli'
 		)
 
 		for index in ${!desired_formulae[*]}
