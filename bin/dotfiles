@@ -25,6 +25,8 @@ source ./lib/help
 source ./lib/list
 source ./lib/utils
 source ./lib/brew
+source ./lib/pecl
+source ./lib/npm
 
 # Help text
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
@@ -101,13 +103,19 @@ else
 	set +e # Reset exit on error
 fi
 
-# Install and update packages
-if [[ $no_packages ]]; then
-	printf "Skipped package installations.\n"
-else
-	e_header "Updating packages..."
-	# Install Homebrew formulae
-	run_brew
+# Install and update packages on Mac
+if is_mac; then
+	if [[ $no_packages ]]; then
+		printf "Skipped package installations.\n"
+	else
+		e_header "Updating packages..."
+		# Install Homebrew formulae
+		run_brew
+		# Install npm packages
+		run_npm
+		# Install PECL packages
+		run_pecl
+	fi
 fi
 
 link() {
