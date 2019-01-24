@@ -80,10 +80,8 @@ fi
 
 # Directories to be appended to MANPATH
 declare -a dirs_to_append=(
-	"/opt/local/share/man"
 	"/usr/local/man"
 	"/usr/local/share/man"
-	"/opt/local/Library/Frameworks/Python.framework/Versions/Current/share/man"
 )
 
 append_list MANPATH dirs_to_append[@]
