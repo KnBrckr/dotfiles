@@ -1,0 +1,44 @@
+#!/bin/bash
+
+run_pecl() {
+
+	# Check for Homebrew
+	if type_exists 'pecl'; then
+		e_header "Updating any existing PECL packages..."
+		pecl upgrade
+		[[ $? ]] && e_success "Done"
+
+		e_header "Checking status of desired PECL packages..."
+		local -a missing_pkgs
+		local -a desired_pkgs=(
+			'xdebug'
+		)
+
+		for index in ${!desired_pkgs[*]}
+		do
+			if ! pecl_pkg_exists ${desired_pkgs[$index]}; then
+				# Store the name (and options) of every missing package
+				missing_pkgs=("${missing_pkgs[@]}" "${desired_pkgs[$index]}")
+			fi
+		done
+
+		if [[ "$missing_pkgs" ]]; then
+			local list_pkgs
+			
+			# Convert the array of missing packages into a list of space-separate strings
+			list_pkgs=$( printf "%s " "${missing_pkgs[@]}" )
+
+			e_header "Installing missing PECL packages..."
+			# Install all missing formulae
+			pecl install $list_pkgs
+
+			[[ $? ]] && e_success "Done"
+		fi
+	else
+		printf "\n"
+		e_error "Error: PECL not found."
+		printf "Aborting...\n"
+		exit
+	fi
+
+}
