@@ -90,6 +90,34 @@ is_mac() {
 	return 1
 }
 
+is_launch_agent_enabled() {
+	if $(launchctl list $1 &> /dev/null); then
+		return 0
+	fi
+
+	return 1
+}
+
+enable_launch_agent() {
+	if ! is_launch_agent_enabled $1; then
+		launch_agent=$DOTFILES/LaunchAgents/$1.plist
+		if [[ ! -f $launch_agent ]]; then
+			e_error "Launch Agent not found for $1"
+			return 1
+		fi
+
+		if ! $(launchctl load $launch_agent); then
+			e_error "Unable to load Launch agent: $1"
+			return 1
+		fi
+
+		if ! $(ln -s $launch_agent $HOME/Library/LaunchAgents); then
+			e_error "Unable to setup Launch Agent for auto-load: $1"
+			return 1
+		fi
+	fi
+}
+
 # Save backup of given file, skip if target is a link
 backup_file() {
 	local src=${1}

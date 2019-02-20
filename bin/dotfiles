@@ -88,6 +88,9 @@ if is_mac; then
 		e_header "Installing Homebrew..."
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
+	
+	# Setup Launch Agents
+	enable_launch_agent com.pumastudios.keep-drives-spinning
 fi
 
 # Conditionally sync with the remote repository
