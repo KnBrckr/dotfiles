@@ -9,7 +9,7 @@ run_npm() {
         # List of npm packages
 		# TODO Want any node packages?
         # local packages="bower gify grunt-cli jshint karma yo"
-		local packages=""
+		local packages="tiddlywiki"
 
 		if [[ "" != $packages ]]; then
 			# Install packages globally and quietly
