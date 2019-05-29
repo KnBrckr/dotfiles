@@ -33,6 +33,7 @@ run_brew() {
 			'wp-cli'
 			'jq' # CLI JSON processor
 			'swiftgen' # Swift Code Generation tool
+			'carthage' # Swift Library Dependency Manager
 		)
 
 		for index in ${!desired_formulae[*]}
