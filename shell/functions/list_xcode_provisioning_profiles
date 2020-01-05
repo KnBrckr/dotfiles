@@ -1,0 +1,9 @@
+#!/bin/bash
+
+list_xcode_provisioning_profiles() {
+    while IFS= read -rd '' f; do
+        2> /dev/null /usr/libexec/PlistBuddy -c 'Print :Entitlements:application-identifier' /dev/stdin \
+            <<< $(security cms -D -i "$f")
+
+    done < <(find "$HOME/Library/MobileDevice/Provisioning Profiles" -name '*.mobileprovision' -print0)
+}
