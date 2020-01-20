@@ -1,0 +1,63 @@
+# shell paths
+
+# ========
+# = PATH =
+# ========
+
+# Directories to be prepended to PATH
+declare -a dirs_to_prepend=(
+    "/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
+	"/usr/local/opt/php@7.1/bin"
+	"/usr/local/opt/php@7.1/sbin"
+	"/usr/local/opt/ruby/bin"
+)
+
+prepend_list PATH "dirs_to_prepend[@]"
+
+# Directories to be appended to PATH
+declare -a dirs_to_append=(
+    "$HOME/bin"
+    "$HOME/.dotfiles/bin"
+)
+
+append_list PATH "dirs_to_append[@]"
+unset dirs_to_prepend dirs_to_append
+
+export PATH
+
+# ===========
+# = MANPATH =
+# ===========
+
+# If MANPATH is blank, start it with defaults
+if test -z "$MANPATH"; then
+	MANPATH=$(man -w)
+fi
+
+# Directories to be appended to MANPATH
+declare -a dirs_to_append=(
+	"/usr/local/man"
+	"/usr/local/share/man"
+)
+
+append_list MANPATH "dirs_to_append[@]"
+
+unset dirs_to_append
+
+export MANPATH
+
+# ============
+# = PERL5LIB =
+# ============
+
+# Perl5 Library locations
+declare -a dirs_to_append=(
+	"$HOME/Library/Perl"
+	"/opt/local/lib/perl5"
+)
+
+append_list PERL5LIB "dirs_to_append[@]"
+
+unset dirs_to_append
+
+export PERL5LIB

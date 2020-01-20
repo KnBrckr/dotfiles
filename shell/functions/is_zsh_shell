@@ -1,0 +1,7 @@
+# is_zsh_shell()
+is_zsh_shell() {
+	if [[ "$ZSH_VERSION" ]]; then
+		return 0
+	fi
+	return 1
+}
