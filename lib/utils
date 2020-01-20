@@ -120,14 +120,29 @@ enable_launch_agent() {
 
 # Save backup of given file, skip if target is a link
 backup_file() {
+	if [ "${DOTFILES_BACKUPS}" == "" ]; then
+		e_error "DOTFILES_BACKUPS is not defined"
+		exit 1
+	fi
+
+	if [ ! -d "${DOTFILES_BACKUPS}" ]; then
+		e_error "DOTFILES_BACKUPS=${DOTFILES_BACKUPS} is not a directory"
+		exit 1
+	fi
+
+	if [ ! -w "${DOTFILES_BACKUPS}" ]; then
+		e_error "DOTFILES_BACKUPS=${DOTFILES_BACKUPS} is not writable"
+		exit 1
+	fi
+
 	local src=${1}
-	local dest=${DOTFILES_BACKUPS}/`basename ${1}`
+	local dest=${DOTFILES_BACKUPS}/`basename ${1}`_`date +"%Y-%m-%d_%H%M%S"`
 	if [ -f $src ] && [ ! -h $src ]; then
 		# Make a backup of real file before trashing it
 		if [ ! -d ${DOTFILES_BACKUPS} ]; then
 			mkdir ${DOTFILES_BACKUPS}
 		fi
-		if cp -p ${1} ${dest} ; then
+		if cp -pn ${1} ${dest} ; then
 			e_success "Saved copy of ${src} to ${dest}"
 		else
 			e_error "Unable to backup ${src} to ${dest}; bailing out."
