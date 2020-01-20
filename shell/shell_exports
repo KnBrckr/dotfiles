@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# bash_config
+# Environment Variables
 
 # Shortcut for dotfiles directory
 export DOTFILES="$HOME/.dotfiles"
@@ -30,13 +28,13 @@ export MANPAGER="less -X"
 
 # Make new shells get the history lines from all previous
 # shells instead of the default "last window closed" history
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+# export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # For TextMate - Setup Locale info
 export LC_CTYPE=en_US.UTF-8
 
 # Turn on colors in terminal
-export CLICOLOR=1
+# export CLICOLOR=1
 
 # Location of Wordpress files for phpunit testing
 export WP_TESTS_DIR=${HOME}/tmp/wordpress-tests-lib

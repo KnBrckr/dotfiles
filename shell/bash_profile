@@ -28,7 +28,7 @@ fi
 load_dotfiles() {
 	declare -a files=(
 		$HOME/.dotfiles/shell/bash_options # Options
-		$HOME/.dotfiles/shell/bash_exports # Exports
+		$HOME/.dotfiles/shell/shell_exports # Exports
 		$HOME/.dotfiles/shell/bash_aliases # Aliases
 		$HOME/.dotfiles/shell/apache_modsec # Aliases useful for apache log file analysis
 		$HOME/.dotfiles/shell/functions/* # Functions
