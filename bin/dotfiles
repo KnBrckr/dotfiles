@@ -2,6 +2,11 @@
 
 # TODO This doesn't work with proxy based access
 
+# Pickup VCS_* definitions required to setup git environment
+if [[ -r ~/.shell_profile.local ]]; then
+	source ~/.shell_profile.local
+fi
+
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 DOTFILES_BACKUPS="${DOTFILES_DIRECTORY}/backup"
 DOTFILES_TARBALL_PATH="https://github.com/seiryu9/dotfiles/tarball/master"
@@ -137,7 +142,7 @@ link() {
 
 mirror_git() {
 	# Copy `.gitconfig`.
-	# Any global git commands in `~/.bash_profile.local` will be written to
+	# Any global git commands in `~/.shell_profile.local` will be written to
 	# `.gitconfig`. This prevents them being committed to the repository.
 	: "${VCS_AUTHOR_NAME:?must be set}"
 	: "${VCS_AUTHOR_EMAIL:?must be set}"

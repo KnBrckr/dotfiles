@@ -35,7 +35,7 @@ load_dotfiles() {
 		$HOME/.dotfiles/shell/bash_prompt # Custom bash prompt
 		$HOME/.dotfiles/shell/shell_paths # Path modifications
 		$HOME/.dotfiles/shell/bash_completion # Enable bash command completions
-		$HOME/.bash_profile.local # Local and private settings not under version control (e.g. git credentials)
+		$HOME/.shell.local # Local and private settings not under version control (e.g. git credentials)
 	)
 
 	# if these files are readable, source them

@@ -102,12 +102,12 @@ Any special-case Vim directives local to a machine should be stored in a
 `~/.vimrc.local` file on that machine. The directives will then be automatically
 imported into your master `.vimrc`.
 
-Any private and custom Bash commands and configuration should be placed in a
-`~/.bash_profile.local` file. This file will not be under version control or
-committed to a public repository. If `~/.bash_profile.local` exists, it will be
-sourced for inclusion in `bash_profile`.
+Any private and custom commands and configuration should be placed in a
+`~/.shell_profile.local` file. This file will not be under version control or
+committed to a public repository. If `~/.shell_profile.local` exists, it will be
+sourced for inclusion in `bash_profile` or `zshprofile`.
 
-Here is an example `~/.bash_profile.local`:
+Here is an example `~/.shell_profile.local`:
 
 ```bash
 # PATH exports
