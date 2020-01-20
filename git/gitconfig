@@ -107,3 +107,6 @@
 
 [commit]
 #	template = ~/.stCommitMsg
+
+[pull]
+	rebase = true
