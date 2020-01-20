@@ -1,0 +1,15 @@
+#!/bin/zsh
+#
+# Interactive login setup
+# E.G. :
+#  - prompt
+#  - command completion
+#  - command correction
+#  - command suggestion
+#  - command highlighting
+#  - output coloring
+#  - aliases
+#  - key bindings
+#  - commands history management
+#  - other miscellaneous interactive tools (auto_cd, manydots-magic)..
+
