@@ -1,4 +1,56 @@
-#!/bin/zsh
-#
-# Environment variables setup
+# Zsh Environment setup
 
+# By default, want group able to see files
+umask 0002
+
+# add private identities to the ssh key-agent for port forwarding of ssh credentials
+ssh-add >> /dev/null 2>&1
+[ -f $HOME/.ssh/aws-codecommit ] && ssh-add $HOME/.ssh/aws-codecommit >> /dev/null 2>&1
+[ -f $HOME/.ssh/vagrant ] && ssh-add $HOME/.ssh/vagrant >> /dev/null 2>&1
+
+# set 256 color profile where possible
+if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+	export TERM=gnome-256color
+elif infocmp xterm-256color >/dev/null 2>&1; then
+	export TERM=xterm-256color
+fi
+
+# Up-front dotfiles configuration
+# Not part of `load_dotfiles` because it must be sourced before anything else
+# to be sure that commands like `brew` (when installed in a custom location)
+# are already added to the PATH.
+[ -r $HOME/.dotfilesrc ] && source $HOME/.dotfilesrc;
+
+load_dotfiles() {
+	declare -a files=(
+		# $HOME/.dotfiles/shell/bash_options # Options
+		# $HOME/.dotfiles/shell/bash_exports # Exports
+		# $HOME/.dotfiles/shell/bash_aliases # Aliases
+		# $HOME/.dotfiles/shell/apache_modsec # Aliases useful for apache log file analysis
+		# $HOME/.dotfiles/shell/functions/* # Functions
+		# $HOME/.dotfiles/shell/bash_prompt # Custom bash prompt
+		# $HOME/.dotfiles/shell/bash_paths # Path modifications
+		# $HOME/.dotfiles/shell/bash_completion # Enable bash command completions
+		# $HOME/.bash_profile.local # Local and private settings not under version control (e.g. git credentials)
+	)
+
+	# if these files are readable, source them
+	for file in "${files[@]}"
+	do
+		if [[ -r ${file} ]]; then
+			source ${file}
+		fi
+	done
+}
+
+load_dotfiles
+unset load_dotfiles
+
+# Setup git based on locally defined environment
+if [ $(type -P git) ]; then
+	# Setup proxy if defined
+	[ "$http_proxy" ] && git config --global http.proxy $http_proxy
+fi
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
