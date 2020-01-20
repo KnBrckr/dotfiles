@@ -53,7 +53,11 @@ Options:
 </table>
 
 
-## Features
+## Features ##
+
+### Oh My Zsh! ###
+
+Uses [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh/wiki) for zsh shell configuration
 
 ### Automatic software installation
 
@@ -82,6 +86,8 @@ $ osxdefaults
 ```
 
 ### Bootable backup-drive script
+
+Last time this was tested it was not working.
 
 These dotfiles include a script that uses `rync` to incrementally back up your
 data to an external, bootable clone of your computer's internal drive. First,
