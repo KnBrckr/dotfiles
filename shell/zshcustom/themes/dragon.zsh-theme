@@ -36,11 +36,12 @@ set_prompts() {
     PS1+="$hostStyle@%m" # host
     PS1+="$seperator%{$fg[green]%}%1~$seperator" # working directory
 	
-    PS1+='$(git_prompt_info)' # git repository details
 	PS1+="%(?:%{$fg_bold[green]%}√ :%{$fg_bold[red]%}⊝ )%{$reset_color%}"
 
     export PS1
 }
+
+RPS1='$(git_prompt_info) $EPS1' # git repository details on the right
 
 set_prompts
 unset set_prompts
