@@ -26,7 +26,7 @@ load_dotfiles() {
 		# $HOME/.dotfiles/shell/bash_options # Options
 		$HOME/.dotfiles/shell/shell_exports # Exports
 		$HOME/.dotfiles/shell/shell_aliases # Aliases
-		# $HOME/.dotfiles/shell/apache_modsec # Aliases useful for apache log file analysis
+		$HOME/.dotfiles/shell/apache_modsec # Aliases useful for apache log file analysis
 		$HOME/.dotfiles/shell/functions/* # Functions
 		# $HOME/.dotfiles/shell/bash_prompt # Custom bash prompt
 		$HOME/.dotfiles/shell/shell_paths # Path modifications
