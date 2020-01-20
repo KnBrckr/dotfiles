@@ -65,6 +65,12 @@ if ! is_git_repo; then
 	set +e # Reset exit on error
 fi
 
+# Load Oh My Zsh environment
+if [ ! -d ~/.oh-my-zsh ]; then
+	e_header "Installing Oh My Zsh!"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
 if is_mac; then
 	# Before relying on Brew, check that packages can be compiled
 	if ! type_exists 'gcc'; then
