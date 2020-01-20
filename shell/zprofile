@@ -24,10 +24,10 @@ fi
 load_dotfiles() {
 	declare -a files=(
 		# $HOME/.dotfiles/shell/bash_options # Options
-		# $HOME/.dotfiles/shell/bash_exports # Exports
+		# $HOME/.dotfiles/shell/shell_exports # Exports
 		# $HOME/.dotfiles/shell/bash_aliases # Aliases
 		# $HOME/.dotfiles/shell/apache_modsec # Aliases useful for apache log file analysis
-		# $HOME/.dotfiles/shell/functions/* # Functions
+		$HOME/.dotfiles/shell/functions/* # Functions
 		# $HOME/.dotfiles/shell/bash_prompt # Custom bash prompt
 		# $HOME/.dotfiles/shell/bash_paths # Path modifications
 		# $HOME/.dotfiles/shell/bash_completion # Enable bash command completions
@@ -47,7 +47,7 @@ load_dotfiles
 unset load_dotfiles
 
 # Setup git based on locally defined environment
-if [ $(type -P git) ]; then
+if command_exists 'git'; then
 	# Setup proxy if defined
 	[ "$http_proxy" ] && git config --global http.proxy $http_proxy
 fi

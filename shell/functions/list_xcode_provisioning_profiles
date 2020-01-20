@@ -1,4 +1,4 @@
-#!/bin/bash
+# Provide a list of the currently defined xcode provision files
 
 list_xcode_provisioning_profiles() {
     while IFS= read -rd '' f; do

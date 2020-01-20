@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Compare original and gzipped file size
 gz() {
     local origsize=$(wc -c < "$1")
