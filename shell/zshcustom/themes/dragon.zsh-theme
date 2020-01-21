@@ -40,7 +40,7 @@ set_prompts() {
     fi
 
     # set the terminal title to user@host + current working directory
-#    PS1="\[\033]0;\u@\h: \w\007\]"
+	#    PS1="\[\033]0;\u@\h: \w\007\]"
 
     PS1="$userStyle%n" # username
     PS1+="$hostStyle@%m" # host
@@ -52,13 +52,23 @@ set_prompts() {
     export PS1
 }
 
-RPS1='$(git_prompt_info)' # git repository details on the right
+RPS1='%{$fg[yellow]%}$(git_prompt_status)%{$reset_color%} $(git_prompt_info)' # git repository details on the right
 PS2='%_⇉ '
 
 set_prompts
 unset set_prompts
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg_bold[blue]%})%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="" # "%{$fg[blue]%}) %{$fg[yellow]%}✗"
+ZSH_THEME_GIT_PROMPT_CLEAN="" # "%{$fg[blue]%})"
+ZSH_THEME_GIT_PROMPT_AHEAD=">"
+ZSH_THEME_GIT_PROMPT_BEHIND="<"
+ZSH_THEME_GIT_PROMPT_DIVERGED="v"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
+ZSH_THEME_GIT_PROMPT_ADDED="+"
+ZSH_THEME_GIT_PROMPT_MODIFIED="!"
+ZSH_THEME_GIT_PROMPT_RENAMED="r"
+ZSH_THEME_GIT_PROMPT_DELETED="-"
+ZSH_THEME_GIT_PROMPT_STASHED="s"
+ZSH_THEME_GIT_PROMPT_UNMERGED="u"
