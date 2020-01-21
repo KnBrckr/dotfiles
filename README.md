@@ -188,6 +188,7 @@ changes made to those submodules.
 
 Inspiration and code was taken from many sources, including:
 
+* [Moving to zsh](https://scriptingosx.com/2019/06/moving-to-zsh/)
 * [@](https://github.com/necolas) (Nicolas Gallagher)
   [https://github.com/necolas/dotfiles]()
 * [@mathiasbynens](https://github.com/mathiasbynens) (Mathias Bynens)
