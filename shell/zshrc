@@ -1,15 +1,43 @@
-# Interactive login setup for zsh
-# E.G. :
-#  - prompt
-#  - command completion
-#  - command correction
-#  - command suggestion
-#  - command highlighting
-#  - output coloring
-#  - aliases
-#  - key bindings
-#  - commands history management
-#  - other miscellaneous interactive tools (auto_cd, manydots-magic)..
+#!/bin/zsh
+# zshrc
+#
+# Zsh configuration file execution:
+#   all users      user       login shell  interactive shell  scripts  Terminal.app
+#   /etc/zshenv    .zshenv    √            √                  √        √
+#   /etc/zprofile  .zprofile  √            x                  x        √
+#   /etc/zshrc     .zshrc     √            √                  x        √
+#   /etc/zlogin    .zlogin    √            x                  x        √
+#   /etc/zlogout   .zlogout   √            x                  x        √
+
+load_dotfiles() {
+	declare -a files=(
+		$HOME/.dotfiles/shell/functions/* # Functions
+		$HOME/.dotfiles/shell/shell_exports # Exports
+		$HOME/.dotfiles/shell/shell_aliases # Aliases
+		$HOME/.dotfiles/shell/apache_modsec # Aliases useful for apache log file analysis
+		$HOME/.dotfiles/shell/shell_paths # Path modifications
+		$HOME/.shell_profile.local # Local and private settings not under version control (e.g. git credentials)
+	)
+
+	# if these files are readable, source them
+	for file in "${files[@]}"
+	do
+		if [[ -r ${file} ]]; then
+			source ${file}
+		fi
+	done
+}
+
+load_dotfiles
+unset load_dotfiles
+
+# By default, want group able to see files
+umask 0002
+
+# add private identities to the ssh key-agent for port forwarding of ssh credentials
+ssh-add >> /dev/null 2>&1
+[ -f $HOME/.ssh/aws-codecommit ] && ssh-add $HOME/.ssh/aws-codecommit >> /dev/null 2>&1
+[ -f $HOME/.ssh/vagrant ] && ssh-add $HOME/.ssh/vagrant >> /dev/null 2>&1
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -73,9 +101,6 @@ ZSH_THEME="dragon"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM=$DOTFILES/shell/zshcustom
-
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to $DOTFILES/shell/zshcustom
@@ -110,3 +135,13 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Setup git based on locally defined environment
+if command_exists 'git'; then
+	# Setup proxy if defined
+	[ "$http_proxy" ] && git config --global http.proxy $http_proxy
+fi
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+

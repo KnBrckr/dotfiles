@@ -1,0 +1,11 @@
+#!/bin/zsh
+# zshenv
+
+# Shortcut for dotfiles directory
+DOTFILES="$HOME/.dotfiles"
+
+# Shortcut for dotfile bin directory
+DOTBIN="$DOTFILES/bin"
+
+# Would you like to use another custom folder than $ZSH/custom?
+ZSH_CUSTOM=$DOTFILES/shell/zshcustom
