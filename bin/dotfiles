@@ -26,6 +26,10 @@ fi
 
 cd ${DOTFILES_DIRECTORY}
 
+if [ ! -d backup ]; then
+	mkdir backup
+fi
+
 source ./lib/help
 source ./lib/list
 source ./lib/utils
