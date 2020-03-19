@@ -100,7 +100,7 @@ set softtabstop=2
 " Use 2 spaces for tab
 set tabstop=2
 " Expand tab to spaces
-set expandtab
+set noexpandtab
 " Enable line numbers
 set number
 " Highlight current line
