@@ -28,10 +28,10 @@ prepend_list() {
 	        # If these directories exist, then prepend them to existing
 			if is_zsh_shell; then
 				eval $var_name=$(filter_list "${(P)var_name}" ${prepend}) # Filter out directory if already in list
-	        	eval $var_name="${prepend}${(P)var_name:+":${(P)var_name}"}"
+				eval $var_name="${prepend}${(P)var_name:+":${(P)var_name}"}"
 			else
-				eval $var_name=$(filter_list "${!var_name}" ${prepend}) # Filter out directory if already in list
-	        	eval $var_name="${prepend}${!var_name:+":${!var_name}"}"
+				eval $var_name="\"$(filter_list "${!var_name}" ${prepend})\"" # Filter out directory if already in list
+				eval $var_name="\"${prepend}${!var_name:+":${!var_name}"}\""
 			fi
 	    fi
 	done
@@ -55,11 +55,12 @@ append_list() {
 	        # If these directories exist, then append them to existing
 			if is_zsh_shell; then
 				eval $var_name=$(filter_list "${(P)var_name}" ${append}) # Filter out directory if already in list
-		        eval $var_name="${(P)var_name:+"${(P)var_name}:"}${append}"
+				eval $var_name="${(P)var_name:+"${(P)var_name}:"}${append}"
 			else
-				eval $var_name=$(filter_list "${!var_name}" ${append}) # Filter out directory if already in list
-		        eval $var_name="${!var_name:+"${!var_name}:"}${append}"
+				eval $var_name="\"$(filter_list "${!var_name}" ${append})\"" # Filter out directory if already in list
+				eval $var_name="\"${!var_name:+"${!var_name}:"}${append}\""
 			fi
 	    fi
 	done
 }
+
