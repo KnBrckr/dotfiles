@@ -111,12 +111,12 @@ set scrolloff=3
 set nostartofline
 
 " Show 'invisible' characters
-set list
+" set list
 " Set characters used to indicate 'invisible' characters
 set listchars=tab:▸\
 set listchars+=trail:·
 set listchars+=nbsp:_
-"set listchars+=eol:¬
+set listchars+=eol:¬
 
 " Centralize backups, swapfiles and undo history
 set backupdir=$HOME/.vim/backups
