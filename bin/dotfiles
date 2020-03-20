@@ -195,13 +195,15 @@ else
 	printf "Skipped mirroring of dot files.\n"
 fi
 
-# Ask before potentially overwriting OS X defaults
-e_header "Setting OSX Defaults..."
-seek_confirmation "Warning: This step may modify your OS X system defaults."
+if is_mac; then
+	# Ask before potentially overwriting OS X defaults
+	e_header "Setting OSX Defaults..."
+	seek_confirmation "Warning: This step may modify your OS X system defaults."
 
-if is_confirmed; then
-	bash ./bin/osxdefaults
-	e_success "OS X settings updated! You may need to restart."
-else
-	printf "Skipped OS X settings update.\n"
+	if is_confirmed; then
+		bash ./bin/osxdefaults
+		e_success "OS X settings updated! You may need to restart."
+	else
+		printf "Skipped OS X settings update.\n"
+	fi
 fi
