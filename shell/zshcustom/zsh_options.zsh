@@ -7,9 +7,11 @@ setopt AUTO_CD
 # Case-insensitive globbing (used in pathname expansion)
 setopt NO_CASE_GLOB
 
-# Enable shell correction
+# Enable shell correction for commands, but *not* for arguments!
+# Autocorrect does not understand such things as custom git commands making
+# it very annoying indeed.
 setopt CORRECT
-setopt CORRECT_ALL
+unsetopt CORRECT_ALL
 
 # ==================
 # = Shell History  =
