@@ -35,15 +35,15 @@ if test -z "$MANPATH"; then
 	MANPATH=$(man -w)
 fi
 
-# Directories to be appended to MANPATH
-declare -a dirs_to_append=(
+# Directories to be prepended to MANPATH
+declare -a dirs_to_prepend=(
 	"/usr/local/man"
 	"/usr/local/share/man"
 )
 
-append_list MANPATH "dirs_to_append[@]"
+prepend_list MANPATH "dirs_to_prepend[@]"
 
-unset dirs_to_append
+unset dirs_to_prepend
 
 export MANPATH
 
