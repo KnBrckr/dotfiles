@@ -24,7 +24,7 @@ alias lat="ls -AGFoth"
 alias catn="cat -n"
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias wanip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
 
 # Copy my public key to the pasteboard
@@ -49,3 +49,4 @@ alias showdeskicons="defaults write com.apple.finder CreateDesktop -bool true &&
 alias hidedeskicons="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 
 [ -r /Applications/GnuCash/Gnucash.app/Contents/MacOS/aqbanking-cli ] && alias aqbanking-cli=/Applications/GnuCash/Gnucash.app/Contents/MacOS/aqbanking-cli
+
