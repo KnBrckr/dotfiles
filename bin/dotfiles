@@ -7,21 +7,21 @@ if [[ -r ~/.shell_profile.local ]]; then
 	source ~/.shell_profile.local
 fi
 
+if ! type git > /dev/null ; then
+	echo "git is required to continue"
+	exit 2
+fi
+
 DOTFILES_DIRECTORY="${HOME}/.dotfiles"
 DOTFILES_BACKUPS="${DOTFILES_DIRECTORY}/backup"
-DOTFILES_TARBALL_PATH="https://github.com/seiryu9/dotfiles/tarball/master"
-DOTFILES_GIT_REMOTE="git@github.com:seiryu9/dotfiles.git"
+DOTFILES_GIT_REMOTE="https://github.com/KnBrckr/dotfiles.git"
 
 # If missing, download and extract the dotfiles repository
 if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
-	printf "$(tput setaf 7)Downloading dotfiles...\033[m\n"
-	mkdir ${DOTFILES_DIRECTORY}
-	# Get the tarball (TODO add -x for proxy support)
-	curl -fsSLo ${HOME}/dotfiles.tar.gz ${DOTFILES_TARBALL_PATH}
-	# Extract to the dotfiles directory
-	tar -zxf ${HOME}/dotfiles.tar.gz --strip-components 1 -C ${DOTFILES_DIRECTORY}
-	# Remove the tarball
-	rm -rf ${HOME}/dotfiles.tar.gz
+	printf "$(tput setaf 7)Cloning dotfiles...\033[m\n"
+	set -e  # Exit if any of these commands fail
+	git clone ${DOTFILES_GIT_REMOTE} ${DOTFILES_DIRECTORY}
+	set +e  # Reset exit on error
 fi
 
 cd ${DOTFILES_DIRECTORY}
