@@ -62,3 +62,18 @@ append_list PERL5LIB "dirs_to_append[@]"
 unset dirs_to_append
 
 export PERL5LIB
+
+# ===========
+# = COWPATH =
+# ===========
+
+declare -a dirs_to_append=(
+	"/usr/local/share/cows"
+	"${DOTFILES}/lib/cows"
+)
+
+append_list COWPATH "dirs_to_append[@]"
+
+unset dirs_to_append
+
+export COWPATH
