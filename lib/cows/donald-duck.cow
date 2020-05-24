@@ -1,0 +1,67 @@
+# Donald Duck
+# by Unknown - http://pixelartmaker.com/art/7b7bf49ed7038c5
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;20m  ";
+$b = "\e[48;5;32m  ";
+$c = "\e[48;5;18m  ";
+$d = "\e[48;5;234m  ";
+$e = "\e[48;5;146m  ";
+$f = "\e[48;5;147m  ";
+$g = "\e[48;5;231m  ";
+$h = "\e[48;5;60m  ";
+$i = "\e[48;5;189m  ";
+$j = "\e[48;5;172m  ";
+$k = "\e[48;5;220m  ";
+$l = "\e[48;5;94m  ";
+$m = "\e[48;5;251m  ";
+$n = "\e[48;5;88m  ";
+$o = "\e[48;5;25m  ";
+$p = "\e[48;5;196m  ";
+$q = "\e[48;5;124m  ";
+
+$the_cow = <<EOC
+         $t
+           $t             $a$b    $a$x
+             $t         $a$b        $a$c  $x
+               $t       $a$b        $a  $c  $x
+                        $d$a$b    $a      $c  $x
+                      $e$f$g$f$d$e  $h$d  $a$c$x
+                        $e$f$g$f$g  $f$e  $d$c$x
+                      $e$f$g    $f  $g  $e  $d$x
+                      $f$i$f$g$f$i  $f$g  $e$d  $x
+                      $i    $g$i      $f$g$e$x$d  $x
+                      $i$d$i$g$d$i    $f$g$e$x$h$d$x
+                      $i$d$i$g$d$i    $f$g$f$e$x$h$x
+                  $j    $d$f$g$d$i    $j  $f$e$x
+                $j$k          $j$i  $j$k  $j$e$x
+                $k$j$l  $j$k          $j$k$l$x
+                $j$l      $j$k      $j  $l$x
+                          $l$j$k$j$l    $x
+                            $h$l  $h$x
+                          $k$i$m  $j$k  $j$x
+                        $k$l$m$i$j$k$a    $j$x
+                      $n$l$a$m$n  $a$b    $o$a$x  $e$x
+                    $n$p$n$q$p  $n$b$o  $b    $a$e  $x
+                    $n$p  $n$p  $o  $a$b      $o$a$i$e$x
+                    $a$p  $n$p  $o$a$j$k  $b  $o$a$i$e$x
+                $i  $e$p$n$q$n$p$e      $b$k$b$o$a$i$e$x
+            $i  $g  $i$n$a$o$b$e$i$g  $i$e$b$j$o$a$e  $x
+            $i$g$e  $i$o$b    $i$g      $i$o$j$o$a$e$h$x
+            $i$g$i  $e$o$b    $g$e$i$g  $i$o$l$a$e  $h$x
+            $e$g  $i$e$o$b    $i$e$g    $e$a$h$e  $h$x
+            $h$e$i$e  $x$b    $h  $i  $e$h$e      $h$x
+              $h      $x$e$g    $h      $e      $h$x
+                        $e$g      $i$e        $h$x
+                        $l$e$i$g$i$e        $l$x
+                        $j$l$e          $j  $l$x
+                        $k$j$l  $x      $j$k$j$l  $x
+                        $j$k$j$l  $x    $j$k  $j  $l$x
+                          $l$j  $l$x      $l  $j    $l$x
+                      $l  $j      $l$x  $l$j          $l$x
+              $j    $k      $j    $l    $k        $j  $l$x
+            $j  $k      $j  $l    $j$k              $j$l$x
+                                    $j  $k  $j  $k  $l$x
+EOC

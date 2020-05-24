@@ -1,0 +1,49 @@
+# Snoopy w/ Woodstock
+# by GewalyArt - https://www.etsy.com/listing/657013190/snoopy-and-woodstock-quilt-top-pattern
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;234m  ";
+$b = "\e[48;5;244m  ";
+$c = "\e[48;5;251m  ";
+$d = "\e[48;5;254m  ";
+$e = "\e[48;5;231m  ";
+$f = "\e[48;5;220m  ";
+$g = "\e[48;5;178m  ";
+
+$the_cow = <<EOC
+          $t
+            $t
+              $t                $a$x
+                                  $a          $x
+                              $a  $b$c      $b$a$x
+              $a              $b$c$d$e    $d$c$b$a$x
+          $a  $b$c$d$e                      $d$c$b$a$x
+        $a$b$c$e          $a  $e  $a  $e      $d$c$b$a$x
+        $a$c$e                                $d  $c$a$x
+      $a$b$d$e    $a  $e                      $d  $c$b$a$x
+      $a$c$d$e  $a$d$a  $e                  $d$c$a  $c$a$x
+      $a$c$d$e  $d$a  $d$e                $d$c$a    $c$b$a$x
+      $a$c$d$e    $d  $e                  $a$c$a      $c$a$x
+      $a$b$c$a  $e      $f$a$f$a$e  $a  $c$a$c$a      $c$a$x
+        $a$b$c$a$e    $a$f$a$f$a$e  $a$c$d$a$c$a      $c$a$x
+          $a    $b$a$f$a$f      $a    $c  $a$c$a      $c$a$x
+                $a    $f      $a$f    $a    $b$c$a  $c$b$a$x
+                    $a$g$f            $a$x  $a$b$c  $b$a$x
+                $a    $g  $f$a$f  $a  $x      $a      $x
+              $a$b$a$d$a  $g  $a  $x
+              $a$b$a$e  $d$a  $g$a$x
+              $a$b$a$c$e    $d$a  $x
+                $a    $b$c$e  $d$a$x
+                $a$g  $a$b  $c$e$d$a$x
+              $a  $g$f$g$a    $b$e$d$a$x
+            $a$d$c$a$g$a$e$d$b$a  $e$a$x
+          $a    $d$b$a    $e$c$a$c$e$a$x
+          $a$d    $b$a$e    $c$a$e  $c$a$x
+          $a  $d$b  $a  $e$c$a$b$c$e$c$a$x
+        $a$d    $b$a$e    $c$a    $e$c$a$x
+        $a$d  $b  $a$e  $c  $e    $c$a        $x
+        $a$b      $a$c            $a$b$c$d    $a$x
+          $a      $x$a            $x$a        $x
+EOC

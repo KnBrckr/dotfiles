@@ -1,0 +1,63 @@
+# Jerry (Tom & Jerry)
+# by <authorName>
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;234m  ";
+$b = "\e[48;5;94m  ";
+$c = "\e[48;5;131m  ";
+$d = "\e[48;5;231m  ";
+$e = "\e[48;5;223m  ";
+$f = "\e[48;5;124m  ";
+
+$the_cow = <<EOC
+                                      $t
+                                        $t                  $a    $x
+                        $a    $x          $t        $a$x  $a$b    $a$x
+                      $a$b    $a  $x              $a  $x  $a$b      $a$x
+                    $a$b$a    $b  $a  $x        $a  $x  $a$b        $a$x
+                  $a$b$a$c    $a$b    $a$x    $a$b$a              $b  $a$x
+                  $a  $c        $a$b    $a    $b    $a      $b        $a$x
+                  $a$c            $a$b    $a$b              $a    $b  $a$x
+                  $a$c              $a$b    $a$b    $a  $b        $a    $x  $a$x
+                  $a$c              $a$b          $a$b      $a$b        $a$x$a$x
+                  $a$c                $a$b        $a$b$a$b$a$b            $a$x$a$x
+                  $a$c                $a$b        $a$b$a  $b            $a$b$a$x
+                  $a$c                $a$b          $a$d  $a$b        $a    $b$a$x
+                  $a$c                $a$b          $a$d    $a$b    $a$d  $a$b$a$x
+                  $a$c        $a  $c  $a$b          $a$d    $a$b    $a$d  $a$b$a$x
+                    $a$c      $a$b$a  $b              $a$d    $a$b  $a$d  $a$b$a$x
+                    $a$c        $a$b                  $a$d    $a$b  $a$d  $a$b$a$x
+                      $a$c        $a  $b              $a$d  $a  $b    $a  $d$a$x
+                      $a$c          $a$b                $a$d$a  $b    $a  $d$a$x    $a    $x
+                        $a$c        $a$b    $a    $b    $a$d$a  $b    $a  $d$a$x$a  $x
+                          $a$c      $a$b          $a    $b$a      $b$a      $b$a$x
+                            $a$c    $a$b                $a$e      $a      $e$a$b$a$x
+                              $a$c    $a$b              $a$e        $a  $e  $a$b  $a      $x
+                                $a      $b      $a          $e            $a$b    $a$x    $a    $x
+                                        $a$b    $a$e  $a                  $b    $a$x            $a$x
+                                          $a$b    $a$e$a$f$a        $e  $a$b  $a$x
+                                            $a      $e  $a$f$a    $e  $a$b$a  $x
+                                          $a$b      $a$e$a$f  $a$e    $a  $x
+                                        $a$b            $e$a  $e  $a  $b  $a$x
+                                      $a$b              $a$e  $a  $b      $a$x
+                                    $a$b                  $a  $b            $a$x
+                                  $a$b                            $a$b      $a$x
+                                $a$b                      $a$b    $a$b        $a$x
+                              $a$b                      $a$e$a$b$a$e$a$b      $a$x
+                              $a$b              $a$b  $a$e  $a$b$a$e$a$b        $a$x
+                            $a$b            $a  $b    $a$e    $a$e  $a$b        $a$x
+                          $a$b          $a    $b    $a$e            $a$b          $a$x
+                      $a  $b        $a  $x$a$b      $a$e            $a  $b        $a$x
+              $a      $b          $a$x  $a$b      $a$e              $a$x$a$b        $a$x
+            $a$b                $a$x  $a$b      $a$e                $a$x  $a$b        $a        $x
+              $a      $b        $a$x$a$b        $a$e                $a$x    $a  $b              $a$x
+                $a$b    $a$b    $a  $b        $a$e                  $a$x        $a$b      $a$b$a$x
+                  $a    $x$a$b    $a$b      $a$e                    $a$x        $a$b        $a    $x
+                            $a    $b        $a$e                  $a$x        $a$b  $a    $b      $a$x
+        $a            $x      $a$b        $a$e                    $a$x          $a  $x    $a      $x
+    $a  $b            $a        $b        $a$e                    $a$x
+$a  $x  $a          $b        $a$b        $a$e                  $a$x
+                    $a        $b          $a$e                  $a$x
+EOC

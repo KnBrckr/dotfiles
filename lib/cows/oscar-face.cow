@@ -1,0 +1,46 @@
+# oscar-face
+# by <authorName>
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;234m  ";
+$b = "\e[48;5;28m  ";
+$c = "\e[48;5;88m  ";
+$d = "\e[48;5;231m  ";
+$e = "\e[48;5;160m  ";
+
+$the_cow = <<EOC
+          $t                        $a  $x
+            $t              $a$x$a                $x
+              $t        $a      $b              $a      $x
+                    $a  $b                            $a  $x
+                  $a$b      $a$b$a$b      $a$b$a      $b  $a$x
+                $a$b      $a  $b$a$b      $a  $c    $a  $b  $a$x
+              $a$b$a$c$a  $c    $a$c$b  $a$c$a      $c  $a  $b$a$x
+            $a  $b$a$c      $a  $c  $a  $c$a$d      $a$c    $b$a$x
+            $a$b  $c    $a  $d  $a$c    $a$d        $a$c  $a  $b$a  $x
+            $a$b$a$c    $a$d      $a$c  $a$d$a  $d    $a$c  $a$b  $a$x
+          $a$b$a$c    $a$d    $a  $d$a    $d$a  $d    $a    $b    $a$x
+        $a$b  $a  $c  $a$d    $a  $d$b    $d        $b            $a  $x
+        $a$b      $a    $d          $b                        $a$b$a$x
+      $a  $b              $d      $b                        $a$b  $a$x
+        $a$b                                              $a  $b  $a$x
+      $a$b                                          $a        $b  $a  $x
+      $a$b                        $a                          $b  $a$x
+      $a  $b          $a            $c            $a          $b  $a  $x
+        $a$b$a                $c              $e$c$a        $b    $a$x
+        $a$b  $a              $c$e            $c$a          $b  $a  $x
+        $a$b    $a              $c  $e      $c$a          $b    $a$x
+          $a$b    $a                                    $b    $a$x
+            $a$b      $a                              $b    $a$x
+            $a  $b      $a                        $b      $a  $x
+                $a  $b                                  $a$x
+                  $a  $b                              $a  $x
+                      $a    $b    $a$b          $a    $x
+                          $a                $b$a$b$a$x
+                        $a$b                      $a  $x
+                        $a$b                          $a$x
+                      $a$b                              $a$x
+                  $a  $b                                $a$x
+EOC

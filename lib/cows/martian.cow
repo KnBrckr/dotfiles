@@ -1,0 +1,75 @@
+# Marvin Martian (Looney Tunes)
+# sprite from Taz in Escape from Mars (SEGA Genesis) - https://www.spriters-resource.com/genesis_32x_scd/escapefrommars/sheet/18640/
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;94m  ";
+$b = "\e[48;5;178m  ";
+$c = "\e[48;5;238m  ";
+$d = "\e[48;5;40m  ";
+$e = "\e[48;5;34m  ";
+$f = "\e[48;5;28m  ";
+$g = "\e[48;5;22m  ";
+$h = "\e[48;5;234m  ";
+$i = "\e[48;5;110m  ";
+$j = "\e[48;5;254m  ";
+$k = "\e[48;5;88m  ";
+$l = "\e[48;5;160m  ";
+
+$the_cow = <<EOC
+          $t                  $a$b  $a$b$a$b  $a$x
+            $t                $c$b$a  $b$c$b$a$c$x
+              $t              $c$a$b$c$b$c$a  $c$x
+                $t              $c$a$c$a$c$a$c$x
+                  $t            $c$a$c$a$c$a$c$x
+                    $t        $a$b            $a$x
+                      $t      $a                $x
+                              $c                $x
+                                $c    $b$c    $x
+                                  $c  $a$c  $x
+                                  $d        $x
+                              $d  $e        $d  $x
+                          $d$e$f                $e$d$x
+                        $e$f$e$d$e$d        $e$d$e$f$e$x
+                      $e    $f  $e$f$e$d$e$f$e$f  $e    $x
+                      $e$f      $e$f$e$d$e$f$e$f      $e$x
+                    $e$f        $e$f$e$d$e$f$e$f        $e$x
+                  $e$f          $e$f$e$d$e$f$e$f          $e$x
+                  $f        $g                    $f        $x
+                $e$f  $g    $h                    $g    $f  $e$x
+                $f  $g  $h                            $g  $f  $x
+                $f$g  $h      $i  $h      $i  $h        $g  $f$x
+                $f$g  $h    $i$j  $i$h  $i$j  $i$h      $g  $f$x
+                $f$g  $h    $j      $h  $j      $h      $g  $f$x
+                  $f$g$h    $j      $h  $j      $h      $g$f$x
+                    $e$h    $i$j$h$i$h  $i$h$j$i$h      $e$x
+                    $e$h      $i  $h      $i  $h        $e$x
+                    $e$g$h                            $g$e$x
+                  $e$f$g$h                            $g$f$e$x
+                  $f$g    $h                        $g    $f$x
+                  $f$g      $h                    $g      $f$x
+                      $g        $h            $g        $x
+                        $g  $x      $h$k$h$x      $g  $x
+                              $h      $l$h      $x
+                            $h$l    $k    $l    $h$x
+                          $h$l$k    $h    $k    $l$h$x
+                        $h$l$k$h    $j    $h    $k$l$h$x
+                        $h$l$h$x$h$j        $h$x$h$l$h$x
+                        $h$l$h    $i$h  $i  $h    $l$h$x
+                        $h$k$l  $h  $i  $h    $l  $k$h$x
+                      $e  $h      $i$h  $l$k$h      $e  $x
+                    $g          $h  $k      $h$g        $e$x
+                    $f$d        $f$h        $f$d        $f$x
+                    $g$f$e    $f$h$d$e    $d$h$f$e    $f$g$x
+                      $g$f    $h$d$e        $d$h$f    $g$x
+                        $g  $h$f                $h$g  $x
+                              $g                $x
+                $h      $x      $h$k$h$x$h$k$h$x      $h      $x
+              $h$i$j  $i$h$x    $h$k$h$x$h$k$h$x    $h$i$j  $i$h$x
+            $h$i$j      $i$h$x  $h$l$h$x$h$l$h$x  $h$i$j      $i$h$x
+            $h$j          $i$h    $l$h$x$h$l$h    $i$j          $h$x
+            $h$i$j            $i$h    $x$h    $i$j            $i$h$x
+            $h$c$k$l            $k$c$h$x$h$c$k$l            $k$c$h$x
+            $h                        $x$h                        $x
+EOC

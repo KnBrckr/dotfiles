@@ -1,0 +1,43 @@
+# Calvin and Hobbes
+# by Unknown
+# Generated with Charc0al's cowsay file converter http://charc0al.github.io/cowsay-files/converter
+
+$x = "\e[49m  ";          #reset color
+$t = "$thoughts ";
+$a = "\e[48;5;235m  ";
+$b = "\e[48;5;255m  ";
+$c = "\e[48;5;208m  ";
+$d = "\e[48;5;220m  ";
+$e = "\e[48;5;223m  ";
+$f = "\e[48;5;160m  ";
+
+$the_cow = <<EOC
+                    $t                          $a  $x
+                      $t                $a$x$a  $b$a  $x
+                        $t            $a$c$a$c  $a  $x
+                          $t        $a$b$a$c  $a$c  $a$x
+                            $t      $a$b    $c$a    $b$a$x
+                                    $a$b$a$b$a$b        $a$x
+                                    $b  $a$b          $a$x    $a    $x
+                                  $a    $b          $a$c$a    $c$a$c$a$x
+                                    $a  $b            $a$c  $a$c  $a  $x
+                                        $a$b  $a  $b$a$c$a$c  $a$c  $a$x
+        $a$x$a$x$a$x                      $a  $x  $a$c    $a$c  $a  $x
+          $a$d$a$d$a  $x            $a  $x      $a$c$a$c$a$c  $a$c  $a$x
+      $a  $d          $a$x        $a$b  $a$x  $a$c    $a$c  $a$c  $a$c$a$x
+          $a$d          $a$x      $a$b    $a  $c$a$c$a$x$a$b    $a$c    $a$x
+          $e    $d    $a$d$a$x    $a$b    $c      $a$x    $a$b    $c  $a$c$a$x
+        $a$e        $a$d$a  $x      $a            $x        $a$b    $a$c    $a$x
+        $a$e$a$e    $d$e  $a$x                                $a$b    $c  $a$c$a$x
+      $a$e              $a      $x                              $a$b    $c    $a$x                $a$c$a$c$a$x
+        $a$e          $a$f  $e  $a$x                            $a$b      $c$a$c$a        $x  $a$c$x        $c$a$x
+          $a$e      $a$f$a  $e  $a$x                              $a$b    $a$c  $a$b      $a$c$x              $a$c$a  $x
+              $a$f      $a$x                                      $a$b      $c$a$c$a  $b    $a$x                $c$a  $x
+        $a$e  $a$f$a$f    $a$x$a  $x                            $a$c$a$b    $a$c  $a$c$a$b  $a$x
+        $a$e  $f  $a  $f  $a  $b  $a$x                    $a    $c$a$c$b    $c  $a$c$a$c$a  $x
+          $a                  $b  $a$x                  $a$b    $a$c$a          $c    $a$x
+              $a$b  $a  $x$a  $b  $a$x                  $a$b      $a$x          $a      $x
+                $a$b  $a$x    $a  $x                      $a$b      $a$x
+                $a$b  $a$x                                  $a$b    $a$x
+                  $a  $x                                      $a    $x
+EOC
