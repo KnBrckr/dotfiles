@@ -32,3 +32,6 @@
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
+[submodule "submodules/lolcat"]
+	path = submodules/lolcat
+	url = https://github.com/KnBrckr/lolcat.git
