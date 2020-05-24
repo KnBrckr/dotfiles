@@ -1,5 +1,14 @@
 #!/bin/zsh
 # zshenv
+#
+# Zsh configuration files in order of execution:
+#   all users      user       login shell  interactive shell  scripts  Terminal.app
+#   /etc/zshenv    .zshenv    √            √                  √        √
+#   /etc/zprofile  .zprofile  √            x                  x        √
+#   /etc/zshrc     .zshrc     √            √                  x        √
+#   /etc/zlogin    .zlogin    √            x                  x        √
+#   /etc/zlogout   .zlogout   √            x                  x        √
+
 
 # Shortcut for dotfiles directory
 DOTFILES="$HOME/.dotfiles"

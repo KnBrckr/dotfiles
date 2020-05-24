@@ -1,7 +1,7 @@
 #!/bin/zsh
 # zshrc
 #
-# Zsh configuration file execution:
+# Zsh configuration files in order of execution:
 #   all users      user       login shell  interactive shell  scripts  Terminal.app
 #   /etc/zshenv    .zshenv    √            √                  √        √
 #   /etc/zprofile  .zprofile  √            x                  x        √
@@ -144,4 +144,3 @@ fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
