@@ -4,6 +4,7 @@
 #Thumbs.db
 
 # Other revision control systems
+.acignore
 .hg
 .hgcheck
 .hgignore
