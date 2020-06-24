@@ -1,0 +1,15 @@
+#!/usr/bin/zsh
+#
+# Create 4-up tmux environment
+
+if ! tmux has-session -t quad 2&> /dev/null; then
+	tmux new-session -d -s quad
+
+  tmux split-window -h -p 50
+  tmux split-window -v -p 50
+  tmux select-pane -t 0
+  tmux split-window -v -p 50
+  tmux select-pane -t 0
+fi
+
+tmux attach-session -t quad
