@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+#
+# Usage:
+# cflow -b --print-level <src-files> 2> /dev/null | python3 cflow2dot.py > tcp.dot
 
 import sys
 import re
