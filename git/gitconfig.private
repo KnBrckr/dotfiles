@@ -1,0 +1,6 @@
+[user]
+	name = 
+	email = 
+
+[include]
+  path = .dotfiles/git/gitconfig
