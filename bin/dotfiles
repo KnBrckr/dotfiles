@@ -136,6 +136,12 @@ if is_mac; then
 	fi
 fi
 
+# Install tmux plugin manager
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+	e_header "Installing tmux plugin manager"
+  ${DOTFILES_DIRECTORY}/bin/install_tmux_plugin_mgr
+fi
+
 link() {
 	# Make a backup of real file before trashing it
 	backup_file ${HOME}/${2}
