@@ -66,7 +66,6 @@ Vim plugins:
 
 * [syntastic](https://github.com/scrooloose/syntastic)
 * [vim-git](https://github.com/tpope/vim-git)
-* [vim-javascript](https://github.com/pangloss/vim-javascript)
 * [vim-less](https://github.com/groenewege/vim-less)
 * [vim-markdown](https://github.com/tpope/vim-markdown)
 * [nerdtree](https://github.com/preservim/nerdtree)
