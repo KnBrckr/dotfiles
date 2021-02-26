@@ -6,6 +6,9 @@
 " Disable Vi compatibility
 set nocompatible
 
+" Change update time (milliseconds) to more frequently update git gutter
+set updatetime=500
+
 " Markdown
 let g:markdown_fenced_languages = ['c', 'python', 'bash=sh', 'cmake']
 
