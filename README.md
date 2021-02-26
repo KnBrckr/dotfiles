@@ -65,7 +65,6 @@ Uses [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh/wiki) for zsh shell configu
 Vim plugins:
 
 * [syntastic](https://github.com/scrooloose/syntastic)
-* [vim-less](https://github.com/groenewege/vim-less)
 * [nerdtree](https://github.com/preservim/nerdtree)
 
 ### Custom OS X defaults
