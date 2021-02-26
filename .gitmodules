@@ -35,3 +35,6 @@
 [submodule "submodules/lolcat"]
 	path = submodules/lolcat
 	url = https://github.com/KnBrckr/lolcat.git
+[submodule "vim/pack/vendor/start/nerdtree"]
+	path = vim/pack/vendor/start/nerdtree
+	url = https://github.com/preservim/nerdtree.git
