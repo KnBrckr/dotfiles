@@ -64,7 +64,6 @@ Uses [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh/wiki) for zsh shell configu
 
 Vim plugins:
 
-* [mustache.vim](https://github.com/juvenn/mustache.vim)
 * [syntastic](https://github.com/scrooloose/syntastic)
 * [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 * [vim-git](https://github.com/tpope/vim-git)
