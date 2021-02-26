@@ -64,8 +64,6 @@ Uses [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh/wiki) for zsh shell configu
 
 Vim plugins:
 
-* [ctrlp.vim](https://github.com/kien/ctrlp.vim)
-* [html5.vim](https://github.com/othree/html5.vim)
 * [mustache.vim](https://github.com/juvenn/mustache.vim)
 * [syntastic](https://github.com/scrooloose/syntastic)
 * [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
@@ -74,7 +72,7 @@ Vim plugins:
 * [vim-javascript](https://github.com/pangloss/vim-javascript)
 * [vim-less](https://github.com/groenewege/vim-less)
 * [vim-markdown](https://github.com/tpope/vim-markdown)
-* [vim-pathogen](https://github.com/tpope/vim-pathogen)
+* [nerdtree](https://github.com/preservim/nerdtree)
 
 ### Custom OS X defaults
 
@@ -147,9 +145,9 @@ pathogen, then follow these steps while in the root of the superproject.
 
 ```bash
 # Add the new submodule
-git submodule add https://example.com/remote/path/to/repo.git vim/bundle/one-submodule
+git submodule add --depth 1 https://example.com/remote/path/to/repo.git vim/pack/vendor/start/one-submodule
 # Initialize and clone the submodule
-git submodule update --init
+git submodule update --depth 1 --init
 # Stage the changes
 git add vim/bundle/one-submodule
 # Commit the changes
@@ -158,6 +156,13 @@ git commit -m "Add a new submodule: one-submodule"
 
 
 ## Updating git submodules
+
+Updating packages:
+
+```bash
+git submodule update --depth 1 --remote --merge
+git commit
+```
 
 Updating individual submodules within the superproject:
 
@@ -176,6 +181,17 @@ git add vim/bundle/one-submodule
 git commit -m "Update submodule 'one-submodule' to the latest version"
 # Push to a remote repository
 git push origin master
+```
+
+## Removing git submodules
+
+Removing individual submodules within the superproject:
+```bash
+cd .dotfiles
+git submodule deinit vim/pack/vendor/start/<package>
+git rm vim/pack/vendor/start/<package>
+rm -Rf .git/modules/vim/pack/vendor/start/<package>
+git commit
 ```
 
 Now, if anyone updates their local repository from the remote repository, then
