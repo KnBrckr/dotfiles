@@ -18,24 +18,23 @@ run_brew() {
 		local list_formulae
 		local -a missing_formulae
 		local -a desired_formulae=(
-			'coreutils' # GNU core utilities (those that come with OS X are outdated)
-			'git'
-			'mercurial'
-			'wget'
-			'exiftool'
-			'composer'
-			'wp-cli'
-			'exiftool'
-			'telnet'
-			'sass/sass/sass'
-			'mariadb'
-			'php@7.1'
-			'wp-cli'
-			'jq' # CLI JSON processor
-			'swiftgen' # Swift Code Generation tool
 			'carthage' # Swift Library Dependency Manager
-			'tmux' #Terminal Mux
+			'composer'
+			'coreutils' # GNU core utilities (those that come with OS X are outdated)
 			'cowsay' # Just like it says... have some cowsay fun
+			'exiftool'
+			'git'
+			'jq' # CLI JSON processor
+			'mariadb'
+			'mercurial'
+			'node'
+			'php'
+			'sass/sass/sass'
+			'swiftgen' # Swift Code Generation tool
+			'telnet'
+			'tmux' #Terminal Mux
+			'wget'
+			'wp-cli'
 		)
 
 		for index in ${!desired_formulae[*]}
