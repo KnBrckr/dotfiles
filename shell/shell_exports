@@ -8,7 +8,7 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 fi
 
 # Use dotfile script as the default editor - Points at textmate
-export EDITOR="$DOTFILES/bin/editor"
+#export EDITOR="$DOTFILES/bin/editor"
 
 # Don't clear the screen after quitting a manual page
 export MANPAGER="less -X"
@@ -37,3 +37,4 @@ fi
 # Enable logging of aqbanking commands to /tmp/ofx.log
 # WARNING - Can expose passwords!!!
 # export AQOFX_LOG_COMM=1
+
