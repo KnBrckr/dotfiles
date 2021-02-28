@@ -50,11 +50,14 @@ run_brew() {
 			# Convert the array of missing formula into a list of space-separate strings
 			list_formulae=$( printf "%s " "${missing_formulae[@]}" )
 
-			e_header "Installing missing Homebrew formulae..."
+			e_header "Installing missing Homebrew formulae... $list_formulae"
 			# Install all missing formulae
-			brew install $list_formulae
+			if ! brew install $list_formulae ; then
+				e_error "Brew install failed"
+				exit 1
+			fi
 
-			[[ $? ]] && e_success "Done"
+			e_success "Done"
 		fi
 
 		# use latest rsync rather than out-dated OS X rsync
@@ -67,7 +70,7 @@ run_brew() {
 		printf "\n"
 		e_error "Error: Homebrew not found."
 		printf "Aborting...\n"
-		exit
+		exit 1
 	fi
 
 }
