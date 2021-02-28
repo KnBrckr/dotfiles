@@ -53,23 +53,19 @@ type_exists() {
 # Test whether a Homebrew formula is already installed
 # $1 - formula name (may include options)
 formula_exists() {
-    if $(brew list $1 >/dev/null); then
-        printf "%s already installed.\n" "$1"
+    if $(brew list $1 >/dev/null 2>&1); then
         return 0
     fi
 
-    e_warning "Missing formula: $1"
     return 1
 }
 
 # Test whether a PECL package is already installed
 pecl_pkg_exists() {
 	if $(pecl list $1 > /dev/null); then
-		printf "%s already installed.\n" "$1"
 		return 0
 	fi
 
-	w_warning "Missing package: $1"
 	return 1
 }
 
