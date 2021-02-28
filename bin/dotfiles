@@ -90,12 +90,19 @@ if is_mac; then
 		    exit 1
 		fi
 		e_header "Installing xcode command line tools"
+		e_header "Restart dotfiles after xcode install is complete."
 		xcode-select --install
+		exit 1
 	fi
 	
 	if ! gcc --version > /dev/null 2>&1 ; then
 		e_header "Can't use gcc, trying sudo xcodebuild -license"
-		sudo xcodebuild -license
+		if ! sudo xcodebuild -license; then
+			e_error "Failed xcode setup; attempting to install CLI tools"
+			e_header "Restart dotfiles after xcode install is complete."
+		  xcode-select --install
+			exit 1
+		fi
 	fi
 
 	# Check for Homebrew
