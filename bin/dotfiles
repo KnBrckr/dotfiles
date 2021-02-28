@@ -112,7 +112,7 @@ if is_mac; then
 	fi
 	
 	# Setup Launch Agents
-	enable_launch_agent com.pumastudios.keep-drives-spinning
+	# enable_launch_agent com.pumastudios.keep-drives-spinning
 fi
 
 # Conditionally sync with the remote repository
