@@ -1,5 +1,3 @@
-#!/usr/bin/zsh
-#
 # Create 4-up tmux environment
 
 if ! tmux has-session -t quad 2&> /dev/null; then
