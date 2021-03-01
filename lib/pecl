@@ -2,7 +2,7 @@
 
 run_pecl() {
 
-	# Check for Homebrew
+	# Check for Pecl
 	if type_exists 'pecl'; then
 		e_header "Updating any existing PECL packages..."
 		pecl upgrade
@@ -37,8 +37,6 @@ run_pecl() {
 	else
 		printf "\n"
 		e_error "Error: PECL not found."
-		printf "Aborting...\n"
-		exit
+		printf "Skipping...\n"
 	fi
-
 }
