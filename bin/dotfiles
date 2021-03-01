@@ -143,6 +143,12 @@ if is_mac; then
 	fi
 fi
 
+if command -v pyenv > /dev/null 2>&1 ; then
+	e_header "Python version active:"
+	pyenv version
+	echo "Use 'pyenv install <version> ; pyenv global <version>;' to update python version" 
+fi
+
 # Install tmux plugin manager
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	e_header "Installing tmux plugin manager"

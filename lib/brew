@@ -29,6 +29,7 @@ run_brew() {
 			'mercurial'
 			'node'
 			'php'
+			'pyenv'
 			'sass/sass/sass'
 			'swiftgen' # Swift Code Generation tool
 			'telnet'
