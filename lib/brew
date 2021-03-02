@@ -19,6 +19,7 @@ run_brew() {
 		local -a missing_formulae
 		local -a desired_formulae=(
 			'carthage' # Swift Library Dependency Manager
+			'cmake'
 			'composer'
 			'coreutils' # GNU core utilities (those that come with OS X are outdated)
 			'cowsay' # Just like it says... have some cowsay fun
@@ -34,6 +35,7 @@ run_brew() {
 			'swiftgen' # Swift Code Generation tool
 			'telnet'
 			'tmux' #Terminal Mux
+			'vim'  # Vim build supporting python
 			'wget'
 			'wp-cli'
 		)
