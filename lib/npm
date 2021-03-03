@@ -6,19 +6,47 @@ run_npm() {
     if type_exists 'npm'; then
         e_header "Installing Node.js packages..."
 
-        # List of npm packages
-		# TODO Want any node packages?
-        # local packages="bower gify grunt-cli jshint karma yo"
-		local packages="tiddlywiki"
+			# Globally instally node packages
+			local -a packages=(
+			  "tiddlywiki"
+			)
 
-		if [[ "" != $packages ]]; then
-			# Install packages globally and quietly
-			npm install $packages --global --quiet
-		else
-			echo "- Nothing to install"
-		fi
+			for pkg in "${packages[@]}" ; do
+				# Install packages globally and quietly
+				if ! npm_pkg_exists $pkg ; then
+  				if ! npm install $pkg --global --quiet ; then
+				  	e_error "npm install failed"
+				  	exit 1
+					fi
+				fi
+			done
 
-        [[ $? ]] && e_success "Done"
+			echo "Installing coc.nvim extensions ..."
+
+			local -a packages=(
+				'coc-json'
+			)
+
+			# coc.nvim packages are installed locally in ~/.config/coc/extensions
+			local save_dir=`pwd`
+			mkdir -p ~/.config/coc/extensions
+			cd ~/.config/coc/extensions
+			if [ ! -f package.json ]
+			then
+				echo '{"dependencies":{}}' > package.json
+			fi
+
+			for pkg in "${packages[@]}"
+			do
+				if ! npm_pkg_exists $pkg ; then
+					if ! npm install $pkg --global-style --ignore-scripts --no-bin-links --no-package-lock --omit=dev ; then
+						e_error "npm install failed"
+						exit 1
+					fi
+				fi
+			done
+			cd $save_dir
+
     else
         printf "\n"
         e_error "Error: npm not found."
@@ -26,4 +54,13 @@ run_npm() {
         exit
     fi
 
+}
+
+# Test if an npm package exists
+npm_pkg_exists() {
+	if $(npm list -g $1 > /dev/null 2>&1) || $(npm list $1 > /dev/null 2>&1)  ; then
+		return 0
+	fi
+
+	return 1
 }
