@@ -144,15 +144,14 @@ if has("autocmd")
     autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt :call StripTrailingWhitespace()
 endif
 
+if (has("termguicolors"))
+	set termguicolors
+endif
+
 if has("syntax")
-    " Enable syntax highlighting
     syntax enable
-    " Set 256 color terminal support
-    set t_Co=256
-    " Set light background
-    set background=light
-    " Set colorscheme
-    silent! colorscheme desert
+    set background=dark
+    silent! colorscheme darkblue
 endif
 
 if has("cmdline_info")
