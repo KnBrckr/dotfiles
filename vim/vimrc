@@ -46,9 +46,19 @@ endfunction
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" Use [h and ]h to navigate git hunks
+nmap <silent> [h <Plug>(coc-git-prevchunk)
+nmap <silent> ]h <Plug>(coc-git-nextchunk)
+
+" Show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+
+" Stage the current chunk
+nmap ga :CocCommand git.chunkStage <CR>
+
 " Use `[c` and `]c` to navigate diagnostics
-"nmap <silent> [c <Plug>(coc-diagnostic-prev)
-"nmap <silent> ]c <Plug>(coc-diagnostic-next)
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
