@@ -6,25 +6,30 @@ run_npm() {
     if type_exists 'npm'; then
         e_header "Installing Node.js packages..."
 
-			# Globally instally node packages
-			local -a packages=(
-			  "tiddlywiki"
-			)
+			if [ -w /usr/local/lib ]; then
+  			# Globally instally node packages
+  			local -a packages=(
+  			  "tiddlywiki"
+  			)
 
-			for pkg in "${packages[@]}" ; do
-				# Install packages globally and quietly
-				if ! npm_pkg_exists $pkg ; then
-  				if ! npm install $pkg --global --quiet ; then
-				  	e_error "npm install failed"
-				  	exit 1
-					fi
-				fi
-			done
+  			for pkg in "${packages[@]}" ; do
+  				# Install packages globally and quietly
+  				if ! npm_pkg_exists $pkg ; then
+    				if ! npm install $pkg --global --quiet ; then
+	  			  	e_error "npm install failed"
+	  			  	exit 1
+	  				fi
+	  			fi
+	  		done
+			else
+				e_error "No write access to /usr/local/lib - skipping global node packages"
+			fi
 
 			echo "Installing coc.nvim extensions ..."
 
 			local -a packages=(
 				'coc-json'
+				'coc-sh'
 			)
 
 			# coc.nvim packages are installed locally in ~/.config/coc/extensions

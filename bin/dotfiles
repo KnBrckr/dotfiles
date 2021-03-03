@@ -136,12 +136,13 @@ if is_mac; then
 		e_header "Updating packages..."
 		# Install Homebrew formulae
 		run_brew
-		# Install npm packages
-		run_npm
 		# Install PECL packages
 		run_pecl
 	fi
 fi
+
+# Install npm packages
+run_npm
 
 if command -v pyenv > /dev/null 2>&1 ; then
 	e_header "Python version active:"
