@@ -28,7 +28,8 @@ run_npm() {
 			echo "Installing coc.nvim extensions ..."
 
 			local -a packages=(
-			  'cod-git'
+				'coc-cmake'
+			  'coc-git'
 				'coc-json'
 				'coc-sh'
 				'coc-snippets'
