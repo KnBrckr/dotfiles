@@ -31,6 +31,7 @@ run_npm() {
 			  'cod-git'
 				'coc-json'
 				'coc-sh'
+				'coc-snippets'
 			)
 
 			# coc.nvim packages are installed locally in ~/.config/coc/extensions
