@@ -25,3 +25,6 @@
 [submodule "vim/pack/vendor/start/vim-snippets"]
 	path = vim/pack/vendor/start/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule "vim/pack/vendor/start/vim-lsp-cxx-highlight"]
+	path = vim/pack/vendor/start/vim-lsp-cxx-highlight
+	url = https://github.com/jackguo380/vim-lsp-cxx-highlight.git
