@@ -269,3 +269,10 @@ nnoremap Y y$
 if filereadable(glob("$HOME/.vimrc.local"))
     source $HOME/.vimrc.local
 endif
+
+function! JoinDefinitionFunc() range
+	silent execute a:firstline . ',' . a:lastline . 's/\/\/.*$//'
+	silent execute a:firstline . ',' . a:lastline . 'join'
+endfunction
+command! -range JoinDefinition <line1>,<line2> call JoinDefinitionFunc()
+
