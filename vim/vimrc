@@ -228,8 +228,8 @@ set softtabstop=2
 set tabstop=2
 " Expand tab to spaces
 set noexpandtab
-" Enable line numbers
-set number
+" Enable relative line numbers
+set number relativenumber
 " Highlight current line
 set cursorline
 " Start scrolling three lines before the horizontal window border
