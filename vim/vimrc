@@ -276,3 +276,23 @@ function! JoinDefinitionFunc() range
 endfunction
 command! -range JoinDefinition <line1>,<line2> call JoinDefinitionFunc()
 
+" Configure NERDTree
+
+" start with tree on empty vim session
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Toggle display of NERDTree
+nnoremap <Leader>t :NERDTreeToggle<CR>
+
+" Find current file in NERDTree
+nnoremap <Leader>v :NERDTreeFind<CR>
+
+" Automatically close NERDTree when a file is opened
+let NERDTreeQuitOnOpen = 1
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Use installed nerd fonts for git status symbols in NERDTree
+let g:NERDTreeGitStatusUseNerdFonts = 1

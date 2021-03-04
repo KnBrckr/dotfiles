@@ -28,3 +28,9 @@
 [submodule "vim/pack/vendor/start/vim-lsp-cxx-highlight"]
 	path = vim/pack/vendor/start/vim-lsp-cxx-highlight
 	url = https://github.com/jackguo380/vim-lsp-cxx-highlight.git
+[submodule "vim/pack/vendor/start/vim-devicons"]
+	path = vim/pack/vendor/start/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons.git
+[submodule "vim/pack/vendor/start/nerdtree-git-plugin"]
+	path = vim/pack/vendor/start/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
