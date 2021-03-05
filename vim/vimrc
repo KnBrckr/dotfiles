@@ -262,9 +262,6 @@ nnoremap <C-y> 3<C-y>
 vnoremap <C-e> 3<C-e>
 vnoremap <C-y> 3<C-y>
 
-" Make `Y` work from the cursor to the end of line (which is more logical)
-nnoremap Y y$
-
 function! JoinDefinitionFunc() range
 	silent execute a:firstline . ',' . a:lastline . 's/\/\/.*$//'
 	silent execute a:firstline . ',' . a:lastline . 'join'
