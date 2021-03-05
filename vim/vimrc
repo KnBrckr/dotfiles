@@ -271,6 +271,9 @@ function! JoinDefinitionFunc() range
 endfunction
 command! -range JoinDefinition <line1>,<line2> call JoinDefinitionFunc()
 
+" Configure FZF - Fuzzy finder. requires fzf binary be installed
+nnoremap <C-p> :FZF<CR>
+
 " Configure NERDTree
 
 " start with tree on empty vim session

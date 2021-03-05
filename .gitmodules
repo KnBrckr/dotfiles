@@ -40,3 +40,6 @@
 [submodule "vim/pack/vendor/start/cmake4vim"]
 	path = vim/pack/vendor/start/cmake4vim
 	url = https://github.com/ilyachur/cmake4vim.git
+[submodule "vim/pack/vendor/start/fzf"]
+	path = vim/pack/vendor/start/fzf
+	url = https://github.com/junegunn/fzf.git
