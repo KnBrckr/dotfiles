@@ -64,9 +64,25 @@ Uses [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh/wiki) for zsh shell configu
 
 Vim plugins:
 
+* [cmake4vim](https://github.com/ilyachur/cmake4vim)
+* [coc.nvim](https://github.com/neoclide/coc.nvim)
+* [editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
+* [fzf](https://github.com/junegunn/fzf)
+* [fzf.vim](https://github.com/junegunn/fzf.vim)
+* [lightline](https://github.com/itchyny/lightline.vim)
 * [nerdtree](https://github.com/preservim/nerdtree)
-* [syntastic](https://github.com/scrooloose/syntastic)
-* [vim-gitgutter](https://github.com/airblade/vim-gitgutter)
+* [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)
+* [splitjoin](https://github.com/AndrewRadev/splitjoin.vim)
+* [tcomment](https://github.com/tomtom/tcomment_vim)
+* [vim-devicons](https://github.com/ryanoasis/vim-devicons)
+* [vim-dispatch](https://github.com/tpope/vim-dispatch) Used by cmake4vim to launch async shells
+* [vim-doge](https://github.com/kkoomen/vim-doge)
+* [vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)
+* [vim-snippets](https://github.com/honza/vim-snippets)
+
+#### FZF Notes
+
+After install, use :call fzf#install() to update fzf binary to latest if necessary
 
 ### Custom OS X defaults
 

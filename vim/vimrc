@@ -272,13 +272,18 @@ endfunction
 command! -range JoinDefinition <line1>,<line2> call JoinDefinitionFunc()
 
 " Configure FZF - Fuzzy finder. requires fzf binary be installed
-nnoremap <C-p> :FZF<CR>
+
+" Display file list based on git repo
+nnoremap <C-p> :GFiles<CR>
+
+" Display Buffer list for quick navigation
+nnoremap <Leader>b :Buffers<CR>
 
 " Configure NERDTree
 
-" start with tree on empty vim session
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" start with NERDTree open on empty vim session
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Toggle display of NERDTree
 nnoremap <Leader>t :NERDTreeToggle<CR>

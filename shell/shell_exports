@@ -24,6 +24,9 @@ export LC_CTYPE=en_US.UTF-8
 # Turn on colors in terminal
 # export CLICOLOR=1
 
+# Setup FZF
+export FZF_DEFAULT_COMMAND='ag -u -g ""'
+
 # Location of Wordpress files for phpunit testing
 export WP_TESTS_DIR=${HOME}/tmp/wordpress-tests-lib
 

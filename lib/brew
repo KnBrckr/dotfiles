@@ -35,6 +35,7 @@ run_brew() {
 			'sass/sass/sass'
 			'swiftgen' # Swift Code Generation tool
 			'telnet'
+			'the_silver_searcher' # Fast grep and find alternative
 			'tmux' #Terminal Mux
 			'vim'  # Vim build supporting python
 			'wget'
