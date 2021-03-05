@@ -265,11 +265,6 @@ vnoremap <C-y> 3<C-y>
 " Make `Y` work from the cursor to the end of line (which is more logical)
 nnoremap Y y$
 
-" Load local machine settings if they exist
-if filereadable(glob("$HOME/.vimrc.local"))
-    source $HOME/.vimrc.local
-endif
-
 function! JoinDefinitionFunc() range
 	silent execute a:firstline . ',' . a:lastline . 's/\/\/.*$//'
 	silent execute a:firstline . ',' . a:lastline . 'join'
@@ -296,3 +291,9 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 
 " Use installed nerd fonts for git status symbols in NERDTree
 let g:NERDTreeGitStatusUseNerdFonts = 1
+
+" Load local machine settings if they exist
+if filereadable(glob("$HOME/.vimrc.local"))
+    source $HOME/.vimrc.local
+endif
+
