@@ -1,0 +1,11 @@
+# Create 3-up tmux environment with long panel on left
+
+if ! tmux has-session -t 3-up 2&> /dev/null; then
+	tmux new-session -d -s 3-up
+
+  tmux split-window -h -p 50
+  tmux split-window -v -p 50
+  tmux select-pane -t 0
+fi
+
+tmux attach-session -t 3-up
