@@ -26,17 +26,23 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
+" Show matching braces when cursor is over them
+set showmatch
+
+" Enable mouse access
+set mouse+=a
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completio
@@ -70,11 +76,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	else
+		call CocAction('doHover')
+	endif
 endfunction
 
 " Highlight symbol under cursor on CursorHold
@@ -88,11 +94,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+	autocmd!
+	" Setup formatexpr specified filetype(s).
+	autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+	" Update signature help on jump placeholder
+	autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
@@ -142,16 +148,21 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Markdown
 let g:markdown_fenced_languages = ['c', 'python', 'bash=sh', 'cmake']
 
-if has("autocmd")
-    " Load files for specific filetypes
-    filetype on
-    filetype indent on
-    filetype plugin on
+" Use system clipboard
+if has("clipboard")
+	set clipboard=unnamed
+endif
 
-    " Languages with specific tabs/space requirements
-    autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
-    " Automatically strip trailing whitespace on file save
-    autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt :call StripTrailingWhitespace()
+if has("autocmd")
+	" Load files for specific filetypes
+	filetype on
+	filetype indent on
+	filetype plugin on
+
+	" Languages with specific tabs/space requirements
+	autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
+	" Automatically strip trailing whitespace on file save
+	autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt :call StripTrailingWhitespace()
 endif
 
 if (has("termguicolors"))
@@ -159,56 +170,56 @@ if (has("termguicolors"))
 endif
 
 if has("syntax")
-    syntax enable
-    set background=dark
-    silent! colorscheme darkblue
+	syntax enable
+	set background=dark
+	silent! colorscheme darkblue
 endif
 
 if has("cmdline_info")
-    " Show the cursor line and column number
-    set ruler
-    " Show partial commands in status line
-    set showcmd
-    " Show whether in insert or replace mode
-    set showmode
+	" Show the cursor line and column number
+	set ruler
+	" Show partial commands in status line
+	set showcmd
+	" Show whether in insert or replace mode
+	set showmode
 endif
 
 if has('statusline')
-    " Always show status line
-    set laststatus=2
-    " Broken down into easily includeable segments
-    " Filename
-    set statusline=%<%f\
-    " Options
-    set statusline+=%w%h%m%r
-    " Current dir
-    set statusline+=\ [%{getcwd()}]
-    " Right aligned file nav info
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%
+	" Always show status line
+	set laststatus=2
+	" Broken down into easily includeable segments
+	" Filename
+	set statusline=%<%f\
+	" Options
+	set statusline+=%w%h%m%r
+	" Current dir
+	set statusline+=\ [%{getcwd()}]
+	" Right aligned file nav info
+	set statusline+=%=%-14.(%l,%c%V%)\ %p%%
 endif
 
 if has("wildmenu")
-    " Show a list of possible completions
-    set wildmenu
-    " Tab autocomplete longest possible part of a string, then list
-    set wildmode=longest,list
-    if has ("wildignore")
-        set wildignore+=*.a,*.pyc,*.o,*.orig
-        set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png
-        set wildignore+=.DS_Store,.git,.hg,.svn
-        set wildignore+=*~,*.sw?,*.tmp
-    endif
+	" Show a list of possible completions
+	set wildmenu
+	" Tab autocomplete longest possible part of a string, then list
+	set wildmode=longest,list
+	if has ("wildignore")
+		set wildignore+=*.a,*.pyc,*.o,*.orig
+		set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png
+		set wildignore+=.DS_Store,.git,.hg,.svn
+		set wildignore+=*~,*.sw?,*.tmp
+	endif
 endif
 
 if has("extra_search")
-    " Highlight searches [use :noh to clear]
-    set hlsearch
-    " Highlight dynamically as pattern is typed
-    set incsearch
-    " Ignore case of searches...
-    set ignorecase
-    " ...unless has mixed case
-    set smartcase
+	" Highlight searches [use :noh to clear]
+	set hlsearch
+	" Highlight dynamically as pattern is typed
+	set incsearch
+	" Ignore case of searches...
+	set ignorecase
+	" ...unless has mixed case
+	set smartcase
 endif
 
 " Backspace through everything in INSERT mode
@@ -249,7 +260,7 @@ set listchars+=eol:¬
 set backupdir=$HOME/.vim/backups
 set directory=$HOME/.vim/swaps
 if exists("&undodir")
-    set undodir=$HOME/.vim/undo
+	set undodir=$HOME/.vim/undo
 endif
 set viminfo+=n$HOME/.vim/.viminfo
 
@@ -299,6 +310,6 @@ let g:NERDTreeGitStatusUseNerdFonts = 1
 
 " Load local machine settings if they exist
 if filereadable(glob("$HOME/.vimrc.local"))
-    source $HOME/.vimrc.local
+	source $HOME/.vimrc.local
 endif
 
