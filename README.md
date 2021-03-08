@@ -77,6 +77,7 @@ Vim plugins:
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 * [vim-dispatch](https://github.com/tpope/vim-dispatch) Used by cmake4vim to launch async shells
 * [vim-doge](https://github.com/kkoomen/vim-doge)
+* [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags) Requires ctags support such as exuberant-ctags.
 * [vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)
 * [vim-snippets](https://github.com/honza/vim-snippets)
 
