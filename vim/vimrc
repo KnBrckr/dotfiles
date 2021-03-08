@@ -296,6 +296,13 @@ nnoremap <C-y> 3<C-y>
 vnoremap <C-e> 3<C-e>
 vnoremap <C-y> 3<C-y>
 
+" Quickfix navigation
+" [q jumps to previous quick fix list item
+" ]q jumps to next quick fix list item
+nnoremap [q :cp<cr>
+nnoremap ]q :cn<cr>
+
+" Join selected range removing any trailing // comments within the line
 function! JoinDefinitionFunc() range
 	silent execute a:firstline . ',' . a:lastline . 's/\/\/.*$//'
 	silent execute a:firstline . ',' . a:lastline . 'join'
@@ -309,6 +316,22 @@ nnoremap <C-p> :GFiles<CR>
 
 " Display Buffer list for quick navigation
 nnoremap <Leader>b :Buffers<CR>
+
+" AgIn: Start ag in the specified directory
+"
+" e.g.
+"   :AgIn .. foo
+function! s:ag_in(bang, ...)
+	let start_dir=expand(a:1)
+
+	if !isdirectory(start_dir)
+		throw 'not a valid directory: ' .. start_dir
+	endif
+	" Press `?' to enable preview window.
+	call fzf#vim#ag(join(a:000[1:], ' '), fzf#vim#with_preview({'dir': start_dir}, 'right:50%:hidden', '?'), a:bang)
+endfunction
+
+command! -bang -nargs=+ -complete=dir AgIn call s:ag_in(<bang>0, <f-args>)
 
 " Configure NERDTree
 
