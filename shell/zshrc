@@ -124,6 +124,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Set vi mode for shell command editing
+bindkey -v
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
