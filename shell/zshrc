@@ -116,7 +116,6 @@ plugins=(capistrano
 				 docker 
 				 git 
 				 osx 
-				 textmate
 				 ubuntu
 			  )
 
