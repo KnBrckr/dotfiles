@@ -81,6 +81,7 @@ Vim plugins:
 * [vim-fugitive](https://github.com/tpope/vim-fugitive) Git management
 * [vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)
 * [vim-snippets](https://github.com/honza/vim-snippets)
+* [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
 
 #### FZF Notes
 
