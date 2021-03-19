@@ -31,6 +31,7 @@ run_npm() {
 				'coc-cmake'
 			  'coc-git'
 				'coc-json'
+				'coc-pairs'   # Insert matched pairs (), '', etc 
 				'coc-pyright' # Python support
 				'coc-sh'
 				'coc-snippets'
