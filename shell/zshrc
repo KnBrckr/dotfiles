@@ -117,14 +117,12 @@ plugins=(capistrano
 				 git 
 				 osx 
 				 ubuntu
+				 vi-mode
 			  )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# Set vi mode for shell command editing
-bindkey -v
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
