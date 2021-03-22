@@ -124,6 +124,7 @@ else
 	# Pull down the latest changes
 	git pull --rebase origin master
 	# Update submodules
+	e_header "Updating submodules"
 	git submodule update --recursive --init --quiet
 	set +e # Reset exit on error
 fi
