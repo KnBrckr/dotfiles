@@ -311,6 +311,16 @@ vnoremap <C-y> 3<C-y>
 nnoremap [q :cp<cr>
 nnoremap ]q :cn<cr>
 
+" Quickfix list error format for ctest errors using CMocka environment
+"
+" General assertion failure:
+"   [  ERROR   ] --- /etc/opt/ilts/success/config.cfg"" != " "/etc/opt/ilts/lsuccess/config.cfg"
+"   [   LINE   ] --- ../Sources/tests/lib/libDT2_test/test_paths.c:103: error: Failure!
+set efm^=%E[\ \ %trror\ \ \ ]\ ---\ %m,%Z[\ \ \ line\ \ \ ]\ ---\ %f:%l:\ %.%#
+" fail() Error format: 
+"   [ ERROR ] --- [   LINE   ] --- <path>|<line>| error: <text>
+set efm^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ %m
+
 " Join selected range removing any trailing // comments within the line
 function! JoinDefinitionFunc() range
 	silent execute a:firstline . ',' . a:lastline . 's/\/\/.*$//'
