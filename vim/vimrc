@@ -2,6 +2,12 @@
 
 " !silent is used to suppress error messages if the config line
 " references plugins/colorschemes that might be missing
+"
+" Plugins are loaded AFTER vimrc runs. Replacing commands and key mappings
+" must be done using the form to run after all VIM initialization and loading
+" is complete:
+"
+"   autocmd VimEnter ...
 
 " Disable Vi compatibility
 set nocompatible
@@ -312,6 +318,9 @@ vnoremap <C-y> 3<C-y>
 " ]q jumps to next quick fix list item
 nnoremap [q :cp<cr>
 nnoremap ]q :cn<cr>
+
+" Redefine CTest command to include --output-on-failure
+autocmd VimEnter * command! -nargs=? CTest :call cmake4vim#CTest('--output-on-failure', <f-args>)
 
 " Quickfix list error format for ctest errors using CMocka environment
 "
