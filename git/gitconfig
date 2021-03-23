@@ -54,6 +54,24 @@
 	# Displays committers in descending order of number of commits
 	who = shortlog --numbered --summary --email --no-merges --since="3 months"
 
+  # List files changed since REVIEW_BASE
+  files = !git diff --name-only $(git merge-base HEAD \"${REVIEW_BASE:-master}\")
+
+  # Same as files but with diff --stat
+  stat = !git diff --stat $(git merge-base HEAD \"${REVIEW_BASE:-master}\")
+
+  # review and reviewone below are configured to use coc.git
+  # The final paramter call coc#config ... should be replace with following for vim.gitgutter
+  #    +\"let g:gitgutter_diff_base = '${REVIEW_BASE:-master}'\"
+
+  # Open all files changed since REVIEW_BASE in vim tabs, use vim-fugitive's :Gdiff
+  # on each tab and tell coc.git to show +/- based on REVIEW_BASE. 
+  review = !vim -p $(git files) +\"tabdo Gvdiffsplit ${REVIEW_BASE:-master}\" +\"call "coc#config"('git',{'diffRevision': '${REVIEW_BASE:-master}'})\"
+
+  # Same as review but only open the provided files
+  #   git reviewone foo.c bar.c
+  reviewone = !vim -p +\"tabdo Gvdiffsplit ${REVIEW_BASE:-master}\" +\"call "coc#config"('git',{'diffRevision': '${REVIEW_BASE:-master}'})\"
+
 [color]
 	# color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
 	ui = auto
