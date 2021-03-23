@@ -18,7 +18,9 @@ prepend_list PATH "dirs_to_prepend[@]"
 declare -a dirs_to_append=(
     "$HOME/bin"
     "$HOME/.dotfiles/bin"
+    "$HOME/go/bin"
     "$HOME/.local/bin"
+    "$HOME/.npm-packages/bin"
 )
 
 append_list PATH "dirs_to_append[@]"

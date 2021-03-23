@@ -2,30 +2,40 @@
 	"diagnostic.errorSign": "",
 	"diagnostic.warningSign": "",
 	"diagnostic.infoSign": "",
-    "languageserver": {
-        "ccls": {
-            "command": "ccls",
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                ".ccls",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
-            "initializationOptions": {
-                "cache": {
-                    "directory": "/tmp/ccls"
-                },
-								"highlight": { "lsRanges" : true }
-            }
-        }
-    },
-		"git.removedSign.text": "-"
-
+	"languageserver": {
+		"ccls": {
+			"command": "ccls",
+			"filetypes": [
+				"c",
+				"cpp",
+				"objc",
+				"objcpp"
+			],
+			"rootPatterns": [
+				".ccls",
+				"compile_commands.json",
+				".vim/",
+				".git/",
+				".hg/"
+			],
+			"initializationOptions": {
+				"cache": {
+					"directory": "/tmp/ccls"
+				},
+				"highlight": {
+					"lsRanges": true
+				}
+			}
+		},
+		"efm": {
+			"command": "efm-langserver",
+			"args": [],
+			"filetypes": [
+				"vim",
+				"markdown",
+				"yaml"
+			]
+		}
+	},
+	"git.removedSign.text": "-"
 }

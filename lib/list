@@ -5,23 +5,22 @@
 run_list() {
 
 cat <<EOT
-
-OS X dotfiles - Nicolas Gallagher - http://nicolasgallagher.com/
+OS X dotfiles - Ken Brucker
 
 Additional software to install
 
+golang
+go get github.com/mattn/efm-langserver
+pip install vim-vint
+
 Browsers:
-    Google Chrome
 
 Development:
-	Text Mate
+  Xcode
 	
 Other:
 	1Password
-    Dropbox
-	exiftool
-    ?Network Connect
-    VLC
+	Dropbox
 EOT
 
 }
