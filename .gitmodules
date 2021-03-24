@@ -58,3 +58,6 @@
 [submodule "vim/pack/vendor/opt/papercolor-theme"]
 	path = vim/pack/vendor/opt/papercolor-theme
 	url = https://github.com/NLKNguyen/papercolor-theme.git
+[submodule "vim/pack/vendor/start/vim-abolish"]
+	path = vim/pack/vendor/start/vim-abolish
+	url = https://github.com/tpope/vim-abolish.git

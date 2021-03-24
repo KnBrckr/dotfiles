@@ -9,7 +9,7 @@ Tools](https://developer.apple.com/downloads) and may overwrite existing
 dotfiles in your HOME and `.vim` directories.
 
 ```bash
-$ bash -c "$(curl -fsSL raw.github.com/KnBrckr/dotfiles/master/bin/dotfiles)"
+% bash -c "$(curl -fsSL raw.github.com/KnBrckr/dotfiles/master/bin/dotfiles)"
 ```
 
 N.B. If you wish to fork this project and maintain your own dotfiles, you must
@@ -28,39 +28,25 @@ You should run the update when:
 Run the dotfiles command:
 
 ```bash
-$ dotfiles
+% dotfiles
 ```
 
 Options:
 
-<table>
-    <tr>
-        <td><code>-h</code>, <code>--help</code></td>
-        <td>Help</td>
-    </tr>
-    <tr>
-        <td><code>-l</code>, <code>--list</code></td>
-        <td>List of additional applications to install</td>
-    </tr>
-    <tr>
-        <td><code>--no-packages</code></td>
-        <td>Suppress package updates</td>
-    </tr>
-    <tr>
-        <td><code>--no-sync</code></td>
-        <td>Suppress pulling from the remote repository</td>
-    </tr>
-</table>
+| Option | Description |
+|----|----|
+|`-h`, `--help`|Help|
+|`-l`, `--list`|List of additional applications to install|
+|`--no-packages`|Suppress package updates|
+|`--no-sync`|Suppress pulling dotfiles from report repository|
 
+## Features
 
-## Features ##
-
-### Oh My Zsh! ###
+### Oh My Zsh
 
 Uses [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh/wiki) for zsh shell configuration
 
 ### Automatic software installation
-
 
 Vim plugins:
 
@@ -75,11 +61,14 @@ Vim plugins:
 * [papercolor-theme](https://github.com/NLKNguyen/papercolor-theme)
 * [splitjoin](https://github.com/AndrewRadev/splitjoin.vim)
 * [tcomment](https://github.com/tomtom/tcomment_vim)
+* [vim-abolish](https://github.com/tpope/vim-abolish)
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons)
-* [vim-dispatch](https://github.com/tpope/vim-dispatch) Used by cmake4vim to launch async shells
+* [vim-dispatch](https://github.com/tpope/vim-dispatch)
+  Used by cmake4vim to launch async shells
 * [vim-doge](https://github.com/kkoomen/vim-doge)
 * [vim-fugitive](https://github.com/tpope/vim-fugitive) Git management
-* [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags) Requires ctags support such as exuberant-ctags.
+* [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags)
+  Requires ctags support such as exuberant-ctags.
 * [vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)
 * [vim-snippets](https://github.com/honza/vim-snippets)
 * [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
@@ -94,25 +83,8 @@ Custom OS X settings can be applied during the `dotfiles` process. They can
 also be applied independently by running the following command:
 
 ```bash
-$ osxdefaults
+% osxdefaults
 ```
-
-### Bootable backup-drive script
-
-Last time this was tested it was not working.
-
-These dotfiles include a script that uses `rync` to incrementally back up your
-data to an external, bootable clone of your computer's internal drive. First,
-make sure that the value of `DST` in the `bin/backup` script matches the name
-of your backup-drive. Then run the following command:
-
-```bash
-$ backup
-```
-
-For more information on how to setup your backup-drive, please read the
-preparatory steps in this post on creating a [Mac OS X bootable backup
-drive](http://nicolasgallagher.com/mac-osx-bootable-backup-drive-with-rsync/).
 
 ### Local/private Bash and Vim configuration
 
@@ -151,7 +123,6 @@ N.B. Because the `git/gitconfig` file is copied to `~/.gitconfig`, any private
 git configuration specified in `~/.bash_profile.local` will not be committed to
 your dotfiles repository.
 
-
 ## Adding new git submodules
 
 If you want to add more git submodules, e.g., Vim plugins to be managed by
@@ -167,7 +138,6 @@ git add vim/bundle/one-submodule
 # Commit the changes
 git commit -m "Add a new submodule: one-submodule"
 ```
-
 
 ## Updating git submodules
 
@@ -200,6 +170,7 @@ git push origin master
 ## Removing git submodules
 
 Removing individual submodules within the superproject:
+
 ```bash
 cd .dotfiles
 git submodule deinit vim/pack/vendor/start/<package>
@@ -213,14 +184,13 @@ using `git submodule update` will update the submodules (that have been
 initialized) in their local repository. N.B This will wipe away any local
 changes made to those submodules.
 
-
 ## Acknowledgements
 
 Inspiration and code was taken from many sources, including:
 
 * [Moving to zsh](https://scriptingosx.com/2019/06/moving-to-zsh/)
-* [@](https://github.com/necolas) (Nicolas Gallagher)
-  [https://github.com/necolas/dotfiles]()
+* [@nicholas](https://github.com/necolas) (Nicolas Gallagher)
+  [https://github.com/necolas/dotfiles](https://github.com/necolas/dotfiles)
 * [@mathiasbynens](https://github.com/mathiasbynens) (Mathias Bynens)
   [https://github.com/mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
 * [@tejr](https://github.com/tejr) (Tom Ryder)
