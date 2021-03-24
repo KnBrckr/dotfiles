@@ -1,6 +1,6 @@
 # Create 3-up tmux environment with long panel on left
 
-if ! tmux has-session -t 3-up 2&> /dev/null; then
+if ! tmux has-session -t 3-up ; then
 	tmux new-session -d -s 3-up
 
   tmux split-window -h -p 50
