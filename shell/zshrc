@@ -36,8 +36,8 @@ fi
 load_dotfiles
 unset load_dotfiles
 
-# By default, want group able to see files
-umask 0002
+# By default, want group able to see files, not write
+umask 0022
 
 # add private identities to the ssh key-agent for port forwarding of ssh credentials
 ssh-add >> /dev/null 2>&1
