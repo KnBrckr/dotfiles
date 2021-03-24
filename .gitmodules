@@ -55,3 +55,6 @@
 [submodule "vim/pack/vendor/start/vim-tmux-navigator"]
 	path = vim/pack/vendor/start/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "vim/pack/vendor/opt/papercolor-theme"]
+	path = vim/pack/vendor/opt/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme.git

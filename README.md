@@ -72,13 +72,14 @@ Vim plugins:
 * [lightline](https://github.com/itchyny/lightline.vim)
 * [nerdtree](https://github.com/preservim/nerdtree)
 * [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)
+* [papercolor-theme](https://github.com/NLKNguyen/papercolor-theme)
 * [splitjoin](https://github.com/AndrewRadev/splitjoin.vim)
 * [tcomment](https://github.com/tomtom/tcomment_vim)
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 * [vim-dispatch](https://github.com/tpope/vim-dispatch) Used by cmake4vim to launch async shells
 * [vim-doge](https://github.com/kkoomen/vim-doge)
-* [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags) Requires ctags support such as exuberant-ctags.
 * [vim-fugitive](https://github.com/tpope/vim-fugitive) Git management
+* [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags) Requires ctags support such as exuberant-ctags.
 * [vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)
 * [vim-snippets](https://github.com/honza/vim-snippets)
 * [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
