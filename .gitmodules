@@ -61,3 +61,6 @@
 [submodule "vim/pack/vendor/start/vim-abolish"]
 	path = vim/pack/vendor/start/vim-abolish
 	url = https://github.com/tpope/vim-abolish.git
+[submodule "vim/pack/vendor/opt/vim-colors-solarized"]
+	path = vim/pack/vendor/opt/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git

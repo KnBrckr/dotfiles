@@ -62,6 +62,7 @@ Vim plugins:
 * [splitjoin](https://github.com/AndrewRadev/splitjoin.vim)
 * [tcomment](https://github.com/tomtom/tcomment_vim)
 * [vim-abolish](https://github.com/tpope/vim-abolish)
+* [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 * [vim-dispatch](https://github.com/tpope/vim-dispatch)
   Used by cmake4vim to launch async shells

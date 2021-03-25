@@ -210,7 +210,15 @@ endif
 if has("syntax")
 	syntax enable
 	set background=dark
-	silent! colorscheme PaperColor
+	packadd! vim-colors-solarized
+	silent! colorscheme solarized
+
+	" Syntax errors displayed by coc.nvim have formatting that conflicts with
+	" theme - override
+	hi link cocErrorFloat Error
+
+	" Use subtle background color change for cursor line highlight
+	autocmd vimStartup BufEnter * hi CursorLine ctermbg=0 guibg=Grey10
 endif
 
 if has("cmdline_info")
