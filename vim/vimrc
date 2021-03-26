@@ -154,6 +154,21 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+" Yank first diagnostic message for current line into the paste buffer.
+nnoremap <silent> <leader>diag :call StatusDiagnosticToClipboard()<CR>
+function! StatusDiagnosticToClipboard()
+	call setreg('+','')
+	let diagList=CocAction('diagnosticList')
+	let line=line('.')
+	for diagItem in diagList
+		if line == diagItem['lnum']
+			let str=diagItem['message']
+			call setreg('+',str)
+			return
+		endif
+	endfor
+endfunction
+
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
