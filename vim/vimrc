@@ -234,7 +234,7 @@ if has("syntax")
 	hi link cocErrorFloat Error
 
 	" Use subtle background color change for cursor line highlight
-	autocmd vimStartup BufEnter * hi CursorLine ctermbg=0 guibg=Grey10
+	autocmd vimStartup BufEnter * hi CursorLine ctermbg=0 guibg=Grey20
 endif
 
 if has("cmdline_info")
