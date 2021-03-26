@@ -1,5 +1,9 @@
 " .vimrc
 
+" Use UTF-8 without BOM
+set encoding=utf-8 nobomb
+scriptencoding utf-8
+
 " !silent is used to suppress error messages if the config line
 " references plugins/colorschemes that might be missing
 "
@@ -8,9 +12,6 @@
 " is complete:
 "
 "   autocmd VimEnter ...
-
-" Disable Vi compatibility
-set nocompatible
 
 " Change update time (milliseconds) to more frequently update git gutter
 " You will have bad experience for diagnostic messages when it's default 4000.
@@ -272,8 +273,6 @@ endif
 set backspace=indent,eol,start
 " Optimize for fast terminal connections
 set ttyfast
-" Use UTF-8 without BOM
-set encoding=utf-8 nobomb
 
 " No line wrapping
 set nowrap
@@ -333,12 +332,12 @@ autocmd VimEnter * command! -nargs=? CTest :call cmake4vim#CTest('--output-on-fa
 " Quickfix list error format for ctest errors using CMocka environment
 "
 " General assertion failure:
-"   [  ERROR   ] --- /etc/opt/ilts/success/config.cfg"" != " "/etc/opt/ilts/lsuccess/config.cfg"
-"   [   LINE   ] --- ../Sources/tests/lib/libDT2_test/test_paths.c:103: error: Failure!
-set efm^=%E[\ \ %trror\ \ \ ]\ ---\ %m,%Z[\ \ \ line\ \ \ ]\ ---\ %f:%l:\ %.%#
+"   [  ERROR   ] --- <error text>
+"   [   LINE   ] --- <file>:<line>: error: Failure!
+set errorformat^=%E[\ \ %tRROR\ \ \ ]\ ---\ %m,%Z[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ %.%#
 " fail() Error format: 
-"   [ ERROR ] --- [   LINE   ] --- <path>|<line>| error: <text>
-set efm^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ %m
+"   [ ERROR ] --- [   LINE   ] --- <file>|<line>| error: <error text>
+set errorformat^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ %m
 
 " Join selected range removing any trailing // comments within the line
 function! JoinDefinitionFunc() range
@@ -363,7 +362,7 @@ function! s:ag_in(bang, ...)
 	let start_dir=expand(a:1)
 
 	if !isdirectory(start_dir)
-		throw 'not a valid directory: ' .. start_dir
+		throw 'not a valid directory: ' . start_dir
 	endif
 	" Press `?' to enable preview window.
 	call fzf#vim#ag(join(a:000[1:], ' '), fzf#vim#with_preview({'dir': start_dir}, 'right:50%:hidden', '?'), a:bang)
