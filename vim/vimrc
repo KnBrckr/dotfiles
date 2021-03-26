@@ -361,6 +361,9 @@ function! JoinDefinitionFunc() range
 endfunction
 command! -range JoinDefinition <line1>,<line2> call JoinDefinitionFunc()
 
+" Fixup Copyright header to current year
+nnoremap <leader>fcr %s/\(Copyright (c) \(\:\?\d*-\)\?\)2020/\12021/<cr>
+
 " Configure FZF - Fuzzy finder. requires fzf binary be installed
 
 " Display file list based on git repo
