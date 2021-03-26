@@ -216,7 +216,7 @@ if has("autocmd")
 	" Languages with specific tabs/space requirements
 	autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
 	" Automatically strip trailing whitespace on file save
-	autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt :call StripTrailingWhitespace()
+	autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h :call StripTrailingWhitespace()
 endif
 
 if (has("termguicolors"))
@@ -326,7 +326,7 @@ if exists("&undodir")
 endif
 set viminfo+=n$HOME/.vim/.viminfo
 
-" Strip trailing whitespace (,$)
+" Strip trailing whitespace
 noremap <leader>$ :call StripTrailingWhitespace()<CR>
 
 " Faster viewport scrolling (3 lines at a time)
