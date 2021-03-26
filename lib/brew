@@ -26,7 +26,6 @@ run_brew() {
 			'exiftool'
 			'fzf'
 			'git'
-			'iterm2'
 			'jq' # CLI JSON processor
 			'mariadb'
 			'mercurial'
