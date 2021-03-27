@@ -1,6 +1,9 @@
 #!/bin/bash
 
 run_brew() {
+	if ! is_mac ; then
+		return
+	fi
 
 	# Check for Homebrew
 	if type_exists 'brew'; then
@@ -77,4 +80,14 @@ run_brew() {
 		exit 1
 	fi
 
+}
+
+# Test whether a Homebrew formula is already installed
+# $1 - formula name (may include options)
+formula_exists() {
+    if $(brew list $1 >/dev/null 2>&1); then
+        return 0
+    fi
+
+    return 1
 }

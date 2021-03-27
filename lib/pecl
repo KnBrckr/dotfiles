@@ -1,6 +1,12 @@
 #!/bin/bash
 
 run_pecl() {
+	if ! is_mac ; then
+		return
+	fi
+
+	e_header "Skipping pecl, only have xdebug to install"
+	return
 
 	# Check for Pecl
 	if type_exists 'pecl'; then
@@ -40,3 +46,13 @@ run_pecl() {
 		printf "Skipping...\n"
 	fi
 }
+
+# Test whether a PECL package is already installed
+pecl_pkg_exists() {
+	if $(pecl list $1 > /dev/null); then
+		return 0
+	fi
+
+	return 1
+}
+

@@ -88,20 +88,20 @@ if is_mac; then
 		if ! type_exists xcode-select; then
 			printf "  Install Apple's Xcode environment from the app store"
 			printf "  Then run: bash ~/.dotfiles/bin/dotfiles\n"
-		    exit 1
+			exit 1
 		fi
 		e_header "Installing xcode command line tools"
 		e_header "Restart dotfiles after xcode install is complete."
 		xcode-select --install
 		exit 1
 	fi
-	
+
 	if ! gcc --version > /dev/null 2>&1 ; then
 		e_header "Can't use gcc, trying sudo xcodebuild -license"
 		if ! sudo xcodebuild -license; then
 			e_error "Failed xcode setup; attempting to install CLI tools"
 			e_header "Restart dotfiles after xcode install is complete."
-		  xcode-select --install
+			xcode-select --install
 			exit 1
 		fi
 	fi
@@ -111,7 +111,7 @@ if is_mac; then
 		e_header "Installing Homebrew..."
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
-	
+
 	# Setup Launch Agents
 	# enable_launch_agent com.pumastudios.keep-drives-spinning
 fi
@@ -130,21 +130,20 @@ else
 	set +e # Reset exit on error
 fi
 
-# Install and update packages on Mac
-if is_mac; then
-	if [[ $no_packages ]]; then
-		printf "Skipped package installations.\n"
-	else
-		e_header "Updating packages..."
-		# Install Homebrew formulae
-		run_brew
-		# Install PECL packages
-		run_pecl
-	fi
-fi
+# Install and update packages
+if [[ $no_packages ]]; then
+	e_header "Skipping package installs."
+else
+	e_header "Updating packages..."
 
-# Install npm packages
-run_npm
+	# Install Homebrew formulae
+	run_brew
+
+	# Install PECL packages
+	run_pecl
+	# Install npm packages
+	run_npm
+fi
 
 if command -v pyenv > /dev/null 2>&1 ; then
 	e_header "Python version active:"

@@ -50,25 +50,6 @@ type_exists() {
     return 1
 }
 
-# Test whether a Homebrew formula is already installed
-# $1 - formula name (may include options)
-formula_exists() {
-    if $(brew list $1 >/dev/null 2>&1); then
-        return 0
-    fi
-
-    return 1
-}
-
-# Test whether a PECL package is already installed
-pecl_pkg_exists() {
-	if $(pecl list $1 > /dev/null); then
-		return 0
-	fi
-
-	return 1
-}
-
 # Test whether a MacPorts port is already installed
 # $1 - port name
 port_exists() {
