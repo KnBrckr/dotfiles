@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+# zsh_colors
+# See https://unix.stackexchange.com/a/408871 for details on zsh colors
+
+# Setup color variables
+
+autoload colors; colors
+
+c_black="$fg[black]"
+c_blue="$fg[blue]"
+c_bold="$fg[bold]"
+c_cyan="$fg[cyan]"
+c_green="$fg[green]"
+c_orange="$fg[orange]"
+c_purple="$fg[purple]"
+c_red="$fg[red]"
+c_reset="$reset_color"
+c_white="$fg[white]"
+c_yellow="$fg[yellow]"
+
+export c_black c_blue c_bold c_cyan c_green c_orange c_purple c_red c_reset c_white c_yellow

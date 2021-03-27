@@ -11,6 +11,7 @@
 
 load_dotfiles() {
 	declare -a files=(
+	  $HOME/.dotfiles/shell/zsh_colors # zsh Color settings
 		$HOME/.dotfiles/shell/functions/* # Functions
 		$HOME/.dotfiles/shell/shell_exports # Exports
 		$HOME/.dotfiles/shell/shell_aliases # Aliases
