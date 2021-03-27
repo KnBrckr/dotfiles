@@ -133,7 +133,7 @@ backup_file() {
 
 	local src=${1}
 	local dest=${DOTFILES_BACKUPS}/`basename ${1}`_`date +"%Y-%m-%d_%H%M%S"`
-	if [ -f $src ] && [ ! -h $src ]; then
+	if [ -f $src ] && [ ! -L $src ]; then
 		# Make a backup of real file before trashing it
 		if [ ! -d ${DOTFILES_BACKUPS} ]; then
 			mkdir ${DOTFILES_BACKUPS}
