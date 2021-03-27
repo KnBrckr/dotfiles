@@ -372,6 +372,42 @@ nnoremap <C-p> :GFiles<CR>
 " Display Buffer list for quick navigation
 nnoremap <Leader>b :Buffers<CR>
 
+
+"--------------------------------------------------------------------------------
+" Gutentags
+"
+
+" Don't define all gutentag project roots by default to reduce disk accesses
+let g:gutentags_add_default_project_roots = 0
+let g:gutentags_project_root = ['.git', 'package.json']
+
+" Put all tag files in a single location
+let g:gutentags_cache_dir = expand('~/.cache/vim/ctags')
+" Provide a simple method to clear the cache
+command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
+
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+
+" Generate more info for tags
+" Explaining --fields=+ailmnS (info gathered from: $ ctags --list-fields)
+" a: Access (or export) of class members
+" i: Inheritance information
+" l: Language of input file containing tag
+" m: Implementation information
+" n: Line number of tag definition
+" S: Signature of routine (e.g. prototype or parameter list)
+let g:gutentags_ctags_extra_args = [
+      \ '--tag-relative=yes',
+      \ '--fields=+ailmnS',
+      \ ]
+
+"--------------------------------------------------------------------------------
+" Silver Searcher
+"
+
 " AgIn: Start ag in the specified directory
 "
 " e.g.
@@ -388,7 +424,9 @@ endfunction
 
 command! -bang -nargs=+ -complete=dir AgIn call s:ag_in(<bang>0, <f-args>)
 
+"--------------------------------------------------------------------------------
 " Configure NERDTree
+"
 
 " start with NERDTree open on empty vim session
 " autocmd StdinReadPre * let s:std_in=1

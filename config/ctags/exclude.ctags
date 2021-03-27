@@ -1,0 +1,4 @@
+# Exclude options
+--exclude=*build/*
+--exclude=node_modules
+--exclude=cache

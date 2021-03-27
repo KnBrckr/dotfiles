@@ -9,15 +9,20 @@ OS X dotfiles - Ken Brucker
 
 Additional software to install
 
-golang
-go get github.com/mattn/efm-langserver
-pip install vim-vint
-
 Browsers:
 
 Development:
   Xcode
   iTerm2
+
+% # Needed for language server -- installed via brew on OSX
+% golang
+% # language server for vim
+% go get github.com/mattn/efm-langserver
+% # vi linter
+% pip install vim-vint # Available via brew
+% # universal-ctags (for gutentags)
+% brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 	
 Other:
 	1Password

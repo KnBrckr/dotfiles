@@ -29,8 +29,9 @@ run_brew() {
 			'exiftool'
 			'fzf'
 			'git'
+			'golang'
 			'jq' # CLI JSON processor
-			'mariadb'
+			'mariadb' # Mysql relative
 			'mercurial'
 			'node'
 			'php'
@@ -41,6 +42,7 @@ run_brew() {
 			'the_silver_searcher' # Fast grep and find alternative
 			'tmux' #Terminal Mux
 			'vim'  # Vim build supporting python
+			'vint' # Vim linter
 			'wget'
 			'wp-cli'
 		)
