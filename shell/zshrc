@@ -11,12 +11,12 @@
 
 load_dotfiles() {
 	declare -a files=(
-	  $HOME/.dotfiles/shell/zsh_colors # zsh Color settings
-		$HOME/.dotfiles/shell/functions/* # Functions
-		$HOME/.dotfiles/shell/shell_exports # Exports
-		$HOME/.dotfiles/shell/shell_aliases # Aliases
-		$HOME/.dotfiles/shell/apache_modsec # Aliases useful for apache log file analysis
-		$HOME/.dotfiles/shell/shell_paths # Path modifications
+	  $DOTFILES/shell/zsh_colors # zsh Color settings
+		$DOTFILES/shell/functions/* # Functions
+		$DOTFILES/shell/shell_exports # Exports
+		$DOTFILES/shell/shell_aliases # Aliases
+		$DOTFILES/shell/apache_modsec # Aliases useful for apache log file analysis
+		$DOTFILES/shell/shell_paths # Path modifications
 		$HOME/.shell_profile.local # Local and private settings not under version control (e.g. git credentials)
 	)
 
