@@ -50,14 +50,6 @@ type_exists() {
     return 1
 }
 
-# Test if running on a mac
-is_mac() {
-	if [[ `uname -s` == "Darwin" ]]; then
-		return 0
-	fi
-	return 1
-}
-
 is_launch_agent_enabled() {
 	if $(launchctl list $1 &> /dev/null); then
 		return 0

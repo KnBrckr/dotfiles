@@ -1,0 +1,20 @@
+# Tests for platform types
+
+# Test if running on a mac
+is_mac() {
+	if [[ $OSTYPE =~ "darwin" ]]; then
+		return 0
+	fi
+
+	return 1
+}
+
+is_ubuntu() {
+  if [ $VENDOR = "ubuntu" ]; then
+    return 0
+  fi
+
+  return 1
+}
+
+# vim: syntax=bash

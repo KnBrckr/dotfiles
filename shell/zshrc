@@ -112,16 +112,28 @@ ZSH_THEME="dragon"
 # Custom plugins may be added to $DOTFILES/shell/zshcustom
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(capistrano 
-	       composer 
-				 docker 
+plugins=(
 				 git 
-				 osx 
-				 ubuntu
 				 vi-mode
 				 zsh-syntax-highlighting
 				 zsh-autosuggestions
 			  )
+
+# Add OSX related plugins
+if is_mac; then
+	plugins+=(
+  	capistrano 
+	  composer 
+	  docker 
+	  osx 
+  )
+fi
+
+if is_ubuntu; then
+	plugins+=(
+  	ubuntu 
+  )
+fi
 
 source $ZSH/oh-my-zsh.sh
 
