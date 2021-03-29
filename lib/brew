@@ -12,10 +12,13 @@ run_brew() {
 		brew update
 		[[ $? ]] && e_success "Done"
 
-		e_header "Updating any existing Homebrew formulae..."
+		e_header "Upgrading any existing Homebrew formulae..."
 		# Upgrade any already-installed formulae
 		brew upgrade
 		[[ $? ]] && e_success "Done"
+
+		e_header "Adding taps..."
+		brew tap homebrew/cask-fonts  # For patched fonts with updated icons
 
 		e_header "Checking status of desired Homebrew formulae..."
 		local list_formulae
@@ -45,35 +48,25 @@ run_brew() {
 			'vint' # Vim linter
 			'wget'
 			'wp-cli'
-		)
+    )
 
-		for index in ${!desired_formulae[*]}
+		local -a desired_casks=(
+		  'font-hack-nerd-font'
+	  )
+
+		for pkgname in $desired_formulae
 		do
-			if ! formula_exists ${desired_formulae[$index]}; then
-				# Store the name (and options) of every missing formula
-				missing_formulae=("${missing_formulae[@]}" "${desired_formulae[$index]}")
-			fi
+			brew_install formula $pkgname
 		done
 
-		if [[ "$missing_formulae" ]]; then
-			# Convert the array of missing formula into a list of space-separate strings
-			list_formulae=$( printf "%s " "${missing_formulae[@]}" )
+		for pkgname in $desired_casks
+		do
+			brew_install cask $pkgname
+		done
 
-			e_header "Installing missing Homebrew formulae... $list_formulae"
-			# Install all missing formulae
-			if ! brew install $list_formulae ; then
-				e_error "Brew install failed"
-				exit 1
-			fi
+		e_success "Done"
 
-			e_success "Done"
-		fi
-
-		# use latest rsync rather than out-dated OS X rsync
-		# install separately from the main formulae list to fix gh-19
-		# brew install https://raw.github.com/Homebrew/homebrew-dupes/master/rsync.rb
-
-		# Remove outdated versions from the Cellar
+		e_header "Remove outdated versions from Cellar"
 		brew cleanup
 	else
 		printf "\n"
@@ -84,10 +77,41 @@ run_brew() {
 
 }
 
-# Test whether a Homebrew formula is already installed
-# $1 - formula name (may include options)
-formula_exists() {
-    if $(brew list $1 >/dev/null 2>&1); then
+# Install a brew formula or cask
+# @param $1 package type formula|cask
+# @param $2 package name
+brew_install() {
+	case "$1" in
+		formula)
+			brew_opt=""
+			;;
+
+		cask)
+			brew_opt="--cask"
+			;;
+
+		*)
+			e_error "Usage: brew_install formula|cask <pkg>"
+			exit 1
+			;;
+	esac
+
+	# Package is already installed
+	if brew_exists $brew_opt $2; then
+		return
+	fi
+
+	if ! brew install $brew_opt $2; then
+		e_error "brew $brew_opt $2 failed"
+		exit 1
+	fi
+}
+
+# Worker function testing for installed brew packages
+# @param $1 options to brew list
+# @param $2 brew package name
+brew_exists() {
+    if $(brew list $1 $2 >/dev/null 2>&1); then
         return 0
     fi
 
