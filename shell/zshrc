@@ -122,6 +122,7 @@ plugins=(
 # Add OSX related plugins
 if is_mac; then
 	plugins+=(
+	  brew
   	capistrano 
 	  composer 
 	  docker 
