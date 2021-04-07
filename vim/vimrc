@@ -341,19 +341,6 @@ vnoremap <C-y> 3<C-y>
 nnoremap [q :cp<cr>
 nnoremap ]q :cn<cr>
 
-" Redefine CTest command to include --output-on-failure
-autocmd VimEnter * command! -nargs=? CTest :call cmake4vim#CTest('--output-on-failure', <f-args>)
-
-" Quickfix list error format for ctest errors using CMocka environment
-"
-" General assertion failure:
-"   [  ERROR   ] --- <error text>
-"   [   LINE   ] --- <file>:<line>: error: Failure!
-set errorformat^=%E[\ \ %tRROR\ \ \ ]\ ---\ %m,%Z[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ %.%#
-" fail() Error format: 
-"   [ ERROR ] --- [   LINE   ] --- <file>|<line>| error: <error text>
-set errorformat^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ %m
-
 " Join selected range removing any trailing // comments within the line
 function! JoinDefinitionFunc() range
 	silent execute a:firstline . ',' . a:lastline . 's/\/\/.*$//'
@@ -388,6 +375,25 @@ endfunction
 command CppPrintHeader :call Cpp_print_header()                      
 autocmd vimStartup BufNewFile *.h,*.hpp :CppPrintHeader
 
+"--------------------------------------------------------------------------------
+" Configure cmake4vim plugin
+"
+
+" Save files and build (Make)
+nnoremap <leader>m :wa <bar> :CMakeBuild <cr>
+
+" Redefine CTest command to include --output-on-failure
+autocmd vimStartup VimEnter * command! -nargs=? CTest :call cmake4vim#CTest('--output-on-failure', <f-args>)
+
+" Quickfix list error format for ctest errors using CMocka environment
+"
+" General assertion failure:
+"   [  ERROR   ] --- <error text>
+"   [   LINE   ] --- <file>:<line>: error: Failure!
+set errorformat^=%E[\ \ %tRROR\ \ \ ]\ ---\ %m,%Z[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ %.%#
+" fail() Error format: 
+"   [ ERROR ] --- [   LINE   ] --- <file>|<line>| error: <error text>
+set errorformat^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ %m
 
 "--------------------------------------------------------------------------------
 " Gutentags
