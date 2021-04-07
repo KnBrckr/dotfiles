@@ -17,4 +17,11 @@ is_ubuntu() {
   return 1
 }
 
+is_redhat() {
+  if [ $VENDOR = "redhat" ]; then
+    return 0
+  fi
+
+  return 1
+}
 # vim: syntax=bash
