@@ -136,6 +136,12 @@ if is_ubuntu; then
   )
 fi
 
+if is_redhat; then
+	plugins+=(
+	  systemd
+	)
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
