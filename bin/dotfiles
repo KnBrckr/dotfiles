@@ -37,6 +37,7 @@ source ./lib/brew
 source ./lib/pecl
 source ./lib/npm
 source ./lib/mirror_files
+source ./shell/functions/is_platform
 
 # Help text
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
