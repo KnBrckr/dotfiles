@@ -372,6 +372,22 @@ nnoremap <C-p> :GFiles<CR>
 " Display Buffer list for quick navigation
 nnoremap <Leader>b :Buffers<CR>
 
+"--------------------------------------------------------------------------------
+" C header guards
+"
+function Cpp_print_header()                                          
+	let header_guard_name = toupper(expand('%:t:gs/[^0-9a-zA-Z_]/_/g'))
+	let str_header_guard = ['#ifndef ' . header_guard_name,          
+				\'#define ' . header_guard_name,                                 
+				\'',                                                             
+				\'#endif /* ' . header_guard_name . ' */']                       
+	call setline(line('$'), str_header_guard)                          
+
+endfunction                                                          
+
+command CppPrintHeader :call Cpp_print_header()                      
+autocmd vimStartup BufNewFile *.h,*.hpp :CppPrintHeader
+
 
 "--------------------------------------------------------------------------------
 " Gutentags
