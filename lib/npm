@@ -42,7 +42,7 @@ EOD
 				'coc-cmake'
 			  'coc-git'
 				'coc-json'
-				'coc-pairs'   # Insert matched pairs (), '', etc 
+				# 'coc-pairs'   # Disable - too many ways it doesn't behave nicely -- Insert matched pairs (), '', etc 
 				'coc-pyright' # Python support
 				'coc-sh'
 				'coc-snippets'
