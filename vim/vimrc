@@ -114,7 +114,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd vimStartup CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -194,7 +194,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 let g:markdown_fenced_languages = ['c', 'python', 'bash=sh', 'cmake']
 
 " Use system clipboard
-if has("clipboard")
+if has('clipboard')
 	set clipboard=unnamed
 endif
 
@@ -207,23 +207,23 @@ if executable(s:clip)
 	augroup END
 endif
 
-if has("autocmd")
+if has('autocmd')
 	" Load files for specific filetypes
 	filetype on
 	filetype indent on
 	filetype plugin on
 
 	" Languages with specific tabs/space requirements
-	autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd vimStartup FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
 	" Automatically strip trailing whitespace on file save
-	autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h :call StripTrailingWhitespace()
+	autocmd vimStartup BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h :call StripTrailingWhitespace()
 endif
 
-if (has("termguicolors"))
+if (has('termguicolors'))
 	set termguicolors
 endif
 
-if has("syntax")
+if has('syntax')
 	syntax enable
 	set background=dark
 	packadd! vim-colors-solarized
@@ -237,7 +237,7 @@ if has("syntax")
 	autocmd vimStartup BufEnter * hi CursorLine ctermbg=0 guibg=Grey20
 endif
 
-if has("cmdline_info")
+if has('cmdline_info')
 	" Show the cursor line and column number
 	set ruler
 	" Show partial commands in status line
@@ -260,12 +260,12 @@ if has('statusline')
 	set statusline+=%=%-14.(%l,%c%V%)\ %p%%
 endif
 
-if has("wildmenu")
+if has('wildmenu')
 	" Show a list of possible completions
 	set wildmenu
 	" Tab autocomplete longest possible part of a string, then list
 	set wildmode=longest,list
-	if has ("wildignore")
+	if has ('wildignore')
 		set wildignore+=*.a,*.pyc,*.o,*.orig
 		set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.jpeg,*.png
 		set wildignore+=.DS_Store,.git,.hg,.svn
@@ -273,7 +273,7 @@ if has("wildmenu")
 	endif
 endif
 
-if has("extra_search")
+if has('extra_search')
 	" Highlight searches [use :noh to clear]
 	set hlsearch
 	" Highlight dynamically as pattern is typed
@@ -321,7 +321,7 @@ set listchars+=eol:¬
 " Centralize backups, swapfiles and undo history
 set backupdir=$HOME/.vim/backups
 set directory=$HOME/.vim/swaps
-if exists("&undodir")
+if exists('&undodir')
 	set undodir=$HOME/.vim/undo
 endif
 set viminfo+=n$HOME/.vim/.viminfo
@@ -442,13 +442,13 @@ nnoremap <Leader>v :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen = 1
 
 " Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd vimStartup BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Use installed nerd fonts for git status symbols in NERDTree
 let g:NERDTreeGitStatusUseNerdFonts = 1
 
 " Load local machine settings if they exist
-if filereadable(glob("$HOME/.vimrc.local"))
+if filereadable(glob('$HOME/.vimrc.local'))
 	source $HOME/.vimrc.local
 endif
 
