@@ -53,3 +53,4 @@ alias hidedeskicons="defaults write com.apple.finder CreateDesktop -bool false &
 
 [ -r /Applications/GnuCash/Gnucash.app/Contents/MacOS/aqbanking-cli ] && alias aqbanking-cli=/Applications/GnuCash/Gnucash.app/Contents/MacOS/aqbanking-cli
 
+# vim: filetype=bash
