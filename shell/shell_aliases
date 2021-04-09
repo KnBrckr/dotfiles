@@ -25,7 +25,11 @@ alias catn="cat -n"
 
 # IP addresses
 alias wanip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
+if command_exists ipconfig; then
+	alias myip="ipconfig getifaddr en0 || ipconfig getifaddr en1"
+elif command_exists hostname; then
+	alias myip="hostname -I"
+fi
 
 # git shortcuts
 alias gsuba="git submodule add --depth 1"
