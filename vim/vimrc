@@ -398,6 +398,10 @@ set errorformat^=%E[\ \ %tRROR\ \ \ ]\ ---\ %m,%Z[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:
 "   [ ERROR ] --- [   LINE   ] --- <file>|<line>| error: <error text>
 set errorformat^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ %m
 
+" Quckfix not parsing: inlined from '<fn>' at <file>:<line>:<column>:
+"
+set errorformat^=\ \ \ \ inlined\ from\ %.%#\ at\ %f:%l:%c:
+
 "--------------------------------------------------------------------------------
 " Gutentags
 "
