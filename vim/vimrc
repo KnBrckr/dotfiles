@@ -352,14 +352,6 @@ command! -range JoinDefinition <line1>,<line2> call JoinDefinitionFunc()
 " Fixup Copyright header to current year
 nnoremap <leader>fcr :%s/\(Copyright (c) \(\:\?\d*-\)\?\)2020/\12021/<cr>
 
-" Configure FZF - Fuzzy finder. requires fzf binary be installed
-
-" Display file list based on git repo
-nnoremap <C-p> :GFiles<CR>
-
-" Display Buffer list for quick navigation
-nnoremap <Leader>b :Buffers<CR>
-
 "--------------------------------------------------------------------------------
 " C header guards
 "
@@ -438,6 +430,15 @@ let g:gutentags_ctags_extra_args = [
 "--------------------------------------------------------------------------------
 " Silver Searcher
 "
+
+" Use ctrl-a/ctrl-d to select/deselect all items in :Ag list
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
+
+" Display file list based on git repo
+nnoremap <C-p> :GFiles<CR>
+
+" Display Buffer list for quick navigation
+nnoremap <Leader>b :Buffers<CR>
 
 " AgIn: Start ag in the specified directory
 "
