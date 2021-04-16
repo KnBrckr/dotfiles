@@ -23,6 +23,9 @@ Development:
 % pip install vim-vint # Available via brew
 % # universal-ctags (for gutentags)
 % brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+
+Linux packages:
+  shellcheck
 	
 Other:
 	1Password

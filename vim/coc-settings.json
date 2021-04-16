@@ -33,7 +33,9 @@
 			"filetypes": [
 				"vim",
 				"markdown",
-				"yaml"
+				"yaml",
+				"bash",
+			  "sh"
 			]
 		}
 	},
