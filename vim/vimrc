@@ -398,7 +398,11 @@ set errorformat^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error
 
 " Quckfix not parsing: inlined from '<fn>' at <file>:<line>:<column>:
 "
-set errorformat^=\ \ \ \ inlined\ from\ %.%#\ at\ %f:%l:%c:
+set errorformat^=%W\ \ \ \ inlined\ from\ %.%#\ at\ %f:%l:%c:,%Z%.%#\ warning:\ %m
+
+" Quickfix not parsing: /usr/bin/ld: <file>:<line>:<error>
+"
+set errorformat^=/usr/bin/ld:\ %f:%l:\ %m
 
 "--------------------------------------------------------------------------------
 " Gutentags
