@@ -30,6 +30,12 @@ Linux packages:
 Other:
 	1Password
 	Dropbox
+
+Ubuntu:
+- nodejs
+- exuberant-ctags
+- fzf
+
 EOT
 
 }
