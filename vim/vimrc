@@ -233,6 +233,9 @@ if has('syntax')
 
 	" Use subtle background color change for cursor line highlight
 	autocmd vimStartup BufEnter * hi CursorLine ctermbg=0 guibg=Grey20
+
+	" Command to identify color group used for highlighted text on screen.
+	command SynID  echo synIDattr(synID(line("."), col("."), 1), "name")
 endif
 
 if has('cmdline_info')
