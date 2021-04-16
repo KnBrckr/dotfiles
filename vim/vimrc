@@ -350,7 +350,7 @@ endfunction
 command! -range JoinDefinition <line1>,<line2> call JoinDefinitionFunc()
 
 " Fixup Copyright header to current year
-nnoremap <leader>fcr :%s/\(Copyright (c) \(\:\?\d*-\)\?\)2020/\12021/<cr>
+nnoremap <leader>fcr :%s/\(Copyright (c) \(\:\?\d*-\)\?\)\d\{4\}/\=strftime(submatch(1).'%Y')/<cr>
 
 "--------------------------------------------------------------------------------
 " C header guards
