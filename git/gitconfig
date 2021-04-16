@@ -1,3 +1,5 @@
+# gitconfig
+
 [alias]
 	# https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
 
@@ -128,3 +130,5 @@
 
 [pull]
 	rebase = true
+
+# vim: filetype=gitconfig
