@@ -2,6 +2,10 @@
 
 # zsh_colors
 # See https://unix.stackexchange.com/a/408871 for details on zsh colors
+#
+
+# Solaris dircolors
+eval `dircolors $DOTFILES/submodules/dircolors-solarized/dircolors.ansi-dark`
 
 # Setup color variables
 

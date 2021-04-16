@@ -73,3 +73,6 @@
 [submodule "submodules/solarized"]
 	path = submodules/solarized
 	url = https://github.com/altercation/solarized.git
+[submodule "submodules/dircolors-solarized"]
+	path = submodules/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git
