@@ -57,4 +57,10 @@ alias hidedeskicons="defaults write com.apple.finder CreateDesktop -bool false &
 
 [ -r /Applications/GnuCash/Gnucash.app/Contents/MacOS/aqbanking-cli ] && alias aqbanking-cli=/Applications/GnuCash/Gnucash.app/Contents/MacOS/aqbanking-cli
 
+# exiftool aliases
+if command_exists exiftool; then
+	# Strip all tags from a jpeg file for uploading
+	alias cleanjpeg="exiftool -all="
+fi
+
 # vim: filetype=bash
