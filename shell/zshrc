@@ -11,8 +11,8 @@
 
 load_dotfiles() {
 	declare -a files=(
-	  $DOTFILES/shell/zsh_colors # zsh Color settings
 		$DOTFILES/shell/functions/* # Functions
+	  $DOTFILES/shell/zsh_colors # zsh Color settings
 		$DOTFILES/shell/shell_exports # Exports
 		$DOTFILES/shell/shell_aliases # Aliases
 		$DOTFILES/shell/apache_modsec # Aliases useful for apache log file analysis
