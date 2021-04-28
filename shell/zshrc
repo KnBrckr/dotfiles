@@ -119,13 +119,18 @@ plugins=(
 				 zsh-autosuggestions
 			  )
 
+if command_exists docker; then
+	plugins+=(
+		docker
+	)
+fi
+
 # Add OSX related plugins
 if is_mac; then
 	plugins+=(
 	  brew
   	capistrano 
 	  composer 
-	  docker 
 	  osx 
   )
 fi
