@@ -131,4 +131,8 @@
 [pull]
 	rebase = true
 
+# Turn on "Reuse Recorded Resolution"
+[rerere]
+	enabled = true
+
 # vim: filetype=gitconfig
