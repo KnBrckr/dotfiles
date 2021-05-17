@@ -79,7 +79,7 @@ fi
 # Load Oh My Zsh environment
 if [ ! -d ~/.oh-my-zsh ]; then
 	e_header "Installing Oh My Zsh!"
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
 if is_mac; then
