@@ -88,9 +88,6 @@
 	attributesfile = ~/.gitattributes
 	autocrlf = input
 
-[credential]
-	helper = osxkeychain
-
 [diff]
 	tool = opendiff
 	 
