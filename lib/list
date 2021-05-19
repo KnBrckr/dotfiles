@@ -9,8 +9,6 @@ OS X dotfiles - Ken Brucker
 
 Additional software to install
 
-Browsers:
-
 Development:
   Xcode
   iTerm2
@@ -24,17 +22,27 @@ Development:
 % # universal-ctags (for gutentags)
 % brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
-Linux packages:
-  shellcheck
-	
 Other:
 	1Password
 	Dropbox
 
-Ubuntu:
-- nodejs
-- exuberant-ctags
+Ubuntu/Fedora:
+- npm # includes nodejs
+- zsh
+- util-linux-user # for chsh
+- exuberant-ctags # Possibly called ctags
 - fzf
+- ShellCheck
+- golang
+- sqlite
+- Build apropos
+
+vim:
+  :helptags ALL
+
+tmux:
+  # Install plugins
+  <f2>I
 
 EOT
 
