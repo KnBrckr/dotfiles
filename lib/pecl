@@ -9,7 +9,7 @@ run_pecl() {
 	return
 
 	# Check for Pecl
-	if type_exists 'pecl'; then
+	if command_exists 'pecl'; then
 		e_header "Updating any existing PECL packages..."
 		pecl upgrade
 		[[ $? ]] && e_success "Done"

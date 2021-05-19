@@ -84,9 +84,9 @@ fi
 
 if is_mac; then
 	# Before relying on Brew, check that packages can be compiled
-	if ! type_exists 'gcc'; then
+	if ! command_exists 'gcc'; then
 		e_error "The XCode Command Line Tools must be installed first."
-		if ! type_exists xcode-select; then
+		if ! command_exists xcode-select; then
 			printf "  Install Apple's Xcode environment from the app store"
 			printf "  Then run: bash ~/.dotfiles/bin/dotfiles\n"
 			exit 1
@@ -108,7 +108,7 @@ if is_mac; then
 	fi
 
 	# Check for Homebrew
-	if ! type_exists 'brew'; then
+	if ! command_exists 'brew'; then
 		e_header "Installing Homebrew..."
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi

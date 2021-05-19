@@ -6,7 +6,7 @@ run_brew() {
 	fi
 
 	# Check for Homebrew
-	if type_exists 'brew'; then
+	if command_exists 'brew'; then
 		e_header "Updating Homebrew..."
 		# Use the latest version of Homebrew
 		brew update

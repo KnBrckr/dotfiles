@@ -45,7 +45,7 @@
 run_macports() {
 
     # Check for Homebrew
-    if type_exists 'port'; then
+    if command_exists 'port'; then
         e_header "Updating MacPorts..."
         # Use the latest version of MacPorts
         sudo port selfupdate && e_success "Done"
