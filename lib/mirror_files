@@ -31,7 +31,7 @@ mirror_git() {
 	: "${VCS_AUTHOR_NAME:?must be set}"
 	: "${VCS_AUTHOR_EMAIL:?must be set}"
 	backup_file ${HOME}/.gitconfig
-	rsync -avz --quiet ${DOTFILES_DIRECTORY}/git/gitconfig.private  ${HOME}/.gitconfig
+	cp -p --backup=existing "${DOTFILES}/git/gitconfig.private"  "${HOME}/.gitconfig"
 	git config --global user.name "$VCS_AUTHOR_NAME"
 	git config --global user.email "$VCS_AUTHOR_EMAIL"
 }
