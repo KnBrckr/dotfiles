@@ -1,35 +1,96 @@
 #!/bin/bash
 
+# Improve error handling and script safety
+set -o errexit -o pipefail -o noclobber -o nounset
+
+# -allow a command to fail with !’s side effect on errexit
+# -use return value from ${PIPESTATUS[0]}, because ! hosed $?
+! getopt --test > /dev/null
+if [[ ${PIPESTATUS[0]} -ne 4 ]]; then
+  echo "I’m sorry, 'getopt --test' failed in this environment."
+  exit 1
+fi                                                                                                                                                    
+# Parse options
+OPTIONS=hl
+LONGOPTS=help,list,no-packages,no-sync
+
+# -regarding ! and PIPESTATUS see above
+# -temporarily store output to be able to check for errors
+# -activate quoting/enhanced mode (e.g. by writing out “--options”)
+# -pass arguments only via   -- "$@"   to separate them correctly
+! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- "$@")
+if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
+    # e.g. return value is 1
+    #  then getopt has complained about wrong arguments to stdout
+    exit 2
+fi
+# read getopt’s output this way to handle the quoting right:
+eval set -- "$PARSED"
+
+help=n list=n packages=y sync=y
+# now enjoy the options in order and nicely split until we see --
+while true; do
+    case "$1" in
+        -h|--help)
+            help=y
+            shift
+            ;;
+        -l|--list)
+            list=y
+            shift
+            ;;
+	--no-packages)
+	    packages=n
+	    shift
+	    ;;
+	--no-sync)
+            sync=n
+	    shift
+            ;;
+        --)
+            shift
+            break
+            ;;
+        *)
+            echo "Programming error"
+            exit 3
+            ;;
+    esac
+done
+
 # TODO This doesn't work with proxy based access
 
 # Pickup VCS_* definitions required to setup git environment
-if [[ -r ~/.shell_profile.local ]]; then
-	source ~/.shell_profile.local
+if [[ -r "${HOME}/.shell_profile.local" ]]; then
+	source "${HOME}/.shell_profile.local"
 fi
+: "${VCS_AUTHOR_NAME:?must be set}"
+: "${VCS_AUTHOR_EMAIL:?must be set}"
 
 if ! type git > /dev/null ; then
 	echo "git is required to continue"
 	exit 2
 fi
 
-DOTFILES_DIRECTORY="${HOME}/.dotfiles"
-DOTFILES_BACKUPS="${DOTFILES_DIRECTORY}/backup"
-DOTFILES_GIT_REMOTE="https://github.com/KnBrckr/dotfiles.git"
+DOTFILES="${HOME}/.dotfiles"
+DOTFILES_BACKUPS="${DOTFILES}/backup"
+DOTFILES_GIT_REMOTE="git@github.com:KnBrckr/dotfiles.git"
 
 # If missing, download and extract the dotfiles repository
-if [[ ! -d ${DOTFILES_DIRECTORY} ]]; then
+if [[ ! -d ${DOTFILES} ]]; then
 	printf "$(tput setaf 7)Cloning dotfiles...\033[m\n"
 	set -e  # Exit if any of these commands fail
-	git clone ${DOTFILES_GIT_REMOTE} ${DOTFILES_DIRECTORY}
+	git clone "${DOTFILES_GIT_REMOTE}" "${DOTFILES}"
 	set +e  # Reset exit on error
 fi
 
-cd ${DOTFILES_DIRECTORY}
+cd "${DOTFILES}"
 
 if [ ! -d backup ]; then
 	mkdir backup
 fi
 
+source ./shell/bash_colors
 source ./lib/help
 source ./lib/list
 source ./lib/utils
@@ -38,28 +99,19 @@ source ./lib/pecl
 source ./lib/npm
 source ./lib/mirror_files
 source ./shell/functions/is_platform
+source ./shell/functions/command_exists
 
 # Help text
-if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+if [ $help = "y" ]; then
 	run_help
-	exit
+	exit 0
 fi
 
 # List additional software to install
-if [[ "$1" == "-l" || "$1" == "--list" ]]; then
+if [ $list = "y" ]; then
 	run_list
-	exit
+	exit 0
 fi
-
-# Test for known flags
-for opt in $@
-do
-	case $opt in
-		--no-packages) no_packages=true ;;
-		--no-sync) no_sync=true ;;
-		-*|--*) e_warning "Warning: invalid option $opt" ;;
-	esac
-done
 
 # Initialize the git repository if it's missing
 if ! is_git_repo; then
@@ -79,7 +131,7 @@ fi
 # Load Oh My Zsh environment
 if [ ! -d ~/.oh-my-zsh ]; then
 	e_header "Installing Oh My Zsh!"
-	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
 if is_mac; then
@@ -118,7 +170,7 @@ if is_mac; then
 fi
 
 # Conditionally sync with the remote repository
-if [[ $no_sync ]]; then
+if [ $sync = "n" ]; then
 	printf "Skipped dotfiles sync.\n"
 else
 	e_header "Syncing dotfiles..."
@@ -132,7 +184,7 @@ else
 fi
 
 # Install and update packages
-if [[ $no_packages ]]; then
+if [ $packages = "n"  ]; then
 	e_header "Skipping package installs."
 else
 	e_header "Updating packages..."
@@ -155,7 +207,7 @@ fi
 # Install tmux plugin manager
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	e_header "Installing tmux plugin manager"
-	${DOTFILES_DIRECTORY}/bin/install_tmux_plugin_mgr
+	"${DOTFILES}/bin/install_tmux_plugin_mgr"
 fi
 
 # Ask before potentially overwriting files
@@ -164,7 +216,7 @@ seek_confirmation "Warning: This step may overwrite your existing dotfiles."
 
 if is_confirmed; then
 	mirrorfiles
-	source ${HOME}/.bash_profile
+	source "${HOME}/.bash_profile"
 else
 	printf "Skipped mirroring of dot files.\n"
 fi

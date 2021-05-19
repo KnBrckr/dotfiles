@@ -38,11 +38,11 @@ is_confirmed() {
 
 # Test whether we're in a git repo
 is_git_repo() {
-    $(git rev-parse --is-inside-work-tree &> /dev/null)
+    git rev-parse --is-inside-work-tree &> /dev/null
 }
 
 is_launch_agent_enabled() {
-	if $(launchctl list $1 &> /dev/null); then
+	if launchctl list "$1" &> /dev/null; then
 		return 0
 	fi
 
@@ -50,19 +50,19 @@ is_launch_agent_enabled() {
 }
 
 enable_launch_agent() {
-	if ! is_launch_agent_enabled $1; then
-		launch_agent=$DOTFILES/LaunchAgents/$1.plist
-		if [[ ! -f $launch_agent ]]; then
+	if ! is_launch_agent_enabled "$1"; then
+		launch_agent="$DOTFILES/LaunchAgents/$1.plist"
+		if [[ ! -f "$launch_agent" ]]; then
 			e_error "Launch Agent not found for $1"
 			return 1
 		fi
 
-		if ! $(launchctl load $launch_agent); then
+		if ! launchctl load "$launch_agent"; then
 			e_error "Unable to load Launch agent: $1"
 			return 1
 		fi
 
-		if ! $(ln -s $launch_agent $HOME/Library/LaunchAgents); then
+		if ! ln -s "$launch_agent" "$HOME/Library/LaunchAgents"; then
 			e_error "Unable to setup Launch Agent for auto-load: $1"
 			return 1
 		fi

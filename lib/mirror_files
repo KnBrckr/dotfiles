@@ -2,7 +2,6 @@
 #
 # Mirror dot files into home directory
 
-
 link() {
 	# If target is a link to a directory, remove it before linking.
 	# Otherwise bail outta here with a warning
@@ -30,8 +29,8 @@ mirror_git() {
 	# gitconfig.private provides a template for the global .gitconfig
 	: "${VCS_AUTHOR_NAME:?must be set}"
 	: "${VCS_AUTHOR_EMAIL:?must be set}"
-	backup_file ${HOME}/.gitconfig
-	cp -p --backup=existing "${DOTFILES}/git/gitconfig.private"  "${HOME}/.gitconfig"
+	backup_file "${HOME}/.gitconfig"
+	cp -p "${DOTFILES}/git/gitconfig.private"  "${HOME}/.gitconfig"
 	git config --global user.name "$VCS_AUTHOR_NAME"
 	git config --global user.email "$VCS_AUTHOR_EMAIL"
 }
@@ -40,7 +39,7 @@ mirrorfiles() {
 	mirror_git
 
 	# Force remove the vim directory if it's already there.
-	if [ -d "${HOME}/.vim" ] && [ ! -L ${HOME}/.vim ]; then
+	if [ -d "${HOME}/.vim" ] && [ ! -L "${HOME}/.vim" ]; then
 		rm -rf "${HOME}/.vim"
 	fi
 
