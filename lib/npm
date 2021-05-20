@@ -39,6 +39,7 @@ EOD
 			echo "Installing coc.nvim extensions ..."
 
 			local -a packages=(
+			  'coc-clangd'
 				'coc-cmake'
 			  'coc-git'
 				'coc-json'
