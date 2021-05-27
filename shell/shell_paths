@@ -10,17 +10,17 @@ declare -a dirs_to_prepend=(
 	"/usr/local/opt/php@7.1/bin"
 	"/usr/local/opt/php@7.1/sbin"
 	"/usr/local/opt/ruby/bin"
+	"$HOME/bin" # Takes precedence over /usr/bin
 )
 
 prepend_list PATH "dirs_to_prepend[@]"
 
 # Directories to be appended to PATH
 declare -a dirs_to_append=(
-    "$HOME/bin"
-    "$HOME/.dotfiles/bin"
-    "$HOME/go/bin"
-    "$HOME/.local/bin"
-    "$HOME/.npm-packages/bin"
+	"$HOME/.dotfiles/bin"
+	"$HOME/go/bin"
+	"$HOME/.local/bin"
+	"$HOME/.npm-packages/bin"
 )
 
 append_list PATH "dirs_to_append[@]"
