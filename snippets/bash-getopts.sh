@@ -1,11 +1,11 @@
 #!/bin/bash
 # More safety, by turning some bugs into errors.
 # Without `errexit` you don’t need ! and can replace
-# PIPESTATUS with a simple $?, but I don’t do that.
+# PIPESTATUS with a simple $?, but that's not done here.
 set -o errexit -o pipefail -o noclobber -o nounset
 
 # glob patterns matching no files expands to null string vs themselves
-set -s nullglob
+shopt -s nullglob
 
 # glob patterns that fail result in expansion error
 # set -s failglob
@@ -14,7 +14,7 @@ set -s nullglob
 # -use return value from ${PIPESTATUS[0]}, because ! hosed $?
 ! getopt --test > /dev/null
 if [[ ${PIPESTATUS[0]} -ne 4 ]]; then
-    echo 'I’m sorry, `getopt --test` failed in this environment.'
+    echo "Sorry, 'getopt --test' failed in this environment."
     exit 1
 fi
 
