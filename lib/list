@@ -39,6 +39,7 @@ Ubuntu/Fedora:
 
 vim:
   :helptags ALL
+  :call doge#install()
 
 tmux:
   # Install plugins
