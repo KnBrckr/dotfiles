@@ -1,11 +1,17 @@
+#!/bin/bash
 # Create 3-up tmux environment with long panel on left
 
-if ! tmux has-session -t 3-up ; then
-	tmux new-session -d -s 3-up
-
-  tmux split-window -h -p 50
-  tmux split-window -v -p 50
-  tmux select-pane -t 0
+if ! tmux has-session -t 0 ; then
+	tmux new-session -d
 fi
 
-tmux attach-session -t 3-up
+# Create 3-up display if there's a single pane in the tmux window
+if [ "$(tmux list-panes | wc -l)" -eq 1 ]; then
+	tmux split-window -h -p 50
+	tmux split-window -v -p 50
+	tmux select-pane -t 0
+fi
+
+if [ "${TMUX}" = "" ] ; then
+	tmux attach-session -t 0
+fi
