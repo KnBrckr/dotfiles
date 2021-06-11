@@ -89,10 +89,10 @@
 	autocrlf = input
 
 [diff]
-	tool = opendiff
+	tool = vimdiff
 	 
 [merge]
-	tool = opendiff
+	tool = vimdiff
 
 [difftool]
 	prompt = false
