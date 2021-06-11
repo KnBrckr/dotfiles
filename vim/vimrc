@@ -215,6 +215,8 @@ if has('autocmd')
 	autocmd vimStartup FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
 	" Automatically strip trailing whitespace on file save
 	autocmd vimStartup BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h :call StripTrailingWhitespace()
+	" Set autowrap for text files
+	autocmd vimStartup BufRead,BufNewFile *.md,*.txt setlocal textwidth=80
 endif
 
 if (has('termguicolors'))
