@@ -38,7 +38,13 @@ if [ "$SSH_CLIENT" != "" ]; then
 	export HOMEIP=`echo $SSH_CLIENT | awk '{ print $1 }'`
 fi
 
+# Setup X-server display
+if [ "$WSL_DISTRO_NAME" != "" ]; then
+  export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
+fi
+
 # Enable logging of aqbanking commands to /tmp/ofx.log
 # WARNING - Can expose passwords!!!
 # export AQOFX_LOG_COMM=1
 
+# vim: filetype=bash
