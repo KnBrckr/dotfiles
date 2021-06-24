@@ -219,21 +219,9 @@ if has('autocmd')
 	autocmd vimStartup BufRead,BufNewFile *.md,*.txt setlocal textwidth=80
 endif
 
-if (has('termguicolors'))
-	set termguicolors
-endif
-
 " Adjust solarized colors
 function! OverrideSolarized() abort
-	" Default PMenu guibg=Magenta is hard to read
-	highlight PMenu guibg=DarkBlue
-
-	" Syntax errors displayed by coc.nvim have formatting that conflicts with
-	" theme - override
-  "	highlight link cocErrorFloat Error
-
-	" Use subtle background color change for cursor line highlight
-  highlight CursorLine ctermbg=0 guibg=Grey20
+	" Insert any highlight commands required to override color scheme defaults
 endfunction
 
 augroup MyColors
@@ -244,7 +232,6 @@ augroup END
 if has('syntax')
 	syntax enable
 	set background=dark
-	packadd! vim-colors-solarized
 	silent! colorscheme solarized
 
 	" Command to identify color group used for highlighted text on screen.
