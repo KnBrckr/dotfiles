@@ -5,6 +5,9 @@
 
 [alias]
 	# https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
+	
+	# View defined aliases
+	alias = !git config --get-regexp ^alias\\. | sort | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 
 	# Common aliases
 	ci = commit
