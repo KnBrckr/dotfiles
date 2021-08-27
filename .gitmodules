@@ -76,3 +76,6 @@
 [submodule "submodules/dircolors-solarized"]
 	path = submodules/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
+[submodule "vim/pack/vendor/start/gutentags_plus"]
+	path = vim/pack/vendor/start/gutentags_plus
+	url = https://github.com/skywind3000/gutentags_plus.git

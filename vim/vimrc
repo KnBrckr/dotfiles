@@ -404,6 +404,9 @@ set errorformat^=/usr/bin/ld:\ %f:%l:\ %m
 " Gutentags
 "
 
+" Enable gtags module
+let g:gutentags_modules = [ 'ctags', 'gtags_cscope' ]
+
 " Don't define all gutentag project roots by default to reduce disk accesses
 let g:gutentags_add_default_project_roots = 0
 let g:gutentags_project_root = ['.git', 'package.json']
@@ -430,6 +433,19 @@ let g:gutentags_ctags_extra_args = [
       \ '--tag-relative=yes',
       \ '--fields=+ailmnS',
       \ ]
+
+" For debug tracing set gutentags_define_advanced_commands then:
+" Restart vim and execute :GutentagsToggleTrace
+" Open some files, regenerate gtats with :GutentagsUpdate
+" See :messages for trace data
+" let g:gutentags_define_advanced_commands = 1
+
+"--------------------------------------------------------------------------------
+" gutentags_plus
+"
+
+" change focus to quickfix window after search
+let g:gutentags_plus_switch = 1
 
 "--------------------------------------------------------------------------------
 " Silver Searcher
