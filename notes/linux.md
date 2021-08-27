@@ -6,3 +6,6 @@
   % passwd kbrucker
 
 
+## Enable Core files
+
+	% ulimit -S -c unlimited
