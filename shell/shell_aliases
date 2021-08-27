@@ -20,6 +20,9 @@ alias la="ls -AGFoh"
 # List all except . and ..., color, mark file types, long form no use group, order by last modified, file size
 alias lat="ls -AGFoth"
 
+# Dump file in hex format with
+alias hexd="od -A x -t x1z -v"
+
 # Concatenate and print content of files (add line numbers)
 alias catn="cat -n"
 
