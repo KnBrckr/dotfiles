@@ -14,6 +14,9 @@ export EDITOR=vi
 # Don't clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
+# Locate notes files in dotfiles heirarchy
+export NOTES=$HOME/.dotfiles/notes
+
 # Make new shells get the history lines from all previous
 # shells instead of the default "last window closed" history
 # export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
