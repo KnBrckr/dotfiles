@@ -6,6 +6,10 @@
 `gU<motion>` translate to upper case
 `~` toggle current character case (can be used in visual mode)
 
+## git change ##
+
+`gs` Show git change at current line
+
 ## vimdiff ##
 
 ```VimL

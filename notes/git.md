@@ -1,5 +1,14 @@
 # Git
 
+Show upstream commits
+  $ git log ..@{u}
+
+Show local unpushed changes and upstream
+  $ git log ...@{u}
+
+Show local unpushed changes
+  $ git log @{u}..
+
 Show file contents from a commit
   $ git show REVISION:/path/to/file
 
@@ -9,3 +18,6 @@ Fastforward accurev to match newer wsldev/cp branch
 Rebase changes on forked branch leaving other topic branches as-is
   $ git rebase --onto target-branch topic-branch forked-branch
 
+Shorthands:
+  @{u} HEAD@{upstream}
+  A..B same as ^A B or B --not A; means show changes in B excluding those in A
