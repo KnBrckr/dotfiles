@@ -36,6 +36,7 @@ fi
 
 # git shortcuts
 alias gsuba="git submodule add --depth 1"
+alias gmff="git merge --ff-only"
 
 # Copy my public key to the pasteboard
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | printf '=> Public key copied to pasteboard.\n'"
