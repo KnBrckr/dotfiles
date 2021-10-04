@@ -60,10 +60,13 @@
 
 	# Find out who is currently active on the repository
 	# Displays committers in descending order of number of commits
-	who = shortlog --numbered --summary --email --no-merges --since="3 months"
+	who = shortlog --numbered --summary --email --no-merges --since=\"3 months\"
 
   # List files changed since REVIEW_BASE
   files = !git diff --name-only $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
+
+  # List files changed since REVIEW_BASE excluding deleted files
+	files-no-del = !git diff --name-only --diff-filter=d $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
 
   # Same as files but with diff --stat
   stat = !git diff --stat $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
@@ -74,7 +77,7 @@
 
   # Open all files changed since REVIEW_BASE in vim tabs, use vim-fugitive's :Gdiff
   # on each tab and tell coc.git to show +/- based on REVIEW_BASE. 
-  review = !vim -p $(git files) +\"tabdo Gvdiffsplit ${REVIEW_BASE:-main}\" +\"call "coc#config"('git',{'diffRevision': '${REVIEW_BASE:-main}'})\"
+  review = !vim -p $(git files-no-del) +\"tabdo Gvdiffsplit ${REVIEW_BASE:-main}\" +\"call "coc#config"('git',{'diffRevision': '${REVIEW_BASE:-main}'})\"
 
   # Same as review but only open the provided files
   #   git reviewone foo.c bar.c
