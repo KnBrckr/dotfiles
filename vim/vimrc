@@ -355,7 +355,7 @@ nnoremap <leader>fcr :%s/\(Copyright (c) \(\:\?\d*-\)\?\)\d\{4\}/\=strftime(subm
 "--------------------------------------------------------------------------------
 " C header guards
 "
-function! Cpp_print_header()                                          
+function! C_print_header()                                          
 	if &modifiable
 		let header_guard_name = toupper(expand('%:t:gs/[^0-9a-zA-Z_]/_/g'))
 		let str_header_guard = ['#ifndef ' . header_guard_name,          
@@ -366,8 +366,8 @@ function! Cpp_print_header()
 	endif
 endfunction                                                          
 
-command! CppPrintHeader :call Cpp_print_header()                      
-autocmd vimStartup BufNewFile *.h,*.hpp :CppPrintHeader
+command! CPrintHeader :call C_print_header()                      
+autocmd vimStartup BufNewFile *.h,*.hpp :CPrintHeader
 
 "--------------------------------------------------------------------------------
 " Configure cmake4vim plugin
