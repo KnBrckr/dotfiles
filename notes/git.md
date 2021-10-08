@@ -18,6 +18,9 @@ Fastforward accurev to match newer wsldev/cp branch
 Rebase changes on forked branch leaving other topic branches as-is
   $ git rebase --onto target-branch topic-branch forked-branch
 
+Search files in index
+  $ git grep --cached "searchterm" $(git diff --cached --name-only)
+
 Shorthands:
   @{u} HEAD@{upstream}
   A..B same as ^A B or B --not A; means show changes in B excluding those in A
