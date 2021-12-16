@@ -353,6 +353,11 @@ command! -range JoinDefinition <line1>,<line2> call JoinDefinitionFunc()
 nnoremap <leader>fcr :%s/\(Copyright (c) \(\:\?\d*-\)\?\)\d\{4\}/\=strftime(submatch(1).'%Y')/<cr>
 
 "--------------------------------------------------------------------------------
+" Terminal Debugging (see :help terminal-debug)
+"
+packadd termdebug
+
+"--------------------------------------------------------------------------------
 " C header guards
 "
 function! C_print_header()                                          
