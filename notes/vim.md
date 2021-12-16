@@ -18,6 +18,11 @@
 :diffget BA
 ```
 
+## Swap text ##
+delete first section of text
+with visual mode, highlight 2nd section of text and use 'p'aste.
+Go back to first location and paste 2nd selection.
+
 ## Insert mode ##
 
 `<ctrl-r>"` Paste last yank

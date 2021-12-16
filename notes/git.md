@@ -21,6 +21,9 @@ Rebase changes on forked branch leaving other topic branches as-is
 Search files in index
   $ git grep --cached "searchterm" $(git diff --cached --name-only)
 
+Restore file from another branch
+  $ git restore --source <branch> <file>
+
 Shorthands:
   @{u} HEAD@{upstream}
   A..B same as ^A B or B --not A; means show changes in B excluding those in A
