@@ -1,17 +1,44 @@
-#!/bin/bash
+#!/bin/zsh
 # Create 3-up tmux environment with long panel on left
 
+# Retrieve pane count
+pane_count() {
+	tmux display-message -p '#{window_panes}'
+}
+
+dirpath=~
+
+if (( $# > 0 )); then
+	if [ -d $1 ]; then
+		dirpath=$1
+	else
+		echo "'$1' not found"
+		exit 1
+	fi
+fi
+
+# Create new session if one not present
 if ! tmux has-session -t 0 ; then
-	tmux new-session -d
+	tmux new-session -d -c $dirpath
+  tmux rename-window $dirpath
+fi
+
+# Create new window if current window already has multiple panes
+if (( $(pane_count) > 1 )); then
+	tmux new-window -c $dirpath
+  tmux rename-window $dirpath
 fi
 
 # Create 3-up display if there's a single pane in the tmux window
-if [ "$(tmux list-panes | wc -l)" -eq 1 ]; then
-	tmux split-window -h -p 50
-	tmux split-window -v -p 50
+if (( $(pane_count) == 1 )); then
+	if [ -d $dirpath/cmake-build-Debug ]; then
+		dirpath=$dirpath/cmake-build-Debug
+	fi
+	tmux split-window -h -p 50 -c $dirpath
+	tmux split-window -v -p 50 -c $dirpath
 	tmux select-pane -t 0
 fi
 
-if [ "${TMUX}" = "" ] ; then
+if [[ "${TMUX}" = '' ]] ; then
 	tmux attach-session -t 0
 fi
