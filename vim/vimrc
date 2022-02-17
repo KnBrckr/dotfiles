@@ -400,6 +400,13 @@ command! CPrintHeader :call C_print_header()
 autocmd vimStartup BufNewFile *.h,*.hpp :CPrintHeader
 
 "--------------------------------------------------------------------------------
+" Build and test
+"
+nnoremap <f9> :make
+nnoremap <f10> :make smoke-test
+nnoremap <f11> :make test
+
+"--------------------------------------------------------------------------------
 " Configure cmake4vim plugin
 "
 
