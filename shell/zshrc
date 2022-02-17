@@ -126,6 +126,12 @@ if command_exists docker; then
 	)
 fi
 
+if command_exists podman; then
+	plugins+=(
+	  podman
+	)
+fi
+
 # Add OSX related plugins
 if is_mac; then
 	plugins+=(

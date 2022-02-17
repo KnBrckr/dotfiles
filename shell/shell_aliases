@@ -68,4 +68,9 @@ if command_exists exiftool; then
 	alias cleanjpeg="exiftool -all="
 fi
 
+# podman alias to docker
+if command_exists podman; then
+	alias docker=podman
+fi
+
 # vim: filetype=bash

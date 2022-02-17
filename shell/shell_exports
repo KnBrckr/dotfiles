@@ -60,6 +60,19 @@ if [ "$WSL_DISTRO_NAME" != "" ]; then
   export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
 fi
 
+# Setup for podman
+if command_exists podman; then
+	if [[ -z "$XDG_RUNTIME_DIR" ]]; then
+		export XDG_RUNTIME_DIR=/run/user/$UID
+		if [[ ! -d "$XDG_RUNTIME_DIR" ]]; then
+			export XDG_RUNTIME_DIR=/tmp/$USER-runtime
+			if [[ ! -d "$XDG_RUNTIME_DIR" ]]; then
+				mkdir -m 0700 "$XDG_RUNTIME_DIR"
+			fi
+		fi
+	fi
+fi
+
 # Enable logging of aqbanking commands to /tmp/ofx.log
 # WARNING - Can expose passwords!!!
 # export AQOFX_LOG_COMM=1
