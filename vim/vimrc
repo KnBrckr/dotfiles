@@ -242,6 +242,8 @@ function! OverrideSolarized() abort
   hi SpellRare  guisp=blue    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=blue
   hi SpellLocal guisp=magenta gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=magenta
 
+	" Display comments in italic
+	hi Comment cterm=italic
 endfunction
 
 " Enable Spelling
