@@ -113,6 +113,7 @@ ZSH_THEME="dragon"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+				 alias-tips
 				 git 
 				 vi-mode
 				 zsh-syntax-highlighting

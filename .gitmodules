@@ -79,3 +79,6 @@
 [submodule "vim/pack/vendor/start/gutentags_plus"]
 	path = vim/pack/vendor/start/gutentags_plus
 	url = https://github.com/skywind3000/gutentags_plus.git
+[submodule "shell/zshcustom/plugins/alias-tips"]
+	path = shell/zshcustom/plugins/alias-tips
+	url = https://github.com/djui/alias-tips
