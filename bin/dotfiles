@@ -215,7 +215,7 @@ e_header "Mirroring dotfiles..."
 seek_confirmation "Warning: This step may overwrite your existing dotfiles."
 
 if is_confirmed; then
-	mirrorfiles
+	mirror_files
 	source "${HOME}/.bash_profile"
 else
 	printf "Skipped mirroring of dot files.\n"
