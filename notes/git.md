@@ -27,3 +27,11 @@ Restore file from another branch
 Shorthands:
   @{u} HEAD@{upstream}
   A..B same as ^A B or B --not A; means show changes in B excluding those in A
+
+git bisect
+	$ git bisect start
+  $ git bisect bad                # Current version bad
+  $ git bisect good good-branch   # Mark known good
+	...
+  $ git bisect run command args   # Auto-bisect
+  $ git bisect reset              # cleanup

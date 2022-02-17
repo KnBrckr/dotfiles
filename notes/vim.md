@@ -65,3 +65,33 @@ noremap <silent> <leader>gd :GscopeFind d <C-R><C-W><cr>
 noremap <silent> <leader>ga :GscopeFind a <C-R><C-W><cr>
 noremap <silent> <leader>gz :GscopeFind z <C-R><C-W><cr>
 ```
+
+### makefiles ###
+
+```VimL
+:map <fn> :make  -- Map fn key to make command
+:set makeprg     -- Change what :make does
+
+:copen           -- Open mini-window of errors
+:ccl[ose]        -- closes mini-window
+:cw              -- toggle mini-window
+```
+
+### Auto-update copyrights ###
+
+(Based on: [https://vim.fandom.com/wiki/Automatically_Update_Copyright_Notice_in_Files])
+
+Place in .vimrc:
+
+```VimL
+augroup vimrc
+  " Remove all vimrc commands
+  autocmd!
+
+  " Automatically update copyright notice with current year
+  autocmd BufWritePre *
+    \ if &modified |
+    \   exe "g#\\cCOPYRIGHT (c) \\(".strftime("%Y")."\\)\\@![0-9]\\{4\\}\\(-".strftime("%Y")."\\)\\@!#s#\\([0-9]\\{4\\}\\)\\(-[0-9]\\{4\\}\\)\\?#\\1-".strftime("%Y") |
+    \ endif
+augroup END
+```
