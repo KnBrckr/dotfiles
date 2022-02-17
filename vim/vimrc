@@ -232,6 +232,8 @@ endif
 " Adjust solarized colors
 function! OverrideSolarized() abort
 	" Insert any highlight commands required to override color scheme defaults
+	hi FgCocHintFloatBgCocFloating ctermbg=8
+
 	" Enable undercurl support
 	let &t_Cs = "\e[4:3m"
   let &t_Ce = "\e[4:0m"
