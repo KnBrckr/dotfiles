@@ -232,7 +232,20 @@ endif
 " Adjust solarized colors
 function! OverrideSolarized() abort
 	" Insert any highlight commands required to override color scheme defaults
+	" Enable undercurl support
+	let &t_Cs = "\e[4:3m"
+  let &t_Ce = "\e[4:0m"
+
+	" Use undercurl for Spelling highlight groups
+  hi SpellBad   guisp=red     gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=red
+  hi SpellCap   guisp=yellow  gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=yellow
+  hi SpellRare  guisp=blue    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=blue
+  hi SpellLocal guisp=magenta gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=magenta
+
 endfunction
+
+" Enable Spelling
+set spell spelllang=en_us
 
 augroup MyColors
 	autocmd!
