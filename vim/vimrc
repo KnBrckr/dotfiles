@@ -410,6 +410,26 @@ autocmd vimStartup BufNewFile *.h,*.hpp :CPrintHeader
 nnoremap <f9> :make
 nnoremap <f10> :make smoke-test
 nnoremap <f11> :make test
+"--------------------------------------------------------------------------------
+" Select which terminal navigation plugin to use
+"
+
+" Setup default mappings
+nnoremap <silent> <c-h> :wincmd h <CR>
+nnoremap <silent> <c-j> :wincmd j <CR>
+nnoremap <silent> <c-k> :wincmd k <CR>
+nnoremap <silent> <c-l> :wincmd l <CR>
+nnoremap <silent> <c-\> :wincmd p <CR>
+
+if $TERM !~ 'tmux'
+	" Block tmux navigator from loading when not in a tmux environment
+	let g:loaded_tmux_navigator= 1
+endif
+
+if $TERM !~ 'kitty'
+	" Block kitty navigator from loading when not on kitty terminal
+	let g:loaded_kitty_navigator = 1
+endif
 
 "--------------------------------------------------------------------------------
 " vim-plug installation
@@ -428,6 +448,9 @@ endif
 " Use :PlugInstall to install any missing plugins
 "
 call plug#begin()
+
+" VIM + Kitty Navigation
+Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/' }
 
 call plug#end()
 
