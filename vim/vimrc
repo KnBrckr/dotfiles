@@ -406,9 +406,10 @@ autocmd vimStartup BufNewFile *.h,*.hpp :CPrintHeader
 "--------------------------------------------------------------------------------
 " Build and test
 "
-nnoremap <f9> :make
-nnoremap <f10> :make smoke-test
-nnoremap <f11> :make test
+nnoremap <f9> :make <CR>
+nnoremap <f10> :make smoke-test <CR>
+nnoremap <f11> :make test <CR>
+
 "--------------------------------------------------------------------------------
 " Select which terminal navigation plugin to use
 "
