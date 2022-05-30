@@ -86,6 +86,9 @@
 	# Edit files changed since REVIEW_BASE
 	edit = !vim -p $(git files-no-del)
 
+	# gitlab integration
+	mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+
 [color]
 	# color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
 	ui = auto
