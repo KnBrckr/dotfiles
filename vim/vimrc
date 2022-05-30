@@ -452,6 +452,9 @@ call plug#begin()
 " VIM + Kitty Navigation
 Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/' }
 
+" kitty config syntax highlighting
+Plug 'fladson/vim-kitty'
+
 call plug#end()
 
 "--------------------------------------------------------------------------------
