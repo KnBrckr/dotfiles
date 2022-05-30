@@ -226,6 +226,7 @@ if has('autocmd')
 
 	" Languages with specific tabs/space requirements
 	autocmd vimStartup FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd vimStartup FileType yaml setlocal ts=2 sts=2 sw=2
 	" Automatically strip trailing whitespace on file save
 	autocmd vimStartup BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h :call StripTrailingWhitespace()
 	" Set autowrap for text files
