@@ -339,8 +339,6 @@ set cursorline
 set scrolloff=3
 " Don’t reset cursor to start of line when moving around.
 set nostartofline
-" Increase number of tabs allowed from default for git review
-set tabpagemax=100
 
 " Show 'invisible' characters
 " set list
