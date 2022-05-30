@@ -488,6 +488,13 @@ set errorformat^=%W\ \ \ \ inlined\ from\ %.%#\ at\ %f:%l:%c:,%Z%.%#\ warning:\ 
 "
 set errorformat^=/usr/bin/ld:\ %f:%l:\ %m
 
+" Quickfix not parsing cmake error:
+"   CMake Error at <file>:<line> (add_library)
+"     Cannot file source file:
+"
+"     <missing-file>
+set errorformat^=CMake\ Error\ at\ %f:%l\ (%m):
+
 "--------------------------------------------------------------------------------
 " Gutentags
 "
