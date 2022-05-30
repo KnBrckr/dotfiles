@@ -39,6 +39,8 @@ alias gsuba="git submodule add --depth 1"
 alias gmff="git merge --ff-only"
 alias glolu="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' HEAD..@{u}"
 
+alias rmorig="find -name '*.orig' | xargs rm"
+
 # Copy my public key to the pasteboard
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | printf '=> Public key copied to pasteboard.\n'"
 
@@ -60,7 +62,8 @@ alias hidedotfiles="defaults write com.apple.finder AppleShowAllFiles -bool fals
 alias showdeskicons="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 alias hidedeskicons="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 
-[ -r /Applications/GnuCash/Gnucash.app/Contents/MacOS/aqbanking-cli ] && alias aqbanking-cli=/Applications/GnuCash/Gnucash.app/Contents/MacOS/aqbanking-cli
+[ -r /Applications/GnuCash/Gnucash.app/Contents/MacOS/aqbanking-cli ] && 
+	alias aqbanking-cli=/Applications/GnuCash/Gnucash.app/Contents/MacOS/aqbanking-cli
 
 # exiftool aliases
 if command_exists exiftool; then
