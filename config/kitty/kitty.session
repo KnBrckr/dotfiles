@@ -1,0 +1,23 @@
+layout tall
+
+cd ~/src/oss_cp
+
+launch zsh
+launch zsh
+launch zsh
+
+focus
+
+new_tab reviews
+
+cd ~/src/oss_cp
+
+launch zsh
+
+new_os_window
+
+os_window_size 120c 50c
+
+cd ~/winsrc/RND2_Dev_cp/OSS_CP/
+
+launch zsh

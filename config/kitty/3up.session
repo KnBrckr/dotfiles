@@ -1,0 +1,12 @@
+# 3-up session for kitty terminal
+
+layout tall
+
+# If using genie
+# launch genie -c zsh --login
+# launch genie -c zsh --login
+# launch genie -c zsh --login
+
+launch zsh --login
+launch zsh --login
+launch zsh --login
