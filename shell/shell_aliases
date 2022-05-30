@@ -73,4 +73,9 @@ if command_exists podman; then
 	alias docker=podman
 fi
 
+# kitty terminal aliases
+if command_exists kitty; then
+	alias icat="kitty +kitten icat"
+fi
+
 # vim: filetype=bash
