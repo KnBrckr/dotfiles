@@ -75,7 +75,7 @@ augroup vimStartup
 	au!
 
 	" Remove conflicting defintion from fedora
-	au! fedora BufReadPost
+	silent! au! fedora BufReadPost
 
 	" When editing a file, always jump to the last known cursor position.
 	" Don't do it when the position is invalid, when inside an event handler
