@@ -79,3 +79,6 @@
 [submodule "shell/zshcustom/plugins/alias-tips"]
 	path = shell/zshcustom/plugins/alias-tips
 	url = https://github.com/djui/alias-tips
+[submodule "lightline.vim"]
+	path = vim/pack/vendor/opt/lightline.vim
+	url = https://github.com/itchyny/lightline.vim

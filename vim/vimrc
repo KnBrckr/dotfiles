@@ -1,5 +1,10 @@
 " .vimrc
 
+" Use 'vi' command to skip auto-load of plugins
+if v:progname == 'vi'
+  set noloadplugins
+endif
+
 " Use UTF-8 without BOM
 set encoding=utf-8 nobomb
 scriptencoding utf-8
@@ -411,6 +416,16 @@ autocmd vimStartup BufNewFile *.h,*.hpp :CPrintHeader
 nnoremap <f9> :make <CR>
 nnoremap <f10> :make smoke-test <CR>
 nnoremap <f11> :make test <CR>
+
+"--------------------------------------------------------------------------------
+" Complete delayed load of plugins
+"
+
+if &loadplugins
+	if has('packages')
+		packadd! lightline.vim
+	endif
+endif
 
 "--------------------------------------------------------------------------------
 " Select which terminal navigation plugin to use
