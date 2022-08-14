@@ -423,6 +423,7 @@ nnoremap <f11> :make test <CR>
 
 if &loadplugins
 	if has('packages')
+		packadd! cmake4vim
 		packadd! lightline.vim
 	endif
 endif

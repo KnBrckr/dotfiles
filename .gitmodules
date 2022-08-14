@@ -34,9 +34,6 @@
 [submodule "vim/pack/vendor/start/vim-dispatch"]
 	path = vim/pack/vendor/start/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
-[submodule "vim/pack/vendor/start/cmake4vim"]
-	path = vim/pack/vendor/start/cmake4vim
-	url = https://github.com/ilyachur/cmake4vim.git
 [submodule "vim/pack/vendor/start/fzf"]
 	path = vim/pack/vendor/start/fzf
 	url = https://github.com/junegunn/fzf.git
@@ -82,3 +79,6 @@
 [submodule "lightline.vim"]
 	path = vim/pack/vendor/opt/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
+[submodule "cmake4vim"]
+	path = vim/pack/vendor/opt/cmake4vim
+	url = https://github.com/ilyachur/cmake4vim
