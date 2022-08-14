@@ -33,8 +33,9 @@ run_brew() {
 			'fzf'
 			'git'
 			'golang'
-			'jq' # CLI JSON processor
-			'mariadb' # Mysql relative
+			'jq'        # CLI JSON processor
+			'mariadb'   # Mysql relative
+			'mdcat'     # markdown to terminal
 			'mercurial'
 			'node'
 			'php'
