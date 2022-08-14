@@ -79,7 +79,7 @@ augroup vimStartup
 	" Remove all vimStartup autocommands
 	au!
 
-	" Remove conflicting defintion from fedora
+	" Remove conflicting definition from fedora if present
 	silent! au! fedora BufReadPost
 
 	" When editing a file, always jump to the last known cursor position.
@@ -549,7 +549,7 @@ let g:gutentags_ctags_extra_args = [
 
 " For debug tracing set gutentags_define_advanced_commands then:
 " Restart vim and execute :GutentagsToggleTrace
-" Open some files, regenerate gtats with :GutentagsUpdate
+" Open some files, regenerate gtags with :GutentagsUpdate
 " See :messages for trace data
 " let g:gutentags_define_advanced_commands = 1
 
