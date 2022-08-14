@@ -1,62 +1,15 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Improve error handling and script safety
 set -o errexit -o pipefail -o noclobber -o nounset
 
-# -allow a command to fail with !’s side effect on errexit
-# -use return value from ${PIPESTATUS[0]}, because ! hosed $?
-! getopt --test > /dev/null
-if [[ ${PIPESTATUS[0]} -ne 4 ]]; then
-  echo "I’m sorry, 'getopt --test' failed in this environment."
-  exit 1
-fi                                                                                                                                                    
 # Parse options
-OPTIONS=hl
-LONGOPTS=help,list,no-packages,no-sync
+zmodload zsh/zutil
 
-# -regarding ! and PIPESTATUS see above
-# -temporarily store output to be able to check for errors
-# -activate quoting/enhanced mode (e.g. by writing out “--options”)
-# -pass arguments only via   -- "$@"   to separate them correctly
-! PARSED=$(getopt --options=$OPTIONS --longoptions=$LONGOPTS --name "$0" -- "$@")
-if [[ ${PIPESTATUS[0]} -ne 0 ]]; then
-    # e.g. return value is 1
-    #  then getopt has complained about wrong arguments to stdout
-    exit 2
-fi
-# read getopt’s output this way to handle the quoting right:
-eval set -- "$PARSED"
-
-help=n list=n packages=y sync=y
-# now enjoy the options in order and nicely split until we see --
-while true; do
-    case "$1" in
-        -h|--help)
-            help=y
-            shift
-            ;;
-        -l|--list)
-            list=y
-            shift
-            ;;
-	--no-packages)
-	    packages=n
-	    shift
-	    ;;
-	--no-sync)
-            sync=n
-	    shift
-            ;;
-        --)
-            shift
-            break
-            ;;
-        *)
-            echo "Programming error"
-            exit 3
-            ;;
-    esac
-done
+zparseopts -D -E -A opts -F - h=help -help=help \
+	                            l=list -list=list \
+															-no-packages=nopackages \
+														 	-no-sync=nosync
 
 # TODO This doesn't work with proxy based access
 
@@ -84,7 +37,7 @@ if [[ ! -d ${DOTFILES} ]]; then
 	set +e  # Reset exit on error
 fi
 
-cd "${DOTFILES}"
+cd ${DOTFILES}
 
 if [ ! -d backup ]; then
 	mkdir backup
@@ -102,13 +55,13 @@ source ./shell/functions/is_platform
 source ./shell/functions/command_exists
 
 # Help text
-if [ $help = "y" ]; then
+if (( $#help )) ; then
 	run_help
 	exit 0
 fi
 
 # List additional software to install
-if [ $list = "y" ]; then
+if (( $#list )) ; then
 	run_list
 	exit 0
 fi
@@ -170,21 +123,19 @@ if is_mac; then
 fi
 
 # Conditionally sync with the remote repository
-if [ $sync = "n" ]; then
+if (( $#nosync )); then
 	printf "Skipped dotfiles sync.\n"
 else
 	e_header "Syncing dotfiles..."
-	set -e # Exit if commands fail
 	# Pull down the latest changes
 	git pull --rebase origin master
 	# Update submodules
 	e_header "Updating submodules"
 	git submodule update --recursive --init --quiet
-	set +e # Reset exit on error
 fi
 
 # Install and update packages
-if [ $packages = "n"  ]; then
+if (( $#nopackages )) ; then
 	e_header "Skipping package installs."
 else
 	e_header "Updating packages..."
