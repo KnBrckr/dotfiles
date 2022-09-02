@@ -44,6 +44,8 @@
 
 	# Custom pretty log
 	logp = log --pretty=nice --graph --date=short
+	# Short log with name and email
+	loge = log --pretty='%Cred%h%Creset %s - %C(bold blue)%ae <%an>%Creset'
 
 	# Diffstat log
 	logst = log --stat
