@@ -15,6 +15,9 @@ Show file contents from a commit
 Fastforward accurev to match newer wsldev/cp branch
   $ git fetch . wsldev/cp:accurev
 
+Fastforward main to origin/main
+  $ git fetch origin main:main
+
 Rebase changes on forked branch leaving other topic branches as-is
   $ git rebase --onto target-branch topic-branch forked-branch
 
