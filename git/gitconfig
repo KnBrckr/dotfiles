@@ -129,6 +129,12 @@
 	# Result: <short-sha> <author-date> | <commit msg> (<pointer-names>)
 	nice = "%C(yellow)%h%C(reset) %ad | %s%d"
 
+[fetch]
+	prune = true
+
+[pull]
+	rebase = true
+
 [push]
 	default = simple
 	
@@ -139,9 +145,6 @@
 
 [commit]
 #	template = ~/.stCommitMsg
-
-[pull]
-	rebase = true
 
 # Turn on "Reuse Recorded Resolution"
 [rerere]
