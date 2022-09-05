@@ -2,7 +2,7 @@
 
 # Use dotfile script as the default editor - Points at textmate
 #export EDITOR="$DOTFILES/bin/editor"
-export EDITOR=vi
+export EDITOR=vim
 
 # Don't clear the screen after quitting a manual page
 export MANPAGER="less -X"
