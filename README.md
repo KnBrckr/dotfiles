@@ -55,6 +55,7 @@ Vim plugins:
 * [editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
 * [fzf](https://github.com/junegunn/fzf)
 * [fzf.vim](https://github.com/junegunn/fzf.vim)
+* [gutentags_plus](https://github.com/skywind3000/gutentags_plus)
 * [lightline](https://github.com/itchyny/lightline.vim)
 * [nerdtree](https://github.com/preservim/nerdtree)
 * [nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)
@@ -65,11 +66,13 @@ Vim plugins:
 * [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 * [vim-devicons](https://github.com/ryanoasis/vim-devicons)
 * [vim-dispatch](https://github.com/tpope/vim-dispatch)
-  Used by cmake4vim to launch async shells
+  * Used by cmake4vim to launch async shells
 * [vim-doge](https://github.com/kkoomen/vim-doge)
 * [vim-fugitive](https://github.com/tpope/vim-fugitive) Git management
 * [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags)
-  Requires ctags support such as exuberant-ctags.
+  * Requires ctags support such as exuberant-ctags.
+  * [gtags-cscope job failed](https://github.com/ludovicchabant/vim-gutentags/issues/322) -
+    Make files in vim-gutentags/plat/unix executable
 * [vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)
 * [vim-snippets](https://github.com/honza/vim-snippets)
 * [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
@@ -131,13 +134,15 @@ pathogen, then follow these steps while in the root of the superproject.
 
 ```bash
 # Add the new submodule
-git submodule add --depth 1 https://example.com/remote/path/to/repo.git vim/pack/vendor/start/one-submodule
+git submodule add --depth 1 --name submodule-name https://example.com/remote/path/to/repo.git vim/pack/vendor/opt/submodule-name
 # Initialize and clone the submodule
 git submodule update --depth 1 --init
 # Stage the changes
 git add vim/bundle/one-submodule
+# Include module in load at startup if desired
+vim ~/.vimrc
 # Commit the changes
-git commit -m "Add a new submodule: one-submodule"
+git commit -m "Add a new submodule: submodule-name"
 ```
 
 ## Updating git submodules

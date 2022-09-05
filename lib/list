@@ -19,8 +19,6 @@ Development:
 % go get github.com/mattn/efm-langserver
 % # vi linter
 % pip install vim-vint # Available via brew
-% # universal-ctags (for gutentags)
-% brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
 Other:
 	1Password

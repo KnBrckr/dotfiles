@@ -32,6 +32,7 @@ run_brew() {
 			'exiftool'
 			'fzf'
 			'git'
+			'global'    # gnu Global gtags for vim:gutentags
 			'golang'
 			'jq'        # CLI JSON processor
 			'mariadb'   # Mysql relative
@@ -45,6 +46,7 @@ run_brew() {
 			'telnet'
 			'the_silver_searcher' # Fast grep and find alternative
 			'tmux' #Terminal Mux
+			'universal-ctags' # OSX version of exuberant-ctags for vim:gutentags
 			'vim'  # Vim build supporting python
 			'vint' # Vim linter
 			'wget'
