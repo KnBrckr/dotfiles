@@ -40,9 +40,6 @@
 [submodule "vim/pack/vendor/start/vim-fugitive"]
 	path = vim/pack/vendor/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/pack/vendor/start/vim-tmux-navigator"]
-	path = vim/pack/vendor/start/vim-tmux-navigator
-	url = https://github.com/christoomey/vim-tmux-navigator.git
 [submodule "vim/pack/vendor/opt/papercolor-theme"]
 	path = vim/pack/vendor/opt/papercolor-theme
 	url = https://github.com/NLKNguyen/papercolor-theme.git
@@ -83,3 +80,12 @@
 [submodule "vim-gutentags"]
 	path = vim/pack/vendor/opt/vim-gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule "vim-kitty"]
+	path = vim/pack/vendor/opt/vim-kitty
+	url = https://github.com/fladson/vim-kitty
+[submodule "vim-kitty-navigator"]
+	path = vim/pack/vendor/opt/vim-kitty-navigator
+	url = https://github.com/knubie/vim-kitty-navigator.git
+[submodule "vim-tmux-navigator"]
+	path = vim/pack/vendor/opt/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git

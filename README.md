@@ -73,6 +73,12 @@ Vim plugins:
   * Requires ctags support such as exuberant-ctags.
   * [gtags-cscope job failed](https://github.com/ludovicchabant/vim-gutentags/issues/322) -
     Make files in vim-gutentags/plat/unix executable
+* [vim-kitty](https://github.com/fladson/vim-kitty) Kitty terminal emulator
+  configuration highlighting
+* [vim-kitty-navigator](https://github.com/knubie/vim-kitty-navigator) VIM +
+  Kitty navigation
+  * Requires copying of pass_keys.py and neighboring_window.py scripts to
+    ~/.config/kitty/
 * [vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)
 * [vim-snippets](https://github.com/honza/vim-snippets)
 * [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
