@@ -290,6 +290,8 @@ let g:NERDTreeGitStatusUseNerdFonts = 1
 " Silver Searcher + FZF + ripgrep
 "
 
+let g:fzf_preview_window = ['right,50%', 'ctrl-/']
+
 " Use ripgrep for :grep
 set grepprg=rg\ --vimgrep
 
