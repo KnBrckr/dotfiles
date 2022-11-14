@@ -72,7 +72,7 @@ Vim plugins:
 * [vim-gutentags](https://github.com/ludovicchabant/vim-gutentags)
   * Requires ctags support such as exuberant-ctags.
   * [gtags-cscope job failed](https://github.com/ludovicchabant/vim-gutentags/issues/322) -
-    Make files in vim-gutentags/plat/unix executable
+    chmod +x vim-gutentags/plat/unix/*
 * [vim-kitty](https://github.com/fladson/vim-kitty) Kitty terminal emulator
   configuration highlighting
 * [vim-kitty-navigator](https://github.com/knubie/vim-kitty-navigator) VIM +
