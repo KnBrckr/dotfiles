@@ -330,5 +330,21 @@ command! -bang -nargs=+ -complete=dir AgIn call s:ag_in(<bang>0, <f-args>)
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!*build*/" --glob "!notused" --color "always" '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 
+command! -bang -nargs=* Find
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!*build*/" --glob "!notused" --color "always" '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* FindCword
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(expand('<cword>')), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+nnoremap <Leader>fw :FindCword<CR>
+
+command! -bang Gstat
+  \ call fzf#run(fzf#wrap(
+  \     {'source': 'git diff --name-only $(git merge-base HEAD "main")'}))
