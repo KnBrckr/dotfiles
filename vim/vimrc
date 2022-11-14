@@ -293,12 +293,12 @@ if &loadplugins && has('packages')
 	" Configure loaded plugins
 	runtime plugins.vim
 
-	if $TERM ==# 'tmux'
+	if $TERM =~# 'tmux'
 		" VIM + tmux navigation
 		packadd! vim-tmux-navigator
 	endif
 
-	if $TERM ==# 'kitty'
+	if $TERM =~# 'kitty'
 		" VIM + Kitty Navigation
 		packadd! vim-kitty-navigator
 		" Kitty config syntax highlighting
