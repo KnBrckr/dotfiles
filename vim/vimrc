@@ -296,6 +296,7 @@ if &loadplugins && has('packages')
 	if $TERM =~# 'tmux'
 		" VIM + tmux navigation
 		packadd! vim-tmux-navigator
+		packadd! vim-dispatch " To run commands via tmux window
 	endif
 
 	if $TERM =~# 'kitty'

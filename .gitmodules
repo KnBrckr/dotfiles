@@ -28,9 +28,6 @@
 [submodule "vim/pack/vendor/start/nerdtree-git-plugin"]
 	path = vim/pack/vendor/start/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
-[submodule "vim/pack/vendor/start/vim-dispatch"]
-	path = vim/pack/vendor/start/vim-dispatch
-	url = https://github.com/tpope/vim-dispatch.git
 [submodule "vim/pack/vendor/start/fzf"]
 	path = vim/pack/vendor/start/fzf
 	url = https://github.com/junegunn/fzf.git
@@ -89,3 +86,6 @@
 [submodule "vim-tmux-navigator"]
 	path = vim/pack/vendor/opt/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "vim-dispatch"]
+	path = vim/pack/vendor/opt/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
