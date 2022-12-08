@@ -85,11 +85,13 @@
   #   git reviewone foo.c bar.c
   reviewone = !vim -p +\"tabdo Gvdiffsplit ${REVIEW_BASE:-main}\" +\"call "coc#config"('git',{'diffRevision': '${REVIEW_BASE:-main}'})\"
 
-	# Edit files changed since REVIEW_BASE
-	edit = !vim -p $(git files-no-del)
+  # Edit files changed since REVIEW_BASE
+  edit = !vim -p $(git files-no-del)
 
-	# gitlab integration
-	mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+  # gitlab integration
+	# Requires: git config remote.origin.fetch '+refs/merge-requests/*:refs/remotes/origin/merge-requests/*'
+  # mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+  mr = !sh -c 'git checkout $1/merge-requests/$2/head' -
 
 [color]
 	# color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
