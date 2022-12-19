@@ -42,3 +42,40 @@ orange    #cb4b16  9/3 brred    166 #d75f00 50  50  55 203  75  22  18  89  80
 violet    #6c71c4 13/5 brmagenta 61 #5f5faf 50  15 -45 108 113 196 237  45  77
 base00    #657b83 11/7 bryellow 241 #626262 50 -07 -07 101 123 131 195  23  51
 base3     #fdf6e3 15/7 brwhite  230 #ffffd7 97  00  10 253 246 227  44  10  99
+
+## Secure XWindows server
+
+https://stackoverflow.com/questions/66768148/how-to-setup-vcxsrv-for-use-with-wsl2
+
+```
+% sudo apt install -y xauth coreutils gawk gnome-terminal
+% xauth list # this should be an empty list
+% magiccookie=$(echo '{some-pass-phrase}'|tr -d '\n\r'|md5sum|gawk '{print $1}')
+% xauth add host.docker.internal:0 . $magiccookie
+% cp ~/.Xauthority /mnt/c/Users/{WindowsUserName}
+% export DISPLAY=host.docker.internal:0
+```
+
+Should show xauth key
+
+```
+> 'C:\Program Files\VcXsrv\xauth' list
+```
+
+Setup shortcut with command:
+
+```
+"C:\Program Files\VcXsrv\vcxsrv.exe" -multiwindow -clipboard -nowgl -auth "c:\Users\kbrucker\.Xauthority"
+```
+
+-nowgl is required to get OpenGL 3.x libraries vs. v1.4 that WGL uses.
+
+## Xserver timeouts workaround
+
+Ref: https://github.com/microsoft/WSL/issues/5339#issuecomment-771030005
+
+	sudo sysctl -w net.ipv4.tcp_keepalive_intvl=60 net.ipv4.tcp_keepalive_probes=5 net.ipv4.tcp_keepalive_time=300
+
+Setup as an suid script and include in bashrc to set on login.
+Or add to /etc/sudoer:
+kbrucker localhost=NOPASSWD: /usr/sbin/sysctl
