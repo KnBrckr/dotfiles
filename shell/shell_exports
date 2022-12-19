@@ -50,7 +50,12 @@ fi
 
 # Setup X-server display
 if [ "$WSL_DISTRO_NAME" != "" ]; then
-  export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
+  # export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
+	# See https://stackoverflow.com/questions/66768148/how-to-setup-vcxsrv-for-use-with-wsl2
+	export DISPLAY=host.docker.internal:0
+
+	# Modify keepalive timers to prevent disconnects
+	sudo sysctl -w net.ipv4.tcp_keepalive_intvl=60 net.ipv4.tcp_keepalive_probes=5 net.ipv4.tcp_keepalive_time=300 > /dev/null
 fi
 
 # Setup for podman
