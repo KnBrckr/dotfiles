@@ -348,3 +348,5 @@ nnoremap <Leader>fw :FindCword<CR>
 command! -bang Gstat
   \ call fzf#run(fzf#wrap(
   \     {'source': 'git diff --name-only $(git merge-base HEAD "main")'}))
+
+nnoremap <Leader>s :Gstat<CR>
