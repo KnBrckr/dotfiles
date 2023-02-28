@@ -250,7 +250,9 @@ endfunction
 command! -range JoinDefinition <line1>,<line2> call JoinDefinitionFunc()
 
 " Fixup Copyright header to current year
-nnoremap <leader>fcr :%s/\(Copyright (c) \(\:\?\d*-\)\?\)\d\{4\}/\=strftime(submatch(1).'%Y')/<cr>
+command! FixCopyright 
+  \   silent! exe "g#\\cCOPYRIGHT (c) \\(".strftime("%Y")."\\)\\@![0-9]\\{4\\}\\(-".strftime("%Y")."\\)\\@!#s#\\([0-9]\\{4\\}\\)\\(-[0-9]\\{4\\}\\)\\?#\\1-".strftime("%Y") 
+nnoremap <leader>fcr :FixCopyright<cr>
 
 "--------------------------------------------------------------------------------
 " C header guards
