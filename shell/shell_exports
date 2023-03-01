@@ -1,5 +1,7 @@
 # Environment Variables
 
+export SHELL=/bin/zsh
+
 # Use dotfile script as the default editor - Points at textmate
 #export EDITOR="$DOTFILES/bin/editor"
 export EDITOR=vim

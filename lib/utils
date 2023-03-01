@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Header logging
 e_header() {
@@ -24,7 +24,7 @@ e_warning() {
 seek_confirmation() {
     printf "\n"
     e_warning "$@"
-    read -p "Continue? (y/n) " -n 1
+    read -q REPLY\?"Continue? (y/n) "
     printf "\n"
 }
 
@@ -71,7 +71,7 @@ enable_launch_agent() {
 
 # Save backup of given file, skip if target is a link
 backup_file() {
-	if [ "${DOTFILES_BACKUPS}" == "" ]; then
+	if [ -z "${DOTFILES_BACKUPS}" ]; then
 		e_error "DOTFILES_BACKUPS is not defined"
 		exit 1
 	fi
