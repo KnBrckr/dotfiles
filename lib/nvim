@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+# Install providers used by nvim
+install_nvim_providers() {
+	# Python3 provider
+	if command_exists python3; then
+		python3 -m pip install pynvim
+	fi
+
+	# Node.js provider
+	if command_exists npm; then
+		npm install -g neovim
+	fi
+}
