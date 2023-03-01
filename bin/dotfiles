@@ -7,9 +7,9 @@ set -o errexit -o pipefail -o noclobber -o nounset
 zmodload zsh/zutil
 
 zparseopts -D -E -A opts -F - h=help -help=help \
-	                            l=list -list=list \
-															-no-packages=nopackages \
-														 	-no-sync=nosync
+           l=list -list=list \
+           -no-packages=nopackages \
+           -no-sync=nosync
 
 # TODO This doesn't work with proxy based access
 

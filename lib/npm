@@ -20,7 +20,7 @@ EOD
 				fi
 			fi
 
-			# Globally instally node packages
+			# Globally install node packages
 			local -a packages=(
 				"tiddlywiki"
 				"markdownlint-cli"
