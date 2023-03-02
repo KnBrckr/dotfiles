@@ -295,6 +295,10 @@ if &loadplugins && has('packages')
 	" Configure loaded plugins
 	runtime plugins.vim
 
+	"--------------------------------------------------------------------------------
+	" Select which terminal navigation plugin to use
+	"
+
 	if $TERM =~# 'tmux'
 		" VIM + tmux navigation
 		packadd! vim-tmux-navigator
@@ -308,10 +312,6 @@ if &loadplugins && has('packages')
 		packadd! vim-kitty
 	endif
 endif
-
-"--------------------------------------------------------------------------------
-" Select which terminal navigation plugin to use
-"
 
 " Setup default mappings
 nnoremap <silent> <c-h> :wincmd h <CR>
