@@ -58,6 +58,13 @@ vim.cmd([[ autocmd BufReadPost *
 --   1 = don't break line after a one-letter word
 vim.opt.formatoptions="cro/qlnj1"
 
+-- Improve Quickfix error detection
+-- Quckfix not parsing gcc error: inlined from '<fn>' at <file>:<line>:<column>:
+vim.cmd([[set errorformat^=%W\ \ \ \ inlined\ from\ %.%#\ at\ %f:%l:%c:,%Z%.%#\ warning:\ %m]])
+
+-- Quickfix not parsing ld error: /usr/bin/ld: <file>:<line>:<error>
+vim.cmd([[set errorformat^=/usr/bin/ld:\ %f:%l:\ %m]])
+
 -- Spelling
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
@@ -151,6 +158,15 @@ require("lazy").setup({
 		tag = 'nightly', -- optional, updated every week. (see issue #1193)
 	  config = function()
         require('nvim-tree').setup({
+					filters = {
+						custom = {
+							"^\\.git",
+						},
+					},
+					update_focused_file = {
+						enable = true,
+						update_root = true,
+					},
 					actions = {
 						open_file = {
 							quit_on_open = true,
@@ -465,5 +481,43 @@ require("lazy").setup({
 			-- })
 		end,
 	},
+
+	-- Cmake support
+	{
+		"ilyachur/cmake4vim",
+		config = function()
+			-- Save files and build (Make)
+			vim.keymap.set('n', '<leader>m', function() 
+				vim.cmd([[wa]])
+				vim.cmd([[CMakeBuild]])
+			end)
+
+			-- Redefine CTest command to include --output-on-failure
+			vim.api.nvim_create_user_command("Ctest", 
+				"call cmake4vim#CTest('--output-on-failure', <f-args>)", 
+				{ force = true }
+			)
+			
+			-- Quickfix not parsing cmake error:
+			--   CMake Error at <file>:<line> (add_library)
+			--     Cannot file source file:
+			--
+			--     <missing-file>
+			vim.cmd([[set errorformat^=CMake\ Error\ at\ %f:%l\ (%m):]])
+
+			-- Quickfix list error format for ctest errors using CMocka environment
+			--
+			-- General assertion failure:
+			--   [  ERROR   ] --- <error text>
+			--   [   LINE   ] --- <file>:<line>: error: Failure!
+      vim.cmd([[set errorformat^=%E[\ \ %tRROR\ \ \ ]\ ---\ %m,%Z[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ Failure!]])
+			-- fail() Error format: 
+			--   [ ERROR ] --- [   LINE   ] --- <file>|<line>| error: <error text>
+			vim.cmd([[set errorformat^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ %m]])
+			-- Cmock test setup failure:
+			--   [   LINE   ] --- <file>:<line>: error: <error text>
+			vim.cmd([[set errorformat^=[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ %trror:\ %m]])
+		end,
+	}
 })
 
