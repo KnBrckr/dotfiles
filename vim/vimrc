@@ -42,6 +42,9 @@ set formatoptions=croqlnj
 " Enable Spelling
 set spell spelllang=en_us
 
+" Use space character for map leader
+let mapleader = " "
+
 " Enable file type detection.
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
 " 'cindent' is on in C files, etc.
