@@ -18,10 +18,12 @@ vim.opt.signcolumn = "yes"  -- Always display the sign column
 
 vim.g.mapleader = ' ' -- Set map leader
 
--- Copy/Paste 
-vim.keymap.set('n', 'Y', 'yy') -- Default is y$ vs whole line
-vim.keymap.set({'n', 'x'}, 'cp', '"+y') -- Yank to clipboard
-vim.keymap.set({'n', 'x'}, 'cv', '"+p') -- Paste from clipboard
+-- Window Navigation
+vim.keymap.set('n', '<C-h>', '<cmd>wincmd h<cr>')
+vim.keymap.set('n', '<C-j>', '<cmd>wincmd j<cr>')
+vim.keymap.set('n', '<C-k>', '<cmd>wincmd k<cr>')
+vim.keymap.set('n', '<C-l>', '<cmd>wincmd l<cr>')
+vim.keymap.set('n', '<C-\\>', '<cmd>wincmd p<cr>')
 
 -- Faster viewport scrolling (3 lines at a time)
 vim.keymap.set('n', '<C-e>', '3<C-e>')
@@ -29,12 +31,16 @@ vim.keymap.set('n', '<C-y>', '3<C-y>')
 vim.keymap.set('n', '<C-e>', '3<C-e>')
 vim.keymap.set('n', '<C-y>', '3<C-y>')
 
--- Window Navigation
-vim.keymap.set('n', '<C-h>', '<cmd>wincmd h<cr>')
-vim.keymap.set('n', '<C-j>', '<cmd>wincmd j<cr>')
-vim.keymap.set('n', '<C-k>', '<cmd>wincmd k<cr>')
-vim.keymap.set('n', '<C-l>', '<cmd>wincmd l<cr>')
-vim.keymap.set('n', '<C-\\>', '<cmd>wincmd p<cr>')
+-- Quickfix navigation
+-- [q jumps to previous quick fix list item
+-- ]q jumps to next quick fix list item
+vim.keymap.set('n', '[q', '<cmd>cp<cr>')
+vim.keymap.set('n', ']q', '<cmd>cn<cr>')
+
+-- Copy/Paste 
+vim.keymap.set('n', 'Y', 'yy') -- Default is y$ vs whole line
+vim.keymap.set({'n', 'x'}, 'cp', '"+y') -- Yank to clipboard
+vim.keymap.set({'n', 'x'}, 'cv', '"+p') -- Paste from clipboard
 
 -- When editing a file, always jump to the last known cursor position.
 -- Don't do it when the position is invalid, when inside an event handler
