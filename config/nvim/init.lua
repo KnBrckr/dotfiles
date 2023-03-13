@@ -518,6 +518,9 @@ require("lazy").setup({
 	-- Cmake support
 	{
 		"ilyachur/cmake4vim",
+		dependencies = {
+			"tpope/vim-dispatch",
+		},
 		config = function()
 			-- Save files and build (Make)
 			vim.keymap.set('n', '<leader>m', function() 
