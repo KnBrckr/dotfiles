@@ -9,7 +9,6 @@ vim.opt.termguicolors = true -- True color support
 vim.opt.mouse = 'a'        -- Mouse in all modes
 vim.opt.ignorecase = true -- Ignore case, but use smart case search
 vim.opt.smartcase = true
-vim.opt.hlsearch = false   -- Do not highlight search fields
 vim.opt.wrap = true -- Wrap long lines, preserving indent
 vim.opt.breakindent = true
 vim.opt.tabstop = 2 -- Default tab stop
