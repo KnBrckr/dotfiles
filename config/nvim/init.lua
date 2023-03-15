@@ -385,6 +385,14 @@ require("lazy").setup({
 		},
 	},
 
+	-- Documentation Generator
+	{
+		"kkoomen/vim-doge",
+		build = function()
+			vim.cmd([[ call doge#install() ]])
+		end,
+	},
+
 	-- Comment lines of code
 	{
     "numToStr/Comment.nvim",
