@@ -124,6 +124,21 @@ require("lazy").setup({
     end,
   },
 
+	-- status line
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("lualine").setup {
+				sections = {
+					lualine_z = { 'location', "os.date('%H:%M')" },
+				},
+			}
+		end,
+		dependencies = {
+			'nvim-tree/nvim-web-devicons', -- for file icons
+		},
+	},
+
 	-- Treesitter based syntax highlights
 	{
 		"nvim-treesitter/nvim-treesitter",
