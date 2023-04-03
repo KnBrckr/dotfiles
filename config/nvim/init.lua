@@ -230,23 +230,52 @@ require("lazy").setup({
 
 			-- Add additional capabilities supported by nvim-cmp
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
-			
-			-- local mason_lspconfig = require('mason-lspconfig')
-			-- mason_lspconfig.setup {
-			-- 	ensure_installed = {
-			-- 		"bash-language-server",
-			-- 	},
-			-- }
 
-			lspconfig.clangd.setup({
+			lspconfig.bashls.setup {
 				on_attach = on_attach,
 				flags = lsp_flags,
 				capabilities = capabilities,
-			})
+			}
 
-			lspconfig.bashls.setup { }
+			lspconfig.clangd.setup {
+				on_attach = on_attach,
+				flags = lsp_flags,
+				capabilities = capabilities,
+			}
 
-			lspconfig.lua_ls.setup { }
+			lspconfig.jsonls.setup {
+				on_attach = on_attach,
+				flags = lsp_flags,
+				capabilities = capabilities,
+			}
+
+			lspconfig.lua_ls.setup {
+				on_attach = on_attach,
+				flags = lsp_flags,
+				capabilities = capabilities,
+				settings = {
+					Lua = {
+						runtime = {
+							-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+							version = 'LuaJIT',
+						},
+						diagnostics = {
+							-- Get the language server to recognize the `vim` global
+							globals = {'vim'},
+						},
+						workspace = {
+							-- Make the server aware of Neovim runtime files
+							library = vim.api.nvim_get_runtime_file("", true),
+							-- Do not display message about configuring lua environment
+							checkThirdParty = false
+						},
+						-- Do not send telemetry data containing a randomized but unique identifier
+						telemetry = {
+							enable = false,
+						},
+					},
+				},
+			}
 
 			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
 			-- lspconfig.lua.setup({
