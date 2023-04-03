@@ -98,6 +98,11 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Add plugins
 require("lazy").setup({
+	-- Tmux integration
+	{
+		"christoomey/vim-tmux-navigator",
+	},
+
 	-- Colorscheme should be available when starting Neovim
 	{
 		"altercation/vim-colors-solarized",
