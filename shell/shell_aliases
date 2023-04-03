@@ -39,6 +39,8 @@ alias gsuba="git submodule add --depth 1"
 alias gmff="git merge --ff-only"
 alias glolu="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' HEAD..@{u}"
 
+alias merge="nvim +DiffviewOpen"
+
 alias rmorig="find -name '*.orig' | xargs rm"
 
 # Copy my public key to the pasteboard
