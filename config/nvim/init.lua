@@ -584,7 +584,24 @@ require("lazy").setup({
 			--   [   LINE   ] --- <file>:<line>: error: <error text>
 			vim.cmd([[set errorformat^=[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ %trror:\ %m]])
 		end,
-	}
+	},
+
+	-- Better diff views
+	{
+		'sindrets/diffview.nvim',
+		config = function()
+			require("diffview").setup({
+				view = {
+					merge_tool = {
+						layout = "diff4_mixed",
+					}
+				}
+			})
+		end,
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+		},
+	},
 })
 
 -- Load local machine settings if they exist
