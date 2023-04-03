@@ -37,10 +37,14 @@ vim.keymap.set('n', '<C-y>', '3<C-y>')
 vim.keymap.set('n', '[q', '<cmd>cp<cr>')
 vim.keymap.set('n', ']q', '<cmd>cn<cr>')
 
--- Copy/Paste 
+-- Copy/Paste
 vim.keymap.set('n', 'Y', 'yy') -- Default is y$ vs whole line
 vim.keymap.set({'n', 'x'}, 'cp', '"+y') -- Yank to clipboard
 vim.keymap.set({'n', 'x'}, 'cv', '"+p') -- Paste from clipboard
+
+-- Automatically strip trailing whitespace on file save
+vim.cmd ([[ autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h,*.lua
+									\	:call StripTrailingWhitespace() ]])
 
 -- When editing a file, always jump to the last known cursor position.
 -- Don't do it when the position is invalid, when inside an event handler
@@ -231,7 +235,7 @@ require("lazy").setup({
 			-- })
 		end,
 		dependencies = {
-			{ 
+			{
 				"williamboman/mason-lspconfig.nvim",
 				config = function()
 					local mason_lspconfig = require('mason-lspconfig')
@@ -250,10 +254,10 @@ require("lazy").setup({
 					-- 	-- ["rust_analyzer"] = function()
 					-- 		-- require("rust-tools").setup {}
 					-- 	-- end,
-					-- } 
+					-- }
 				end,
 				dependencies = {
-					{ 
+					{
 						"williamboman/mason.nvim",
 						config = function()
 							require("mason").setup()
@@ -266,7 +270,7 @@ require("lazy").setup({
 				config = function()
 					local cmp = require('cmp')
 					local luasnip = require('luasnip')
-					
+
 					local select_opts = { behavior = cmp.SelectBehavior.Select }
 
 					cmp.setup({
@@ -364,7 +368,7 @@ require("lazy").setup({
 							require('luasnip.loaders.from_vscode').lazy_load()
 						end,
 					},
-					{ 
+					{
 						"hrsh7th/cmp-buffer", -- Include buffer word completion
 						config = function()
 							require('cmp').setup({
@@ -374,7 +378,7 @@ require("lazy").setup({
 							})
 						end,
 					},
-					{ 
+					{
 						"hrsh7th/cmp-path", -- Include file-system path completion
 						config = function()
 							require('cmp').setup({
@@ -385,7 +389,7 @@ require("lazy").setup({
 						end,
 					},
 					"saadparwaiz1/cmp_luasnip", -- Include luasnip completion
-					{ 
+					{
 						"hrsh7th/cmp-nvim-lsp",
 						config = function()
 							require('cmp').setup({
@@ -419,7 +423,7 @@ require("lazy").setup({
 
 	-- File Viewer
 	{
-		"nvim-tree/nvim-tree.lua",  
+		"nvim-tree/nvim-tree.lua",
 		dependencies = {
 			'nvim-tree/nvim-web-devicons', -- for file icons
 		},
@@ -452,7 +456,7 @@ require("lazy").setup({
 
 	-- Git Integration
 	"tpope/vim-fugitive",
-	{	
+	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require('gitsigns').setup()
@@ -470,7 +474,7 @@ require("lazy").setup({
 	  "junegunn/fzf.vim",
 		dependencies = {
 			{
-				"junegunn/fzf", 
+				"junegunn/fzf",
 				build = function()
 					vim.cmd([[ call fzf#install() ]])
 				end,
@@ -553,17 +557,17 @@ require("lazy").setup({
 		},
 		config = function()
 			-- Save files and build (Make)
-			vim.keymap.set('n', '<leader>m', function() 
+			vim.keymap.set('n', '<leader>m', function()
 				vim.cmd([[wa]])
 				vim.cmd([[CMakeBuild]])
 			end)
 
 			-- Redefine CTest command to include --output-on-failure
-			vim.api.nvim_create_user_command("Ctest", 
-				"call cmake4vim#CTest('--output-on-failure', <f-args>)", 
+			vim.api.nvim_create_user_command("Ctest",
+				"call cmake4vim#CTest('--output-on-failure', <f-args>)",
 				{ force = true }
 			)
-			
+
 			-- Quickfix not parsing cmake error:
 			--   CMake Error at <file>:<line> (add_library)
 			--     Cannot file source file:
@@ -577,7 +581,7 @@ require("lazy").setup({
 			--   [  ERROR   ] --- <error text>
 			--   [   LINE   ] --- <file>:<line>: error: Failure!
       vim.cmd([[set errorformat^=%E[\ \ %tRROR\ \ \ ]\ ---\ %m,%Z[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ Failure!]])
-			-- fail() Error format: 
+			-- fail() Error format:
 			--   [ ERROR ] --- [   LINE   ] --- <file>|<line>| error: <error text>
 			vim.cmd([[set errorformat^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ %m]])
 			-- Cmock test setup failure:
