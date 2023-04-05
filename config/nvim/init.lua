@@ -15,6 +15,7 @@ vim.opt.tabstop = 2 -- Default tab stop
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = false -- Do not expand tab to spaces by default
 vim.opt.signcolumn = "yes"  -- Always display the sign column
+vim.opt.hlsearch = false -- Do not highlight search token
 
 vim.g.mapleader = ' ' -- Set map leader
 
@@ -654,6 +655,11 @@ require("lazy").setup({
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 		},
+	},
+
+	-- Illuminate symbol under cursor
+	{
+		"RRethy/vim-illuminate",
 	},
 })
 
