@@ -47,6 +47,5 @@ setopt HIST_REDUCE_BLANKS
 # verify history before entering
 setopt HIST_VERIFY
 
-
-
-
+# Set autosuggest color (for zsh-autocomplete plugin)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=10
