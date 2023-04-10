@@ -56,6 +56,7 @@ mirror_files() {
 	link "shell/zshrc"					        ".zshrc"
 	link "shell/zlogin"					        ".zlogin"
 	link "shell/tmux.conf"			      	".tmux.conf"
+	link "gdb/gdbinit"                  ".gdbinit"
 	link "git/gitattributes"			      ".gitattributes"
 	link "git/gitignore"				        ".gitignore_global"
 	link "mercurial/hgignore.defaults"	".hgignore.defaults"
