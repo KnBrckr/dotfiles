@@ -97,6 +97,29 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+lsp_on_attach = function(client, bufnr)
+	-- Mappings.
+	-- See `:help vim.lsp.*` for documentation on any of the below functions
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+	vim.keymap.set('n', 'KK', vim.lsp.buf.signature_help, bufopts)
+	vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+	vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+	vim.keymap.set('n', '<space>wl', function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, bufopts)
+	vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+	vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+	vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+end
+
 -- Add plugins
 require("lazy").setup({
 	-- Tmux integration
@@ -201,29 +224,6 @@ require("lazy").setup({
 			vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)     -- Next diagnostic
 			vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts) -- Add diagnostics to location list
 
-			-- Use an on_attach function to only map the following keys
-			-- after the language server attaches to the current buffer
-			local on_attach = function(client, bufnr)
-				-- Mappings.
-				-- See `:help vim.lsp.*` for documentation on any of the below functions
-				local bufopts = { noremap=true, silent=true, buffer=bufnr }
-				vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-				vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-				vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-				vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-				vim.keymap.set('n', 'KK', vim.lsp.buf.signature_help, bufopts)
-				vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-				vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-				vim.keymap.set('n', '<space>wl', function()
-					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-				end, bufopts)
-				vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-				vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-				vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-				vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-				vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-			end
-
 			local lsp_flags = {
 				-- This is the default in Nvim 0.7+
 				debounce_text_changes = 150,
@@ -232,26 +232,26 @@ require("lazy").setup({
 			-- Add additional capabilities supported by nvim-cmp
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-			lspconfig.bashls.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-				capabilities = capabilities,
-			}
+			-- lspconfig.bashls.setup {
+			-- 	on_attach = on_attach,
+			-- 	flags = lsp_flags,
+			-- 	capabilities = capabilities,
+			-- }
 
 			lspconfig.clangd.setup {
-				on_attach = on_attach,
+				on_attach = lsp_on_attach,
 				flags = lsp_flags,
 				capabilities = capabilities,
 			}
 
-			lspconfig.jsonls.setup {
-				on_attach = on_attach,
-				flags = lsp_flags,
-				capabilities = capabilities,
-			}
+			-- lspconfig.jsonls.setup {
+			-- 	on_attach = on_attach,
+			-- 	flags = lsp_flags,
+			-- 	capabilities = capabilities,
+			-- }
 
 			lspconfig.lua_ls.setup {
-				on_attach = on_attach,
+				on_attach = lsp_on_attach,
 				flags = lsp_flags,
 				capabilities = capabilities,
 				settings = {
@@ -290,27 +290,38 @@ require("lazy").setup({
 				config = function()
 					local mason_lspconfig = require('mason-lspconfig')
 
-					mason_lspconfig.setup { }
+					mason_lspconfig.setup {}
 
-					-- mason_lspconfig.setup_handlers {
-					-- 	-- First entry (without a key) is the default handler
-					-- 	-- and will be called for each installed server that doesn't have
-					-- 	-- a dedicated handler.
-					-- 	function(server_name) -- default handler
-					-- 		require("lspconfig")[server_name].setup {}
-					-- 	end,
-					-- 	-- Next provide dedicated handler for specific servers.
-					-- 	-- For example:
-					-- 	-- ["rust_analyzer"] = function()
-					-- 		-- require("rust-tools").setup {}
-					-- 	-- end,
-					-- }
+					mason_lspconfig.setup_handlers {
+						-- First entry (without a key) is the default handler
+						-- and will be called for each installed server that doesn't have
+						-- a dedicated handler.
+						function(server_name) -- default handler
+							require("lspconfig")[server_name].setup {
+								on_attach = lsp_on_attach
+							}
+						end,
+						-- Next provide dedicated handler for specific servers.
+						-- For example:
+						-- ["rust_analyzer"] = function()
+						-- require("rust-tools").setup {}
+						-- end,
+					}
 				end,
 				dependencies = {
 					{
 						"williamboman/mason.nvim",
+						build = ":MasonUpdate", -- Update Mason registry
 						config = function()
-							require("mason").setup()
+							require("mason").setup({
+								ui = {
+									icons = {
+										package_installed = "✓",
+										package_pending = "➜",
+										package_uninstalled = "✗"
+									}
+								}
+							})
 						end,
 					},
 				}
