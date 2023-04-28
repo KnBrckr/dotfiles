@@ -1,0 +1,69 @@
+-- Silver Searcher + FZF Support
+return {
+	{
+		"junegunn/fzf",
+		build = function()
+			vim.cmd([[call fzf#install()]])
+		end,
+		config = function()
+			vim.g.fzf_preview_window = { "right,50%", "ctrl-/" }
+			vim.opt.grepprg = "rg --vimgrep" -- Use ripgrep for :grep
+
+			-- Use ctrl-a/ctrl-d to select/deselect all items in :Ag list
+			vim.env.FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
+
+			-- Display file list based on git repo
+			vim.keymap.set('n', '<C-p>', '<cmd>GFiles<cr>')
+
+			-- Display Buffer list for quick navigation
+			vim.keymap.set('n', '<Leader>b', '<cmd>Buffers<cr>')
+
+			-- AgIn: Start ag in the specified directory
+			-- e.g.
+			--   :AgIn .. foo
+			vim.cmd([[function! s:ag_in(bang, ...)
+						let start_dir=expand(a:1)
+
+						if !isdirectory(start_dir)
+							throw 'not a valid directory: ' . start_dir
+						endif
+						" Press `?' to enable preview window.
+						call fzf#vim#ag(join(a:000[1:], ' '), fzf#vim#with_preview({'dir': start_dir}, 'right:50%:hidden', '?'), a:bang)
+					endfunction]])
+
+			vim.cmd([[command! -bang -nargs=+ -complete=dir AgIn call s:ag_in(<bang>0, <f-args>)]])
+
+			-- --column: Show column number
+			-- --line-number: Show line number
+			-- --no-heading: Do not show file headings in results
+			-- --fixed-strings: Search term as a literal string
+			-- --ignore-case: Case insensitive search
+			-- --no-ignore: Do not respect .gitignore, etc...
+			-- --hidden: Search hidden files and folders
+			-- --follow: Follow symlinks
+			-- --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+			-- --color: Search color options
+
+			vim.cmd([[command! -bang -nargs=* Find
+						\ call fzf#vim#grep(
+						\   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!*build*/" --glob "!notused" --color "always" '.shellescape(<q-args>), 1,
+						\   fzf#vim#with_preview(), <bang>0)]])
+
+			vim.cmd([[command! -bang -nargs=* FindCword
+						\ call fzf#vim#grep(
+						\   'rg --column --line-number --no-heading --color=always '.shellescape(expand('<cword>')), 1,
+						\   <bang>0 ? fzf#vim#with_preview('up:60%')
+						\           : fzf#vim#with_preview('right:50%:hidden', '?'),
+						\   <bang>0)]])
+
+			vim.keymap.set('n', '<Leader>fw', '<cmd>FindCword<cr>')
+
+			vim.cmd([[command! -bang Gstat
+						\ call fzf#run(fzf#wrap(
+						\     {'source': 'git diff --name-only $(git merge-base HEAD "main")'}))]])
+
+			vim.keymap.set('n', '<Leader>s', '<cmd>Gstat<cr>')
+		end
+	},
+	"junegunn/fzf.vim",
+}
