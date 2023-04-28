@@ -1,23 +1,23 @@
 -- init.lua
 
-vim.opt.number = true         -- Line numbers in gutter
+vim.opt.number = true        -- Line numbers in gutter
 vim.opt.relativenumber = true
-vim.opt.cursorline = true     -- highlight cursor line
+vim.opt.cursorline = true    -- highlight cursor line
 vim.opt.startofline = false  -- Don't reset cursor to start of line when moving around
-vim.opt.cmdheight = 2 -- Better display for messages
+vim.opt.cmdheight = 2        -- Better display for messages
 vim.opt.termguicolors = true -- True color support
-vim.opt.mouse = 'a'        -- Mouse in all modes
-vim.opt.ignorecase = true -- Ignore case, but use smart case search
+vim.opt.mouse = 'a'          -- Mouse in all modes
+vim.opt.ignorecase = true    -- Ignore case, but use smart case search
 vim.opt.smartcase = true
-vim.opt.wrap = true -- Wrap long lines, preserving indent
+vim.opt.wrap = true          -- Wrap long lines, preserving indent
 vim.opt.breakindent = true
-vim.opt.tabstop = 2 -- Default tab stop
+vim.opt.tabstop = 2          -- Default tab stop
 vim.opt.shiftwidth = 2
-vim.opt.expandtab = false -- Do not expand tab to spaces by default
-vim.opt.signcolumn = "yes"  -- Always display the sign column
-vim.opt.hlsearch = false -- Do not highlight search token
+vim.opt.expandtab = false    -- Do not expand tab to spaces by default
+vim.opt.signcolumn = "yes"   -- Always display the sign column
+vim.opt.hlsearch = false     -- Do not highlight search token
 
-vim.g.mapleader = ' ' -- Set map leader
+vim.g.mapleader = ' '        -- Set map leader
 
 -- Window Navigation
 vim.keymap.set('n', '<C-h>', '<cmd>wincmd h<cr>')
@@ -39,22 +39,22 @@ vim.keymap.set('n', '[q', '<cmd>cp<cr>')
 vim.keymap.set('n', ']q', '<cmd>cn<cr>')
 
 -- Copy/Paste
-vim.keymap.set('n', 'Y', 'yy') -- Default is y$ vs whole line
-vim.keymap.set({'n', 'x'}, 'cp', '"+y') -- Yank to clipboard
-vim.keymap.set({'n', 'x'}, 'cv', '"+p') -- Paste from clipboard
+vim.keymap.set('n', 'Y', 'yy')            -- Default is y$ vs whole line
+vim.keymap.set({ 'n', 'x' }, 'cp', '"+y') -- Yank to clipboard
+vim.keymap.set({ 'n', 'x' }, 'cv', '"+p') -- Paste from clipboard
 
 -- Automatically strip trailing whitespace on file save
-vim.cmd ([[ autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h,*.lua
-									\	:call StripTrailingWhitespace() ]])
+vim.cmd([[autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h,*.lua
+									\	:call StripTrailingWhitespace()]])
 
 -- When editing a file, always jump to the last known cursor position.
 -- Don't do it when the position is invalid, when inside an event handler
 -- (happens when dropping a file on gvim) and for a commit message (it's
 -- likely a different one than last time).
-vim.cmd([[ autocmd BufReadPost *
+vim.cmd([[autocmd BufReadPost *
 			\ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~ 'commit'
 			\ |   exe "normal! g`\""
-			\ | endif ]])
+			\ | endif]])
 
 -- Auto-format options
 --   c = auto-wrap comments
@@ -66,7 +66,7 @@ vim.cmd([[ autocmd BufReadPost *
 --   n = Recognize numbers lists
 --   j = Remove comment leader when joining lines
 --   1 = don't break line after a one-letter word
-vim.opt.formatoptions="cro/qlnj1"
+vim.opt.formatoptions = "cro/qlnj1"
 
 -- Improve Quickfix error detection
 -- Quckfix not parsing gcc error: inlined from '<fn>' at <file>:<line>:<column>:
@@ -86,14 +86,14 @@ vim.g.loaded_netrwPlugin = 1
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -107,13 +107,13 @@ require("lazy").setup({
 	-- Colorscheme should be available when starting Neovim
 	{
 		"altercation/vim-colors-solarized",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme solarized]])
+		lazy = false,  -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- load the colorscheme here
+			vim.cmd([[colorscheme solarized]])
 			vim.api.nvim_create_autocmd("VimEnter", {
-				pattern="*",
+				pattern = "*",
 				callback = function(ev)
 					-- Insert any highlight commands required to override color scheme defaults
 					vim.cmd([[hi FgCocHintFloatBgCocFloating ctermbg=8]])
@@ -122,8 +122,8 @@ require("lazy").setup({
 					vim.cmd([[hi Comment cterm=italic gui=italic]])
 				end
 			})
-    end,
-  },
+		end,
+	},
 
 	-- status line
 	{
@@ -143,32 +143,32 @@ require("lazy").setup({
 	-- Treesitter based syntax highlights
 	{
 		"nvim-treesitter/nvim-treesitter",
-    config = function()
+		config = function()
 			require('nvim-treesitter.configs').setup({
 				highlight = {
 					enable = true,
 				},
 				ensure_installed = {
-				-- 	'awk',
-				-- 	'bash',
-				-- 	'cmake',
-				-- 	'c',
-				-- 	'dockerfile',
-				-- 	'dot',
-				-- 	'json',
-				-- 	'lua',
-				-- 	'make',
-				-- 	'markdown',
-				-- 	'ninja',
-				-- 	'perl',
-				-- 	'python',
-				-- 	'regex',
-				-- 	'todotxt',
-				-- 	'vim',
-				-- 	'yaml',
+					-- 	'awk',
+					-- 	'bash',
+					-- 	'cmake',
+					-- 	'c',
+					-- 	'dockerfile',
+					-- 	'dot',
+					-- 	'json',
+					-- 	'lua',
+					-- 	'make',
+					-- 	'markdown',
+					-- 	'ninja',
+					-- 	'perl',
+					-- 	'python',
+					-- 	'regex',
+					-- 	'todotxt',
+					-- 	'vim',
+					-- 	'yaml',
 				},
 			})
-    end,
+		end,
 	},
 
 	-- Show indent lines
@@ -188,17 +188,17 @@ require("lazy").setup({
 	},
 
 	-- LSP Support
-  {
+	{
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require('lspconfig')
 
 			-- Mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-			local opts = { noremap=true, silent=true }
+			local opts = { noremap = true, silent = true }
 			vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts) -- Open floating error window
-			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)        -- Previous diagnostic
-			vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)        -- Next diagnostic
+			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)     -- Previous diagnostic
+			vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)     -- Next diagnostic
 			vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts) -- Add diagnostics to location list
 
 			-- Use an on_attach function to only map the following keys
@@ -262,7 +262,7 @@ require("lazy").setup({
 						},
 						diagnostics = {
 							-- Get the language server to recognize the `vim` global
-							globals = {'vim'},
+							globals = { 'vim' },
 						},
 						workspace = {
 							-- Make the server aware of Neovim runtime files
@@ -332,8 +332,8 @@ require("lazy").setup({
 						sources = {
 							{ name = 'path' },
 							{ name = 'nvim_lsp', keyword_length = 1 },
-							{ name = 'buffer', keyword_length = 3 },
-							{ name = 'luasnip', keyword_length = 2 },
+							{ name = 'buffer',   keyword_length = 3 },
+							{ name = 'luasnip',  keyword_length = 2 },
 						},
 						window = {
 							documentation = cmp.config.window.bordered(),
@@ -355,33 +355,27 @@ require("lazy").setup({
 						mapping = {
 							['<Up>'] = cmp.mapping.select_prev_item(select_opts),
 							['<Down>'] = cmp.mapping.select_next_item(select_opts),
-
 							['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
 							['<C-n>'] = cmp.mapping.select_next_item(select_opts),
-
 							['<C-u>'] = cmp.mapping.scroll_docs(-4),
 							['<C-d>'] = cmp.mapping.scroll_docs(4),
-
 							['<C-e>'] = cmp.mapping.abort(),
-							['<C-y>'] = cmp.mapping.confirm({select = true}),
-							['<CR>'] = cmp.mapping.confirm({select = false}),
-
+							['<C-y>'] = cmp.mapping.confirm({ select = true }),
+							['<CR>'] = cmp.mapping.confirm({ select = false }),
 							['<C-f>'] = cmp.mapping(function(fallback)
 								if luasnip.jumpable(1) then
 									luasnip.jump(1)
 								else
 									fallback()
 								end
-							end, {'i', 's'}),
-
+							end, { 'i', 's' }),
 							['<C-b>'] = cmp.mapping(function(fallback)
 								if luasnip.jumpable(-1) then
 									luasnip.jump(-1)
 								else
 									fallback()
 								end
-							end, {'i', 's'}),
-
+							end, { 'i', 's' }),
 							['<Tab>'] = cmp.mapping(function(fallback)
 								local col = vim.fn.col('.') - 1
 
@@ -392,15 +386,14 @@ require("lazy").setup({
 								else
 									cmp.complete()
 								end
-							end, {'i', 's'}),
-
+							end, { 'i', 's' }),
 							['<S-Tab>'] = cmp.mapping(function(fallback)
 								if cmp.visible() then
 									cmp.select_prev_item(select_opts)
 								else
 									fallback()
 								end
-							end, {'i', 's'}),
+							end, { 'i', 's' }),
 						},
 					})
 				end,
@@ -459,16 +452,16 @@ require("lazy").setup({
 	{
 		"kkoomen/vim-doge",
 		build = function()
-			vim.cmd([[ call doge#install() ]])
+			vim.cmd([[call doge#install()]])
 		end,
 	},
 
 	-- Comment lines of code
 	{
-    "numToStr/Comment.nvim",
-    config = function()
-        require('Comment').setup()
-    end,
+		"numToStr/Comment.nvim",
+		config = function()
+			require('Comment').setup()
+		end,
 	},
 
 	-- File Viewer
@@ -477,28 +470,28 @@ require("lazy").setup({
 		dependencies = {
 			'nvim-tree/nvim-web-devicons', -- for file icons
 		},
-		tag = 'nightly', -- optional, updated every week. (see issue #1193)
-	  config = function()
-        require('nvim-tree').setup({
-					filters = {
-						custom = {
-							"^\\.git",
+		tag = 'nightly',              -- optional, updated every week. (see issue #1193)
+		config = function()
+			require('nvim-tree').setup({
+				filters = {
+					custom = {
+						"^\\.git",
+					},
+				},
+				update_focused_file = {
+					enable = true,
+					update_root = true,
+				},
+				actions = {
+					open_file = {
+						quit_on_open = true,
+						window_picker = {
+							enable = false,
 						},
 					},
-					update_focused_file = {
-						enable = true,
-						update_root = true,
-					},
-					actions = {
-						open_file = {
-							quit_on_open = true,
-							window_picker = {
-								enable = false,
-							},
-						},
-					},
-				})
-    end,
+				},
+			})
+		end,
 		keys = {
 			{ "<leader>t", "<cmd>NvimTreeToggle<cr>" },
 		},
@@ -520,17 +513,17 @@ require("lazy").setup({
 	"editorconfig/editorconfig-vim",
 
 	-- Silver SEarcher + FZF Support
-  {
-	  "junegunn/fzf.vim",
+	{
+		"junegunn/fzf.vim",
 		dependencies = {
 			{
 				"junegunn/fzf",
 				build = function()
-					vim.cmd([[ call fzf#install() ]])
+					vim.cmd([[call fzf#install()]])
 				end,
 				config = function()
-					vim.g.fzf_preview_window = {"right,50%", "ctrl-/"}
-					vim.opt.grepprg = "rg --vimgrep"  -- Use ripgrep for :grep
+					vim.g.fzf_preview_window = { "right,50%", "ctrl-/" }
+					vim.opt.grepprg = "rg --vimgrep" -- Use ripgrep for :grep
 
 					-- Use ctrl-a/ctrl-d to select/deselect all items in :Ag list
 					vim.env.FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
@@ -544,8 +537,7 @@ require("lazy").setup({
 					-- AgIn: Start ag in the specified directory
 					-- e.g.
 					--   :AgIn .. foo
-					vim.cmd([[
-					function! s:ag_in(bang, ...)
+					vim.cmd([[function! s:ag_in(bang, ...)
 						let start_dir=expand(a:1)
 
 						if !isdirectory(start_dir)
@@ -553,10 +545,9 @@ require("lazy").setup({
 						endif
 						" Press `?' to enable preview window.
 						call fzf#vim#ag(join(a:000[1:], ' '), fzf#vim#with_preview({'dir': start_dir}, 'right:50%:hidden', '?'), a:bang)
-					endfunction
-					]])
+					endfunction]])
 
-					vim.cmd([[ command! -bang -nargs=+ -complete=dir AgIn call s:ag_in(<bang>0, <f-args>) ]])
+					vim.cmd([[command! -bang -nargs=+ -complete=dir AgIn call s:ag_in(<bang>0, <f-args>)]])
 
 					-- --column: Show column number
 					-- --line-number: Show line number
@@ -569,29 +560,23 @@ require("lazy").setup({
 					-- --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 					-- --color: Search color options
 
-					vim.cmd([[
-					command! -bang -nargs=* Find
+					vim.cmd([[command! -bang -nargs=* Find
 						\ call fzf#vim#grep(
 						\   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!*build*/" --glob "!notused" --color "always" '.shellescape(<q-args>), 1,
-						\   fzf#vim#with_preview(), <bang>0)
-						]])
+						\   fzf#vim#with_preview(), <bang>0)]])
 
-					vim.cmd([[
-					command! -bang -nargs=* FindCword
+					vim.cmd([[command! -bang -nargs=* FindCword
 						\ call fzf#vim#grep(
 						\   'rg --column --line-number --no-heading --color=always '.shellescape(expand('<cword>')), 1,
 						\   <bang>0 ? fzf#vim#with_preview('up:60%')
 						\           : fzf#vim#with_preview('right:50%:hidden', '?'),
-						\   <bang>0)
-						]])
+						\   <bang>0)]])
 
 					vim.keymap.set('n', '<Leader>fw', '<cmd>FindCword<cr>')
 
-					vim.cmd([[
-					command! -bang Gstat
+					vim.cmd([[command! -bang Gstat
 						\ call fzf#run(fzf#wrap(
-						\     {'source': 'git diff --name-only $(git merge-base HEAD "main")'}))
-						]])
+						\     {'source': 'git diff --name-only $(git merge-base HEAD "main")'}))]])
 
 					vim.keymap.set('n', '<Leader>s', '<cmd>Gstat<cr>')
 				end
@@ -630,7 +615,7 @@ require("lazy").setup({
 			-- General assertion failure:
 			--   [  ERROR   ] --- <error text>
 			--   [   LINE   ] --- <file>:<line>: error: Failure!
-      vim.cmd([[set errorformat^=%E[\ \ %tRROR\ \ \ ]\ ---\ %m,%Z[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ Failure!]])
+			vim.cmd([[set errorformat^=%E[\ \ %tRROR\ \ \ ]\ ---\ %m,%Z[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ Failure!]])
 			-- fail() Error format:
 			--   [ ERROR ] --- [   LINE   ] --- <file>|<line>| error: <error text>
 			vim.cmd([[set errorformat^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ %m]])
