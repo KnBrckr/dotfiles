@@ -27,5 +27,12 @@ return {
 		{ '<leader>ld', '<cmd>Telescope lsp_definitions<cr>' },
 		{ '<leader>li', '<cmd>Telescope lsp_implementations<cr>' },
 		{ '<leader>lr', '<cmd>Telescope lsp_references<cr>' },
+		{ '<leader>ed', function()
+			require('telescope.builtin').git_files {
+				cwd = "~/.dotfiles",
+				prompt = "~ dotfiles ~",
+			}
+		end },
+
 	},
 }
