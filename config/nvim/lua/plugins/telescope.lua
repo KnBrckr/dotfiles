@@ -14,6 +14,11 @@ return {
 			defaults = {
 				path_display = { "shorten" },
 			},
+			pickers = {
+				buffers = {
+					sort_lastused = true,
+				},
+			},
 		})
 	end,
 	keys = {
@@ -21,6 +26,7 @@ return {
 		{ '<leader>ff', '<cmd>Telescope find_files<cr>' },
 		{ '<leader>fg', '<cmd>Telescope live_grep<cr>' },
 		{ '<leader>fw', '<cmd>Telescope grep_string<cr>' },
+		{ '<c-p>',      '<cmd>Telescope git_files<cr>' },
 		{ '<leader>gf', '<cmd>Telescope git_files<cr>' },
 		{ '<leader>gs', '<cmd>Telescope git_status<cr>' },
 		{ '<leader>fh', '<cmd>Telescope help_tags<cr>' },
