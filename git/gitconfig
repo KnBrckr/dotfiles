@@ -86,7 +86,7 @@
   reviewone = !vim -p +\"tabdo Gvdiffsplit ${REVIEW_BASE:-main}\" +\"call "coc#config"('git',{'diffRevision': '${REVIEW_BASE:-main}'})\"
 
   # Edit files changed since REVIEW_BASE
-  edit = !vim -p $(git files-no-del)
+  edit = !nvim -p $(git files-no-del)
 
   # gitlab integration
 	# Requires: git config --add remote.origin.fetch '+refs/merge-requests/*:refs/remotes/origin/merge-requests/*'
@@ -105,10 +105,10 @@
 	autocrlf = input
 
 [diff]
-	tool = vimdiff
+	tool = nvimdiff
 	 
 [merge]
-	tool = vimdiff
+	tool = nvimdiff
 
 [difftool]
 	prompt = false
@@ -141,6 +141,7 @@
 
 [push]
 	default = simple
+	followTags = true
 	
 [filter "media"]
 	clean = git media clean %f
