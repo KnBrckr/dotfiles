@@ -13,6 +13,7 @@ vim.opt.wrap = true          -- Wrap long lines, preserving indent
 vim.opt.breakindent = true
 vim.opt.tabstop = 2          -- Default tab stop
 vim.opt.shiftwidth = 2
+vim.opt.scrolloff = 4        -- Keep lines before/after cursor on display
 vim.opt.expandtab = false    -- Do not expand tab to spaces by default
 vim.opt.signcolumn = "yes"   -- Always display the sign column
 vim.opt.hlsearch = false     -- Do not highlight search token
