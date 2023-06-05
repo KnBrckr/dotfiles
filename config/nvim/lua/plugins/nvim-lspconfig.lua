@@ -20,24 +20,6 @@ return {
 		-- Add additional capabilities supported by nvim-cmp
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-		-- lspconfig.bashls.setup {
-		-- 	on_attach = on_attach,
-		-- 	flags = lsp_flags,
-		-- 	capabilities = capabilities,
-		-- }
-
-		lspconfig.clangd.setup {
-			on_attach = lsp_on_attach,
-			flags = lsp_flags,
-			capabilities = capabilities,
-		}
-
-		-- lspconfig.jsonls.setup {
-		-- 	on_attach = on_attach,
-		-- 	flags = lsp_flags,
-		-- 	capabilities = capabilities,
-		-- }
-
 		lspconfig.lua_ls.setup {
 			on_attach = lsp_on_attach,
 			flags = lsp_flags,
@@ -131,8 +113,8 @@ return {
 					sources = {
 						{ name = 'path' },
 						{ name = 'nvim_lsp', keyword_length = 1 },
-						{ name = 'buffer',   keyword_length = 3 },
 						{ name = 'luasnip',  keyword_length = 2 },
+						{ name = 'buffer',   keyword_length = 3 },
 					},
 					window = {
 						documentation = cmp.config.window.bordered(),
@@ -219,7 +201,7 @@ return {
 				},
 				"saadparwaiz1/cmp_luasnip", -- Include luasnip completion
 				{
-					"hrsh7th/cmp-nvim-lsp",
+					"hrsh7th/cmp-nvim-lsp", -- Include lsp completion
 					config = function()
 						require('cmp').setup({
 							sources = {
