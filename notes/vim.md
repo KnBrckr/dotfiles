@@ -32,6 +32,10 @@ Go back to first location and paste 2nd selection.
 `:h i_^r`  - Help for ctrl-r in insert mode
 `:h c_^r`  - Help for ctrl-r in command mode
 
+## Telescope ##
+
+`c-q` Copy results to quickfix list
+
 ## Gutentags Plus -- gtags/ctags ##
 
 ```VimL
