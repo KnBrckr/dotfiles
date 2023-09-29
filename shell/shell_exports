@@ -5,6 +5,10 @@ export SHELL=/bin/zsh
 # Use dotfile script as the default editor - Points at textmate
 #export EDITOR="$DOTFILES/bin/editor"
 export EDITOR=vim
+if command_exists nvim; then
+	# Use nvim instead if it's available
+	export EDITOR=nvim
+fi
 
 # Don't clear the screen after quitting a manual page
 export MANPAGER="less -X"

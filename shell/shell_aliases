@@ -34,6 +34,11 @@ elif command_exists hostname; then
 	alias myip="hostname -I"
 fi
 
+# map vim to nvim
+if command_exists nvim; then
+	alias vim=nvim
+fi
+
 # git shortcuts
 alias gsuba="git submodule add --depth 1"
 alias gmff="git merge --ff-only"
