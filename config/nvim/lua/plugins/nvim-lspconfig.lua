@@ -112,6 +112,7 @@ return {
 					},
 					sources = {
 						{ name = 'path' },
+						{ name = 'orgmode' },
 						{ name = 'nvim_lsp', keyword_length = 1 },
 						{ name = 'luasnip',  keyword_length = 2 },
 						{ name = 'buffer',   keyword_length = 3 },
