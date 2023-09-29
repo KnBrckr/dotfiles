@@ -26,6 +26,9 @@ alias hexd="od -A x -t x1z -v"
 # Concatenate and print content of files (add line numbers)
 alias catn="cat -n"
 
+# Use compression with scp
+alias scp="scp -C"
+
 # IP addresses
 alias wanip="dig +short myip.opendns.com @resolver1.opendns.com"
 if command_exists ipconfig; then
