@@ -104,6 +104,10 @@
   attributesfile = ~/.gitattributes
   autocrlf = input
 
+[tag]
+	# Sort tags according to version strings
+	sort=version:refname
+
 [diff]
   tool = nvimdiff
    
