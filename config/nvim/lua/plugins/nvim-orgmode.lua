@@ -4,20 +4,23 @@ return {
 	dependencies = {
 		'nvim-treesitter/nvim-treesitter',
 	},
-	lazy = false,    -- make sure we load this during startup
-	ft = {'org'},
+	lazy = false, -- make sure we load this during startup
+	ft = { 'org' },
 	config = function()
-		require('orgmode').setup{
+		local journal_target = '~/org-mode/journal/%<%Y-%m>.org'
+		local journal_template_header = '\n** %<%Y-%m-%d> %<%A>\n*** %U\n\n'
+
+		require('orgmode').setup {
 			-- Can provide multiple dirs: org_agenda_files = {'~/onedrive/org-mode/**/*', '~/my-orgs/**/*'},
-			org_agenda_files = {'~/org-mode/**/*', '~/logseq/**/*' },
+			org_agenda_files = { '~/org-mode/**/*', '~/logseq/**/*' },
 			org_default_notes_file = '~/org-mode/refile.org',
-			org_todo_keywords = {'TODO', 'NEXT', 'NOW', 'LATER', '|', 'DONE' },
+			org_todo_keywords = { 'TODO(t)', 'NEXT', 'NOW', 'LATER', '|','CANCELED', 'DONE(d)' },
 			org_capture_templates = {
 				t = { description = 'Task', template = '* TODO %?\n  %u' },
 				j = {
 					description = 'Journal',
-					template = '\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?',
-					target = '~/org-mode/journal/%<%Y-%m>.org'
+					template = journal_template_header .. "%?",
+					target = journal_target
 				},
 			},
 		}
@@ -31,12 +34,9 @@ return {
 				enable = true,
 				-- Required for spellcheck, some LaTex highlights and
 				-- code block highlights that do not have ts grammar
-				additional_vim_regex_highlighting = {'org'},
+				additional_vim_regex_highlighting = { 'org' },
 			},
-			ensure_installed = {'org'}, -- Or run :TSUpdate org
+			ensure_installed = { 'org' }, -- Or run :TSUpdate org
 		}
-
-		require('orgmode').setup({
-		})
 	end,
 }
