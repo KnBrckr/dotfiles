@@ -38,6 +38,7 @@ run_brew() {
 			'mariadb'   # Mysql relative
 			'mdcat'     # markdown to terminal
 			'mercurial'
+			'neovim'
 			'node'
 			'php'
 			'pyenv'
