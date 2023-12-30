@@ -65,6 +65,7 @@ mirror_files() {
 	link "vim/gvimrc"					          ".gvimrc"
 	link "vim/vimrc"				          	".vimrc"
 	link "shell/vintrc.yaml"            ".vintrc.yaml"
+	link "config/bat"    								".config/bat"
 	link "config/ctags"                 ".config/ctags"
 	link "config/efm-langserver"        ".config/efm-langserver"
 	link "config/kitty"                 ".config/kitty"
