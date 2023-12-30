@@ -102,6 +102,7 @@ brew_install() {
 
 	# Package is already installed
 	if brew_exists $brew_opt $2; then
+		e_success $2
 		return
 	fi
 
@@ -109,13 +110,15 @@ brew_install() {
 		e_error "brew $brew_opt $2 failed"
 		exit 1
 	fi
+
+	e_success $2
 }
 
 # Worker function testing for installed brew packages
 # @param $1 options to brew list
 # @param $2 brew package name
 brew_exists() {
-    if $(brew list $1 $2 >/dev/null 2>&1); then
+    if $(brew list $@ >/dev/null 2>&1); then
         return 0
     fi
 
