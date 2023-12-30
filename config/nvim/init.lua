@@ -125,6 +125,6 @@ end
 require("lazy").setup("plugins")
 
 -- Load local machine settings if they exist
-if vim.fn.filereadable(vim.fn.glob('$HOME/.vimrc.local')) then
+if vim.fn.filereadable(vim.fn.expand('$HOME/.vimrc.local')) == 1 then
 	vim.cmd([[source $HOME/.vimrc.local]])
 end
