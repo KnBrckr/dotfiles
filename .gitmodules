@@ -89,3 +89,6 @@
 [submodule "vim-dispatch"]
 	path = vim/pack/vendor/opt/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
+[submodule "powerlevel10k"]
+	path = shell/zshcustom/themes/powerlevel10k
+	url = https://gitee.com/romkatv/powerlevel10k.git
