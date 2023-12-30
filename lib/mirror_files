@@ -51,6 +51,7 @@ mirror_files() {
 	link "shell/bash_logout"			      ".bash_logout"
 	link "shell/curlrc"				   	      ".curlrc"
 	link "shell/inputrc"			        	".inputrc"
+	link "shell/p10k.zsh"			        	".p10k.zsh"
 	link "shell/zshenv"					        ".zshenv"
 	link "shell/zprofile"				        ".zprofile"
 	link "shell/zshrc"					        ".zshrc"
