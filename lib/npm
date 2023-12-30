@@ -36,39 +36,6 @@ EOD
 				fi
 			done
 
-			echo "Installing coc.nvim extensions ..."
-
-			local -a packages=(
-			  'coc-clangd'
-				'coc-cmake'
-			  'coc-git'
-				'coc-json'
-				# 'coc-pairs'   # Disable - too many ways it doesn't behave nicely -- Insert matched pairs (), '', etc 
-				'coc-pyright' # Python support
-				'coc-sh'
-				'coc-snippets'
-			)
-
-			# coc.nvim packages are installed locally in ~/.config/coc/extensions
-			local save_dir=`pwd`
-			mkdir -p ~/.config/coc/extensions
-			cd ~/.config/coc/extensions
-			if [ ! -f package.json ]
-			then
-				echo '{"dependencies":{}}' > package.json
-			fi
-
-			for pkg in "${packages[@]}"
-			do
-				if ! npm_pkg_exists $pkg ; then
-					if ! npm install $pkg --global-style --ignore-scripts --no-bin-links --no-package-lock --omit=dev ; then
-						e_error "npm install failed"
-						exit 1
-					fi
-				fi
-			done
-			cd $save_dir
-
     else
         printf "\n"
         e_error "Error: npm not found."
