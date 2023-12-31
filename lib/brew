@@ -37,6 +37,7 @@ run_brew() {
 			'global'    # gnu Global gtags for vim:gutentags
 			'golang'
 			'jq'        # CLI JSON processor
+			'lua-language-server'
 			'mariadb'   # Mysql relative
 			'mdcat'     # markdown to terminal
 			'mercurial'
