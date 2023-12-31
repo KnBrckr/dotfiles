@@ -26,6 +26,7 @@ run_brew() {
 		local -a desired_formulae=(
 			'bat' # Cat with syntax highlighting
 			'carthage' # Swift Library Dependency Manager
+			'cheat'
 			'cmake'
 			'composer'
 			'coreutils' # GNU core utilities (those that come with OS X are outdated)
