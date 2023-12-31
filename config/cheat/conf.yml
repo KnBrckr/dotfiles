@@ -3,12 +3,12 @@
 editor: nvim
 
 # Should 'cheat' always colorize output?
-colorize: false
+colorize: true
 
 # Which 'chroma' colorscheme should be applied to the output?
 # Options are available here:
 #   https://github.com/alecthomas/chroma/tree/master/styles
-style: monokai
+style: solarized-dark
 
 # Which 'chroma' "formatter" should be applied?
 # One of: "terminal", "terminal256", "terminal16m"
@@ -17,7 +17,7 @@ formatter: terminal256
 # Through which pager should output be piped?
 # 'less -FRX' is recommended on Unix systems
 # 'more' is recommended on Windows
-pager: less
+pager: less -FRX
 
 # Cheatpaths are paths at which cheatsheets are available on your local
 # filesystem.
