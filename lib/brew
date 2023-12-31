@@ -21,9 +21,8 @@ run_brew() {
 		brew tap homebrew/cask-fonts  # For patched fonts with updated icons
 
 		e_header "Checking status of desired Homebrew formulae..."
-		local list_formulae
-		local -a missing_formulae
 		local -a desired_formulae=(
+		  'bash-language-server'
 			'bat' # Cat with syntax highlighting
 			'carthage' # Swift Library Dependency Manager
 			'cheat'
@@ -46,6 +45,7 @@ run_brew() {
 			'php'
 			'pyenv'
 			'sass/sass/sass'
+			'shellcheck' # used by bash-language-server
 			'swiftgen' # Swift Code Generation tool
 			'telnet'
 			'the_silver_searcher' # Fast grep and find alternative

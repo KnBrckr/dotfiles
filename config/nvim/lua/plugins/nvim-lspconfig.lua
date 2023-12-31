@@ -46,6 +46,13 @@ return {
 		-- Add additional capabilities supported by nvim-cmp
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+		-- Bash
+		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#bashls
+		lspconfig.bashls.setup {
+			capabilities = capabilities,
+		}
+
+		-- Lua
 		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
 		lspconfig.lua_ls.setup {
 			capabilities = capabilities,
