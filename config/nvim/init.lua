@@ -30,19 +30,17 @@ vim.keymap.set('n', '<C-\\>', '<cmd>wincmd p<cr>')
 -- Faster viewport scrolling (3 lines at a time)
 vim.keymap.set('n', '<C-e>', '3<C-e>')
 vim.keymap.set('n', '<C-y>', '3<C-y>')
-vim.keymap.set('n', '<C-e>', '3<C-e>')
-vim.keymap.set('n', '<C-y>', '3<C-y>')
 
 -- Quickfix navigation
 -- [q jumps to previous quick fix list item
 -- ]q jumps to next quick fix list item
-vim.keymap.set('n', '[q', '<cmd>cp<cr>')
-vim.keymap.set('n', ']q', '<cmd>cn<cr>')
+vim.keymap.set('n', '[q', '<cmd>cp<cr>', { desc = "Previous quicklist" })
+vim.keymap.set('n', ']q', '<cmd>cn<cr>', { desc = "Next quicklist" })
 
 -- Copy/Paste
 vim.keymap.set('n', 'Y', 'yy')            -- Default is y$ vs whole line
-vim.keymap.set({ 'n', 'x' }, 'cp', '"+y') -- Yank to clipboard
-vim.keymap.set({ 'n', 'x' }, 'cv', '"+p') -- Paste from clipboard
+vim.keymap.set({ 'n', 'x' }, 'cp', '"+y', { desc = "Yank to clipboard"})
+vim.keymap.set({ 'n', 'x' }, 'cv', '"+p', { desc = "Paste from clipboard"})
 
 -- Automatically strip trailing whitespace on file save
 vim.cmd([[autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h,*.lua
@@ -80,7 +78,7 @@ vim.cmd([[set errorformat^=/usr/bin/ld:\ %f:%l:\ %m]])
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
 
--- Disable netrw, replaced by nvim-tree below
+-- Disable netrw, replaced by nvim-tree via lazy load of plugins
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
