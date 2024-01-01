@@ -1,43 +1,5 @@
 " Plugin Settings
 
-"--------------------------------------------------------------------------------
-" Configure cmake4vim plugin
-"
-
-" Save files and build (Make)
-nnoremap <leader>m :wa <bar> :CMakeBuild <cr>
-
-" Redefine CTest command to include --output-on-failure
-autocmd vimStartup VimEnter * command! -nargs=? CTest :call cmake4vim#CTest('--output-on-failure', <f-args>)
-
-" Quickfix list error format for ctest errors using CMocka environment
-"
-" General assertion failure:
-"   [  ERROR   ] --- <error text>
-"   [   LINE   ] --- <file>:<line>: error: Failure!
-set errorformat^=%E[\ \ %tRROR\ \ \ ]\ ---\ %m,%Z[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ Failure!
-" fail() Error format: 
-"   [ ERROR ] --- [   LINE   ] --- <file>|<line>| error: <error text>
-set errorformat^=[\ \ %tRROR\ \ \ ]\ ---\ [\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ error:\ %m
-" Cmock test setup failure:
-"   [   LINE   ] --- <file>:<line>: error: <error text>
-set errorformat^=[\ \ \ LINE\ \ \ ]\ ---\ %f:%l:\ %trror:\ %m
-
-" Quckfix not parsing gcc error: inlined from '<fn>' at <file>:<line>:<column>:
-"
-set errorformat^=%W\ \ \ \ inlined\ from\ %.%#\ at\ %f:%l:%c:,%Z%.%#\ warning:\ %m
-
-" Quickfix not parsing ld error: /usr/bin/ld: <file>:<line>:<error>
-"
-set errorformat^=/usr/bin/ld:\ %f:%l:\ %m
-
-" Quickfix not parsing cmake error:
-"   CMake Error at <file>:<line> (add_library)
-"     Cannot file source file:
-"
-"     <missing-file>
-set errorformat^=CMake\ Error\ at\ %f:%l\ (%m):
-
 " --------------------------------------------------------------------------------
 " Gutentags
 "

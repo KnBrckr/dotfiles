@@ -61,9 +61,6 @@
 [submodule "lightline.vim"]
 	path = vim/pack/vendor/opt/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
-[submodule "cmake4vim"]
-	path = vim/pack/vendor/opt/cmake4vim
-	url = https://github.com/ilyachur/cmake4vim
 [submodule "gutentags_plus"]
 	path = vim/pack/vendor/opt/gutentags_plus
 	url = https://github.com/skywind3000/gutentags_plus.git
