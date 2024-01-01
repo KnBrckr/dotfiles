@@ -64,10 +64,6 @@
 [submodule "cmake4vim"]
 	path = vim/pack/vendor/opt/cmake4vim
 	url = https://github.com/ilyachur/cmake4vim
-[submodule "coc.nvim"]
-	path = vim/pack/vendor/opt/coc.nvim
-	url = https://github.com/neoclide/coc.nvim.git
-	branch = release
 [submodule "gutentags_plus"]
 	path = vim/pack/vendor/opt/gutentags_plus
 	url = https://github.com/skywind3000/gutentags_plus.git

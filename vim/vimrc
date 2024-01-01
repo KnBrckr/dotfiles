@@ -287,7 +287,6 @@ nnoremap <f11> :make test <CR>
 
 if &loadplugins && has('packages')
 	packadd! cmake4vim
-	packadd! coc.nvim
 	packadd! gutentags_plus
 	packadd! lightline.vim
 	packadd! vim-gutentags

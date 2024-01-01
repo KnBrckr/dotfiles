@@ -51,7 +51,6 @@ Uses [Oh My Zsh!](https://github.com/ohmyzsh/ohmyzsh/wiki) for zsh shell configu
 Vim plugins:
 
 * [cmake4vim](https://github.com/ilyachur/cmake4vim)
-* [coc.nvim](https://github.com/neoclide/coc.nvim)
 * [editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
 * [fzf](https://github.com/junegunn/fzf)
 * [fzf.vim](https://github.com/junegunn/fzf.vim)
