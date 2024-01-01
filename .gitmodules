@@ -7,9 +7,6 @@
 [submodule "vim/pack/vendor/start/editorconfig-vim"]
 	path = vim/pack/vendor/start/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
-[submodule "vim/pack/vendor/start/vim-doge"]
-	path = vim/pack/vendor/start/vim-doge
-	url = https://github.com/kkoomen/vim-doge.git
 [submodule "vim/pack/vendor/start/splitjoin"]
 	path = vim/pack/vendor/start/splitjoin
 	url = https://github.com/AndrewRadev/splitjoin.vim.git
