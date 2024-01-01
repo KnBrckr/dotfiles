@@ -129,10 +129,39 @@ if (( $#nosync )); then
 else
 	e_header "Syncing dotfiles..."
 	# Pull down the latest changes
-	git pull --rebase origin master
+	git fetch origin
+
+	# If directory is updated, dotfiles script itself may have changed.
+	# In such a case, exit after updating local files, command must be
+	# restarted
+	
+	LOCAL_REF=$(git rev-parse @)
+	UPSTREAM_REF=$(git rev-parse @{u})
+	BASE_REF=$(git merge-base @ @{u})
+	
+	RESTART=0
+	if [ $LOCAL_REF = $UPSTREAM_REF ]; then
+		e_info "Dotfiles up to date"
+	elif [ $LOCAL_REF = $BASE_REF ]; then
+		# Update local branch
+		git pull
+		RESTART=1
+	elif [ $UPSTREAM_REF = $BASE_REF ]; then
+		e_info "Push of local changes needed"
+	else
+		e_warning "Dotfiles has diverged ... trying rebase"
+		git pull --rebase origin master
+		RESTART=1
+	fi
+
 	# Update submodules
 	e_header "Updating submodules"
 	git submodule update --recursive --init --quiet
+
+	if [ $RESTART -eq 1 ]; then
+		e_info "Local files updated, restart dotfiles!"
+		exit 1
+	fi
 fi
 
 # Install and update packages
