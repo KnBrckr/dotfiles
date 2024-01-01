@@ -5,11 +5,8 @@
 #
 
 # Solarized dircolors
-dircolor_file="$DOTFILES/submodules/dircolors-solarized/dircolors.ansi-dark"
 if command_exists dircolors; then
-	eval `dircolors $dircolor_file`
-elif command_exists gdircolors; then
-	eval `gdircolors $dircolor_file`
+	eval `dircolors $DOTFILES/submodules/dircolors-solarized/dircolors.ansi-dark`
 fi
 
 # Setup color variables
