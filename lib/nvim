@@ -4,11 +4,15 @@
 install_nvim_providers() {
 	# Python3 provider
 	if command_exists python3; then
-		python3 -m pip install pynvim
+		if ! python3 -m pip install pynvim; then
+			e_error "Error installing pynvim"
+		fi
 	fi
 
 	# Node.js provider
 	if command_exists npm; then
-		npm install -g neovim
+		if ! npm install -g neovim; then
+			e_error "Error installing neovim node.js provider"
+		fi
 	fi
 }
