@@ -44,6 +44,7 @@ run_brew() {
 			'node'
 			'php'
 			'pyenv'
+			'ripgrep' # Used by nvim Telescope Live Grep
 			'sass/sass/sass'
 			'shellcheck' # used by bash-language-server
 			'swiftgen' # Swift Code Generation tool
