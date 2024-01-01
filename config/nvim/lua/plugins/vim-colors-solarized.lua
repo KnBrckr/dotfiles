@@ -6,6 +6,8 @@ return {
 	config = function()
 		-- load the colorscheme here
 		vim.cmd([[colorscheme solarized]])
+
+		-- After entering nvim, perform highlight overrides
 		vim.api.nvim_create_autocmd("VimEnter", {
 			pattern = "*",
 			callback = function(ev)
