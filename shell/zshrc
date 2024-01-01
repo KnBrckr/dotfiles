@@ -1,4 +1,3 @@
-#!/bin/zsh
 # zshrc
 #
 # Zsh configuration files in order of execution:
@@ -19,7 +18,6 @@ fi
 load_dotfiles() {
 	declare -a files=(
 		$DOTFILES/shell/functions/* # Functions
-	  $DOTFILES/shell/zsh_colors # zsh Color settings
 		$DOTFILES/shell/shell_exports # Exports
 		$DOTFILES/shell/shell_aliases # Aliases
 		$DOTFILES/shell/apache_modsec # Aliases useful for apache log file analysis
@@ -187,6 +185,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Override oh-my-zsh color settings
+[ -r $DOTFILES/shell/zsh_colors  ] && source $DOTFILES/shell/zsh_colors 
 
 # Setup git based on locally defined environment
 if command_exists 'git'; then

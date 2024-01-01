@@ -6,7 +6,12 @@
 
 # Solarized dircolors
 if command_exists dircolors; then
+	# Setup LS_COLORS for Linux `ls`
 	eval `dircolors $DOTFILES/submodules/dircolors-solarized/dircolors.ansi-dark`
+fi
+if is_mac; then
+	# Solarized colors for OSX version of ls
+	export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 fi
 
 # Setup color variables
