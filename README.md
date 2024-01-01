@@ -6,7 +6,7 @@ My OS X dotfiles.
 
 The installation step requires the [XCode Command Line
 Tools](https://developer.apple.com/downloads) and may overwrite existing
-dotfiles in your HOME and `.vim` directories.
+dotfiles in your HOME, `.vim` and other directories.
 
 ```bash
 % bash -c "$(curl -fsSL raw.github.com/KnBrckr/dotfiles/master/bin/dotfiles)"
@@ -20,10 +20,8 @@ found at the top of the `bin/dotfiles` script.
 
 You should run the update when:
 
-* You make a change to `~/.dotfiles/git/gitconfig` (the only file that is
-  copied rather than symlinked).
 * You want to pull changes from the remote repository.
-* You want to update Homebrew formulae and Node packages.
+* You want to update Homebrew formulae, Node and other packages.
 
 Run the dotfiles command:
 
@@ -103,6 +101,11 @@ Any private and custom commands and configuration should be placed in a
 committed to a public repository. If `~/.shell_profile.local` exists, it will be
 sourced for inclusion in `bash_profile` or `zshprofile`.
 
+`~/.gitconfig` is updated as a part of dotfiles execution to set author details
+based on settings for `VCS_AUTHOR_NAME` an `VCS_AUTHOR_EMAIL`. It includes
+`$DOTFILES/git/gitconfig` so changes made to dotfiles gitconfig are automatically
+picked up with no updating required.
+
 Here is an example `~/.shell_profile.local`:
 
 ```bash
@@ -124,10 +127,6 @@ VCS_AUTHOR_EMAIL="jd@example.com"
 # Aliases
 alias code="cd ~/Code"
 ```
-
-N.B. Because the `git/gitconfig` file is copied to `~/.gitconfig`, any private
-git configuration specified in `~/.bash_profile.local` will not be committed to
-your dotfiles repository.
 
 ## Adding new git submodules
 
