@@ -5,6 +5,10 @@ e_header() {
     printf "\n${c_bold}%s${c_reset}\n" "$@"
 }
 
+e_info() {
+    printf "${c_green}%s${c_reset}\n" "$@"
+}
+
 # Success logging
 e_success() {
     printf "${c_green}${c_bold}✓ %s${c_reset}\n" "$@"
