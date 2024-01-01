@@ -79,7 +79,6 @@ Vim plugins:
   Kitty navigation
   * Requires copying of pass_keys.py and neighboring_window.py scripts to
     ~/.config/kitty/
-* [vim-lsp-cxx-highlight](https://github.com/jackguo380/vim-lsp-cxx-highlight)
 * [vim-snippets](https://github.com/honza/vim-snippets)
 * [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
 
