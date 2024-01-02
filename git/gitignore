@@ -31,4 +31,7 @@ tags.lock
 *.rej
 *.sass-cache
 *.sw?
-*.vi
+*.vi 
+
+# Binary version of vim spell files
+*.spl
