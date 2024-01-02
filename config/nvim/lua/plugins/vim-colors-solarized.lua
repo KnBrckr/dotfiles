@@ -12,7 +12,6 @@ return {
 			pattern = "*",
 			callback = function(ev)
 				-- Insert any highlight commands required to override color scheme defaults
-				vim.cmd([[hi FgCocHintFloatBgCocFloating ctermbg=8]])
 
 				-- Display comments in italic
 				vim.cmd([[hi Comment cterm=italic gui=italic]])
