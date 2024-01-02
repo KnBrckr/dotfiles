@@ -20,6 +20,10 @@ vim.opt.hlsearch = false      -- Do not highlight search token
 
 vim.g.mapleader = ' '         -- Set map leader
 
+-- By default use treesitter for folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
 -- Window Navigation
 vim.keymap.set('n', '<C-h>', '<cmd>wincmd h<cr>')
 vim.keymap.set('n', '<C-j>', '<cmd>wincmd j<cr>')
