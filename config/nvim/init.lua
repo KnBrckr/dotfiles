@@ -50,15 +50,6 @@ vim.keymap.set({ 'n', 'x' }, 'cv', '"+p', { desc = "Paste from clipboard"})
 vim.cmd([[autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h,*.lua
 									\	:call StripTrailingWhitespace()]])
 
--- When editing a file, always jump to the last known cursor position.
--- Don't do it when the position is invalid, when inside an event handler
--- (happens when dropping a file on gvim) and for a commit message (it's
--- likely a different one than last time).
-vim.cmd([[autocmd BufReadPost *
-			\ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~ 'commit'
-			\ |   exe "normal! g`\""
-			\ | endif]])
-
 -- Auto-format options
 --   c = auto-wrap comments
 --   r = auto-insert comment leader after <enter>
