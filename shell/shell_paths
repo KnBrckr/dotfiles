@@ -4,22 +4,22 @@
 # = PATH =
 # ========
 
-# Directories to be prepended to PATH
+# Directories to be prepended to PATH (last item in list will be first on path)
 declare -a dirs_to_prepend=(
 	"/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
 	"/usr/local/opt/php@7.1/bin"
 	"/usr/local/opt/php@7.1/sbin"
 	"/usr/local/opt/ruby/bin"
-	"$HOME/bin" # Takes precedence over /usr/bin
+	"$HOME/.dotfiles/bin"
+	"$HOME/.local/bin"
+	"$HOME/bin"
 )
 
 prepend_list PATH "dirs_to_prepend[@]"
 
 # Directories to be appended to PATH
 declare -a dirs_to_append=(
-	"$HOME/.dotfiles/bin"
 	"$HOME/go/bin"
-	"$HOME/.local/bin"
 	"$HOME/.npm-packages/bin"
 )
 
