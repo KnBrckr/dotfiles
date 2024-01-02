@@ -38,3 +38,12 @@ git bisect
 	...
   $ git bisect run command args   # Auto-bisect
   $ git bisect reset              # cleanup
+
+## Patching
+
+Apply a patch from different repo to the active branch
+    git --git-dir=/path/to/1/.git format-patch --stdout sha1^..sha1 | git am -3
+
+## Education Resources
+
+* [Git Introduction Video](https://www.youtube.com/watch?v=1ffBJ4sVUb4) from 2013 Linux Conference
