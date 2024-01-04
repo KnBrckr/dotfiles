@@ -11,7 +11,7 @@ class Offsets(gdb.Command):
 
         print(argv[0], '{')
         for field in stype.fields():
-            print('    %s => %d', field.name, field.bitpos//8)
+            print(f'    {field.name} => {int(field.bitpos/8)}')
         print('}')
 
 
