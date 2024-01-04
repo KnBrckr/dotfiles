@@ -23,6 +23,7 @@ vim.g.mapleader = ' '        -- Set map leader
 -- By default use treesitter for folding
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 1
 
 -- Window Navigation
 vim.keymap.set('n', '<C-h>', '<cmd>wincmd h<cr>')
