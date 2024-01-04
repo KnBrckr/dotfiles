@@ -90,8 +90,8 @@
 
   # gitlab integration
   # Requires: git config --add remote.origin.fetch '+refs/merge-requests/*:refs/remotes/origin/merge-requests/*'
-  # mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
-  mr = !sh -c 'git checkout origin/merge-requests/$1/head' -
+  mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+  mro = !sh -c 'git checkout origin/merge-requests/$1/head' -
 
 [color]
   # color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
