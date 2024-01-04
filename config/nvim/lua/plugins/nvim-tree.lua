@@ -9,7 +9,7 @@ return {
 		require('nvim-tree').setup({
 			filters = {
 				custom = {
-					"^\\.git",
+					"^\\.git$",
 				},
 			},
 			update_focused_file = {
