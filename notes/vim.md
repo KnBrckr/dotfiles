@@ -99,3 +99,7 @@ augroup vimrc
     \ endif
 augroup END
 ```
+
+## Batch mode processing ##
+
+    find -print0 | xargs -0 -L 10 nvim -u <path to init.lua> -es -S <command script>
