@@ -1,0 +1,1 @@
+/Users/ken/.dotfiles/submodules/solarized/vim-colors-solarized/colors/solarized.vim

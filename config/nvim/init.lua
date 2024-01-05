@@ -5,7 +5,6 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true    -- highlight cursor line
 vim.opt.startofline = false  -- Don't reset cursor to start of line when moving around
 vim.opt.cmdheight = 2        -- Better display for messages
-vim.opt.termguicolors = true -- True color support
 vim.opt.mouse = 'a'          -- Mouse in all modes
 vim.opt.ignorecase = true    -- Ignore case, but use smart case search
 vim.opt.smartcase = true
@@ -18,7 +17,10 @@ vim.opt.expandtab = false    -- Do not expand tab to spaces by default
 vim.opt.signcolumn = "yes"   -- Always display the sign column
 vim.opt.hlsearch = false     -- Do not highlight search token
 
-vim.g.mapleader = ' '        -- Set map leader
+vim.opt.termguicolors = true -- True color support
+vim.cmd.colorscheme("solarized")
+
+vim.g.mapleader = ' ' -- Set map leader
 
 -- By default use treesitter for folding
 vim.opt.foldmethod = "expr"
@@ -43,9 +45,9 @@ vim.keymap.set('n', '[q', '<cmd>cp<cr>', { desc = "Previous quicklist" })
 vim.keymap.set('n', ']q', '<cmd>cn<cr>', { desc = "Next quicklist" })
 
 -- Copy/Paste
-vim.keymap.set('n', 'Y', 'yy')            -- Default is y$ vs whole line
-vim.keymap.set({ 'n', 'x' }, 'cp', '"+y', { desc = "Yank to clipboard"})
-vim.keymap.set({ 'n', 'x' }, 'cv', '"+p', { desc = "Paste from clipboard"})
+vim.keymap.set('n', 'Y', 'yy') -- Default is y$ vs whole line
+vim.keymap.set({ 'n', 'x' }, 'cp', '"+y', { desc = "Yank to clipboard" })
+vim.keymap.set({ 'n', 'x' }, 'cv', '"+p', { desc = "Paste from clipboard" })
 
 -- Automatically strip trailing whitespace on file save
 vim.cmd([[autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h,*.lua
