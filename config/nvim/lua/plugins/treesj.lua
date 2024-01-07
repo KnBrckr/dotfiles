@@ -1,9 +1,12 @@
 -- Split/Join written in lua
 return {
 	'Wansmer/treesj',
-	keys = { '<space>m', '<space>j', '<space>s' },
+	keys = {
+		{ '<leader>J', '<cmd>TSJToggle<cr>', desc = "Join Toggle" }
+	},
 	dependencies = { 'nvim-treesitter/nvim-treesitter' },
-	config = function()
-		require('treesj').setup({ --[[ your config ]] })
-	end,
+	opts = {
+		use_default_keymaps = false,
+		max_join_length = 120,
+	},
 }
