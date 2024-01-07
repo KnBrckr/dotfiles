@@ -27,6 +27,10 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 1
 
+-- Alternate <esc> methods
+vim.keymap.set("i", "jk", "<ESC>")
+vim.keymap.set("i", "kj", "<ESC>")
+
 -- Window Navigation
 vim.keymap.set('n', '<C-h>', '<cmd>wincmd h<cr>')
 vim.keymap.set('n', '<C-j>', '<cmd>wincmd j<cr>')
