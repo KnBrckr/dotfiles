@@ -7,20 +7,74 @@ return {
 	lazy = false, -- make sure we load this during startup
 	ft = { 'org' },
 	config = function()
-		local journal_target = '~/org-mode/journal/%<%Y-%m>.org'
-		local journal_template_header = '\n** %<%Y-%m-%d> %<%A>\n*** %U\n\n'
+		local work_journal_target = '~/org-mode/work/%<%Y-%m>.org'
+		local personal_journal_target = '~/org-mode/journal/%<%Y-%m>.org'
+		local journal_template = '* %t\n** %U\n\n   '
+		local meeting_tempate =
+				'* Meeting: %s\n  %%T\n' ..
+				'** Attendees\n' ..
+				'   - %s\n' ..
+				'** Agenda/Discussion\n' ..
+				'*** \n' ..
+				'** Tasks\n' ..
+				'*** TODO '
 
 		require('orgmode').setup {
 			-- Can provide multiple dirs: org_agenda_files = {'~/onedrive/org-mode/**/*', '~/my-orgs/**/*'},
 			org_agenda_files = { '~/org-mode/**/*', '~/logseq/**/*' },
 			org_default_notes_file = '~/org-mode/refile.org',
-			org_todo_keywords = { 'TODO(t)', 'NEXT', 'NOW', 'LATER', '|','CANCELED', 'DONE(d)' },
+			org_todo_keywords = { 'TODO(t)', 'NEXT', 'NOW', 'LATER', '|', 'CANCELED', 'DONE(d)' },
 			org_capture_templates = {
 				t = { description = 'Task', template = '* TODO %?\n  %u' },
 				j = {
 					description = 'Journal',
-					template = journal_template_header .. "%?",
-					target = journal_target
+					subtemplates = {
+						w = {
+							description = 'Work',
+							template = journal_template .. '%?',
+							target = work_journal_target,
+						},
+						p = {
+							description = 'Personal',
+							template = journal_template .. '%?',
+							target = personal_journal_target,
+						},
+					},
+				},
+				a = {
+					description = 'Agenda',
+					subtemplates = {
+						d = {
+							description = "default",
+							-- Place cursor where meeting title would go
+							template = string.format(meeting_tempate, '%?', ''),
+							target = work_journal_target,
+						},
+						s = {
+							description = "Linux Staff Agenda",
+							-- Place cursor in Attendees section
+							template = '*** %?\n    %U',
+							target = '~/org-mode/work/linux-staff.org',
+							headline = 'Future Agenda'
+						},
+					},
+				},
+				m = {
+					description = 'Meeting',
+					subtemplates = {
+						d = {
+							description = "default",
+							-- Place cursor where meeting title would go
+							template = string.format(meeting_tempate, '%?', ''),
+							target = work_journal_target,
+						},
+						l = {
+							description = "Linux Staff",
+							-- Place cursor in Attendees section
+							template = string.format(meeting_tempate, 'Linux Staff', '%?'),
+							target = '~/org-mode/work/linux-staff.org',
+						},
+					},
 				},
 			},
 		}
