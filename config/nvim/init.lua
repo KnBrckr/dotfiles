@@ -22,11 +22,6 @@ vim.cmd.colorscheme("solarized")
 
 vim.g.mapleader = ' ' -- Set map leader
 
--- By default use treesitter for folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 1
-
 -- Alternate <esc> methods
 vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("i", "kj", "<ESC>")
