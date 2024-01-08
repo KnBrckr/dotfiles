@@ -1,6 +1,7 @@
--- status line
+-- Work with multiple projecs
 return {
-	"ahmedkhalf/project.nvim",
+	-- "ahmedkhalf/project.nvim",
+	"knbrckr/project.nvim",
 	event = "VeryLazy",
 	config = function()
 		require("project_nvim").setup {
