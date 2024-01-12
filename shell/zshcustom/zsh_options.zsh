@@ -19,30 +19,32 @@ unsetopt CORRECT_ALL
 
 # Increase the maximum number of lines contained in the history file
 # (default is 500)
-SAVEHIST=5000
+SAVEHIST=100000
 
 # Increase the maximum number of commands to remember
 # (default is 500)
-HISTSIZE=2000
+HISTSIZE=100000
 
 # Make some commands not show up in history
-HISTORY_IGNORE="(ls|cd|cd -|pwd|exit|date|* --help)"
+HISTORY_IGNORE="(ls|ls -l|cd|cd -|cd ..|pwd|exit|date|* --help|vim)"
 
-# Use extended history
+# Save command start and duration to history
 setopt EXTENDED_HISTORY
-# Share history across multiple zsh sessions
-setopt SHARE_HISTORY
 # Append to history
 setopt APPEND_HISTORY
-# adds commands as they are typed, not at shell exit
-setopt INC_APPEND_HISTORY
+# adds commands as after command is finished, not at shell exit
+# Mutually exclisive with SHARE_HISTORY and INC_APPEND_HISTORY
+setopt INC_APPEND_HISTORY_TIME
+setopt NO_SHARE_HISTORY
 # expire duplicates first
 setopt HIST_EXPIRE_DUPS_FIRST 
-# do not store duplications
-setopt HIST_IGNORE_DUPS
+# remove older version of duplicates
+setopt HIST_IGNORE_ALL_DUPS
+# omit older commands that duplicate new ones when saving hist
+setopt HIST_SAVE_NO_DUPS
 #ignore duplicates when searching
 setopt HIST_FIND_NO_DUPS
-# removes blank lines from history
+# removes superflousous blanks from command to add
 setopt HIST_REDUCE_BLANKS
 # verify history before entering
 setopt HIST_VERIFY
