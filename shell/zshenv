@@ -9,7 +9,6 @@
 #   /etc/zlogin    .zlogin    √            x                  x        √
 #   /etc/zlogout   .zlogout   √            x                  x        √
 
-
 # Shortcut for dotfiles directory
 DOTFILES="$HOME/.dotfiles"
 
