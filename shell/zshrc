@@ -26,7 +26,6 @@ load_dotfiles() {
 		$DOTFILES/shell/functions/* # Functions
 		$DOTFILES/shell/shell_exports # Exports
 		$DOTFILES/shell/shell_aliases # Aliases
-		$DOTFILES/shell/apache_modsec # Aliases useful for apache log file analysis
 		$DOTFILES/shell/shell_paths # Path modifications
 		$HOME/.shell_profile.local # Local and private settings not under version control (e.g. git credentials)
 	)
