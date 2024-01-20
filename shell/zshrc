@@ -125,25 +125,20 @@ plugins=(
 			  )
 
 if command_exists docker; then
-	plugins+=(
-		docker
-	)
+	plugins+=( docker )
 fi
 
 if command_exists podman; then
-	plugins+=(
-	  podman
-	)
+	plugins+=( podman )
+fi
+
+if command_exists brew; then
+	plugins+=( brew )
 fi
 
 # Add OSX related plugins
 if is_mac; then
-	plugins+=(
-	  brew
-  	capistrano 
-	  composer 
-	  macos 
-  )
+	plugins+=( macos )
 fi
 
 if is_ubuntu; then
