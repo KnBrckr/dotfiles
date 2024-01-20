@@ -15,7 +15,7 @@ declare -a dirs_to_prepend=(
 	"$HOME/bin"
 )
 
-prepend_list PATH "dirs_to_prepend[@]"
+PATH=$(path_prepend "$PATH" dirs_to_prepend)
 
 # Directories to be appended to PATH
 declare -a dirs_to_append=(
@@ -23,7 +23,7 @@ declare -a dirs_to_append=(
 	"$HOME/.npm-packages/bin"
 )
 
-append_list PATH "dirs_to_append[@]"
+PATH=$(path_append "$PATH" dirs_to_append)
 unset dirs_to_prepend dirs_to_append
 
 export PATH
@@ -43,7 +43,7 @@ declare -a dirs_to_prepend=(
 	"/usr/local/share/man"
 )
 
-prepend_list MANPATH "dirs_to_prepend[@]"
+MANPATH=$(path_prepend "$MANPATH" dirs_to_prepend)
 
 unset dirs_to_prepend
 
@@ -59,7 +59,7 @@ declare -a dirs_to_append=(
 	"/opt/local/lib/perl5"
 )
 
-append_list PERL5LIB "dirs_to_append[@]"
+PERL5LIB=$(path_append "$PERL5LIB" dirs_to_append)
 
 unset dirs_to_append
 
@@ -74,7 +74,7 @@ declare -a dirs_to_append=(
 	"${DOTFILES}/lib/cows"
 )
 
-append_list COWPATH "dirs_to_append[@]"
+COWPATH=$(path_append "$COWPATH" dirs_to_append)
 
 unset dirs_to_append
 

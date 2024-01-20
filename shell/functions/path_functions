@@ -1,66 +1,43 @@
-# filter_list()
-# Removes ARG2 from ARG1
-# ARG1 = ':' separated list of data
-# ARG2 = item to filter from ':' separated list
-filter_list() {
-	local text=$1
-    text=${text//":$2:"/:} #delete all instances in the middle
-    text=${text/%":$2"/} #delete any instance at the end
-    text=${text/#"$2:"/} #delete any instance at the beginning	
-	echo "$text" # Return result
-}
-
-# prepend_list()
-# Add ARG2 to beginning of ARG1
-# ARG1 = variable name
-# ARG2 = items to add to colon separated list
-prepend_list() {
-	local var_name=$1
+# path_prepend()
+# ARG1 Original path
+# ARG2 name of array holding paths to add
+path_prepend() {
+	local path=$1
 	if is_zsh_shell; then
-		declare -a prepend_array=("${(P)2}")
+		declare -a prepend_array=("${(P)2[@]}")
 	else
 		declare -a prepend_array=("${!2}")
 	fi
-	
+
 	for prepend in ${prepend_array[@]}
 	do
-	    if [ -d ${prepend} ]; then
-	        # If these directories exist, then prepend them to existing
-			if is_zsh_shell; then
-				eval $var_name="\"$(filter_list "${(P)var_name}" ${prepend})\"" # Filter out directory if already in list
-				eval $var_name="\"${prepend}${(P)var_name:+":${(P)var_name}"}\""
-			else
-				eval $var_name="\"$(filter_list "${!var_name}" ${prepend})\"" # Filter out directory if already in list
-				eval $var_name="\"${prepend}${!var_name:+":${!var_name}"}\""
-			fi
-	    fi
+		if [ -d "$prepend" ] && [[ ":$path:" != *":$prepend:"* ]]; then
+			path="$prepend${path:+":$path"}"
+		fi
 	done
+
+	echo $path
 }
 
-# append_list()
-# Add ARG2 to end of ARG1
-# ARG1 = variable name
-# ARG2 = items to add to colon separated list
-append_list() {
-	local var_name=$1
+# path_append()
+# ARG1 Original path
+# ARG2 name of array holding paths to add
+path_append() {
+	local path=$1
 	if is_zsh_shell; then
-		declare -a append_array=("${(P)2}")
+		declare -a append_array=("${(P)2[@]}")
 	else
 		declare -a append_array=("${!2}")
 	fi
-	
+
 	for append in ${append_array[@]}
 	do
-	    if [ -d ${append} ]; then
-	        # If these directories exist, then append them to existing
-			if is_zsh_shell; then
-				eval $var_name="\"$(filter_list "${(P)var_name}" ${append})\"" # Filter out directory if already in list
-				eval $var_name="\"${(P)var_name:+"${(P)var_name}:"}${append}\""
-			else
-				eval $var_name="\"$(filter_list "${!var_name}" ${append})\"" # Filter out directory if already in list
-				eval $var_name="\"${!var_name:+"${!var_name}:"}${append}\""
-			fi
-	    fi
+		if [ -d "$append" ] && [[ ":$path:" != *":$append:"* ]]; then
+			path="$append${path:+":$path"}"
+		fi
 	done
+
+	echo $path
 }
 
+# vim: filetype=bash
