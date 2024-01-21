@@ -8,4 +8,16 @@
 #   /etc/zlogin    .zlogin    √            x                  x        √
 #   /etc/zlogout   .zlogout   √            x                  x        √
 
+if type fortune > /dev/null; then
+	if type cowsay > /dev/null; then
+		COWSAY="| cowsay -W80"
+	fi
+	if type lolcat > /dev/null; then
+		LOLCAT="| lolcat"
+	fi
+
+	eval "fortune $COWSAY $LOLCAT "
+	unset COWSAY LOLCAT
+fi
+
 # vim: filetype=zsh

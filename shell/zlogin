@@ -12,16 +12,4 @@ if [[ -r ${HOME}/.zlogin.local ]]; then
 	source ${HOME}/.zlogin.local
 fi
 
-if type fortune > /dev/null; then
-	if type cowsay > /dev/null; then
-		COWSAY="| cowsay"
-	fi
-	if type lolcat > /dev/null; then
-		LOLCAT="| lolcat"
-	fi
-
-	eval "fortune $COWSAY $LOLCAT "
-	unset COWSAY LOLCAT
-fi
-
 # vim: filetype=zsh
