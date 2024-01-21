@@ -207,3 +207,5 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # zprof
+
+# vim: filetype=zsh

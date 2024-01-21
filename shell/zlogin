@@ -1,4 +1,3 @@
-#!/bin/zsh
 # zlogin
 #
 # Zsh configuration files in order of execution:
@@ -24,3 +23,5 @@ if type fortune > /dev/null; then
 	eval "fortune $COWSAY $LOLCAT "
 	unset COWSAY LOLCAT
 fi
+
+# vim: filetype=zsh

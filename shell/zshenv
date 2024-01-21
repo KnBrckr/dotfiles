@@ -1,4 +1,3 @@
-#!/bin/zsh
 # zshenv
 #
 # Zsh configuration files in order of execution:
@@ -17,3 +16,5 @@ DOTBIN="$DOTFILES/bin"
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$DOTFILES/shell/zshcustom
+
+# vim: filetype=zsh
