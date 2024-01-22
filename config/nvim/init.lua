@@ -49,7 +49,7 @@ vim.keymap.set({ 'n', 'x' }, 'cp', '"+y', { desc = "Yank to clipboard" })
 vim.keymap.set({ 'n', 'x' }, 'cv', '"+p', { desc = "Paste from clipboard" })
 
 -- Automatically strip trailing whitespace on file save
-vim.cmd([[autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h,*.lua
+vim.cmd([[autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h,*.lua,*.vim
 									\	:call StripTrailingWhitespace()]])
 
 -- Auto-format options
