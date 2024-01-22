@@ -22,6 +22,11 @@ vim.cmd.colorscheme("solarized")
 
 vim.g.mapleader = ' ' -- Set map leader
 
+-- show hidden characters
+vim.opt.list = true
+vim.opt.listchars = "trail:~,tab:┊─,nbsp:␣,extends:◣,precedes:◢"
+vim.opt.backspace = "indent,eol,start"
+
 -- Alternate <esc> methods
 vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("i", "kj", "<ESC>")
