@@ -81,7 +81,7 @@ table.insert(snippets, unit_main)
 -- }}}
 
 -- unit_func: New function for unit tests {{{
-local unit_func = s("unit_main", fmt([[
+local unit_func = s("unit_func", fmt([[
 /**
  * @brief {}
  *
@@ -95,6 +95,7 @@ static void {}_test(void **state)
 	i(1, "Description"),
 	i(2, "func"),
 }))
+table.insert(snippets, unit_func)
 
 -- End of snippets
 
