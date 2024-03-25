@@ -15,10 +15,10 @@ return {
 			},
 			sources = {
 				{ name = 'path' },
-				{ name = 'orgmode' },
-				{ name = 'nvim_lsp', keyword_length = 1 },
 				{ name = 'luasnip',  keyword_length = 2 },
+				{ name = 'nvim_lsp', keyword_length = 1 },
 				{ name = 'buffer',   keyword_length = 3 },
+				{ name = 'orgmode' },
 			},
 			window = {
 				documentation = cmp.config.window.bordered(),
@@ -83,36 +83,10 @@ return {
 		})
 	end,
 	dependencies = {
-		{
-			"hrsh7th/cmp-buffer", -- Include buffer word completion
-			config = function()
-				require('cmp').setup({
-					sources = {
-						{ name = 'buffer' },
-					},
-				})
-			end,
-		},
-		{
-			"hrsh7th/cmp-path", -- Include file-system path completion
-			config = function()
-				require('cmp').setup({
-					sources = {
-						{ name = 'path' },
-					},
-				})
-			end,
-		},
+		"hrsh7th/cmp-buffer",     -- Include buffer word completion
+		"hrsh7th/cmp-path",       -- Include file-system path completion
 		"saadparwaiz1/cmp_luasnip", -- Include luasnip completion
-		{
-			"hrsh7th/cmp-nvim-lsp",   -- Include lsp completion
-			config = function()
-				require('cmp').setup({
-					sources = {
-						{ name = 'nvim_lsp' },
-					},
-				})
-			end,
-		},
+		"hrsh7th/cmp-nvim-lsp",   -- Include lsp completion
+		"nvim-orgmode/orgmode",   -- Depends on org-mode plugin for completion
 	},
 }
