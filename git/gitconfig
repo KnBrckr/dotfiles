@@ -155,6 +155,9 @@
 [commit]
 #  template = ~/.stCommitMsg
 
+[rebase]
+	autoSquash = true
+
 # Turn on "Reuse Recorded Resolution"
 [rerere]
   enabled = true
