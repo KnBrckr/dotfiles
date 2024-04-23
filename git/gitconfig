@@ -71,6 +71,9 @@
   # List files changed since REVIEW_BASE excluding deleted files
   files-no-del = !git diff --name-only --diff-filter=d $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
 
+  # List files changed since REVIEW_BASE excluding deleted files
+  files-del = !git diff --name-only --diff-filter=D $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
+
   # Same as files but with diff --stat
   stat = !git diff --stat $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
 
