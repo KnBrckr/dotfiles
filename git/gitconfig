@@ -46,7 +46,8 @@
   logp = log --pretty=nice --graph --date=short
   # Short log with name and email
   loge = log --pretty='%Cred%h%Creset %s - %C(bold blue)%ae <%an>%Creset'
-
+	# Log only refids
+	logref = log --pretty="%h"
   # Diffstat log
   logst = log --stat
   # Short format diffstat log
