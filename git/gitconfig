@@ -77,17 +77,8 @@
   # Same as files but with diff --stat
   stat = !git diff --stat $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
 
-  # review and reviewone below are configured to use coc.git
-  # The final paramter call coc#config ... should be replace with following for vim.gitgutter
-  #    +\"let g:gitgutter_diff_base = '${REVIEW_BASE:-main}'\"
-
-  # Open all files changed since REVIEW_BASE in vim tabs, use vim-fugitive's :Gdiff
-  # on each tab and tell coc.git to show +/- based on REVIEW_BASE. 
-  review = !vim -p $(git files-no-del) +\"tabdo Gvdiffsplit ${REVIEW_BASE:-main}\" +\"call "coc#config"('git',{'diffRevision': '${REVIEW_BASE:-main}'})\" +\"tabn 1\"
-
-  # Same as review but only open the provided files
-  #   git reviewone foo.c bar.c
-  reviewone = !vim -p +\"tabdo Gvdiffsplit ${REVIEW_BASE:-main}\" +\"call "coc#config"('git',{'diffRevision': '${REVIEW_BASE:-main}'})\"
+  # Review files changed since REVIEW_BASE (default main) using Diffview
+  review = !nvim +\"DiffviewOpen ${REVIEW_BASE:-main}\"
 
   # Edit files changed since REVIEW_BASE
   edit = !nvim -p $(git files-no-del)
