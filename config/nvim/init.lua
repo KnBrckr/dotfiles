@@ -53,6 +53,10 @@ vim.keymap.set('n', 'Y', 'yy') -- Default is y$ vs whole line
 vim.keymap.set({ 'n', 'x' }, 'cp', '"+y', { desc = "Yank to clipboard" })
 vim.keymap.set({ 'n', 'x' }, 'cv', '"+p', { desc = "Paste from clipboard" })
 
+-- Setup build environment
+vim.opt.autowrite = true -- Set autowrite for :make and related for modified buffers
+vim.keymap.set('n', '<leader>m', '<cmd>Make<cr>', { desc = "run make" })
+
 -- Automatically strip trailing whitespace on file save
 vim.cmd([[autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.adoc,*.php,*.py,*.rb,*.scss,*.sh,*.txt,*.c,*.h,*.lua,*.vim
 									\	:call StripTrailingWhitespace()]])
