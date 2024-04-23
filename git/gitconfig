@@ -157,6 +157,7 @@
 
 [rebase]
 	autoSquash = true
+	updateRefs = true
 
 # Turn on "Reuse Recorded Resolution"
 [rerere]
