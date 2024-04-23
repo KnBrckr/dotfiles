@@ -82,4 +82,9 @@ if command_exists kitty; then
 	alias icat="kitty +kitten icat"
 fi
 
+if command_exists pandoc; then
+	# String TODO states before generating html report
+	alias status-to-html="sed 's/* \(DONE\|NOW\|NEXT\|REVIEWING\|BLOCKED\)/* /' $STATUS_REPORT | pandoc -f org -t html5 -o ~/downloads/status.html"
+fi
+
 # vim: filetype=bash

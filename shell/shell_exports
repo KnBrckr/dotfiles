@@ -81,4 +81,7 @@ fi
 # WARNING - Can expose passwords!!!
 # export AQOFX_LOG_COMM=1
 
+# Location of Status report via nvim-orgmode
+export STATUS_REPORT=$HOME/org-mode/work/status-report.org
+
 # vim: filetype=bash
