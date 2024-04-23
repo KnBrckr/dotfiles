@@ -5,11 +5,11 @@ return {
 		"tpope/vim-dispatch",
 	},
 	config = function()
-		-- Save files and build (Make)
-		vim.keymap.set('n', '<leader>m', function()
-			vim.cmd([[wa]])
-			vim.cmd([[CMakeBuild]])
-		end)
+		-- -- Save files and build (Make)
+		-- vim.keymap.set('n', '<leader>m', function()
+		-- 	vim.cmd([[wa]])
+		-- 	vim.cmd([[CMakeBuild]])
+		-- end)
 
 		-- Redefine CTest command to include --output-on-failure
 		vim.api.nvim_create_user_command("Ctest",
