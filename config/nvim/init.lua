@@ -53,6 +53,7 @@ vim.keymap.set('n', '[q', '<cmd>cp<cr>', { desc = "Previous quicklist" })
 vim.keymap.set('n', ']q', '<cmd>cn<cr>', { desc = "Next quicklist" })
 
 -- Copy/Paste
+vim.opt.clipboard = "unnamedplus"
 vim.keymap.set('n', 'Y', 'yy') -- Default is y$ vs whole line
 vim.keymap.set({ 'n', 'x' }, 'cp', '"+y', { desc = "Yank to clipboard" })
 vim.keymap.set({ 'n', 'x' }, 'cv', '"+p', { desc = "Paste from clipboard" })
