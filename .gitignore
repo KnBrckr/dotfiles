@@ -1,5 +1,8 @@
-/.idea
-/backup
-/vim/.netrwhist
-/vim/.viminfo
-/vim/plugged
+.idea
+backup
+vim/.netrwhist
+vim/.viminfo
+vim/plugged
+
+# Used by lua language server, contains environment specific paths
+.luarc.json
