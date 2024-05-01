@@ -40,5 +40,5 @@ if (( $(pane_count) == 1 )); then
 fi
 
 if [[ "${TMUX}" = '' ]] ; then
-	tmux attach-session -t 0
+	exec tmux attach-session -t 0
 fi
