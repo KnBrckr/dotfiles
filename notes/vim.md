@@ -27,6 +27,8 @@ Go back to first location and paste 2nd selection.
 
 `<ctrl-r>"` Paste last yank
 
+`C-k <2-character-shortcut>` Inserts unicode characters. See :help :digraph
+
 ## Help ##
 
 `:h i_^r`  - Help for ctrl-r in insert mode
@@ -103,3 +105,8 @@ augroup END
 ## Batch mode processing ##
 
     find -print0 | xargs -0 -L 10 nvim -u <path to init.lua> -es -S <command script>
+
+## Column formatting
+
+Select rows in visual mode then:
+`:!column -t -s '|' -o '|'`
