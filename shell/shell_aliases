@@ -84,8 +84,8 @@ fi
 
 if command_exists pandoc; then
 	# Strip TODO states before generating output
-	alias status-to-html="sed 's/* \(DONE\|NOW\|NEXT\|REVIEWING\|BLOCKED\)/* /' $STATUS_REPORT | pandoc -s -f org -o ~/downloads/status.html"
-	alias status-to-rtf="sed 's/* \(DONE\|NOW\|NEXT\|REVIEWING\|BLOCKED\)/* /' $STATUS_REPORT | pandoc -s -f org -o ~/downloads/status.rtf"
+	alias status-to-html="sed -e \"s/* \(TODO\|DONE\|NOW\|NEXT\|REVIEWING\|BLOCKED\)/* /\" $STATUS_REPORT | pandoc -s -f org -o ~/downloads/status.html"
+	alias status-to-rtf="sed -e \"s/* \(TODO\|DONE\|NOW\|NEXT\|REVIEWING\|BLOCKED\)/* /\" $STATUS_REPORT | pandoc -s -f org -o ~/downloads/status.rtf"
 fi
 
 # vim: filetype=bash

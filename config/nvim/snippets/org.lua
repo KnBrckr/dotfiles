@@ -53,6 +53,37 @@ table.insert(snippets, meeting)
 
 -- }}}
 
+-- Password Change Template {{{
+local passwd_chg = s(
+	"template-passwd-change",
+	fmt(ListValues({
+		'Windows AD',
+		'Local Admin User',
+		'Accurev',
+		'Accurev Admin',
+		'gitlab token',
+	}, "**** TODO Change ", " passwd\n  {d}"), {
+		d = f(schedule_today)
+	}))
+table.insert(snippets, passwd_chg)
+-- }}}
+
+-- Weekly Staff Status Update Template {{{
+local staff_todo = s("template-weekly-status", fmt(ListValues({
+	'George Brink',
+	'Hoa Quang Le',
+	'James Hollister',
+	'LC Wong',
+	'Nguyen Tran',
+	'Thanh Le',
+	'Vy H. Vu',
+	'You Wen Chin',
+}, "**** TODO ", " Weekly Status Report\n  {d}"), {
+	d = f(schedule_today)
+}))
+table.insert(snippets, staff_todo)
+-- }}}
+
 -- End of snippets
 
 return snippets, autosnippets
