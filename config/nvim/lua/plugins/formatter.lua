@@ -17,6 +17,19 @@ return {
 			}
 		end
 
+		local xml_tidy = function()
+			return {
+				exe = "tidy",
+				args = {
+					"-xml",               -- File is in XML format
+					"-i",                 -- Indent elements
+					"--quiet yes",        -- omit non-document output
+					"--indent-attributes yes", -- Indent element attributes
+				},
+				stdin = true,
+			}
+		end
+
 		-- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 		require("formatter").setup {
 			-- Enable or disable logging
@@ -29,8 +42,8 @@ return {
 					exe = "sqlfmt",
 					stdin = true,
 				},
-				xml = { xml_format },
-				xsd = { xml_format },
+				xml = { xml_tidy },
+				xsd = { xml_tidy },
 
 				-- Formatter configurations for filetype "lua" go here
 				-- and will be executed in order
