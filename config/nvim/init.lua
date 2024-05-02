@@ -79,11 +79,15 @@ vim.cmd([[autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.adoc,*.php,*.py,*.
 vim.opt.formatoptions = "cro/qlnj1"
 
 -- Improve Quickfix error detection
+
 -- Quckfix not parsing gcc error: inlined from '<fn>' at <file>:<line>:<column>:
 vim.cmd([[set errorformat^=%W\ \ \ \ inlined\ from\ %.%#\ at\ %f:%l:%c:,%Z%.%#\ warning:\ %m]])
 
 -- Quickfix not parsing ld error: /usr/bin/ld: <file>:<line>:<error>
 vim.cmd([[set errorformat^=/usr/bin/ld:\ %f:%l:\ %m]])
+
+-- Quickfix should ignore lines: In file included from <file>:<line>:
+vim.cmd([[set errorformat^=%-GIn\ file\ included\ from\ %f:%l:%m]])
 
 -- Spelling
 vim.opt.spell = true
