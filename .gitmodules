@@ -1,45 +1,6 @@
 [submodule "submodules/lolcat"]
 	path = submodules/lolcat
 	url = https://github.com/KnBrckr/lolcat.git
-[submodule "vim/pack/vendor/start/nerdtree"]
-	path = vim/pack/vendor/start/nerdtree
-	url = https://github.com/preservim/nerdtree.git
-[submodule "vim/pack/vendor/start/editorconfig-vim"]
-	path = vim/pack/vendor/start/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim
-[submodule "vim/pack/vendor/start/splitjoin"]
-	path = vim/pack/vendor/start/splitjoin
-	url = https://github.com/AndrewRadev/splitjoin.vim.git
-[submodule "vim/pack/vendor/start/tcomment"]
-	path = vim/pack/vendor/start/tcomment
-	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "vim/pack/vendor/start/vim-snippets"]
-	path = vim/pack/vendor/start/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
-[submodule "vim/pack/vendor/start/vim-devicons"]
-	path = vim/pack/vendor/start/vim-devicons
-	url = https://github.com/ryanoasis/vim-devicons.git
-[submodule "vim/pack/vendor/start/nerdtree-git-plugin"]
-	path = vim/pack/vendor/start/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
-[submodule "vim/pack/vendor/start/fzf"]
-	path = vim/pack/vendor/start/fzf
-	url = https://github.com/junegunn/fzf.git
-[submodule "vim/pack/vendor/start/fzf.vim"]
-	path = vim/pack/vendor/start/fzf.vim
-	url = https://github.com/junegunn/fzf.vim.git
-[submodule "vim/pack/vendor/start/vim-fugitive"]
-	path = vim/pack/vendor/start/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/pack/vendor/opt/papercolor-theme"]
-	path = vim/pack/vendor/opt/papercolor-theme
-	url = https://github.com/NLKNguyen/papercolor-theme.git
-[submodule "vim/pack/vendor/start/vim-abolish"]
-	path = vim/pack/vendor/start/vim-abolish
-	url = https://github.com/tpope/vim-abolish.git
-[submodule "vim/pack/vendor/opt/vim-colors-solarized"]
-	path = vim/pack/vendor/opt/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "shell/zshcustom/plugins/zsh-syntax-highlighting"]
 	path = shell/zshcustom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
@@ -55,27 +16,6 @@
 [submodule "shell/zshcustom/plugins/alias-tips"]
 	path = shell/zshcustom/plugins/alias-tips
 	url = https://github.com/djui/alias-tips
-[submodule "lightline.vim"]
-	path = vim/pack/vendor/opt/lightline.vim
-	url = https://github.com/itchyny/lightline.vim
-[submodule "gutentags_plus"]
-	path = vim/pack/vendor/opt/gutentags_plus
-	url = https://github.com/skywind3000/gutentags_plus.git
-[submodule "vim-gutentags"]
-	path = vim/pack/vendor/opt/vim-gutentags
-	url = https://github.com/ludovicchabant/vim-gutentags.git
-[submodule "vim-kitty"]
-	path = vim/pack/vendor/opt/vim-kitty
-	url = https://github.com/fladson/vim-kitty
-[submodule "vim-kitty-navigator"]
-	path = vim/pack/vendor/opt/vim-kitty-navigator
-	url = https://github.com/knubie/vim-kitty-navigator.git
-[submodule "vim-tmux-navigator"]
-	path = vim/pack/vendor/opt/vim-tmux-navigator
-	url = https://github.com/christoomey/vim-tmux-navigator.git
-[submodule "vim-dispatch"]
-	path = vim/pack/vendor/opt/vim-dispatch
-	url = https://github.com/tpope/vim-dispatch.git
 [submodule "powerlevel10k"]
 	path = shell/zshcustom/themes/powerlevel10k
 	url = https://gitee.com/romkatv/powerlevel10k.git
