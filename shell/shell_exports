@@ -64,19 +64,6 @@ if [ "$WSL_DISTRO_NAME" != "" ]; then
 	sudo sysctl -w net.ipv4.tcp_keepalive_intvl=60 net.ipv4.tcp_keepalive_probes=5 net.ipv4.tcp_keepalive_time=300 > /dev/null
 fi
 
-# Setup for podman
-if command_exists podman; then
-	if [[ -z "$XDG_RUNTIME_DIR" ]]; then
-		export XDG_RUNTIME_DIR=/run/user/$UID
-		if [[ ! -d "$XDG_RUNTIME_DIR" ]]; then
-			export XDG_RUNTIME_DIR=/tmp/$USER-runtime
-			if [[ ! -d "$XDG_RUNTIME_DIR" ]]; then
-				mkdir -m 0700 "$XDG_RUNTIME_DIR"
-			fi
-		fi
-	fi
-fi
-
 # Enable logging of aqbanking commands to /tmp/ofx.log
 # WARNING - Can expose passwords!!!
 # export AQOFX_LOG_COMM=1

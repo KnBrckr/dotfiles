@@ -23,11 +23,12 @@ fi
 
 load_dotfiles() {
 	declare -a files=(
-		$DOTFILES/shell/functions/* # Functions
+		$DOTFILES/shell/dbus_setup    # Setup DBUS services in WSL environments
+		$DOTFILES/shell/functions/*   # Functions
 		$DOTFILES/shell/shell_exports # Exports
 		$DOTFILES/shell/shell_aliases # Aliases
-		$DOTFILES/shell/shell_paths # Path modifications
-		$HOME/.shell_profile.local # Local and private settings not under version control (e.g. git credentials)
+		$DOTFILES/shell/shell_paths   # Path modifications
+		$HOME/.shell_profile.local    # Local and private settings not under version control
 	)
 
 	# if these files are readable, source them
