@@ -84,8 +84,14 @@ vim.cmd([[set errorformat^=%W\ \ \ \ inlined\ from\ %.%#\ at\ %f:%l:%c:,%Z%.%#\ 
 -- Quickfix not parsing ld error: /usr/bin/ld: <file>:<line>:<error>
 vim.cmd([[set errorformat^=/usr/bin/ld:\ %f:%l:\ %m]])
 
--- Quickfix should ignore lines: In file included from <file>:<line>:
-vim.cmd([[set errorformat^=%-GIn\ file\ included\ from\ %f:%l:%m]])
+-- Quickfix should ignore lines: "In file included from <file>:<line>:"
+vim.cmd([[set errorformat^=%-GIn\ file\ included\ from\ %f:%l:%.%#]])
+
+-- Include "                 from <file>:<line>:"
+vim.cmd([[set errorformat^=%*[\ ]from\ %f:%l:%.%#]])
+
+-- Recognize "make: *** [<file>:<line>: <target>] <message>
+vim.cmd([[set errorformat^=make:\ ***\ [%f:%l:\ %o]\ Error\ %n]])
 
 -- Spelling
 vim.opt.spell = true
