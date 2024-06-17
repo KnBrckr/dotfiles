@@ -71,4 +71,7 @@ fi
 # Location of Status report via nvim-orgmode
 export STATUS_REPORT=$HOME/org-mode/work/status-report.org
 
+# Set autosuggest color (for zsh-autocomplete plugin)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=10
+
 # vim: filetype=bash
