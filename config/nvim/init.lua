@@ -17,9 +17,6 @@ vim.opt.expandtab = false    -- Do not expand tab to spaces by default
 vim.opt.signcolumn = "yes"   -- Always display the sign column
 vim.opt.hlsearch = false     -- Do not highlight search token
 
-vim.opt.termguicolors = true -- True color support
-vim.cmd.colorscheme("solarized")
-
 vim.g.mapleader = ' '      -- Set map leader
 vim.g.maplocalleader = ',' -- set local leader key
 

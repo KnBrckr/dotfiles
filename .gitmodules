@@ -7,9 +7,6 @@
 [submodule "shell/zshcustom/plugins/zsh-autosuggestions"]
 	path = shell/zshcustom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "submodules/solarized"]
-	path = submodules/solarized
-	url = https://github.com/knbrckr/solarized.git
 [submodule "submodules/dircolors-solarized"]
 	path = submodules/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
