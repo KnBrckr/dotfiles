@@ -42,7 +42,10 @@ git bisect
 ## Patching
 
 Apply a patch from different repo to the active branch
-    git --git-dir=/path/to/1/.git format-patch --stdout sha1^..sha1 | git am -3
+    git --git-dir=/path/to/1/.git format-patch --stdout sha1..sha2 | git am -3
+
+For a single commit use -<N> to specify count of commits to include
+    git --git-dir=/path/to/1/.git format-patch --stdout -1 sha1 | git am -3
 
 When hierarchy is different and/or some files not present use `git apply`
     git apply --reject -pN --directory=<new path>
