@@ -8,6 +8,10 @@
 #   /etc/zlogin    .zlogin    √            x                  x        √
 #   /etc/zlogout   .zlogout   √            x                  x        √
 
+# Setup brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Display a fortune if configured
 if type fortune > /dev/null; then
 	if type cowsay > /dev/null; then
 		COWSAY="| cowsay -W80"

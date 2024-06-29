@@ -116,7 +116,8 @@ if is_mac; then
 	# Check for Homebrew
 	if ! command_exists 'brew'; then
 		e_header "Installing Homebrew..."
-		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		eval "$(/opt/homebrew/bin/brew shellenv)"
 	fi
 
 	# Setup Launch Agents
