@@ -29,10 +29,6 @@ vim.opt.list = true
 vim.opt.listchars = "trail:~,tab:┊─,nbsp:␣,extends:◣,precedes:◢"
 vim.opt.backspace = "indent,eol,start"
 
--- Alternate <esc> methods
-vim.keymap.set("i", "jk", "<ESC>")
-vim.keymap.set("i", "kj", "<ESC>")
-
 -- Window Navigation
 vim.keymap.set('n', '<C-h>', '<cmd>wincmd h<cr>')
 vim.keymap.set('n', '<C-j>', '<cmd>wincmd j<cr>')
