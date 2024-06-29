@@ -285,7 +285,8 @@ nnoremap <f11> :make test <CR>
 " Complete delayed load of plugins
 "
 
-if &loadplugins && has('packages')
+" NOTE: Plugins removed as a part of shift to neovim
+if 0 && &loadplugins && has('packages')
 	packadd! gutentags_plus
 	packadd! lightline.vim
 	packadd! vim-gutentags
