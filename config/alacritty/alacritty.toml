@@ -1,0 +1,6 @@
+import = [
+	"~/.config/alacritty-theme/themes/tokyo-night.toml"
+]
+
+[font]
+normal = { family = "Hack Nerd Font", style="Regular" }

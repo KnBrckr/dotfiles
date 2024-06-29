@@ -37,6 +37,9 @@ if [[ ! -d ${DOTFILES} ]]; then
 	set +e  # Reset exit on error
 fi
 
+# Clone additional repos (vs. using submodules)
+git clone git@github.com:alacritty/alacritty-theme.git ~/.config/alacritty-theme
+
 cd ${DOTFILES}
 
 if [ ! -d backup ]; then
