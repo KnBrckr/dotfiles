@@ -8,8 +8,12 @@ return {
 		},
 	},
 	config = function()
+		local orgfiles = '~/Documents/orgfiles/'
+		if vim.env.ORGROOT then
+			orgfiles = vim.env.ORGROOT
+		end
 		require("org-roam").setup({
-			directory = "~/Documents/orgfiles/roam",
+			directory = orgfiles .. "/roam",
 		})
 	end
 }
