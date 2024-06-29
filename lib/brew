@@ -17,45 +17,26 @@ run_brew() {
 		brew upgrade
 		[[ $? ]] && e_success "Done"
 
-		e_header "Adding taps..."
-		brew tap homebrew/cask-fonts  # For patched fonts with updated icons
-
 		e_header "Checking status of desired Homebrew formulae..."
 		local -a desired_formulae=(
-		  'bash-language-server'
 			'bat' # Cat with syntax highlighting
 			'carthage' # Swift Library Dependency Manager
 			'cheat'
-			'cmake'
-			'composer'
 			'coreutils' # GNU core utilities (those that come with OS X are outdated)
 			'cowsay' # Just like it says... have some cowsay fun
 			'exiftool'
 			'fzf'
 			'git'
-			'global'    # gnu Global gtags for vim:gutentags
 			'golang'
 			'jq'        # CLI JSON processor
-			'lua-language-server'
-			'mariadb'   # Mysql relative
 			'mdcat'     # markdown to terminal
-			'mercurial'
 			'neovim'
-			'node'
-			'php'
-			'pyenv'
+			'node'      # Node environment (For bash language server)
 			'ripgrep' # Used by nvim Telescope Live Grep
-			'sass/sass/sass'
-			'shellcheck' # used by bash-language-server
 			'swiftgen' # Swift Code Generation tool
-			'telnet'
 			'the_silver_searcher' # Fast grep and find alternative
 			'tmux' #Terminal Mux
-			'universal-ctags' # OSX version of exuberant-ctags for vim:gutentags
-			'vim'  # Vim build supporting python
-			'vint' # Vim linter
 			'wget'
-			'wp-cli'
     )
 
 		local -a desired_casks=(
