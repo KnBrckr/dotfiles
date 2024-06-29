@@ -40,7 +40,7 @@ load_dotfiles() {
 	done
 }
 
-# Setup python environment
+# Setup python environment before loading dot files
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
@@ -193,10 +193,14 @@ fi
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fzf shell integration
+if command_exists 'fzf'; then
+	source <(fzf --zsh)
+	[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 
 # zprof
 
