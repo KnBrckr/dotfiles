@@ -19,23 +19,25 @@ run_brew() {
 
 		e_header "Checking status of desired Homebrew formulae..."
 		local -a desired_formulae=(
-			'bat' # Cat with syntax highlighting
-			'carthage' # Swift Library Dependency Manager
+		  'asciidoctor'         # Format adoc files
+			'bat'                 # Cat with syntax highlighting
+			'carthage'            # Swift Library Dependency Manager
 			'cheat'
-			'coreutils' # GNU core utilities (those that come with OS X are outdated)
-			'cowsay' # Just like it says... have some cowsay fun
+			'coreutils'           # GNU core utilities (those that come with OS X are outdated)
+			'cowsay'              # Just like it says... have some cowsay fun
 			'exiftool'
 			'fzf'
 			'git'
 			'golang'
-			'jq'        # CLI JSON processor
-			'mdcat'     # markdown to terminal
+			'jq'                  # CLI JSON processor
+			'mdcat'               # markdown to terminal
 			'neovim'
-			'node'      # Node environment (For bash language server)
-			'ripgrep' # Used by nvim Telescope Live Grep
-			'swiftgen' # Swift Code Generation tool
+			'node'                # Node environment (For bash language server)
+			'pandoc'              # Document conversion
+			'ripgrep'             # Used by nvim Telescope Live Grep
+			'swiftgen'            # Swift Code Generation tool
 			'the_silver_searcher' # Fast grep and find alternative
-			'tmux' #Terminal Mux
+			'tmux'                #Terminal Mux
 			'wget'
     )
 
