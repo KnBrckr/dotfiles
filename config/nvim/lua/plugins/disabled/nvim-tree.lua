@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		'nvim-tree/nvim-web-devicons', -- for file icons
 	},
-	tag = 'nightly',                -- optional, updated every week. (see issue #1193)
+	tag = 'v1',
 	config = function()
 		require('nvim-tree').setup({
 			filters = {
