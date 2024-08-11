@@ -2,8 +2,14 @@
 return {
 	"folke/zen-mode.nvim",
 	opts = {
-		-- your configuration comes here
-		-- or leave it empty to use the default settings
-		-- refer to the configuration section below
+		plugins = {
+        -- this will change the font size on alacritty when in zen mode
+        -- requires  Alacritty Version 0.10.0 or higher
+        -- uses `alacritty msg` subcommand to change font size
+        alacritty = {
+          enabled = true,
+          font = "18", -- font size increment
+        },
+		},
 	}
 }
