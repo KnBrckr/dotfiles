@@ -9,6 +9,3 @@
 [ -z "$PS1" ] && source ~/.dotfiles/shell/bash_paths
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# Add Rustup environment if available
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
