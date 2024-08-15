@@ -9,7 +9,9 @@
 #   /etc/zlogout   .zlogout   √            x                  x        √
 
 # Setup brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -f /opt/homebrew/bin/brew ]; then
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Display a fortune if configured
 if type fortune > /dev/null; then
