@@ -46,7 +46,7 @@ if [ ! -d backup ]; then
 	mkdir backup
 fi
 
-source ./shell/bash_colors
+source ./shell/zsh_colors
 source ./lib/help
 source ./lib/list
 source ./lib/utils
