@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+export REAL_HOME="$HOME"
+# NVIM_SRC_DIR="$REAL_HOME/.local/bin/neovim-src"
+# NVIM_BIN="$NVIM_SRC_DIR/build/bin/nvim"
+NVIM_BIN="/opt/homebrew/bin/nvim"
+# export VIMRUNTIME="$NVIM_SRC_DIR/runtime"
+export HOME="$PWD"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+exec "$NVIM_BIN" "$@"
