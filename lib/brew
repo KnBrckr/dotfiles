@@ -26,6 +26,7 @@ run_brew() {
 			'coreutils'           # GNU core utilities (those that come with OS X are outdated)
 			'cowsay'              # Just like it says... have some cowsay fun
 			'exiftool'
+			'fastfetch'           # system info reporter similar to neofetch
 			'fzf'
 			'git'
 			'golang'
