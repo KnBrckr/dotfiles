@@ -77,6 +77,11 @@ Vim plugins:
 * [vim-snippets](https://github.com/honza/vim-snippets)
 * [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
 
+### Neovim
+
+Thesaurus is retrieved from zip file found at
+https://github.com/vim/vim/issues/629#issuecomment-443293282
+
 #### FZF Notes
 
 After install, use :call fzf#install() to update fzf binary to latest if necessary
