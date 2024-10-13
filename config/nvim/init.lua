@@ -92,6 +92,7 @@ vim.cmd([[set errorformat^=make:\ ***\ [%f:%l:\ %o]\ Error\ %n]])
 -- Spelling
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
+vim.opt.thesaurus = "~/.config/nvim/thesarus/thesaurus.txt"
 
 -- Disable netrw, replaced by nvim-tree via lazy load of plugins
 vim.g.loaded_netrw = 1
