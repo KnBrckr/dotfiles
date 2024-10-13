@@ -11,17 +11,8 @@ return {
 		if vim.env.ORGROOT then
 			orgfiles = vim.env.ORGROOT
 		end
-		local work_journal_target = orgfiles .. 'work/%<%Y-%m>.org'
 		local personal_journal_target = orgfiles .. 'journal/%<%Y-%m>.org'
 		local journal_template = '* %t\n** %U\n\n   '
-		local meeting_tempate =
-				'* Meeting: %s\n  %%T\n' ..
-				'** Attendees\n' ..
-				'   - %s\n' ..
-				'** Agenda/Discussion\n' ..
-				'*** \n' ..
-				'** Tasks\n' ..
-				'*** TODO '
 
 		require('orgmode').setup {
 			-- Can provide multiple dirs: org_agenda_files = {'~/onedrive/org-mode/**/*', '~/my-orgs/**/*'},
@@ -32,14 +23,8 @@ return {
 				t = { description = 'Task', template = '* TODO %?\n  %u' },
 				j = {
 					description = 'Journal',
-					template = journal_template .. '%?',
+					template = '** %?\n   %T\n',
 					target = personal_journal_target,
-				},
-				m = {
-					description = 'Meeting',
-					-- Place cursor where meeting title would go
-					template = string.format(meeting_tempate, '%?', ''),
-					target = work_journal_target,
 				},
 			},
 		}
