@@ -39,6 +39,9 @@ git bisect
   $ git bisect run command args   # Auto-bisect
   $ git bisect reset              # cleanup
 
+Don't pull tags for a remote
+  $ git config remote.<remote-name>.tagopt --no-tags
+
 ## Patching
 
 Apply a patch from different repo to the active branch

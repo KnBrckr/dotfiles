@@ -109,4 +109,4 @@ augroup END
 ## Column formatting
 
 Select rows in visual mode then:
-`:!column -t -s '|' -o '|'`
+`:! tr -s ' ' | column -t -s '|' -o '|'`
