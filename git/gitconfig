@@ -46,6 +46,8 @@
   logp = log --pretty=nice --graph --date=short
   # Short log with name and email
   loge = log --pretty='%Cred%h%Creset %s - %C(bold blue)%ae <%an>%Creset'
+  # Full commit id, title and local name
+  logf = log --pretty='%Cred%H%Creset %s - %C(bold blue)%aN %Creset'
 	# Log only refids
 	logref = log --pretty="%h"
   # Diffstat log
@@ -63,7 +65,7 @@
 
   # Find out who is currently active on the repository
   # Displays committers in descending order of number of commits
-  who = shortlog --numbered --summary --email --no-merges --since=\"3 months\"
+  who = shortlog --numbered --summary --email --no-merges --since='3 months'
 
   # List files changed since REVIEW_BASE
   files = !git diff --name-only $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
@@ -97,6 +99,7 @@
   # Use custom `.gitignore` and `.gitattributes`
   excludesfile = ~/.gitignore_global
   attributesfile = ~/.gitattributes
+
   autocrlf = input
 
 	commentChar = auto
