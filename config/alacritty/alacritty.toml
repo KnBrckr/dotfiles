@@ -2,6 +2,13 @@ import = [
 	"~/.config/alacritty-theme/themes/tokyo-night.toml"
 ]
 
+[cursor]
+style = { shape = "Beam", blinking = "Off" }
+
 [font]
 normal = { family = "Hack Nerd Font", style="Regular" }
 size = 13
+
+[mouse]
+
+hide_when_typing = true
