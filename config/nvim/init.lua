@@ -20,6 +20,8 @@ vim.opt.hlsearch = false     -- Do not highlight search token
 vim.g.mapleader = ' '      -- Set map leader
 vim.g.maplocalleader = ',' -- set local leader key
 
+vim.g.c_syntax_for_h = 1 -- Use C syntax for .h files, not c++
+
 -- Setup default conceal levels
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'nc'
