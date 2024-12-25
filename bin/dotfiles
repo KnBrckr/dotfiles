@@ -38,7 +38,9 @@ if [[ ! -d ${DOTFILES} ]]; then
 fi
 
 # Clone additional repos (vs. using submodules)
-git clone git@github.com:alacritty/alacritty-theme.git ~/.config/alacritty-theme
+if [[ ! -d ~/.config/alacritty-theme ]]; then
+	git clone git@github.com:alacritty/alacritty-theme.git ~/.config/alacritty-theme
+fi
 
 cd ${DOTFILES}
 
