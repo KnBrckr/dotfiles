@@ -1,25 +1,30 @@
+# Setup color variables
+
+autoload colors; colors
+
 # Header logging
 e_header() {
-    printf "\n${c_bold}%s${c_reset}\n" "$@"
+    printf "\n${fg_bold[white]}%s${reset_color}\n" "$@"
 }
 
+# Info messages
 e_info() {
-    printf "${c_green}%s${c_reset}\n" "$@"
+    printf "${fg[green]}%s${reset_color}\n" "$@"
 }
 
 # Success logging
 e_success() {
-    printf "${c_green}${c_bold}✓ %s${c_reset}\n" "$@"
+    printf "${fg_bold[green]}✓ %s${reset_color}\n" "$@"
 }
 
 # Error logging
 e_error() {
-    printf "${c_red}${c_bold}X %s${c_reset}\n" "$@"
+    printf "${fg_bold[red]}X %s${reset_color}\n" "$@"
 }
 
 # Warning logging
 e_warning() {
-    printf "${c_yellow}${c_bold}! %s${c_reset}\n" "$@"
+    printf "${fg_bold[yellow]}! %s${reset_color}\n" "$@"
 }
 
-#vim: filetype=sh
+# vim: filetype=sh

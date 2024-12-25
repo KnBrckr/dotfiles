@@ -3,7 +3,7 @@
 # Set custom OS X defaults
 # See: github.com/mathiasbynens/dotfiles
 
-echo "${c_red}Not performing any updates to OSX defaults!${c_reset}"
+echo "${fg[red]}Not performing any updates to OSX defaults!${reset_color}"
 exit
 
 # Ask for the administrator password upfront

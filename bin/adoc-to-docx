@@ -62,7 +62,7 @@ adoc_file=$1
 
 
 if [ ! -f "${adoc_file}" ]; then
-	printf "${c_red}No file: %s${c_reset}\n" ${adoc_file}
+	printf "${fg[red]}No file: %s${reset_color}\n" ${adoc_file}
 	exit 1
 fi
 
@@ -72,7 +72,7 @@ if [ -z $reference ]; then
 fi
 
 if [ ! -f "${reference}" ]; then
-	printf "${c_red}Can't find docx reference %s${c_reset}\n" "${reference}"
+	printf "${fg[red]}Can't find docx reference %s${reset_color}\n" "${reference}"
 	exit 1
 fi
 
