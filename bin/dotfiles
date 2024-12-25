@@ -48,7 +48,10 @@ if [ ! -d backup ]; then
 	mkdir backup
 fi
 
+source ./shell/functions/is_platform
+source ./shell/functions/command_exists
 source ./shell/zsh_colors
+source ./shell/functions/print_colors
 source ./lib/help
 source ./lib/list
 source ./lib/utils
@@ -57,8 +60,6 @@ source ./lib/pecl
 source ./lib/npm
 source ./lib/nvim
 source ./lib/mirror_files
-source ./shell/functions/is_platform
-source ./shell/functions/command_exists
 
 # Help text
 if (( $#help )) ; then
