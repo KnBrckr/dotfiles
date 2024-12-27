@@ -70,6 +70,7 @@ mirror_files() {
 	link "config/cheat"    						  ".config/cheat"
 	link "config/ctags"                 ".config/ctags"
 	link "config/efm-langserver"        ".config/efm-langserver"
+	link "config/ghostty"               ".config/ghostty"
 	link "config/kitty"                 ".config/kitty"
 	link "config/nvim"                  ".config/nvim"
 
