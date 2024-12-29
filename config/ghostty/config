@@ -1,4 +1,8 @@
 # Ghostty configuration
 
-# font-family = "Hack Nerd Font Mono"
+# Alternate 'g' in Jetbrains Mono font
+font-feature = cv03
+# Alternate '$' in Jetbrains Mono font
+font-feature = cv14
 theme = tokyonight
+
