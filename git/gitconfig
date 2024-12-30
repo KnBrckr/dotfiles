@@ -28,6 +28,9 @@
   # Add untracked, remove deleted, and show status
   adda = !git add -A && git status
 
+	# Ignore white space (-w) and copied (-C) lines in blame
+	blame = blame -w -C
+
   # Fetch a repository ($1) and checkout its ref ($2) HEAD
   # Use: `git browse https://github.com/necolas/dotfiles <commit-ish>`
   browse = !bash -c 'git fetch $1 ${2:-HEAD} && git checkout FETCH_HEAD' -

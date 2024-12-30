@@ -42,6 +42,18 @@ git bisect
 Don't pull tags for a remote
   $ git config remote.<remote-name>.tagopt --no-tags
 
+## Searching
+
+Lists all commits for when compress2 function in compress.c changed based
+on heuristics:
+
+    git log -L :compress2:compress.c
+
+Search for additions/deletions of a symbol:
+
+    git log -S token         # Show matching commits
+    git log -p -S  token     # Show diff for matching commits
+
 ## Patching
 
 Apply a patch from different repo to the active branch
@@ -61,6 +73,17 @@ When hierarchy is different and/or some files not present use `git apply`
 
     % git commit --amend --author="Author Name <email@address.com>" --no-edit
     % git rebase --continue
+
+## Blame
+
+Useful options:
+
+    -w     Ignores white space
+    -C     Ignores copied/moved lines
+
+Ignore specific revisions in git blame (for example copyright updates)
+
+    git config --global blame.ignoreRevsFile .git-blame-ignore-revs
 
 ## Education Resources
 
