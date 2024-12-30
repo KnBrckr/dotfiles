@@ -42,6 +42,8 @@
   # Custom graph log for all branches
   grapha = log --pretty=nice --date-order --graph --all
 
+  # Pretty one-line
+	l = "log --pretty=format:'%C(#cccc00)%h %Cred%ad %Creset%<(60,trunc)%s%C(auto)%d %C(magenta)%<(15,trunc)%an' --date=format:'%y%m%d'"
   # Custom pretty log
   logp = log --pretty=nice --graph --date=short
   # Short log with name and email
