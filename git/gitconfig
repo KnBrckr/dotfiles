@@ -28,6 +28,9 @@
   # Add untracked, remove deleted, and show status
   adda = !git add -A && git status
 
+  # Pretty git branch display
+	b = "branch --format='%(color:#cccc00)%(objectname:short) %(color:red)%(committerdate:short) %(color:bold white)%(refname:short)'"
+
 	# Ignore white space (-w) and copied (-C) lines in blame
 	blame = blame -w -C
 
@@ -108,6 +111,9 @@
   autocrlf = input
 
 	commentChar = auto
+
+[branch]
+	sort = -committerdate
 
 [tag]
 	# Sort tags according to version strings
