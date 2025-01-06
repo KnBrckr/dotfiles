@@ -95,3 +95,8 @@ Ignore specific revisions in git blame (for example copyright updates)
 * [My Favorite Git Commit](https://dhwthompson.com/2019/my-favourite-git-commit)
 * [Telling Stories through your commits](https://blog.mocoso.co.uk/talks/2015/01/12/telling-stories-through-your-commits/)
 * [A Branch in Time (a story about revision histories)](https://tekin.co.uk/2019/02/a-talk-about-revision-histories)
+
+* [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+* [Conventional Commits Cheatsheet](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13)
+
+

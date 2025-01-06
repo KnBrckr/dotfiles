@@ -30,3 +30,12 @@
 	% firewall-cmd --permanent --add-port=4001/tcp
 	% firewall-cmd --permanent --add-port=3601/udp
   % firewall-cmd --reload
+
+## Network testing
+
+### Convert all socket communication to unix socket
+https://cwrap.org/socket_wrapper.html
+
+### Multipurpose network relay
+
+socat(1) - Multipurpose relay (SOcket CAT)
