@@ -1,0 +1,5 @@
+# Join by for shell - works for a single character value
+
+function join_by { local IFS="$1"; shift; echo "$*"; }
+
+# vim: filetype=sh
