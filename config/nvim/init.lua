@@ -24,7 +24,7 @@ vim.g.c_syntax_for_h = 1 -- Use C syntax for .h files, not c++
 
 -- Setup default conceal levels
 vim.opt.conceallevel = 2
-vim.opt.concealcursor = 'nc'
+vim.opt.concealcursor = 'c'
 
 -- show hidden characters
 vim.opt.list = true
