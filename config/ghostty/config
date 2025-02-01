@@ -1,8 +1,10 @@
 # Ghostty configuration
 
+window-height = 50
+window-width = 130
+
 # Alternate 'g' in Jetbrains Mono font
 font-feature = cv03
 # Alternate '$' in Jetbrains Mono font
 font-feature = cv14
 theme = tokyonight
-
