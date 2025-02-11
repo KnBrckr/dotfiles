@@ -99,4 +99,4 @@ Ignore specific revisions in git blame (for example copyright updates)
 * [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 * [Conventional Commits Cheatsheet](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13)
 
-
+* [Stacked Branches](https://www.codetinkerer.com/2023/10/01/stacked-branches-with-vanilla-git.html)
