@@ -122,6 +122,7 @@ plugins=(
 				 git 
 				 zsh-syntax-highlighting
 				 zsh-autosuggestions
+				 z # https://github.com/agkozak/zsh-z 'cd` helper
 			  )
 
 if command_exists docker; then
