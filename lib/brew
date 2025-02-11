@@ -35,6 +35,7 @@ run_brew() {
 			'neovim'
 			'node'                # Node environment (For bash language server)
 			'pandoc'              # Document conversion
+			'qmk/qmk/qmk'         # QMK Keyboard firmware development environment
 			'ripgrep'             # Used by nvim Telescope Live Grep
 			'swiftgen'            # Swift Code Generation tool
 			'the_silver_searcher' # Fast grep and find alternative
