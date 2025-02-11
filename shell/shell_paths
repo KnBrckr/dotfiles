@@ -6,15 +6,15 @@
 
 # Directories to be prepended to PATH (last item in list will be first on path)
 declare -a dirs_to_prepend=(
-	"/usr/local/bin" # Ensure that this bin always takes precedence over `/usr/bin`
+	/opt/mssql-tools/bin
+	/opt/mssql-tools18/bin
+	/usr/local/bin # Ensure that this bin always takes precedence over `/usr/bin`
 	# Uncomment for brew coreutils gnu command replacements
-  # "/opt/homebrew/opt/coreutils/libexec/gnubin/"
-	"/usr/local/opt/php@7.1/bin"
-	"/usr/local/opt/php@7.1/sbin"
-	"/usr/local/opt/ruby/bin"
-	"$HOME/.dotfiles/bin"
-	"$HOME/.local/bin"
-	"$HOME/bin"
+  # /opt/homebrew/opt/coreutils/libexec/gnubin/
+	/usr/local/opt/ruby/bin
+	$HOME/.dotfiles/bin
+	$HOME/.local/bin
+	$HOME/bin
 )
 
 PATH=$(path_prepend "$PATH" dirs_to_prepend)
