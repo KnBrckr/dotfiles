@@ -58,6 +58,8 @@
   logf = log --pretty='%Cred%H%Creset %s - %C(bold blue)%aN %Creset'
 	# Log only refids
 	logref = log --pretty="%h"
+	# Log without merges
+	logm = log --no-merges --pretty=format:'%h | %ad | %s - %an' --date=format:'%Y-%m-%d'
   # Diffstat log
   logst = log --stat
   # Short format diffstat log
