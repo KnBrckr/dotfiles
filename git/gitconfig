@@ -114,7 +114,7 @@
 
   autocrlf = input
 
-	commentChar = auto
+	commentChar = ";"
 
 [branch]
 	sort = -committerdate
