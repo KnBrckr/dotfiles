@@ -7,7 +7,7 @@ return {
 		-- refer to the configuration section below
 	},
 	cmd = { "TodoQuickFix", "TodoLocList", "TodoTelscope" },
-	ft = { "c" },
+	ft = { "c", "lua", "cmake", "txt", "sh" },
 	keys = {
 		{
 			"]t",
