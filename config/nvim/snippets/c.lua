@@ -57,12 +57,13 @@ local unit_main = s("unit_main", fmt([[
  *
  * @param state Test state
  */
-static void {a}_test(void **state)
+static void {a}_test(__attribute_maybe_unused__ void **state)
 {{
 	fail();
 }}
 
-int main(int argc, char const *argv[])
+int main(__attribute_maybe_unused__ int argc,
+         __attribute_maybe_unused__ char const *argv[])
 {{
 	const struct CMUnitTest tests[] = {{
 		cmocka_unit_test({a}_test),
@@ -87,7 +88,7 @@ local unit_func = s("unit_func", fmt([[
  *
  * @param state Test state
  */
-static void {}_test(void **state)
+static void {}_test(__attribute_maybe_unused__ void **state)
 {{
 	fail();
 }}
