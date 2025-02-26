@@ -1,18 +1,6 @@
 [submodule "submodules/lolcat"]
 	path = submodules/lolcat
 	url = https://github.com/KnBrckr/lolcat.git
-[submodule "shell/zshcustom/plugins/zsh-syntax-highlighting"]
-	path = shell/zshcustom/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "shell/zshcustom/plugins/zsh-autosuggestions"]
-	path = shell/zshcustom/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "submodules/dircolors-solarized"]
 	path = submodules/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
-[submodule "shell/zshcustom/plugins/alias-tips"]
-	path = shell/zshcustom/plugins/alias-tips
-	url = https://github.com/djui/alias-tips
-[submodule "powerlevel10k"]
-	path = shell/zshcustom/themes/powerlevel10k
-	url = https://gitee.com/romkatv/powerlevel10k.git

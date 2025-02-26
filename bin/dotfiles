@@ -93,6 +93,18 @@ if [ ! -d ~/.oh-my-zsh ]; then
 	e_header "Installing Oh My Zsh!"
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
+if [[ ! -d ~/.dotfiles/shell/zshcustom/plugins/zsh-syntax-highlighting ]]; then
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.dotfiles/shell/zshcustom/plugins/zsh-syntax-highlighting
+fi
+if [[ ! -d ~/.dotfiles/shell/zshcustom/plugins/zsh-autosuggestions ]]; then
+	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.dotfiles/shell/zshcustom/plugins/zsh-autosuggestions
+fi
+if [[ ! -d ~/.dotfiles/shell/zshcustom/plugins/alias-tips ]]; then
+	git clone https://github.com/djui/alias-tips ~/.dotfiles/shell/zshcustom/plugins/alias-tips
+fi
+if [[ ! -d ~/.dotfiles/shell/zshcustom/themes/powerlevel10k ]]; then
+	git clone https://github.com/romkatv/powerlevel10k.git ~/.dotfiles/shell/zshcustom/themes/powerlevel10k
+fi
 
 if is_mac; then
 	# Before relying on Brew, check that packages can be compiled
