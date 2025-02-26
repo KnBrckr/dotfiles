@@ -7,7 +7,17 @@ return {
 		local mason_lspconfig = require('mason-lspconfig')
 		local lspconfig = require('lspconfig')
 
-		mason_lspconfig.setup {}
+		mason_lspconfig.setup {
+			ensure_installed = {
+				"bashls", -- bash language server
+				"clangd", -- C language server
+				"cmake", -- cmake language server
+				"jsonls", -- JSON language server
+				"lua_ls", -- Lua language server
+				"pylsp", -- Python language server
+				"yamlls" -- YAML language server
+			},
+		}
 
 		-- Add additional capabilities supported by nvim-cmp
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
