@@ -22,7 +22,12 @@ fi
 
 if ! type git > /dev/null ; then
 	echo "git is required to continue"
-	exit 2
+	exit 1
+fi
+
+if ! type pip > /dev/null ; then
+	echo "pip is required"
+	exit 1
 fi
 
 DOTFILES="${HOME}/.dotfiles"
