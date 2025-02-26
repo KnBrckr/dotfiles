@@ -185,10 +185,6 @@ else
 		RESTART=1
 	fi
 
-	# Update submodules
-	e_header "Updating submodules"
-	git submodule update --recursive --init --quiet
-
 	if [ $RESTART -eq 1 ]; then
 		e_info "Local files updated, restart dotfiles!"
 		exit 1
