@@ -4,6 +4,7 @@ shell/zshcustom/plugins/alias-tips
 shell/zshcustom/plugins/zsh-autosuggestions
 shell/zshcustom/plugins/zsh-syntax-highlighting
 shell/zshcustom/themes/powerlevel10k
+submodules/
 vim/.netrwhist
 vim/.viminfo
 vim/plugged

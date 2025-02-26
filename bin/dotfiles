@@ -46,6 +46,13 @@ fi
 if [[ ! -d ~/.config/alacritty-theme ]]; then
 	git clone git@github.com:alacritty/alacritty-theme.git ~/.config/alacritty-theme
 fi
+# for "submodules" that don't have a better place - but we're not using git submodules
+if [[ ! -d "${DOTFILES}/submodules" ]]; then
+	mkdir -p "${DOTFILES}/submodules"
+fi
+if [[ ! -d "${DOTFILES}/submodules/dircolors-solarized" ]]; then
+	git clone https://github.com/seebi/dircolors-solarized.git "${DOTFILES}/submodules/dircolors-solarized"
+fi
 
 cd ${DOTFILES}
 
