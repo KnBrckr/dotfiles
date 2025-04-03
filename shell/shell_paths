@@ -17,15 +17,32 @@ declare -a dirs_to_prepend=(
 	$HOME/bin
 )
 
-PATH=$(path_prepend "$PATH" dirs_to_prepend)
-
 # Directories to be appended to PATH
 declare -a dirs_to_append=(
 	"$HOME/go/bin"
 	"$HOME/.npm-packages/bin"
 )
 
-PATH=$(path_append "$PATH" dirs_to_append)
+if is_zsh_shell; then
+	for p ("$dirs_to_prepend[@]")
+	do
+		if [ -d "${p}" ]; then
+			path[1,0]="${p}"
+		fi
+	done
+
+	for p ("$dirs_to_append[@]")
+	do
+		path+="${p}"
+	done
+
+	# Remove dups
+	typeset -gU path
+else
+	PATH=$(path_prepend "$PATH" dirs_to_prepend)
+	PATH=$(path_append "$PATH" dirs_to_append)
+fi
+
 unset dirs_to_prepend dirs_to_append
 
 export PATH
@@ -81,3 +98,5 @@ COWPATH=$(path_append "$COWPATH" dirs_to_append)
 unset dirs_to_append
 
 export COWPATH
+
+# vim: filetype=bash
