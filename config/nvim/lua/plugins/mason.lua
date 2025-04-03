@@ -72,6 +72,11 @@ return {
 						}
 					}
 				}
+				lspconfig.cmake.setup {
+					init_options = {
+						buildDirectory = "cmake-build-Debug",
+					},
+				}
 			end
 		}
 	end,
