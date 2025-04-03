@@ -35,7 +35,6 @@ return {
 				'make',
 				'markdown',
 				'ninja',
-				'org',
 				'perl',
 				'python',
 				'regex',
