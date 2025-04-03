@@ -22,6 +22,9 @@ vim.g.maplocalleader = ',' -- set local leader key
 
 vim.g.c_syntax_for_h = 1 -- Use C syntax for .h files, not c++
 
+-- Diagnostic virtual text became opt-in in neovim 0.11
+vim.diagnostic.config({ virtual_text = true })
+
 -- Setup default conceal levels
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = 'c'
