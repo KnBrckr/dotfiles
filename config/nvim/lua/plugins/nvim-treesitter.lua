@@ -11,11 +11,13 @@ return {
 		require('nvim-treesitter.configs').setup({
 			highlight = {
 				enable = true,
+				-- Setting this to true or a list of languages will run `:h syntax` and tree-sitter at the same time.
+				additional_vim_regex_highlighting = false,
 			},
 			-- Install parsers asynchronously (only applied to 'ensure_installed')
 			sync_install = false,
 			-- Auto-install missing parsers (needs tree-sitter command locally available)
-			auto_install = true,
+			auto_install = false,
 			ensure_installed = {
 				'awk',
 				'bash',
@@ -43,6 +45,8 @@ return {
 				'vim',
 				'vimdoc',
 				'yaml',
+			},
+			ignore_install = {
 			},
 		})
 	end,
