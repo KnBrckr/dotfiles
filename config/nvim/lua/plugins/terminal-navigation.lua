@@ -1,7 +1,7 @@
 -- Configure vim navigation interaction with terminal emulator environment
 
 -- Tmux navigation integration
-if vim.env.TERM:find("tmux") then
+if vim.env.TERM_PROGRAM:find("tmux") then
 	return {
 		"christoomey/vim-tmux-navigator"
 	}
