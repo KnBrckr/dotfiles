@@ -10,6 +10,9 @@ return {
 		local personal_journal_target = orgfiles .. 'journal/%<%Y-%m>.org'
 		local journal_template = '* %t\n** %U\n\n   '
 
+		-- Override default colors
+		vim.api.nvim_set_hl(0, '@org.agenda.scheduled', { fg = '#87ffff' })
+
 		require('orgmode').setup {
 			-- Can provide multiple dirs: org_agenda_files = {'~/onedrive/org-mode/**/*', '~/my-orgs/**/*'},
 			org_agenda_files = { orgfiles .. '**/*', },
