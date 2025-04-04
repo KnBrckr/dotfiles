@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import sys
 terse = "-t" in sys.argv[1:] or "--terse" in sys.argv[1:]
 write = sys.stdout.write
