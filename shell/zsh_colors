@@ -8,4 +8,11 @@
 #
 # Colors setup by Oh-my-zsh
 #
+# But, command syntax highlights provided by zsh-syntax-highlighting uses black
+# on black in dark-mode making them invisible. Use something more reasonable
+#
+# Highlighting using zsh-syntax-highlighting: 
+# https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
 
+# Select a grey
+ZSH_HIGHLIGHT_STYLES[comment]="fg=245"
