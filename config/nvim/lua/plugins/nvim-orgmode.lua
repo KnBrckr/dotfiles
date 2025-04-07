@@ -12,6 +12,7 @@ return {
 
 		-- Override default colors
 		vim.api.nvim_set_hl(0, '@org.agenda.scheduled', { fg = '#87ffff' })
+		vim.api.nvim_set_hl(0, '@org.keyword.done', { fg = '#0087ff' })
 
 		require('orgmode').setup {
 			-- Can provide multiple dirs: org_agenda_files = {'~/onedrive/org-mode/**/*', '~/my-orgs/**/*'},
