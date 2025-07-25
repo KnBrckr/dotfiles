@@ -133,6 +133,17 @@ VCS_AUTHOR_EMAIL="jd@example.com"
 alias code="cd ~/Code"
 ```
 
+### Fastfetch
+
+Part of brew install on MacOS
+
+#### Install on RaspPi
+
+Depending on architecture (uname -m):
+
+    wget -qO fastfetch.tar.gz https://github.com/fastfetch-cli/fastfetch/releases/latest/download/fastfetch-linux-$(uname -m).tar.gz
+    sudo tar xf fastfetch.tar.gz --strip-components=3 -C /usr/local/bin fastfetch-linux-$(uname -m)/usr/bin/fastfetch
+
 ## Adding new git submodules
 
 If you want to add more git submodules, e.g., Vim plugins to be managed by
