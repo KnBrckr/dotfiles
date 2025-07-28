@@ -54,8 +54,8 @@ if [ "$SSH_CLIENT" != "" ]; then
 	export HOMEIP=`echo $SSH_CLIENT | awk '{ print $1 }'`
 fi
 
-# Setup X-server display
-if [ "$WSL_DISTRO_NAME" != "" ]; then
+# Setup X-server display if DISPLAY isn't already set
+if [[ "$WSL_DISTRO_NAME" != "" && "$DISPLAY" == "" ]]; then
   # export DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2}'):0
 	# See https://stackoverflow.com/questions/66768148/how-to-setup-vcxsrv-for-use-with-wsl2
 	export DISPLAY=host.docker.internal:0
