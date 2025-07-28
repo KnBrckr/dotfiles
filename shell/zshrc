@@ -133,6 +133,10 @@ if command_exists podman; then
 	plugins+=( podman )
 fi
 
+if command_exists direnv; then
+	plugins+=( direnv )
+fi
+
 if command_exists brew; then
 	plugins+=( brew )
 fi
