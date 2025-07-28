@@ -2,4 +2,8 @@ set history save on
 set history size 10000
 set history filename ~/.cache/gdb_history
 
+set print pretty on
+set print union off
+
+macro define offsetof(t, f) &((t *) 0)->f
 source ~/.dotfiles/gdb/offsets.py
