@@ -3,6 +3,10 @@
 .DS_Store
 #Thumbs.db
 
+# Local environment setup
+.envrc
+.env
+
 # Other revision control systems
 .acignore
 .hg
