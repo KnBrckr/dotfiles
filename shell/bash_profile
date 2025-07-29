@@ -9,13 +9,6 @@ ssh-add >> /dev/null 2>&1
 [ -f $HOME/.ssh/aws-codecommit ] && ssh-add $HOME/.ssh/aws-codecommit >> /dev/null 2>&1
 [ -f $HOME/.ssh/vagrant ] && ssh-add $HOME/.ssh/vagrant >> /dev/null 2>&1
 
-# set 256 color profile where possible
-if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-	export TERM=gnome-256color
-elif infocmp xterm-256color >/dev/null 2>&1; then
-	export TERM=xterm-256color
-fi
-
 # Setup color variables
 [ -r $HOME/.dotfiles/shell/bash_colors ] && source $HOME/.dotfiles/shell/bash_colors
 
