@@ -5,5 +5,3 @@
 ```zsh
 "; repeat 50 ctest -R enc_signon -V"
 ```
-
-vim: filetype=markdown
