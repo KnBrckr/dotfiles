@@ -4,6 +4,36 @@ return {
 	lazy = false,
 	branch = "main",
 	build = ":TSUpdate",
+	config = function()
+		require('nvim-treesitter').install {
+			'awk',
+			'bash',
+			'c',
+			'cmake',
+			'diff',
+			'dockerfile',
+			'dot',
+			'git_config',
+			'git_rebase',
+			'gitattributes',
+			'gitcommit',
+			'gitignore',
+			'graphql',
+			'json',
+			'lua',
+			'make',
+			'markdown',
+			'ninja',
+			'perl',
+			'python',
+			'regex',
+			'sql',
+			'todotxt',
+			'vim',
+			'vimdoc',
+			'yaml',
+		}
+	end,
 	init = function()
 		-- By default use treesitter for folding
 		vim.opt.foldmethod = "expr"

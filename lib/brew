@@ -39,7 +39,8 @@ run_brew() {
 			'ripgrep'             # Used by nvim Telescope Live Grep
 			'swiftgen'            # Swift Code Generation tool
 			'the_silver_searcher' # Fast grep and find alternative
-			'tmux'                #Terminal Mux
+			'tmux'                # Terminal Mux
+			'tree-sitter-cli'     # Tree-sitter CLI 
 			'wget'
     )
 
