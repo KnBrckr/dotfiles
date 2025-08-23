@@ -8,3 +8,6 @@ font-feature = cv03
 # Alternate '$' in Jetbrains Mono font
 font-feature = cv14
 theme = tokyonight
+
+# Load optional config if present
+config-file = ?local-config
