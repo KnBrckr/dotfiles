@@ -3,6 +3,8 @@
 window-height = 50
 window-width = 130
 
+font-size = 11
+
 # Alternate 'g' in Jetbrains Mono font
 font-feature = cv03
 # Alternate '$' in Jetbrains Mono font
