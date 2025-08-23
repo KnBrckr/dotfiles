@@ -51,11 +51,6 @@ unset load_dotfiles
 # By default, want group able to see files, not write
 umask 0022
 
-# add private identities to the ssh key-agent for port forwarding of ssh credentials
-ssh-add >> /dev/null 2>&1
-[ -f $HOME/.ssh/aws-codecommit ] && ssh-add $HOME/.ssh/aws-codecommit >> /dev/null 2>&1
-[ -f $HOME/.ssh/vagrant ] && ssh-add $HOME/.ssh/vagrant >> /dev/null 2>&1
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
