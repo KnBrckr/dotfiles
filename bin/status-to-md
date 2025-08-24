@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+status_report=$1
+
+LUA_PATH="$PANDOC_LUA_DIR/?.lua;;" pandoc -s -f org --to=markdown \
+    -o ~/downloads/status.md \
+		$status_report

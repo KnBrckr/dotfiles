@@ -18,7 +18,7 @@ local function find_string_in(str, tbl)
 end
 
 local function string_in_action_types(str)
-	local action_types = { "TODO", "NEXT", "NOW", "REVIEWING", "BLOCKED", "DONE" }
+	local action_types = { "TODO", "NEXT", "WIP", "REVIEWING", "BLOCKED", "DONE" }
 	return find_string_in(str, action_types)
 end
 
@@ -46,11 +46,4 @@ function Header(header)
 
 	return pandoc.Header(header.level, header.content, header.attr)
 	-- return pandoc.Header(header.level, header.content, pandoc.Attr())
-end
-
-function Meta(meta)
-	-- Date to report title
-	table.insert(meta.title, 1, pandoc.Str(os.date("%e %B %Y ")))
-
-	return meta
 end

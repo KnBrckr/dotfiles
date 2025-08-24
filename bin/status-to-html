@@ -2,7 +2,9 @@
 # To use a CSS file: --css=path/to/css --embed-resources --standalone
 # Use HTML4 because outlook likes that better
 
+status_report=$1
+
 LUA_PATH="$PANDOC_LUA_DIR/?.lua;;" pandoc -s -f org --to=html4 \
     -o ~/downloads/status.html \
-		--lua-filter=$PANDOC_LUA_DIR/status.lua  \
-		$STATUS_REPORT
+		--lua-filter=$PANDOC_LUA_DIR/status-html.lua  \
+		$status_report
