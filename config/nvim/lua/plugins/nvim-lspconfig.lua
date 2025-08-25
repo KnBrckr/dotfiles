@@ -75,64 +75,64 @@ return {
 				-- See `:help vim-api` for list of methods
 				if client:supports_method('textDocument/publishDiagnostics') then
 					-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-					vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ float = true }) end,
-						{ buffer = true, desc = 'Diagnostics: prev' })
-					vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({ float = true }) end,
-						{ buffer = true, desc = 'Diagnostics: next' })
-					vim.keymap.set('n', '<space>e', vim.diagnostic.open_float,
-						{ buffer = true, desc = "Open floating error window" })
-					vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist,
+
+					-- Default mappings:
+					--  <C-w>d Show diagnostics under cursor
+					--  [D Jump to first diagnostic
+					--  [d Jump to previous diagnostic
+					--  ]D Jump to last diagnostic
+					--  ]d Jump to next diagnostic
+
+					vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist,
 						{ buffer = true, desc = "Add diagnostics to location list" })
 				end
 
+				-- Default LSP mappings
+				--
+				-- Use client method to test for support e.g. client:supports_method('textDocument/declaration')
+				--       client method
+				--  K                                  vim.lsp.buf.hover
+				--       textDocument/declaration      vim.lsp.buf.declaration
+				--       textDocument/definition       vim.lsp.buf.definition
+				--  gO                                 vim.lsp.buf.document_symbol
+				--  grt  textDocument/typeDefinition   vim.lsp.buf.type_definition
+				--  gri  textDocument/implementation   vim.lsp.buf.implementation
+				--  grr  textDocument/references       vim.lsp.buf.refeqences
+				--  gra  textDocument/codeAction       vim.lsp.buf.code_action
+				--  grn  textDocument/rename           vim.lsp.buf.rename
+
+				-- grD => declaration
 				if client:supports_method('textDocument/declaration') then
-					vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = true, desc = "Jump to Declaration" })
+					vim.keymap.set('n', 'grD', vim.lsp.buf.declaration, { buffer = true, desc = "Jump to Declaration" })
 				end
 
+				-- grd => definition
 				if client:supports_method('textDocument/definition') then
-					vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = true, desc = "Jump to Definition" })
+					vim.keymap.set('n', 'grd', vim.lsp.buf.definition, { buffer = true, desc = "Jump to Definition" })
 				end
 
-				if client:supports_method('textDocument/typeDefinition') then
-					vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition,
-						{ buffer = true, desc = "Jump to Type definition" })
-				end
-
-				if client:supports_method('textDocument/implementation') then
-					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = true, desc = "Jump to Implementation" })
-				end
-
-				if client:supports_method('textDocument/references') then
-					vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = true, desc = "Jump to References" })
-				end
-
+				-- KK => signature help
 				if client:supports_method('textDocument/signatureHelp') then
 					vim.keymap.set('n', 'KK', vim.lsp.buf.signature_help, { buffer = true, desc = "Show Signature Help" })
 				end
 
+				-- grf => format buffer
+				if client:supports_method('textDocument/formatting') then
+					vim.keymap.set('n', 'gQ', function()
+						vim.lsp.buf.format { async = true }
+					end, { buffer = true, desc = "Format" })
+				end
+
 				if client:supports_method('workspace/workspaceFolders') then
-					vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder,
+					vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder,
 						{ buffer = true, desc = "Add workspace folder" })
-					vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder,
+					vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder,
 						{ buffer = true, desc = "Remove workspace folder" })
-					vim.keymap.set('n', '<space>wl', function()
+					vim.keymap.set('n', '<leader>wl', function()
 						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 					end, { buffer = true, desc = "List workspace folders" })
 				end
 
-				if client:supports_method('textDocument/rename') then
-					vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, { buffer = true, desc = "Rename symbol" })
-				end
-
-				if client:supports_method('textDocument/codeAction') then
-					vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, { buffer = true, desc = "Code Action" })
-				end
-
-				if client:supports_method('textDocument/formatting') then
-					vim.keymap.set('n', '<leader>f', function()
-						vim.lsp.buf.format { async = true }
-					end, { buffer = true, desc = "Format" })
-				end
 			end,
 		})
 	end,
