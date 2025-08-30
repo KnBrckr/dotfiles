@@ -23,13 +23,6 @@ vim.g.maplocalleader = ','    -- set local leader key
 
 vim.g.c_syntax_for_h = 1      -- Use C syntax for .h files, not c++
 
-vim.diagnostic.config({
-	-- Diagnostic virtual text became opt-in in neovim 0.11
-	virtual_text = true,
-	-- Sort diagnostic messages
-	severity_sort = true,
-})
-
 -- Auto-completion: Don't autoinsert text until it's selected
 vim.opt.completeopt:append('noselect')
 
