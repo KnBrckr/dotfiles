@@ -1,26 +1,27 @@
 -- init.lua
 
-vim.opt.number = true        -- Line numbers in gutter
+vim.opt.number = true         -- Line numbers in gutter
 vim.opt.relativenumber = true
-vim.opt.cursorline = true    -- highlight cursor line
-vim.opt.startofline = false  -- Don't reset cursor to start of line when moving around
-vim.opt.cmdheight = 2        -- Better display for messages
-vim.opt.mouse = 'a'          -- Mouse in all modes
-vim.opt.ignorecase = true    -- Ignore case, but use smart case search
+vim.opt.cursorline = true     -- highlight cursor line
+vim.opt.startofline = false   -- Don't reset cursor to start of line when moving around
+vim.opt.cmdheight = 2         -- Better display for messages
+vim.opt.mouse = 'a'           -- Mouse in all modes
+vim.opt.ignorecase = true     -- Ignore case, but use smart case search
 vim.opt.smartcase = true
-vim.opt.wrap = true          -- Wrap long lines, preserving indent
+vim.opt.wrap = true           -- Wrap long lines, preserving indent
 vim.opt.breakindent = true
-vim.opt.tabstop = 2          -- Default tab stop
+vim.opt.tabstop = 2           -- Default tab stop
 vim.opt.shiftwidth = 2
-vim.opt.scrolloff = 4        -- Keep lines before/after cursor on display
-vim.opt.expandtab = false    -- Do not expand tab to spaces by default
-vim.opt.signcolumn = "yes"   -- Always display the sign column
-vim.opt.hlsearch = false     -- Do not highlight search token
+vim.opt.scrolloff = 4         -- Keep lines before/after cursor on display
+vim.opt.expandtab = false     -- Do not expand tab to spaces by default
+vim.opt.signcolumn = "yes"    -- Always display the sign column
+vim.opt.hlsearch = false      -- Do not highlight search token
+vim.opt.winborder = 'rounded' -- floating windows have rounded borders (default '')
 
-vim.g.mapleader = ' '      -- Set map leader
-vim.g.maplocalleader = ',' -- set local leader key
+vim.g.mapleader = ' '         -- Set map leader
+vim.g.maplocalleader = ','    -- set local leader key
 
-vim.g.c_syntax_for_h = 1 -- Use C syntax for .h files, not c++
+vim.g.c_syntax_for_h = 1      -- Use C syntax for .h files, not c++
 
 -- Diagnostic virtual text became opt-in in neovim 0.11
 vim.diagnostic.config({ virtual_text = true })
