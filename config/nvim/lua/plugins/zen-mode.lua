@@ -1,6 +1,7 @@
 -- Zen Mode coding/Writing
 return {
 	"folke/zen-mode.nvim",
+	enabled = false,
 	opts = {
 		plugins = {
         -- this will change the font size on alacritty when in zen mode
