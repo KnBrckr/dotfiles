@@ -1,6 +1,9 @@
--- mini icons
+-- mini swiss-army knife
 return
 {
-	'echasnovski/mini.nvim',
-	version = '*'
+	'nvim-mini/mini.nvim',
+	version = '*',
+	config = function()
+		require('mini.icons').setup()
+	end,
 }
