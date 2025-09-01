@@ -49,12 +49,12 @@ run_brew() {
 		  'font-hack-nerd-font'
 	  )
 
-		for pkgname in $desired_formulae
+		for pkgname in "${desired_formulae[@]}"
 		do
 			brew_install formula $pkgname
 		done
 
-		for pkgname in $desired_casks
+		for pkgname in "${desired_casks[@]}"
 		do
 			brew_install cask $pkgname
 		done
@@ -109,7 +109,7 @@ brew_install() {
 # @param $1 options to brew list
 # @param $2 brew package name
 brew_exists() {
-    if $(brew list $@ >/dev/null 2>&1); then
+    if brew list "$@" >/dev/null 2>&1; then
         return 0
     fi
 
