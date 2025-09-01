@@ -14,7 +14,7 @@ return {
 		-- bigfile = { enabled = true },
 		-- dashboard = { enabled = true },
 		explorer = { enabled = true },
-		-- indent = { enabled = true },
+		indent = { enabled = true },
 		-- input = { enabled = true },
 		picker = { enabled = true },
 		-- notifier = { enabled = true },
