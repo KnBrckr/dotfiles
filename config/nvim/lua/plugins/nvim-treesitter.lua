@@ -29,10 +29,4 @@ return {
 			'yaml',
 		}
 	end,
-	init = function()
-		-- By default use treesitter for folding
-		vim.opt.foldmethod = "expr"
-		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-		vim.opt.foldlevel = 1
-	end,
 }
