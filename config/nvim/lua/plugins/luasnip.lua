@@ -1,6 +1,7 @@
 -- LuaSnip
 return {
 	'saadparwaiz1/cmp_luasnip',
+	enabled = false,
 	dependencies = {
 		{
 			"L3MON4D3/LuaSnip",
