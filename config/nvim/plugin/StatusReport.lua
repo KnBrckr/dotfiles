@@ -57,9 +57,19 @@ local function filter(tbl, f)
 	return t
 end
 
---- Create buffer to hold report
+-- Convert org-mode links to markdown format
+local function orglink_to_md(s)
+	local match = { string.match(s, "^(.*)%[%[([^%[%]]+)%]%[([^%[%]]+)%]%](.*)$") }
+	if #match > 0 then
+		return match[1] .. "[" .. match[3] .. "](" .. match[2] .. ")" .. match [4]
+	end
+
+	return s
+end
+
+--- Create markdown buffer to hold report
 local function create_report_buf()
-	local bufname = vim.fn.tempname() .. ".org"
+	local bufname = vim.fn.tempname() .. ".md"
 	-- Setup scratch buffer
 	for _, buf_hndl in ipairs(vim.api.nvim_list_bufs()) do
 		if vim.api.nvim_buf_is_loaded(buf_hndl) and
@@ -72,7 +82,7 @@ local function create_report_buf()
 
 	local buf = vim.api.nvim_create_buf(true, true)
 	if (buf ~= 0) then
-		vim.api.nvim_set_option_value("filetype", "org", { buf = buf })
+		vim.api.nvim_set_option_value("filetype", "markdown", { buf = buf })
 		vim.api.nvim_set_option_value("swapfile", false, { buf = buf })
 		vim.api.nvim_buf_set_name(buf, bufname)
 	end
@@ -101,7 +111,6 @@ vim.api.nvim_create_user_command('StatusReport', function()
 		report[string.upper(tuple.state)] = {}
 	end
 
-
 	-- Gather todos for report
 	for _, file in ipairs(files) do
 		local tbl = filter(file.headlines, include_in_report)
@@ -113,25 +122,23 @@ vim.api.nvim_create_user_command('StatusReport', function()
 		end)
 	end
 
-	-- Send report to buffer
+	-- Send report to buffer in markdown format
 	local buf = create_report_buf()
-	vim.api.nvim_buf_set_lines(buf, 0, -1, true, { "#+title: " .. os.date("%e %B %Y") .. " Status Report" })
-	-- Don't format super/sub-scripts
-	vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "#+OPTIONS: ^:nil" })
+	vim.api.nvim_buf_set_lines(buf, 0, -1, true, { "# " .. os.date("%e %B %Y") .. " Status Report" })
 
 	-- For each report section
 	for _, tuple in ipairs(include_todo_state) do
-		vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "* " .. tuple.title })
+		vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "", "## " .. tuple.title , ""})
 
 		-- Emit the action
 		for _, todo in ipairs(report[string.upper(tuple.state)]) do
-			vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "** " .. todo.title })
+			vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "* " .. orglink_to_md(todo.title) })
 			-- If it has sub-headings, output them too
 			if todo.headlines then
 				for _, subhead in ipairs(todo.headlines) do
 					-- But only if it's not also a todo to avoid duplication
 					if not subhead.todo_type then
-						vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "*** " .. subhead.title })
+						vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "  * " .. orglink_to_md(subhead.title) })
 					end
 				end
 			end
