@@ -2,13 +2,17 @@
 return {
 	"neovim/nvim-lspconfig",
 	config = function()
+		-- Setup defaults for clangd
+		vim.lsp.config('clangd', {
+			cmd = { "clangd", '--background-index', '--clang-tidy', '--log=verbose' },
+		})
+
 		-- Setup defaults for cmake
 		vim.lsp.config('cmake', {
 			init_options = {
 				buildDirectory = "cmake-build-Debug",
 			},
-		}
-		)
+		})
 
 		-- Setup defaults for lua
 		vim.lsp.config('lua_ls', {
@@ -132,7 +136,6 @@ return {
 						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 					end, { buffer = true, desc = "List workspace folders" })
 				end
-
 			end,
 		})
 	end,
