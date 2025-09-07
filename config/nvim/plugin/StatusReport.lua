@@ -37,31 +37,11 @@ local function include_in_report(headline)
 	return false
 end
 
--- Perform map transformation f() on table
-local function map(tbl, f)
-	local t = {}
-	for k, v in pairs(tbl) do
-		t[k] = f(v)
-	end
-	return t
-end
-
--- Filter a table using f()
-local function filter(tbl, f)
-	local t = {}
-	for k, v in pairs(tbl) do
-		if f(v) then
-			t[k] = v
-		end
-	end
-	return t
-end
-
 -- Convert org-mode links to markdown format
 local function orglink_to_md(s)
 	local match = { string.match(s, "^(.*)%[%[([^%[%]]+)%]%[([^%[%]]+)%]%](.*)$") }
 	if #match > 0 then
-		return match[1] .. "[" .. match[3] .. "](" .. match[2] .. ")" .. match [4]
+		return match[1] .. "[" .. match[3] .. "](" .. match[2] .. ")" .. match[4]
 	end
 
 	return s
@@ -92,8 +72,6 @@ end
 
 -- Create status report command
 vim.api.nvim_create_user_command('StatusReport', function()
-	local files = api.load()
-
 	-- Initialize expected report section collections
 	-- <todo state>,  <report section title>
 	local include_todo_state = {
@@ -107,41 +85,38 @@ vim.api.nvim_create_user_command('StatusReport', function()
 
 	-- Per todo-state collection tables
 	local report = {}
-	for _, tuple in ipairs(include_todo_state) do
-		report[string.upper(tuple.state)] = {}
-	end
+	vim.tbl_map(function(t)
+		report[string.upper(t.state)] = {}
+	end, include_todo_state)
 
-	-- Gather todos for report
-	for _, file in ipairs(files) do
-		local tbl = filter(file.headlines, include_in_report)
-		map(tbl, function(h)
+	-- Gather todos for report from each file provided by api.load()
+	vim.tbl_map(function(file)
+		vim.tbl_map(function(h)
 			if report[h.todo_value] then
-				table.insert(report[h.todo_value], h)
-				return h
+				table.insert(report[h.todo_value], h) -- Add headline to report section
 			end
-		end)
-	end
+		end, vim.tbl_filter(include_in_report, file.headlines))
+	end, api.load())
 
 	-- Send report to buffer in markdown format
 	local buf = create_report_buf()
 	vim.api.nvim_buf_set_lines(buf, 0, -1, true, { "# " .. os.date("%e %B %Y") .. " Status Report" })
 
 	-- For each report section
-	for _, tuple in ipairs(include_todo_state) do
-		vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "", "## " .. tuple.title , ""})
+	vim.tbl_map(function(tuple)
+		vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "", "## " .. tuple.title, "" })
 
 		-- Emit the action
-		for _, todo in ipairs(report[string.upper(tuple.state)]) do
+		vim.tbl_map(function(todo)
 			vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "* " .. orglink_to_md(todo.title) })
+
 			-- If it has sub-headings, output them too
-			if todo.headlines then
-				for _, subhead in ipairs(todo.headlines) do
-					-- But only if it's not also a todo to avoid duplication
-					if not subhead.todo_type then
-						vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "  * " .. orglink_to_md(subhead.title) })
-					end
+			vim.tbl_map(function(subhead)
+				-- But only if it's not also a todo to avoid duplication
+				if not subhead.todo_type then
+					vim.api.nvim_buf_set_lines(buf, -1, -1, true, { "  * " .. orglink_to_md(subhead.title) })
 				end
-			end
-		end
-	end
+			end, todo.headlines)
+		end, report[string.upper(tuple.state)])
+	end, include_todo_state)
 end, {})
