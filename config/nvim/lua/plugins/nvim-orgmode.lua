@@ -18,7 +18,7 @@ return {
 			-- Can provide multiple dirs: org_agenda_files = {'~/onedrive/org-mode/**/*', '~/my-orgs/**/*'},
 			org_agenda_files = { orgfiles .. '**/*', },
 			org_default_notes_file = orgfiles .. 'refile.org',
-			org_todo_keywords = { 'TODO(t)', 'ACTIVE', 'REVIEWING', 'NEXT', 'BLOCKED', 'LATER', '|', 'DONE(d)', 'COMPLETED', 'APPROVED(o)', 'CANCELED(x)',},
+			org_todo_keywords = { 'TODO(t)', 'WIP', 'REVIEWING', 'NEXT', 'BLOCKED', 'LATER', '|', 'DONE(d)', 'APPROVED', 'CANCELED(x)',},
 			org_capture_templates = {
 				t = { description = 'Task', template = '* TODO %?\n  %u' },
 				j = {
