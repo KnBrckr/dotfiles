@@ -139,8 +139,4 @@ return {
 			end,
 		})
 	end,
-	dependencies = {
-		"hrsh7th/nvim-cmp",
-		"hrsh7th/cmp-nvim-lsp",
-	},
 }
