@@ -59,8 +59,8 @@
 	# Log only refids
 	logref = log --pretty="%h"
 	# Log without merges
-	logm = log --no-merges --pretty=format:'* %h | %ad | %s - %an' --date=format:'%Y-%m-%d'
-  # Diffstat log
+	logm = log --no-merges --pretty=format:'* %H | %ad | %s - %an' --date=format:'%Y-%m-%d'
+	# Diffstat log
   logst = log --stat
   # Short format diffstat log
   logsf = log --stat --format=oneline --abbrev-commit
