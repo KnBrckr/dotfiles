@@ -77,25 +77,25 @@
   # Displays committers in descending order of number of commits
   who = shortlog --numbered --summary --email --no-merges --since='3 months'
 
-  # List files changed since REVIEW_BASE
-  files = !git diff --name-only $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
+  # List files changed since main (or $1)
+  files = "!f() { git diff --name-only $(git merge-base HEAD \"${1:-main}\"); }; f"
 
-  # List files changed since REVIEW_BASE excluding deleted files
-  files-no-del = !git diff --name-only --diff-filter=d $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
+  # List files changed since main excluding deleted files
+  files-no-del = "!f() { git diff --name-only --diff-filter=d $(git merge-base HEAD \"${1:-main}\"); }; f"
 
-  # List files changed since REVIEW_BASE excluding deleted files
-  files-del = !git diff --name-only --diff-filter=D $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
+  # List files changed since main excluding deleted files
+  files-del = "!f() { git diff --name-only --diff-filter=D $(git merge-base HEAD \"${1:-main}\"); }; f"
 
   # Same as files but with diff --stat
-  stat = !git diff --stat $(git merge-base HEAD \"${REVIEW_BASE:-main}\")
+  stat = "!f() { git diff --stat $(git merge-base HEAD \"${1:-main}\"); }; f"
 
-  # Review files changed since REVIEW_BASE (default main) using Diffview
-  review = !nvim +\"DiffviewOpen ${REVIEW_BASE:-main}\"
+  # Review files changed since main (default main) using Diffview
+  review = "!f() { nvim +\"DiffviewOpen ${1:-main}\"; }; f"
 
-  # Edit files changed since REVIEW_BASE (no tabs)
-  edit = !nvim $(git files-no-del)
-  # Edit files changed since REVIEW_BASE in tabs
-  editt = !nvim -p $(git files-no-del)
+  # Edit files changed since main (no tabs)
+  edit = "!f() { nvim $(git files-no-del $1); }; f"
+  # Edit files changed since main in tabs
+  editt = "!f() { nvim -p $(git files-no-del $1); }; f"
 
   # gitlab integration
   # Requires: git config --add remote.origin.fetch '+refs/merge-requests/*:refs/remotes/origin/merge-requests/*'
