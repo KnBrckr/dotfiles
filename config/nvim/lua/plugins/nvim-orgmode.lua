@@ -1,3 +1,10 @@
+local orgfiles = '~/Documents/orgfiles/'
+if vim.env.ORGROOT then
+	orgfiles = vim.env.ORGROOT
+end
+
+local refile = orgfiles .. "/refile.org"
+
 -- orgmode has setup that must be run as nvim loads. Do not lazy load
 return {
 	"nvim-orgmode/orgmode",
@@ -17,8 +24,8 @@ return {
 		require('orgmode').setup {
 			-- Can provide multiple dirs: org_agenda_files = {'~/onedrive/org-mode/**/*', '~/my-orgs/**/*'},
 			org_agenda_files = { orgfiles .. '**/*', },
-			org_default_notes_file = orgfiles .. 'refile.org',
-			org_todo_keywords = { 'TODO(t)', 'WIP', 'REVIEWING', 'NEXT', 'BLOCKED', 'LATER', '|', 'DONE(d)', 'APPROVED', 'CANCELED(x)',},
+			org_default_notes_file = refile,
+			org_todo_keywords = { 'TODO(t)', 'WIP', 'REVIEWING', 'NEXT', 'BLOCKED', 'LATER', '|', 'DONE(d)', 'APPROVED', 'CANCELED',},
 			org_capture_templates = {
 				t = { description = 'Task', template = '* TODO %?\n  %u' },
 				j = {
