@@ -2,6 +2,18 @@
 
 local api = require('orgmode.api')
 local Date = require('orgmode.objects.date')
+local from_date
+
+-- Initialize expected report section collections
+-- <todo state>,  <report section title>
+local include_todo_state = {
+	{ state = "WIP",       title = "Active" },
+	{ state = "REVIEWING", title = "Reviewing" },
+	{ state = "BLOCKED",   title = "Blocked" },
+	{ state = "DONE",      title = "Completed" },
+	{ state = "APPROVED",  title = "Approved" },
+	{ state = "NEXT",      title = "Next" },
+}
 
 -- Calculate date of previous Friday
 local function prev_friday()
@@ -30,7 +42,7 @@ local function include_in_report(headline)
 		return true
 	end
 
-	if headline.closed:is_after(Date:set_from_string(prev_friday())) then
+	if headline.closed:is_after(Date:set_from_string(from_date)) then
 		return true
 	end
 
@@ -70,18 +82,13 @@ local function create_report_buf()
 	return buf
 end
 
--- Create status report command
-vim.api.nvim_create_user_command('StatusReport', function()
-	-- Initialize expected report section collections
-	-- <todo state>,  <report section title>
-	local include_todo_state = {
-		{ state = "WIP",       title = "Active" },
-		{ state = "REVIEWING", title = "Reviewing" },
-		{ state = "BLOCKED",   title = "Blocked" },
-		{ state = "DONE",      title = "Completed" },
-		{ state = "APPROVED",  title = "Approved" },
-		{ state = "NEXT",      title = "Next" },
-	}
+local function create_status_report(opts)
+	-- Use date from command line
+	if #opts.fargs > 0 then
+		from_date = opts.fargs[1]
+	else
+		from_date = prev_friday()
+	end
 
 	-- Per todo-state collection tables
 	local report = {}
@@ -119,4 +126,7 @@ vim.api.nvim_create_user_command('StatusReport', function()
 			end, todo.headlines)
 		end, report[string.upper(tuple.state)])
 	end, include_todo_state)
-end, {})
+end
+
+-- Create status report command
+vim.api.nvim_create_user_command('StatusReport', create_status_report, { nargs = '?' })
