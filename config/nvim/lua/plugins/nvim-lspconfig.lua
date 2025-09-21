@@ -101,7 +101,7 @@ return {
 				--  gO                                 vim.lsp.buf.document_symbol
 				--  grt  textDocument/typeDefinition   vim.lsp.buf.type_definition
 				--  gri  textDocument/implementation   vim.lsp.buf.implementation
-				--  grr  textDocument/references       vim.lsp.buf.refeqences
+				--  grr  textDocument/references       vim.lsp.buf.references
 				--  gra  textDocument/codeAction       vim.lsp.buf.code_action
 				--  grn  textDocument/rename           vim.lsp.buf.rename
 
