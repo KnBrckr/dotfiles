@@ -15,7 +15,8 @@ local include_todo_state = {
 	{ state = "NEXT",      title = "Next" },
 }
 
--- Calculate date of previous Friday
+--- Calculate date of previous Friday
+---@return string|osdate: Date of previous Friday
 local function prev_friday()
 	local dow = os.date("%w") -- 0 = Sunday
 	-- Offset to the previous Friday (dow + 7 - Friday(5))
@@ -27,13 +28,16 @@ local function prev_friday()
 end
 
 --- Determine if headline should be included in the report
-local function include_in_report(headline)
+---@param category string category to filter on
+---@param headline any orgmode headline to test
+---@return boolean: true if headline should be included
+local function include_in_report(category, headline)
 	if not headline then
 		return false
 	end
 
 	-- Skip if "status" property is not set
-	if headline:get_property("CATEGORY") ~= "status" then
+	if headline:get_property("CATEGORY") ~= category then
 		return false
 	end
 
@@ -49,7 +53,9 @@ local function include_in_report(headline)
 	return false
 end
 
--- Convert org-mode links to markdown format
+--- Convert org-mode links to markdown format
+---@param s string Orgmode link
+---@return string: Markdown formatted link
 local function orglink_to_md(s)
 	local match = { string.match(s, "^(.*)%[%[([^%[%]]+)%]%[([^%[%]]+)%]%](.*)$") }
 	if #match > 0 then
@@ -60,6 +66,7 @@ local function orglink_to_md(s)
 end
 
 --- Create markdown buffer to hold report
+---@return integer: buffer number
 local function create_report_buf()
 	local bufname = vim.fn.tempname() .. ".md"
 	-- Setup scratch buffer
@@ -96,13 +103,18 @@ local function create_status_report(opts)
 		report[string.upper(t.state)] = {}
 	end, include_todo_state)
 
+	-- Collect entries from "status" category
+	local function include_status(h)
+		return include_in_report("status", h)
+	end
+
 	-- Gather todos for report from each file provided by api.load()
 	vim.tbl_map(function(file)
 		vim.tbl_map(function(h)
 			if report[h.todo_value] then
 				table.insert(report[h.todo_value], h) -- Add headline to report section
 			end
-		end, vim.tbl_filter(include_in_report, file.headlines))
+		end, vim.tbl_filter(include_status, file.headlines))
 	end, api.load())
 
 	-- Send report to buffer in markdown format
