@@ -1,5 +1,7 @@
 # Ghostty configuration
 
+theme = TokyoNight
+
 window-height = 50
 window-width = 130
 
@@ -9,7 +11,9 @@ font-size = 11
 font-feature = cv03
 # Alternate '$' in Jetbrains Mono font
 font-feature = cv14
-theme = TokyoNight
+
+# Try to install ghostty on remote, but if that fails, set env to xterm-256color
+shell-integration-features = ssh-terminfo,ssh-env
 
 # Load optional config if present
 config-file = ?local-config
