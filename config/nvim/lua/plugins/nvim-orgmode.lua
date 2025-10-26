@@ -72,7 +72,7 @@ local function orglink_to_md(s)
 	return s
 end
 
---- Create markdown buffer to hold report
+--- Create markdown buffer to hold status report
 ---@return integer: buffer number
 local function create_report_buf()
 	local bufname = vim.fn.tempname() .. ".md"
@@ -96,6 +96,26 @@ local function create_report_buf()
 	return buf
 end
 
+-- Collect list of agenda topics
+function CreateAgenda(meeting)
+	local text = "** Agenda"
+
+	-- Collect entries from meeting category
+	local function include_agenda(h)
+		return include_in_report(os.date("%Y-%m-%d"), meeting, h)
+	end
+
+	-- Gather todos for report from each file provided by api.load()
+	vim.tbl_map(function(file)
+		vim.tbl_map(function(h)
+			text = text .. "\n*** " .. h.title
+		end, vim.tbl_filter(include_agenda, file.headlines))
+	end, api.load())
+
+	return (text)
+end
+
+-- Create a status report
 local function create_status_report(opts)
 	-- Use date from command line
 	local from_date
@@ -173,6 +193,10 @@ return {
 					description = 'Journal',
 					template = '** %?\n   %T\n',
 					target = personal_journal_target,
+				},
+				m = {
+					description = 'Meeting',
+					template = '* Meeting\n%(return CreateAgenda("meeting"))',
 				},
 			},
 		}
