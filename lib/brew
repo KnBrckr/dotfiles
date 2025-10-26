@@ -45,7 +45,6 @@ run_brew() {
     )
 
 		local -a desired_casks=(
-			'alacritty' # Alacritty terminal emulator
 		  'font-hack-nerd-font'
 	  )
 
