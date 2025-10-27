@@ -2,6 +2,7 @@
 
 [init]
   defaultBranch = main
+	templateDir = ~/.dotfiles/git/templateDir
 
 [alias]
   # https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
