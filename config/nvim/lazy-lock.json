@@ -21,7 +21,7 @@
   "neogit": { "branch": "master", "commit": "99b811a99a195c4d3a627341bb7ccf6a22c4e6ea" },
   "nvim-cmp": { "branch": "main", "commit": "b5311ab3ed9c846b585c0c15b7559be131ec4be9" },
   "nvim-lspconfig": { "branch": "master", "commit": "4d3b3bb8815fbe37bcaf3dbdb12a22382bc11ebe" },
-  "nvim-treesitter": { "branch": "main", "commit": "645f42e85d8665c91a9911c3896afb57d6b8a923" },
+  "nvim-treesitter": { "branch": "main", "commit": "17885756e63df73ed90db62e4630f744ceda6514" },
   "nvim-web-devicons": { "branch": "master", "commit": "4a8369f4c78ef6f6f895f0cec349e48f74330574" },
   "oil.nvim": { "branch": "master", "commit": "bbad9a76b2617ce1221d49619e4e4b659b3c61fc" },
   "org-super-agenda.nvim": { "branch": "main", "commit": "2064358951c5695340c14f70dde38ede173eb059" },
