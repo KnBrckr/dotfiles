@@ -76,7 +76,7 @@ return {
 
 				-- Buffer local mappings.
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
-				-- See `:help vim-api` for list of methods
+				-- See `:help lsp-api` for list of methods
 				if client:supports_method('textDocument/publishDiagnostics') then
 					-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
@@ -99,20 +99,40 @@ return {
 				--       textDocument/declaration      vim.lsp.buf.declaration
 				--       textDocument/definition       vim.lsp.buf.definition
 				--  gO                                 vim.lsp.buf.document_symbol
-				--  grt  textDocument/typeDefinition   vim.lsp.buf.type_definition
-				--  gri  textDocument/implementation   vim.lsp.buf.implementation
-				--  grr  textDocument/references       vim.lsp.buf.references
+				--  grt  textDocument/typeDefinition   vim.lsp.buf.type_definition (remapped below)
+				--  gri  textDocument/implementation   vim.lsp.buf.implementation (remapped below)
+				--  grr  textDocument/references       vim.lsp.buf.references (remapped below)
 				--  gra  textDocument/codeAction       vim.lsp.buf.code_action
 				--  grn  textDocument/rename           vim.lsp.buf.rename
+				--
+				--  Insert Mode:
+				--  ctrl-s                             vim.lsp.buf.signature_help()
+
+				-- grr => references (Remap)
+				if client:supports_method('textDocument/references') then
+					vim.keymap.set('n', 'grr', Snacks.picker.lsp_references, { buffer = true, desc = "References" })
+				end
+
+				-- gri ==> implementation (Remap)
+				if client:supports_method('textDocument/implementation') then
+					vim.keymap.set('n', 'gri', Snacks.picker.lsp_implementations, { buffer = true, desc = "Goto Implementation" })
+				end
+
+				-- grt ==> type definition (Remap)
+				if client:supports_method('textDocument/typeDefinition') then
+					vim.keymap.set('n', 'grt', Snacks.picker.lsp_type_definitions, { buffer = true, desc = "Goto Type Definitions" })
+				end
 
 				-- grD => declaration
 				if client:supports_method('textDocument/declaration') then
-					vim.keymap.set('n', 'grD', vim.lsp.buf.declaration, { buffer = true, desc = "Jump to Declaration" })
+					-- vim.keymap.set('n', 'grD', vim.lsp.buf.declaration, { buffer = true, desc = "Jump to Declaration" })
+					vim.keymap.set('n', 'grD', Snacks.picker.lsp_declarations, { buffer = true, desc = "Goto Declaration" })
 				end
 
 				-- grd => definition
 				if client:supports_method('textDocument/definition') then
-					vim.keymap.set('n', 'grd', vim.lsp.buf.definition, { buffer = true, desc = "Jump to Definition" })
+					-- vim.keymap.set('n', 'grd', vim.lsp.buf.definition, { buffer = true, desc = "Jump to Definition" })
+					vim.keymap.set('n', 'grd', Snacks.picker.lsp_definitions, { buffer = true, desc = "Goto Definition" })
 				end
 
 				-- KK => signature help
@@ -142,5 +162,6 @@ return {
 	dependencies = {
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-nvim-lsp",
+		"folke/snacks.nvim", -- For some LSP pickers
 	},
 }
