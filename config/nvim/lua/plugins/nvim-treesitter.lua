@@ -28,5 +28,22 @@ return {
 			'todotxt',
 			'yaml',
 		}
+
+		-- Automatically start tree sitter for a buffer when its filetype has an
+		-- installed language
+		vim.api.nvim_create_autocmd('FileType', {
+			callback = function()
+				-- file type matched in autocommand
+				local amatch = vim.fn.expand("<amatch>")
+				-- LSP language to use for that file type
+				local lang = vim.treesitter.language.get_lang(amatch)
+				-- Installed treesitter languages
+				local installed_langs = require("nvim-treesitter").get_installed()
+
+				if vim.tbl_contains(installed_langs, lang) then
+					vim.treesitter.start()
+				end
+			end,
+		})
 	end,
 }
