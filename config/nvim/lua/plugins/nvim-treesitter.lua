@@ -42,6 +42,10 @@ return {
 
 				if vim.tbl_contains(installed_langs, lang) then
 					vim.treesitter.start()
+
+					-- Use treesitter for folding
+					vim.wo.foldmethod = 'expr'
+					vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 				end
 			end,
 		})
