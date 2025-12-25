@@ -32,12 +32,17 @@ return {
 		-- See :h blink-cmp-config-keymap for defining your own keymap
 		keymap = {
 			preset = 'default',
+			['<C-k>'] = {}, -- Let ctrl-k work for digraphs
+			['<C-/>'] = { 'show_signature', 'hide_signature', 'fallback' },
 		},
 
 		completion = {
 			-- (Default) Only show the documentation popup when manually triggered
 			documentation = { auto_show = true }
 		},
+
+		-- function signature disabled by default
+		signature = { enabled = true },
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
