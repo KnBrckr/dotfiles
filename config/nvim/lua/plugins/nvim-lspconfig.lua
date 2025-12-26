@@ -160,8 +160,6 @@ return {
 		})
 	end,
 	dependencies = {
-		"hrsh7th/nvim-cmp",
-		"hrsh7th/cmp-nvim-lsp",
 		"folke/snacks.nvim", -- For some LSP pickers
 	},
 }

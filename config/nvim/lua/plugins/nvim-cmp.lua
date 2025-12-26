@@ -1,6 +1,7 @@
 -- Completion Support
 return {
 	"hrsh7th/nvim-cmp",
+	enabled = false,
 	config = function()
 		local cmp = require('cmp')
 		local luasnip = require('luasnip')
