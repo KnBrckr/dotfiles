@@ -5,21 +5,28 @@ set -o errexit -o pipefail -o noclobber -o nounset
 
 # Parse options
 zmodload zsh/zutil
-
 zparseopts -D -E -A opts -F - h=help -help=help \
            l=list -list=list \
-           -no-packages=nopackages \
-           -no-sync=nosync
+           -no-packages \
+           -no-sync
 
-# TODO This doesn't work with proxy based access
+if (( $#help )) ; then
+	cat << EOT
+Usage: $(basename "$0") [options]
+
+Setup dotfiles and tool configurations
+
+Options:
+    -h, --help      Print this help text
+    -l, --list      Print a list of additional software to install
+    --no-packages   Suppress package updates
+    --no-sync       Suppress pulling from the remote repository
+EOT
+  exit
+fi
 
 if ! type git > /dev/null ; then
 	echo "git is required to continue"
-	exit 1
-fi
-
-if ! type pip > /dev/null ; then
-	echo "pip is required"
 	exit 1
 fi
 
@@ -27,25 +34,28 @@ DOTFILES="${HOME}/.dotfiles"
 DOTFILES_BACKUPS="${DOTFILES}/backup"
 DOTFILES_GIT_REMOTE="git@github.com:KnBrckr/dotfiles.git"
 
-# If missing, download and extract the dotfiles repository
-if [[ ! -d ${DOTFILES} ]]; then
-	printf "$(tput setaf 7)Cloning dotfiles...\033[m\n"
-	set -e  # Exit if any of these commands fail
-	git clone "${DOTFILES_GIT_REMOTE}" "${DOTFILES}"
-	set +e  # Reset exit on error
-fi
+# Clone a repo to target directory if it does not already exist
+function clone {
+	repo=$1
+	dest=$2
 
-# Clone additional repos (vs. using submodules)
-if [[ ! -d ~/.config/alacritty-theme ]]; then
-	git clone git@github.com:alacritty/alacritty-theme.git ~/.config/alacritty-theme
+	if [ ! -d "$dest" ]; then
+		printf "\x1B[1;32m>>> Cloning $dest\x1B[0m"
+		git clone "$repo" "$dest"
+	fi
+}
+
+# Get the ball rolling with the main dotfiles content
+clone "$DOTFILES_GIT_REMOTE" "$DOTFILES"
+
+# Bootstrap XDG environment
+source "$DOTFILES/shell/zshenv"
+if [ -z "$XDG_CONFIG_HOME" ]; then
+	printf "\x1B[1;31mXDG_CONFIG_HOME is not defined\x1B[0m"
+	exit 1
 fi
-# for "submodules" that don't have a better place - but we're not using git submodules
-if [[ ! -d "${DOTFILES}/submodules" ]]; then
-	mkdir -p "${DOTFILES}/submodules"
-fi
-if [[ ! -d "${DOTFILES}/submodules/dircolors-solarized" ]]; then
-	git clone https://github.com/seebi/dircolors-solarized.git "${DOTFILES}/submodules/dircolors-solarized"
-fi
+# Ensure config directory exists
+mkdir -p "$XDG_CONFIG_HOME"
 
 cd ${DOTFILES}
 
@@ -65,31 +75,10 @@ source ./lib/npm
 source ./lib/nvim
 source ./lib/mirror_files
 
-# Help text
-if (( $#help )) ; then
-	run_help
-	exit 0
-fi
-
 # List additional software to install
 if (( $#list )) ; then
 	run_list
 	exit 0
-fi
-
-# Initialize the git repository if it's missing
-if ! is_git_repo; then
-	e_header "Initializing git repository..."
-	set -e  # Exit if any of these commands fail
-	git init
-	git remote add origin ${DOTFILES_GIT_REMOTE}
-	git fetch origin master
-	# Reset the index and working tree to the fetched HEAD
-	# (submodules are cloned in the subsequent sync step)
-	git reset --hard FETCH_HEAD
-	# Remove any untracked files
-	git clean -fd
-	set +e # Reset exit on error
 fi
 
 # Load Oh My Zsh environment
@@ -97,18 +86,15 @@ if [ ! -d ~/.oh-my-zsh ]; then
 	e_header "Installing Oh My Zsh!"
 	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
-if [[ ! -d ~/.dotfiles/shell/zshcustom/plugins/zsh-syntax-highlighting ]]; then
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.dotfiles/shell/zshcustom/plugins/zsh-syntax-highlighting
-fi
-if [[ ! -d ~/.dotfiles/shell/zshcustom/plugins/zsh-autosuggestions ]]; then
-	git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.dotfiles/shell/zshcustom/plugins/zsh-autosuggestions
-fi
-if [[ ! -d ~/.dotfiles/shell/zshcustom/plugins/alias-tips ]]; then
-	git clone https://github.com/djui/alias-tips ~/.dotfiles/shell/zshcustom/plugins/alias-tips
-fi
-if [[ ! -d ~/.dotfiles/shell/zshcustom/themes/powerlevel10k ]]; then
-	git clone https://github.com/romkatv/powerlevel10k.git ~/.dotfiles/shell/zshcustom/themes/powerlevel10k
-fi
+
+# Clone extra content
+#
+# clone git@github.com:alacritty/alacritty-theme.git $XDG_CONFIG_HOME/alacritty-theme
+# clone https://github.com/seebi/dircolors-solarized.git "${DOTFILES}/submodules/dircolors-solarized"
+clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$DOTFILES/shell/zshcustom/plugins/zsh-syntax-highlighting"
+clone https://github.com/zsh-users/zsh-autosuggestions.git "$DOTFILES/shell/zshcustom/plugins/zsh-autosuggestions"
+clone https://github.com/djui/alias-tips "$DOTFILES/shell/zshcustom/plugins/alias-tips"
+clone https://github.com/romkatv/powerlevel10k.git "$DOTFILES/shell/zshcustom/themes/powerlevel10k"
 
 if is_mac; then
 	# Before relying on Brew, check that packages can be compiled
@@ -147,7 +133,7 @@ if is_mac; then
 fi
 
 # Conditionally sync with the remote repository
-if (( $#nosync )); then
+if (( $+opts[--no-sync] )); then
 	printf "Skipped dotfiles sync.\n"
 else
 	e_header "Syncing dotfiles..."
@@ -184,7 +170,7 @@ else
 fi
 
 # Install and update packages
-if (( $#nopackages )) ; then
+if (( $+opts[--no-packages] )) ; then
 	e_header "Skipping package installs."
 else
 	e_header "Updating packages..."
