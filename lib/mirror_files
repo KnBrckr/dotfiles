@@ -21,23 +21,7 @@ link() {
 	ln -fs "${DOTFILES}/${1}" "${HOME}/${2}"
 }
 
-mirror_git() {
-	# Copy `.gitconfig`.
-	# Any global git commands in `~/.shell_profile.local` will be written to
-	# `.gitconfig`. This prevents them being committed to the repository.
-	#
-	# gitconfig.private provides a template for the global .gitconfig
-	: "${VCS_AUTHOR_NAME:?must be set}"
-	: "${VCS_AUTHOR_EMAIL:?must be set}"
-	backup_file "${HOME}/.gitconfig"
-	cp -p "${DOTFILES}/git/gitconfig.private"  "${HOME}/.gitconfig"
-	git config --global user.name "$VCS_AUTHOR_NAME"
-	git config --global user.email "$VCS_AUTHOR_EMAIL"
-}
-
 mirror_files() {
-	mirror_git
-
 	# Force remove the vim directory if it's already there.
 	if [ -d "${HOME}/.vim" ] && [ ! -L "${HOME}/.vim" ]; then
 		rm -rf "${HOME}/.vim"
@@ -58,8 +42,6 @@ mirror_files() {
 	link "shell/zlogin"					        ".zlogin"
 	link "shell/tmux.conf"			      	".tmux.conf"
 	link "gdb/gdbinit"                  ".gdbinit"
-	link "git/gitattributes"			      ".gitattributes"
-	link "git/gitignore"				        ".gitignore_global"
 	link "mercurial/hgignore.defaults"	".hgignore.defaults"
 	link "vim"							            ".vim"
 	link "vim/gvimrc"					          ".gvimrc"
@@ -71,6 +53,7 @@ mirror_files() {
 	link "config/ctags"                 ".config/ctags"
 	link "config/efm-langserver"        ".config/efm-langserver"
 	link "config/ghostty"               ".config/ghostty"
+	link "config/git"                   ".config/git"
 	link "config/kitty"                 ".config/kitty"
 	link "config/nvim"                  ".config/nvim"
 

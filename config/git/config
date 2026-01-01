@@ -1,14 +1,91 @@
-# gitconfig
+# vim: filetype=gitconfig
+
+[user]
+	name = Ken Brucker
 
 [init]
   defaultBranch = main
-	templateDir = ~/.dotfiles/git/templateDir
+
+[core]
+  autocrlf = input
+
+	commentChar = ";"
+
+[color]
+  # color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
+  ui = auto
+  interactive = auto
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	# Sort tags according to version strings
+	sort=version:refname
+
+[diff]
+  tool = nvimdiff
+   
+[merge]
+  tool = nvimdiff
+
+[difftool]
+  prompt = false
+
+[difftool "opendiff"]
+  cmd = /usr/bin/opendiff \"$LOCAL\" \"$REMOTE\" -merge \"$MERGED\" | cat
+
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
+
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+
+[pretty]
+  # tut: http://gitimmersion.com/lab_10.html
+  # ref: http://linux.die.net/man/1/git-log
+  # Result: <short-sha> <commit-message> (<pointer-names>) -- <commit-author-name>; <relative-time>
+  # nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
+  #
+  # Result: <short-sha> <author-date> | <commit msg> (<pointer-names>)
+  nice = "%C(yellow)%h%C(reset) %ad | %s%d"
+
+[fetch]
+  prune = true
+
+[pull]
+  rebase = true
+
+[push]
+  default = simple
+  followTags = true
+  
+[filter "media"]
+  clean = git media clean %f
+  smudge = git media smudge %f
+  required = true
+
+[commit]
+#  template = ~/.stCommitMsg
+
+[rebase]
+	autoSquash = true
+	updateRefs = true
+
+# Turn on "Reuse Recorded Resolution"
+[rerere]
+  enabled = true
+
+[maintenance]
+	repo = /Users/ken/.dotfiles
 
 [alias]
   # https://git.wiki.kernel.org/articles/a/l/i/Aliases.html
   
   # View defined aliases
-  alias = !git config --get-regexp ^alias\\. | sort | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  alias = "!git config --get-regexp ^alias\\. | sort | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /"
 
   # Common aliases
   ci = commit
@@ -103,80 +180,10 @@
   mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
   mro = !sh -c 'git checkout origin/merge-requests/$1/head' -
 
-[color]
-  # color opts: normal, black, red, green, yellow, blue, magenta, cyan, or white
-  ui = auto
-  interactive = auto
+# Customize for Github repos
+[includeif "hasconfig:remote.*.url:git@github.com:*/**"]
+	path=~/.config/git/github.inc
 
-[core]
-  # Use custom `.gitignore` and `.gitattributes`
-  excludesfile = ~/.gitignore_global
-  attributesfile = ~/.gitattributes
-
-  autocrlf = input
-
-	commentChar = ";"
-
-[branch]
-	sort = -committerdate
-
-[tag]
-	# Sort tags according to version strings
-	sort=version:refname
-
-[diff]
-  tool = nvimdiff
-   
-[merge]
-  tool = nvimdiff
-
-[difftool]
-  prompt = false
-
-[difftool "opendiff"]
-  cmd = /usr/bin/opendiff \"$LOCAL\" \"$REMOTE\" -merge \"$MERGED\" | cat
-
-[difftool "sourcetree"]
-  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-  path = 
-
-[mergetool "sourcetree"]
-  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode = true
-
-[pretty]
-  # tut: http://gitimmersion.com/lab_10.html
-  # ref: http://linux.die.net/man/1/git-log
-  # Result: <short-sha> <commit-message> (<pointer-names>) -- <commit-author-name>; <relative-time>
-  # nice = "%C(yellow)%h%C(reset) %C(white)%s%C(cyan)%d%C(reset) -- %an; %ar"
-  #
-  # Result: <short-sha> <author-date> | <commit msg> (<pointer-names>)
-  nice = "%C(yellow)%h%C(reset) %ad | %s%d"
-
-[fetch]
-  prune = true
-
-[pull]
-  rebase = true
-
-[push]
-  default = simple
-  followTags = true
-  
-[filter "media"]
-  clean = git media clean %f
-  smudge = git media smudge %f
-  required = true
-
-[commit]
-#  template = ~/.stCommitMsg
-
-[rebase]
-	autoSquash = true
-	updateRefs = true
-
-# Turn on "Reuse Recorded Resolution"
-[rerere]
-  enabled = true
-
-# vim: filetype=gitconfig
+# Customize for Codeberg repos
+[includeif "hasconfig:remote.*.url:ssh://git@codeberg.org/**"]
+	path=~/.config/git/codeberg.inc

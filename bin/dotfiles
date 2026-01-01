@@ -13,13 +13,6 @@ zparseopts -D -E -A opts -F - h=help -help=help \
 
 # TODO This doesn't work with proxy based access
 
-# Pickup VCS_* definitions required to setup git environment
-if [[ -r "${HOME}/.shell_profile.local" ]]; then
-	source "${HOME}/.shell_profile.local"
-fi
-: "${VCS_AUTHOR_NAME:?must be set}"
-: "${VCS_AUTHOR_EMAIL:?must be set}"
-
 if ! type git > /dev/null ; then
 	echo "git is required to continue"
 	exit 1

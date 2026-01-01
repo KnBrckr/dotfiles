@@ -10,6 +10,9 @@ if command_exists nvim; then
 	export EDITOR=nvim
 fi
 
+# Git: Override default template directory
+export GIT_TEMPLATE_DIR=$XDG_CONFIG_HOME/git/templateDir
+
 # Don't clear the screen after quitting a manual page
 export MANPAGER="less -X"
 
