@@ -105,6 +105,10 @@ clone https://github.com/zsh-users/zsh-autosuggestions.git "$DOTFILES/shell/zshc
 clone https://github.com/djui/alias-tips "$DOTFILES/shell/zshcustom/plugins/alias-tips"
 clone https://github.com/romkatv/powerlevel10k.git "$DOTFILES/shell/zshcustom/themes/powerlevel10k"
 
+if command_exists nvim ; then
+	clone ssh://git@codeberg.org/sigstop/config-nvim.git "$XDG_CONFIG_HOME/nvim"
+fi
+
 if is_mac; then
 	# Before relying on Brew, check that packages can be compiled
 	if ! command_exists 'gcc'; then

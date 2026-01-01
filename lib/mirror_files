@@ -55,7 +55,6 @@ mirror_files() {
 	link "config/ghostty"               ".config/ghostty"
 	link "config/git"                   ".config/git"
 	link "config/kitty"                 ".config/kitty"
-	link "config/nvim"                  ".config/nvim"
 
 	e_success "Dotfiles update complete!"
 }
