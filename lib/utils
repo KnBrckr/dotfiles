@@ -18,7 +18,8 @@ is_confirmed() {
 
 # Test whether we're in a git repo
 is_git_repo() {
-    git rev-parse --is-inside-work-tree &> /dev/null
+	local gitdir=${1:-.}/.git
+	git rev-parse --resolve-git-dir "$gitdir" &> /dev/null
 }
 
 is_launch_agent_enabled() {

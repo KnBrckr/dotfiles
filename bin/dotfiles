@@ -39,10 +39,19 @@ function clone {
 	repo=$1
 	dest=$2
 
-	if [ ! -d "$dest" ]; then
-		printf "\x1B[1;32m>>> Cloning $dest\x1B[0m"
-		git clone "$repo" "$dest"
+	if git rev-parse --resolve-git-dir "$dest/.git" &> /dev/null ; then
+		# Target is already cloned
+		echo "\x1B[1;32m>>> Clone exists for $dest\x1B[0m"
+		return 0
 	fi
+
+	if [ -e "$dest" ]; then
+		echo "\x1B[1;31m$dest already exists, unable to clone\x1B[0m"
+		return 1
+	fi
+
+	echo "\x1B[1;32m>>> Cloning $dest\x1B[0m"
+	git clone "$repo" "$dest"
 }
 
 # Get the ball rolling with the main dotfiles content
