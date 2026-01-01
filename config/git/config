@@ -132,6 +132,8 @@
   logp = log --pretty=nice --graph --date=short
   # Short log with name and email
   loge = log --pretty='%Cred%h%Creset %s - %C(bold blue)%ae <%an>%Creset'
+	# log with author and committer
+	log-all-email = log --all --format='%h %ad %an <%ae> %cn <%ce>'
   # Full commit id, title and local name
   logf = log --pretty='%Cred%H%Creset %s - %C(bold blue)%aN %Creset'
 	# Log only refids

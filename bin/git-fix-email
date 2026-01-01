@@ -1,0 +1,16 @@
+#!/bin/bash
+
+old_email=$1
+new_email=$2
+
+if [ -z $old_email ] || [ -z $new_email ]; then
+	echo "Usage: git-fix-email old_email new_email"
+	exit 1
+fi
+
+git filter-repo --commit-callback "
+ if commit.author_email == b\"$old_email\":
+	 commit.author_email = b\"$new_email\"
+ if commit.committer_email == b\"$old_email\":
+	 commit.committer_email = b\"$new_email\"
+"

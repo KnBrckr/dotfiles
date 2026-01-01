@@ -74,6 +74,21 @@ When hierarchy is different and/or some files not present use `git apply`
     % git commit --amend --author="Author Name <email@address.com>" --no-edit
     % git rebase --continue
 
+## Filtering
+
+### Filter for a sub-directory and make it the new project root
+
+    git filter-repo --subdirectory-filter sub-dir/path
+
+### Replace exposed email address
+
+     git filter-repo --commit-callback '
+     if commit.author_email == b"your_exposed_email":
+     commit.author_email = b"github-email@users.noreply.github.com"
+     if commit.committer_email == b"your_exposed_email":
+     commit.committer_email = b"github-email@users.noreply.github.com"
+     '
+
 ## Blame
 
 Useful options:
