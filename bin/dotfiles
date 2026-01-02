@@ -81,7 +81,6 @@ source ./lib/utils
 source ./lib/brew
 source ./lib/pecl
 source ./lib/npm
-source ./lib/nvim
 source ./lib/mirror_files
 
 # List additional software to install
@@ -196,9 +195,6 @@ else
 
 	# Install npm packages
 	run_npm
-
-	# neovim setup
-	install_nvim_providers
 fi
 
 if command -v pyenv > /dev/null 2>&1 ; then
